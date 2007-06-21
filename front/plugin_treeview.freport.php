@@ -35,20 +35,23 @@
 
 define('GLPI_ROOT', '../../..');
 include (GLPI_ROOT . "/inc/includes.php");
-$filename = GLPI_ROOT . '/plugins/freport/index.php';
+
 
 // Check if the freport plugin is installed
-if (file_exists($filename) && isset($_SESSION["glpi_plugin_freport_installed"]) || $_SESSION["glpi_plugin_freport_installed"]==1) {
+if(!isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"]!=1) { 
+	$filename = GLPI_ROOT . '/plugins/freport/index.php';
+	if (file_exists($filename)){
 	$getParam = '?contains[0]=' .$_GET['name']. '&field[0]=0&sort=1&deleted=0&start=0';
 	$target = $filename . $getParam;
 //	echo $target;
 	echo "<script language=javascript>window.location=\"".html_entity_decode($target)."\"</script>";
-
+	}
 } 
 // Print error message if not
 else {
     commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"]);
-	echo $LANGTREEVIEW["warning"][0];
+    echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
+			echo "<b>".$LANGTREEVIEW["warning"][0]."</b></div>"; 
 	commonFooter();
 }
 ?>
