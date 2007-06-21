@@ -40,10 +40,12 @@
 **/
 function plugin_treeview_buildTreeview()
 {
-	# necessary files needed for the tree to work.
-	echo "<link rel=\"StyleSheet\" href=\"dtree.css\" type=\"text/css\" />";
-	echo "<script type=\"text/javascript\" src=\"dtree.js\"></script>";
+	global $CFG_GLPI;
 	
+	# necessary files needed for the tree to work.
+	echo "<link rel='stylesheet' type='text/css'  href='".$CFG_GLPI["root_doc"]."/plugins/treeview/dtree.css' type=\"text/css\" >\n";
+	echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/dtree.js'></script>\n";
+
 	echo "<div class=\"dtree\">";
 
 	echo "<script type=\"text/javascript\">";
