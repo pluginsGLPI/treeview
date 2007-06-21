@@ -102,8 +102,8 @@ function plugin_treeview_getNodesFromDb()
 	$dontLoad = 'false';
 	
 	// Get the lowest level of the tree nodes and the highest primary key		 
-	$query = '	SELECT MAX(`ID`) AS `max_ID`, MAX(`level`) AS `max_level` 
-				FROM `glpi_dropdown_locations`';			 
+	$query = "	SELECT MAX(`ID`) AS `max_ID`, MAX(`level`) AS `max_level` 
+				FROM `glpi_dropdown_locations` WHERE FK_entities='".$_SESSION["glpiactive_entity"]."';";			 
 	$result = $DB->query($query);
 	$max_level = $DB->result($result, 0, "max_level");
 	$tv_id = $max_id = $DB->result($result, 0, "max_ID");
@@ -126,7 +126,7 @@ function plugin_treeview_getNodesFromDb()
 	
 	for($n=1; $n<=count($nodes); $n++) {
 		if($nodes[$n-1] <= $max_id && $n <= $max_level) {
-			$query = 'SELECT * FROM `glpi_dropdown_locations` WHERE `level` = ' . $n . ' AND `parentID` = ' . $nodes[$n-1] . ' ORDER BY `completename` ASC';			 
+			$query = "SELECT * FROM `glpi_dropdown_locations` WHERE `level` = '". $n ."' AND `parentID` = '". $nodes[$n-1] ."' AND FK_entities='" . $_SESSION["glpiactive_entity"]."' ORDER BY `completename` ASC";			 
 			//echo "document.write(\"".$query."\"+'<br>');";
 			$result = $DB->query($query);
 			while($r = $DB->fetch_assoc($result)) {
@@ -164,7 +164,7 @@ function plugin_treeview_getNodesFromDb()
 					for($a=0; $a<count($PLUGIN_TREEVIEW_DEVICES); $a++) {
 						$query = "SELECT *  FROM `" .$LINK_ID_TABLE[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "` WHERE `location` = '".$r['ID']."' AND deleted=0 ";
 						if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == COMPUTER_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == MONITOR_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == NETWORKING_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PERIPHERAL_TYPE  || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PRINTER_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == SOFTWARE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PHONE_TYPE)
-						$query.= " AND is_template=0 ";
+						$query.= " AND is_template=0 AND FK_entities='" . $_SESSION["glpiactive_entity"] . "'";
 						
 						$query.= " $limit ;";
 						//echo "document.write(\"<b>".$query."\"+'</b><br>');";
