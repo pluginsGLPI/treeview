@@ -76,11 +76,6 @@ class plugin_treeview_Treeview_Config
     */
 	var $useIcons;
 	/**
-    * Displays node names in the statusbar instead of the url.
-    * @var string 
-    */
-	var $useStatusText;
-	/**
     * Only one node within a parent can be expanded at the same time.
     * @var bool 
     */
