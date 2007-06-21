@@ -86,7 +86,6 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		$useSelection=$plugin_treeview_display->fields["useSelection"];	
 		$useLines=$plugin_treeview_display->fields["useLines"];
 		$useIcons=$plugin_treeview_display->fields["useIcons"];
-		$useStatusText=$plugin_treeview_display->fields["useStatusText"];	
 		$closeSameLevel=$plugin_treeview_display->fields["closeSameLevel"];
 		$itemName=$plugin_treeview_display->fields["itemName"];
 		$locationName=$plugin_treeview_display->fields["locationName"];
@@ -133,14 +132,6 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		echo "<select name=\"useIcons\">";
 		echo "<option value='1' ".($useIcons==1?" selected ":"").">".$LANGTREEVIEW["setup"][7]."</option>";
 		echo "<option value='0' ".($useIcons==0?" selected ":"").">".$LANGTREEVIEW["setup"][8]."</option>";
-		echo "</select>";
-		echo "</td>";
-		echo "</tr>";
-		echo "<tr class='tab_bg_1'><td>".$LANGTREEVIEW["setup"][15]."</td>";
-		echo "<td>";
-		echo "<select name=\"useStatusText\">";
-		echo "<option value='1' ".($useStatusText==1?" selected ":"").">".$LANGTREEVIEW["setup"][7]."</option>";
-		echo "<option value='0' ".($useStatusText==0?" selected ":"").">".$LANGTREEVIEW["setup"][8]."</option>";
 		echo "</select>";
 		echo "</td>";
 		echo "</tr>";

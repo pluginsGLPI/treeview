@@ -88,7 +88,6 @@ function plugin_treeview_getNodesFromDb()
 	$config->useSelection = $plugin_treeview_display->fields["useSelection"];
 	$config->useLines = $plugin_treeview_display->fields["useLines"];
 	$config->useIcons = $plugin_treeview_display->fields["useIcons"];
-	$config->useStatusText = $plugin_treeview_display->fields["useStatusText"];
 	$config->closeSameLevel = $plugin_treeview_display->fields["closeSameLevel"];
 	
 	
@@ -98,7 +97,6 @@ function plugin_treeview_getNodesFromDb()
 	echo "d.config.useSelection = " .$config->useSelection. ";";
 	echo "d.config.useLines = " .$config->useLines. ";";
 	echo "d.config.useIcons = " .$config->useIcons. ";";
-	echo "d.config.useStatusText = " .$config->useStatusText. ";";
 	echo "d.config.closeSameLevel = " .$config->closeSameLevel. ";";
 	
 	$dontLoad = 'false';

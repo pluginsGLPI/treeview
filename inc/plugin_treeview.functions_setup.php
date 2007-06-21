@@ -49,7 +49,6 @@ function plugin_treeview_Install()
 				`useSelection` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
 				`useLines` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
 				`useIcons` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
-				`useStatusText` ENUM( '1', '0' ) NOT NULL DEFAULT '0',
 				`closeSameLevel` ENUM( '1', '0' ) NOT NULL DEFAULT '0',
 				`itemName` INT(1) NOT NULL DEFAULT '3',
 				`locationName` INT(1) NOT NULL DEFAULT '0'
@@ -58,8 +57,8 @@ function plugin_treeview_Install()
 		$DB->query($query) or die($db->error());
 		
 		// Insert default values
-		$query ="INSERT INTO `glpi_plugin_treeview_display` ( `ID`, `target`, `folderLinks`, `useSelection`, `useLines`, `useIcons`, `useStatusText`, `closeSameLevel`, `itemName`, `locationName`)
-		VALUES ('1','right','1','1','1','1','0','0', '3', '2');";
+		$query ="INSERT INTO `glpi_plugin_treeview_display` ( `ID`, `target`, `folderLinks`, `useSelection`, `useLines`, `useIcons`,  `closeSameLevel`, `itemName`, `locationName`)
+		VALUES ('1','right','1','1','1','1','0', '3', '2');";
 		
 		$DB->query($query) or die($DB->error());
 }
