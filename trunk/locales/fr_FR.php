@@ -59,5 +59,5 @@ $LANGTREEVIEW["setup"][24]="Numéro d'inventaire";
 $LANGTREEVIEW["setup"][25]="Nom court";
 $LANGTREEVIEW["setup"][26]="Nom complet";
 $LANGTREEVIEW["setup"][27]="Commentaires";
-$LANGTREEVIEW["warning"][0]="Le plugin freport n'existe pas";
+$LANGTREEVIEW["warning"][0]="Le plugin freport n'est pas installé";
 ?>
