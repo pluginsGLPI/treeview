@@ -49,7 +49,7 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin
 } 
 // Print error message if not
 else {
-    commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"]);
+    commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"],"plugins","treeview");
     echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
 			echo "<b>".$LANGTREEVIEW["warning"][0]."</b></div>"; 
 	commonFooter();
