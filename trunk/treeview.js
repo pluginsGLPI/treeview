@@ -108,9 +108,4 @@ window.location=firingobj.getAttribute("url")
 }
 }
 
-if (ie5||ns6){
-menuobj.style.display=''
-//uncomment this 2 lines for the contxt menu
-//document.oncontextmenu=showmenuie5
-//document.onclick=hidemenuie5
-}
+
