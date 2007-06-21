@@ -40,12 +40,21 @@ include_once ("inc/plugin_treeview.classes.php");
 include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
+	echo "\n<html><head><title>GLPI - ".$LANGTREEVIEW["title"][0]."</title>";
+	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
+	// Send extra expires header if configured
+	if ($CFG_GLPI["sendexpire"]) {
+		echo "<meta http-equiv=\"Expires\" content=\"Fri, Jun 12 1981 08:20:00 GMT\">\n";
+		echo "<meta http-equiv=\"Pragma\" content=\"no-cache\">\n";
+		echo "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\n";
+	}
 echo "<link rel='stylesheet' type='text/css'  href='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.css' type=\"text/css\" >\n";
-echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.js'></script>\n";
+echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.js'></script></head>\n";
 
 echo '<div id="ie5menu" class="skin0" onMouseover="highlightie5(event)" onMouseout="lowlightie5(event)" onClick="jumptoie5(event)" display:none>';
 echo '</div>';
-
+echo "<body>";
 // Title bar
 echo '<div id=explorer_bar><div id=explorer_title>';
 echo $LANGTREEVIEW["title"][0] . '</div>';
@@ -61,5 +70,8 @@ echo "</form>";
 
 // Print the tree
 plugin_treeview_buildTreeview();
+
+echo "</body>";
+echo "</html>";
 
 ?>
