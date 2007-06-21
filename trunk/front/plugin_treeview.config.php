@@ -44,7 +44,7 @@ checkRight("config","w");
 
 commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"],"plugins","treeview");
 
-if(!isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"]!=1) { 
+if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin_treeview_installed"]!=1) { 
 	if(!TableExists("glpi_plugin_treeview_display")){
 		if ($_SESSION["glpiactive_entity"]==0){
 			echo "<div align='center'>";
