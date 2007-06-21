@@ -40,11 +40,10 @@ include_once ("inc/plugin_treeview.classes.php");
 include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 
-echo "<link rel='stylesheet' type='text/css' media='print' href='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.css' type=\"text/css\" >\n";
+echo "<link rel='stylesheet' type='text/css'  href='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.css' type=\"text/css\" >\n";
 echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.js'></script>\n";
 
 echo '<div id="ie5menu" class="skin0" onMouseover="highlightie5(event)" onMouseout="lowlightie5(event)" onClick="jumptoie5(event)" display:none>';
-echo '<div class="menuitems" url="#" target="newwin">Add new item</div>';
 echo '</div>';
 
 // Title bar
