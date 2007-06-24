@@ -41,7 +41,7 @@ include (GLPI_ROOT . "/inc/includes.php");
 if(isset($_SESSION["glpi_plugin_freport_installed"]) && $_SESSION["glpi_plugin_freport_installed"]==1) { 
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
 	if (file_exists($filename)){
-	$getParam = '?contains[0]=' .$_GET['name']. '&field[0]=0&sort=1&deleted=0&start=0';
+	$getParam = '?contains[0]=' .$_GET['name']. '&field[0]=0&sort=1&deleted=0&start=0&from=treeview';
 	$target = $filename . $getParam;
 //	echo $target;
 	echo "<script language=javascript>window.location=\"".html_entity_decode($target)."\"</script>";
