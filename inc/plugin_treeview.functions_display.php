@@ -146,7 +146,7 @@ function plugin_treeview_getNodesFromDb()
 						$l_name .= ' (' . $r['comments'] . ')';				
 				}
 				
-				$locationLink = 'front/plugin_treeview.freport.php?name=' . $r['completename'];
+				$locationLink = 'front/plugin_treeview.freport.php?ID=' . $r['ID'];
 									
 				// Is this location requested by the user to be opened
 				if(in_array($r['ID'], $nodes)) {
@@ -174,7 +174,7 @@ function plugin_treeview_getNodesFromDb()
 							$field_num = 3;
 							if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CARTRIDGE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CONSUMABLE_TYPE)
 								$field_num = 6;
-							$getParam = '?contains[0]=' .$r['completename']. '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
+							$getParam = '?contains[0]=' .$r['ID']. '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
 							// Add items parent node
 							echo "d.add(".$tv_id.",".$r['ID'].",\"".$PLUGIN_TREEVIEW_DEVICES[$a]['name']."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
 							if($openedType == $PLUGIN_TREEVIEW_DEVICES[$a]['type'] && $nodes[count($nodes)-1] == $tv_id)
