@@ -35,6 +35,12 @@
 $title="Arborescence";
 
 $LANGTREEVIEW["title"][0]="".$title."";
+
+$LANGTREEVIEW["profile"][0] = "Gestion des droits";
+$LANGTREEVIEW["profile"][1] = "$title";
+$LANGTREEVIEW["profile"][2] = "Configuration";
+$LANGTREEVIEW["profile"][3] = "Utiliser l'arborescence";
+
 $LANGTREEVIEW["setup"][2]="Configuration du plugin ".$title."";
 $LANGTREEVIEW["setup"][3]="Installer le plugin $title";
 $LANGTREEVIEW["setup"][4]="Désinstaller le plugin $title";
@@ -59,5 +65,9 @@ $LANGTREEVIEW["setup"][24]="Numéro d'inventaire";
 $LANGTREEVIEW["setup"][25]="Nom court";
 $LANGTREEVIEW["setup"][26]="Nom complet";
 $LANGTREEVIEW["setup"][27]="Commentaires";
+$LANGTREEVIEW["setup"][28] = "Mode d'emploi";
+$LANGTREEVIEW["setup"][29] = "FAQ";
+
 $LANGTREEVIEW["warning"][0]="Le plugin freport n'est pas installé";
+
 ?>

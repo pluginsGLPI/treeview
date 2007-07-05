@@ -173,11 +173,22 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		echo "<table class='tab_cadre' cellpadding='5'>";
 		echo "<tr><th>".$LANGTREEVIEW["setup"][2];
 		echo "</th></tr>";
+		if (haveRight("config","w") && haveRight("profile","w")){
+			echo "<tr class='tab_bg_1'><td align='center'>";
+			echo "<a href=\"./plugin_treeview.profile.php\">".$LANGTREEVIEW["profile"][0]."</a>";
+			echo "</td></tr>";
+			}
+		echo "<tr class='tab_bg_1'><td align='center'>";
+			echo "<a href='http://glpi-project.org/wiki/doku.php?id=".substr($_SESSION["glpilanguage"],0,2).":plugins:treeview_use' target='_blank'>".$LANGTREEVIEW["setup"][28]."&nbsp;</a>";
+			echo "/&nbsp;<a href='http://glpi-project.org/wiki/doku.php?id=".substr($_SESSION["glpilanguage"],0,2).":plugins:treeview_faq' target='_blank'>".$LANGTREEVIEW["setup"][29]." </a>";
+			echo "</td></tr>";
+			if ($_SESSION["glpiactive_entity"]==0){
 		echo "<tr class='tab_bg_1'><td align='center'>";
 		echo "<a href='plugin_treeview.uninstall.php'>".$LANGTREEVIEW["setup"][4]."</a>";
 		echo " <img src='".GLPI_ROOT."/pics/aide.png' onmouseout=\"setdisplay(getElementById('comments'),'none')\" onmouseover=\"setdisplay(getElementById('comments'),'block')\">";
 		echo "<span class='over_link' id='comments'>".$LANGTREEVIEW["setup"][5]."</span>";
 		echo "</td></tr>";
+		}
 		echo "</table>";	
 	}
 

@@ -33,6 +33,7 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+include_once ("inc/plugin_treeview.functions_db.php");
 include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 include_once ("inc/plugin_treeview.functions_setup.php");
@@ -52,10 +53,11 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
+	if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
 	$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 		
 	// Config page
-	if (haveRight("config","w"))
+	if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
 		$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
 		
 	// Add specific files to add to the header : javascript or css
