@@ -61,6 +61,38 @@ function plugin_treeview_Install()
 		VALUES ('1','right','1','1','1','1','0', '3', '2');";
 		
 		$DB->query($query) or die($DB->error());
+		
+	$query="CREATE TABLE `glpi_plugin_treeview_profiles` (
+		`ID` int(11) NOT NULL auto_increment,
+		`name` varchar(255) default NULL,
+		`interface` varchar(50) NOT NULL default 'treeview',
+		`is_default` smallint(6) NOT NULL default '0',
+		`treeview` char(1) default NULL,
+		PRIMARY KEY  (`ID`),
+		KEY `interface` (`interface`)
+			) TYPE=MyISAM;";
+			
+	$DB->query($query) or die($DB->error());
+
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
+		VALUES ('1', 'post-only','treeview','1',NULL);";
+
+	$DB->query($query) or die($DB->error());
+	
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
+		VALUES ('2', 'normal','treeview','0',NULL);";
+
+	$DB->query($query) or die($DB->error());
+	
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
+		VALUES ('3', 'admin','treeview','0','r');";
+
+	$DB->query($query) or die($DB->error());
+	
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
+		VALUES ('4', 'super-admin','treeview','0','r');";
+
+	$DB->query($query) or die($DB->error());
 }
 
 /**
@@ -72,6 +104,9 @@ function plugin_treeview_uninstall()
 {
 	global $DB;
 	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
+	$DB->query($query) or die($DB->error());
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
 	$DB->query($query) or die($DB->error());
 }
 ?>

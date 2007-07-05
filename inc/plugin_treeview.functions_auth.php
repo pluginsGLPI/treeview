@@ -36,16 +36,16 @@
 function plugin_treeview_initSession()
 {
 	if(TableExists("glpi_plugin_treeview_display")){
-		/*$prof=new plugin_treeview_Profile();
+		$prof=new plugin_treeview_Profile();
 		if($prof->getFromDBForUser($_SESSION["glpiID"])){
 		//$prof->cleanProfile();
 			$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
-			
-		}*/
-		$_SESSION["glpi_plugin_treeview_installed"]=1;
+			$_SESSION["glpi_plugin_treeview_installed"]=1;
+		}
+		
 	}
 }
-/*
+
 function plugin_treeview_haveRight($module,$right){
 	$matches=array(
 			""  => array("","r","w"), // ne doit pas arriver normalement
@@ -72,5 +72,5 @@ function plugin_treeview_checkRight($module, $right) {
 		displayRightError();
 	}
 }
-*/
+
 ?>
