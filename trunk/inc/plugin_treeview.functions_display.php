@@ -187,14 +187,23 @@ function plugin_treeview_getNodesFromDb()
 							if($config->itemName == 0  || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == SOFTWARE_TYPE)
 								$i_name = $r_1['name'];
 							else if($config->itemName == 1)
-								$i_name = $r_1['otherserial'];				
+								if (isset($r_1['otherserial']) && !empty($r_1['otherserial']))
+									$i_name = $r_1['otherserial'];
+								else
+									$i_name = $r_1['name'];		
 							else if($config->itemName == 2) {
 								$i_name = $r_1['name'] != "" ? $r_1['name'] : "";
-								$i_name .= $r_1['otherserial'] != "" ? ($r_1['name'] != "" ? ' / ' . $r_1['otherserial'] : $r_1['otherserial']) : "";				
+								if (isset($r_1['otherserial']) && !empty($r_1['otherserial']))
+									$i_name .= $r_1['otherserial'] != "" ? ($r_1['name'] != "" ? ' / ' . $r_1['otherserial'] : $r_1['otherserial']) : "";
+								else
+									$i_name .= '';	
 							}
 							else if($config->itemName == 3) {
+								if (isset($r_1['otherserial']) && !empty($r_1['otherserial'])){
 								$i_name = $r_1['otherserial'] != "" ? $r_1['otherserial'] : "";
-								$i_name .= $r_1['name'] != "" ? ($r_1['otherserial'] != "" ? ' / ' . $r_1['name'] : $r_1['name']) : "";				
+								$i_name .= $r_1['name'] != "" ? ($r_1['otherserial'] != "" ? ' / ' . $r_1['name'] : $r_1['name']) : "";
+								}else
+									$i_name = $r_1['name'];				
 							}
 							// Add the item
 							echo "d.add(".$tv_id++.",".$pid.",\"" . $i_name . "\", true, -1, '" .GLPI_ROOT. "/" .$INFOFORM_PAGES[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "?ID=" .$r_1['ID']. "', '', '', '" . $config->iconFolder . "node.gif', '" . $config->iconFolder . "node.gif');";
