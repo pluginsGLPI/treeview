@@ -145,9 +145,10 @@ function plugin_treeview_getNodesFromDb()
 					if($r['comments'] != "")
 						$l_name .= ' (' . $r['comments'] . ')';				
 				}
-				
+				if(isset($_SESSION["glpi_plugin_freport_installed"]) && $_SESSION["glpi_plugin_freport_installed"]==1)
 				$locationLink = 'front/plugin_treeview.freport.php?ID=' . $r['ID'];
-									
+				else
+				$locationLink = '';
 				// Is this location requested by the user to be opened
 				if(in_array($r['ID'], $nodes)) {
 					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".$l_name."\", true, -1, '" .$locationLink. "');";
