@@ -106,8 +106,9 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		echo "<tr class='tab_bg_1'><td>".$LANGTREEVIEW["setup"][10]."</td>";
 		echo "<td>";
 		echo "<select name=\"folderLinks\">";
-		echo "<option value='1' ".($folderLinks==1?" selected ":"").">".$LANGTREEVIEW["setup"][7]."</option>";
 		echo "<option value='0' ".($folderLinks==0?" selected ":"").">".$LANGTREEVIEW["setup"][8]."</option>";
+		echo "<option value='1' ".($folderLinks==1?" selected ":"").">".$LANGTREEVIEW["setup"][7]."</option>";
+		
 		echo "</select>";
 		echo "</td>";
 		echo "</tr>";
