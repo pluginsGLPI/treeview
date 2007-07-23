@@ -57,7 +57,7 @@ function plugin_init_treeview()
 	$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 		
 	// Config page
-	if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
+	if (plugin_treeview_haveRight("treeview","w") || haveRight("config","w"))
 		$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
 		
 	// Add specific files to add to the header : javascript or css
