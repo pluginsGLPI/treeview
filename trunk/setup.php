@@ -53,7 +53,7 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
-	if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
+		if(isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_injection_installed"] == 1)
 	$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 		
 	// Config page
