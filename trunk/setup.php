@@ -53,21 +53,20 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
-		if(isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_injection_installed"] == 1)
-	$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
-		
+		if( (plugin_treeview_haveRight("treeview","w") || haveRight("config","w")) && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_injection_installed"] == 1))
+			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
+
 	// Config page
-	if (plugin_treeview_haveRight("treeview","w") || haveRight("config","w"))
-		$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
+		if (plugin_treeview_haveRight("treeview","w") || haveRight("config","w"))
+			$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
 		
 	// Add specific files to add to the header : javascript or css
-	$PLUGIN_HOOKS['add_javascript']['treeview']="dtree.js";
-	$PLUGIN_HOOKS['add_css']['treeview']="dtree.css";
-	$PLUGIN_HOOKS['add_javascript']['treeview']="functions.js";
-	$PLUGIN_HOOKS['add_css']['treeview']="style.css";
-	$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
-	$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
-	
+		$PLUGIN_HOOKS['add_javascript']['treeview']="dtree.js";
+		$PLUGIN_HOOKS['add_css']['treeview']="dtree.css";
+		$PLUGIN_HOOKS['add_javascript']['treeview']="functions.js";
+		$PLUGIN_HOOKS['add_css']['treeview']="style.css";
+		$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
+		$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
 	}
 }
 

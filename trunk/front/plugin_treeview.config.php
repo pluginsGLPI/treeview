@@ -42,9 +42,10 @@ include (GLPI_ROOT."/inc/includes.php");
 
 checkRight("config","w");
 
-commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"],"plugins","treeview");
-
 if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin_treeview_installed"]!=1) { 
+	
+	commonHeader($LANG["title"][2],$_SERVER['PHP_SELF'],"config","plugins");
+	
 	if(!TableExists("glpi_plugin_treeview_display")){
 		if ($_SESSION["glpiactive_entity"]==0){
 			echo "<div align='center'>";
@@ -66,9 +67,8 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		glpi_header($_SERVER['HTTP_REFERER']);
 
 }else{
-	checkRight("config","w");
+	commonHeader($LANGTREEVIEW["title"][0],$_SERVER["PHP_SELF"],"plugins","treeview");
 	
-
 	// Get the configuration from the database and show it 
 		echo "	<script type='text/javascript'>
 				if (top != self)
