@@ -49,6 +49,7 @@ function plugin_init_treeview()
 	global $PLUGIN_HOOKS;
 	
 	$PLUGIN_HOOKS['init_session']['treeview'] = 'plugin_treeview_initSession';
+	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeprofile';
 	
 	if (isset($_SESSION["glpiID"])){
 	
