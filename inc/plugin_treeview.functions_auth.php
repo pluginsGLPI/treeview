@@ -52,6 +52,8 @@ function plugin_treeview_changeprofile()
 		$prof=new plugin_treeview_Profile();
 		if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
 			$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
+		else
+			unset($_SESSION["glpi_plugin_treeview_profile"]);
 	}
 }
 
