@@ -46,8 +46,10 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 	
 	commonHeader($LANG["title"][2],$_SERVER['PHP_SELF'],"config","plugins");
 	
-	if(!TableExists("glpi_plugin_treeview_display")){
-		if ($_SESSION["glpiactive_entity"]==0){
+	if ($_SESSION["glpiactive_entity"]==0){
+	
+		if(!TableExists("glpi_plugin_treeview_display")){
+		
 			echo "<div align='center'>";
 			echo "<table class='tab_cadre' cellpadding='5'>";
 			echo "<tr><th>".$LANGTREEVIEW["setup"][2];
@@ -55,10 +57,10 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 			echo "<tr class='tab_bg_1'><td>";
 			echo "<a href='plugin_treeview.install.php'>".$LANGTREEVIEW["setup"][3]." v1.0</a></td></tr>";
 			echo "</table></div>";
-		}else{ 
-			echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
-			echo "<b>".$LANG["login"][5]."</b></div>"; 
 		}
+	}else{ 
+		echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
+		echo "<b>".$LANG["login"][5]."</b></div>"; 
 	}
 }elseif(isset($_POST["update"])){
 		checkRight("config","w");
