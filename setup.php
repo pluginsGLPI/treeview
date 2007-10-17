@@ -54,7 +54,7 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
-		if( (plugin_treeview_haveRight("treeview","w") || haveRight("config","w")) && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1))
+		if( (plugin_treeview_haveRight("treeview","w") || haveRight("config","w")) && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && (isset($_SESSION["glpi_plugin_treeview_profile"])))
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 
 	// Config page
