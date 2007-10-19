@@ -40,6 +40,7 @@ $LANGTREEVIEW["profile"][0] = "Rights management";
 $LANGTREEVIEW["profile"][1] = "$title";
 $LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Use the tree";
+$LANGTREEVIEW["profile"][4] = "List of profiles already configured";
 
 $LANGTREEVIEW["setup"][2]="Setup of plugin ".$title."";
 $LANGTREEVIEW["setup"][3]="Install $title plugin ";

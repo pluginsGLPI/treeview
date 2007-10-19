@@ -41,6 +41,7 @@ if(haveRight("config","w") && haveRight("profile","w")){
 	if(!TableExists("glpi_plugin_treeview_display")){
 		cleanCache("GLPI_HEADER_".$_SESSION["glpiID"]);
 		plugin_treeview_install();
+		plugin_treeview_createfirstaccess($_SESSION['glpiactiveprofile']['ID']);
 		plugin_treeview_initSession();
 	}
 	glpi_header($_SERVER['HTTP_REFERER']);

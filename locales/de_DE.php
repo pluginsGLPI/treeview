@@ -35,6 +35,13 @@
 $title="Baumstruktur";
 
 $LANGTREEVIEW["title"][0]="".$title."";
+
+$LANGTREEVIEW["profile"][0] = "Rights management";
+$LANGTREEVIEW["profile"][1] = "$title";
+$LANGTREEVIEW["profile"][2] = "Setup";
+$LANGTREEVIEW["profile"][3] = "Use the tree";
+$LANGTREEVIEW["profile"][4] = "List of profiles already configured";
+
 $LANGTREEVIEW["setup"][2]="".$title." Einstellungen";
 $LANGTREEVIEW["setup"][3]="Plugin $title installieren";
 $LANGTREEVIEW["setup"][4]="Plugin $title deinstallieren";
@@ -59,5 +66,9 @@ $LANGTREEVIEW["setup"][24]="Inventarnummer";
 $LANGTREEVIEW["setup"][25]="Kurzer Name";
 $LANGTREEVIEW["setup"][26]="Langer Name";
 $LANGTREEVIEW["setup"][27]="Kommentar";
+$LANGTREEVIEW["setup"][28] = "Instructions";
+$LANGTREEVIEW["setup"][29] = "FAQ";
+
 $LANGTREEVIEW["warning"][0]="Das Plugin freport wurde nicht gefunden";
+
 ?>

@@ -124,24 +124,16 @@ class plugin_treeview_Profile extends CommonDBTM {
 		$this->type=-1;
 	}
 
-	function getFromDBForUser($ID){
-
-		// Make new database object and fill variables
+	//if profile deleted
+	function cleanProfiles($ID) {
+	
 		global $DB;
-		$ID_profile=0;
-		// Get user profile
-		$query = "SELECT FK_profiles FROM glpi_users_profiles WHERE (FK_users = '$ID')";
-
-		if ($result = $DB->query($query)) {
-			if ($DB->numrows($result)){
-				$ID_profile = $DB->result($result,0,0);
-			}
-		}
-		if ($ID_profile){
-			return $this->getFromDB($ID_profile);
-		} else return false;
+		$prof=new profile;
+		$prof->getFromDB($ID);
+		$name=$prof->fields["name"];
+		$query = "DELETE FROM glpi_plugin_treeview_profiles WHERE name='$name' ";
+		$DB->query($query);
 	}
-	// Unset unused rights for helpdesk
 
 
 	function showprofileForm($target,$ID){
