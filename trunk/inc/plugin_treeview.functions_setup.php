@@ -74,25 +74,6 @@ function plugin_treeview_Install()
 			
 	$DB->query($query) or die($DB->error());
 
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
-		VALUES ('1', 'post-only','treeview','1',NULL);";
-
-	$DB->query($query) or die($DB->error());
-	
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
-		VALUES ('2', 'normal','treeview','0',NULL);";
-
-	$DB->query($query) or die($DB->error());
-	
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
-		VALUES ('3', 'admin','treeview','0','r');";
-
-	$DB->query($query) or die($DB->error());
-	
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`)
-		VALUES ('4', 'super-admin','treeview','0','r');";
-
-	$DB->query($query) or die($DB->error());
 }
 
 /**

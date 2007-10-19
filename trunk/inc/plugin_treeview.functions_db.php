@@ -36,6 +36,23 @@ if (!defined('GLPI_ROOT')){
 	die("Sorry. You can't access directly to this file");
 	}
 	
+function plugin_treeview_createfirstaccess($ID){
+
+	GLOBAL $DB;
+	
+	$query0 ="SELECT * FROM glpi_plugin_treeview_profiles where ID='".$ID."';";
+	$result0=$DB->query($query0);
+	if ($DB->numrows($result0)==0){
+		$query="SELECT * FROM glpi_profiles where ID='$ID';";
+		$result=$DB->query($query);
+		$name = $DB->result($result, 0, "glpi_profiles.name");
+		
+		$query1 ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`) VALUES ('$ID', '$name','treeview','0','r');";
+		$DB->query($query1);
+	}
+}
+
+	
 function plugin_treeview_createaccess($ID){
 
 	$DB = new DB;

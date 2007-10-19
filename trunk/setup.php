@@ -54,11 +54,11 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
-		if( (plugin_treeview_haveRight("treeview","w") || haveRight("config","w")) && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && (isset($_SESSION["glpi_plugin_treeview_profile"])))
+		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"]))
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 
 	// Config page
-		if (plugin_treeview_haveRight("treeview","w") || haveRight("config","w"))
+		if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
 			$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
 		
 	// Add specific files to add to the header : javascript or css
@@ -68,6 +68,8 @@ function plugin_init_treeview()
 		$PLUGIN_HOOKS['add_css']['treeview']="style.css";
 		$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
 		$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
+		
+		$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 	}
 }
 
@@ -82,6 +84,22 @@ function plugin_version_treeview()
 
 	return array( 	'name'    => $LANGTREEVIEW["title"][0],
 					'version' => '1.0');
+}
+
+//////////////////////////////
+
+// Hook done on delete item case
+
+function plugin_pre_item_delete_treeview($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case PROFILE_TYPE :
+				// Manipulate data if needed 
+				$plugin_treeview_Profile=new plugin_treeview_Profile;
+				$plugin_treeview_Profile->cleanProfiles($input["ID"]);
+				break;
+		}
+	return $input;
 }
 
 ?>

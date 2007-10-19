@@ -40,6 +40,7 @@ $LANGTREEVIEW["profile"][0] = "Gestion des droits";
 $LANGTREEVIEW["profile"][1] = "$title";
 $LANGTREEVIEW["profile"][2] = "Configuration";
 $LANGTREEVIEW["profile"][3] = "Utiliser l'arborescence";
+$LANGTREEVIEW["profile"][4] = "Listes des profils déjà configurés";
 
 $LANGTREEVIEW["setup"][2]="Configuration du plugin ".$title."";
 $LANGTREEVIEW["setup"][3]="Installer le plugin $title";
