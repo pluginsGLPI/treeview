@@ -176,10 +176,10 @@ function plugin_treeview_getNodesFromDb()
 							if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CARTRIDGE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CONSUMABLE_TYPE)
 								$field_num = 6;
 							
-							$query_location = "SELECT name FROM `glpi_dropdown_locations` WHERE `ID` = '". $r['ID'] ."'";
+							$query_location = "SELECT completename FROM `glpi_dropdown_locations` WHERE `ID` = '". $r['ID'] ."'";
 							$result_location = $DB->query($query_location);
 							while($row = $DB->fetch_assoc($result_location)) {
-								$name_location=	$row['name'];
+								$name_location=	$row['completename'];
 							}	
 							$getParam = '?contains[0]=' .$name_location. '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
 							// Add items parent node
