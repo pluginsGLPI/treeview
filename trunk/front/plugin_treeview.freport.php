@@ -41,10 +41,10 @@ include (GLPI_ROOT . "/inc/includes.php");
 if(isset($_SESSION["glpi_plugin_freport_installed"]) && $_SESSION["glpi_plugin_freport_installed"]==1) { 
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
 	if (file_exists($filename)){
-	$query = "SELECT name FROM `glpi_dropdown_locations` WHERE `ID` = '". $_GET['ID'] ."'";
+	$query = "SELECT completename FROM `glpi_dropdown_locations` WHERE `ID` = '". $_GET['ID'] ."'";
 	$result = $DB->query($query);
 	while($r = $DB->fetch_assoc($result)) {
-		$name_location=	$r['name'];
+		$name_location=	$r['completename'];
 	}		
 	$getParam = '?contains[0]=' .$name_location. '&field[0]=0&sort=1&deleted=0&start=0&from=treeview';
 	$target = $filename . $getParam;
