@@ -41,39 +41,15 @@
 function plugin_treeview_Install()
 {
 	global $DB;
-
-	$query = "CREATE TABLE `glpi_plugin_treeview_display` (
-				`ID` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-				`target` VARCHAR(255) NOT NULL DEFAULT '_self',
-				`folderLinks` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
-				`useSelection` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
-				`useLines` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
-				`useIcons` ENUM( '1', '0' ) NOT NULL DEFAULT '1',
-				`closeSameLevel` ENUM( '1', '0' ) NOT NULL DEFAULT '0',
-				`itemName` INT(1) NOT NULL DEFAULT '3',
-				`locationName` INT(1) NOT NULL DEFAULT '0'
-				) TYPE = MYISAM ;";
 	
-		$DB->query($query) or die($db->error());
-		
-		// Insert default values
-		$query ="INSERT INTO `glpi_plugin_treeview_display` ( `ID`, `target`, `folderLinks`, `useSelection`, `useLines`, `useIcons`,  `closeSameLevel`, `itemName`, `locationName`)
-		VALUES ('1','right','1','1','1','1','0', '3', '2');";
-		
-		$DB->query($query) or die($DB->error());
-		
-	$query="CREATE TABLE `glpi_plugin_treeview_profiles` (
-		`ID` int(11) NOT NULL auto_increment,
-		`name` varchar(255) default NULL,
-		`interface` varchar(50) NOT NULL default 'treeview',
-		`is_default` smallint(6) NOT NULL default '0',
-		`treeview` char(1) default NULL,
-		PRIMARY KEY  (`ID`),
-		KEY `interface` (`interface`)
-			) TYPE=MyISAM;";
-			
-	$DB->query($query) or die($DB->error());
-
+	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-1.0-empty.sql";
+	$DBf_handle = fopen($DB_file, "rt");
+	$sql_query = fread($DBf_handle, filesize($DB_file));
+	fclose($DBf_handle);
+	foreach ( explode(";\n", "$sql_query") as $sql_line) {
+		if (get_magic_quotes_runtime()) $sql_line=stripslashes_deep($sql_line);
+		$DB->query($sql_line);
+	}
 }
 
 /**
