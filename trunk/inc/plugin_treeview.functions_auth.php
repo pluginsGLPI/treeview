@@ -33,35 +33,28 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-function plugin_treeview_initSession()
-{
-	global $CFG_GLPI,$DB;
+function plugin_treeview_initSession() {
+	global $DB;
 	
 	if(TableExists("glpi_plugin_treeview_display")){
-
-		$prof=new plugin_treeview_Profile();
+		$profile=new plugin_treeview_Profile();
+	
+		$query = "SELECT DISTINCT glpi_profiles.* FROM glpi_users_profiles INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
+		$result = $DB->query($query);
 		$_SESSION['glpi_plugin_treeview_profile'] = array ();
-		
-		$query0 = "SELECT DISTINCT glpi_profiles.ID FROM glpi_users_profiles INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
-		$result0 = $DB->query($query0);
-		if ($DB->numrows($result0)) {
-			while ($data0 = $DB->fetch_assoc($result0)) {
-				$query = "SELECT * FROM glpi_plugin_treeview_profiles WHERE (ID = '".$data0["ID"]."')";
-				$result = $DB->query($query);
-					
-				if ($DB->numrows($result)) {
-					while ($data = $DB->fetch_assoc($result)) {
-						$prof->fields = array ();
-						if(isset($_SESSION["glpiactiveprofile"]["ID"]))
-							$prof->getFromDB($_SESSION["glpiactiveprofile"]["ID"]);
-						else
-							$prof->getFromDB($data['ID']);
-						$_SESSION['glpi_plugin_treeview_profile'] = $prof->fields;
-						$_SESSION["glpi_plugin_treeview_installed"]=1;
-					}		
-				}	
-			}		
-		}			
+		if ($DB->numrows($result)) {
+			while ($data = $DB->fetch_assoc($result)) {
+				$profile->fields = array ();
+				if(isset($_SESSION["glpiactiveprofile"]["ID"])){
+					$profile->getFromDB($_SESSION["glpiactiveprofile"]["ID"]);
+					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
+				}else{
+					$profile->getFromDB($data['ID']);
+					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
+				}
+				$_SESSION["glpi_plugin_treeview_installed"]=1;
+			}
+		}
 	}
 }
 
