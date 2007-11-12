@@ -69,8 +69,6 @@ function plugin_init_treeview()
 		$PLUGIN_HOOKS['add_css']['treeview']="style.css";
 		$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
 		$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
-		
-		
 	}
 }
 
