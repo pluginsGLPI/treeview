@@ -82,7 +82,7 @@ function plugin_version_treeview()
 	global $LANGTREEVIEW;
 
 	return array( 	'name'    => $LANGTREEVIEW["title"][0],
-					'version' => '1.0');
+					'version' => '1.1');
 }
 
 //////////////////////////////
