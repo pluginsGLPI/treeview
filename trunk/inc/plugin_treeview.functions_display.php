@@ -183,7 +183,8 @@ function plugin_treeview_getNodesFromDb()
 							}	
 							$getParam = '?contains[0]=' .$name_location. '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
 							// Add items parent node
-							echo "d.add(".$tv_id.",".$r['ID'].",\"".$PLUGIN_TREEVIEW_DEVICES[$a]['name']."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
+							echo "d.add(".$tv_id.",".$r['ID'].",\"".strtr($PLUGIN_TREEVIEW_DEVICES[$a]['name'],"\"","`")."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
+							
 							if($openedType == $PLUGIN_TREEVIEW_DEVICES[$a]['type'] && $nodes[count($nodes)-1] == $tv_id)
 								$openedType = $tv_id;
 							$tv_id++;
@@ -212,7 +213,7 @@ function plugin_treeview_getNodesFromDb()
 									$i_name = $r_1['name'];				
 							}
 							// Add the item
-							echo "d.add(".$tv_id++.",".$pid.",\"" . $i_name . "\", true, -1, '" .GLPI_ROOT. "/" .$INFOFORM_PAGES[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "?ID=" .$r_1['ID']. "', '', '', '" . $config->iconFolder . "node.gif', '" . $config->iconFolder . "node.gif');";
+							echo "d.add(".$tv_id++.",".$pid.",\"" . strtr($i_name,"\"","`") . "\", true, -1, '" .GLPI_ROOT. "/" .$INFOFORM_PAGES[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "?ID=" .$r_1['ID']. "', '', '', '" . $config->iconFolder . "node.gif', '" . $config->iconFolder . "node.gif');";
 						}
 					}
 				}
