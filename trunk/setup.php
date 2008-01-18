@@ -50,7 +50,7 @@ function plugin_init_treeview()
 	
 	$PLUGIN_HOOKS['init_session']['treeview'] = 'plugin_treeview_initSession';
 	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeprofile';
-	
+	$PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_treeview';
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
@@ -99,6 +99,11 @@ function plugin_pre_item_delete_treeview($input){
 				break;
 		}
 	return $input;
+}
+
+function plugin_change_entity_treeview(){
+	
+	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 }
 
 ?>
