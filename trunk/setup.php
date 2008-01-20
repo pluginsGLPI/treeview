@@ -102,7 +102,7 @@ function plugin_pre_item_delete_treeview($input){
 }
 
 function plugin_change_entity_treeview(){
-	
+	if ($_SESSION['glpiactiveprofile']['interface'] == 'central')
 	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 }
 
