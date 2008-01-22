@@ -151,7 +151,7 @@ function plugin_treeview_getNodesFromDb()
 				$locationLink = '';
 				// Is this location requested by the user to be opened
 				if(in_array($r['ID'], $nodes)) {
-					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".$l_name."\", true, -1, '" .$locationLink. "');";
+					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,"\"","`")."\", true, -1, '" .$locationLink. "');\n";
 					// If the items parent node is closed, then request only one item
 					//if($nodes[$n+1] <= $max_id) {
 					//	$limit = " LIMIT 0, 10";
