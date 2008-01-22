@@ -219,7 +219,7 @@ function plugin_treeview_getNodesFromDb()
 				}
 				// Add only the location without its items
 				else {
-					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".$l_name."\", false, -1, '" .$locationLink. "', '', '', '', '', false, true);";
+					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,"\"","`")."\", false, -1, '" .$locationLink. "', '', '', '', '', false, true);";
 				}	
 			}
 		}
