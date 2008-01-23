@@ -181,7 +181,7 @@ function plugin_treeview_getNodesFromDb()
 							while($row = $DB->fetch_assoc($result_location)) {
 								$name_location=	$row['completename'];
 							}	
-							$getParam = '?contains[0]=' .strtr($name_location,"'","\'"). '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
+							$getParam = '?contains[0]=' .str_replace("'","\'",$name_location). '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
 							// Add items parent node
 							echo "d.add(".$tv_id.",".$r['ID'].",\"".strtr($PLUGIN_TREEVIEW_DEVICES[$a]['name'],"\"","`")."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
 							
