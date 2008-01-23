@@ -46,7 +46,7 @@ if(isset($_SESSION["glpi_plugin_freport_installed"]) && $_SESSION["glpi_plugin_f
 	while($r = $DB->fetch_assoc($result)) {
 		$name_location=	$r['completename'];
 	}		
-	$getParam = '?contains[0]=' .$name_location. '&field[0]=0&sort=1&deleted=0&start=0&from=treeview';
+	$getParam = '?contains[0]=' .str_replace("'","\'",$name_location).  '&field[0]=0&sort=1&deleted=0&start=0&from=treeview';
 	$target = $filename . $getParam;
 //	echo $target;
 	echo "<script language=javascript>window.location=\"".html_entity_decode($target)."\"</script>";
