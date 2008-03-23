@@ -68,6 +68,7 @@ $LANGTREEVIEW["setup"][26]="Long name";
 $LANGTREEVIEW["setup"][27]="Comment";
 $LANGTREEVIEW["setup"][28] = "Instructions";
 $LANGTREEVIEW["setup"][29] = "FAQ";
+$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 
 $LANGTREEVIEW["warning"][0]="freport plugin does not exist";
 
