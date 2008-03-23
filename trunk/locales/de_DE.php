@@ -68,6 +68,7 @@ $LANGTREEVIEW["setup"][26]="Langer Name";
 $LANGTREEVIEW["setup"][27]="Kommentar";
 $LANGTREEVIEW["setup"][28] = "Instructions";
 $LANGTREEVIEW["setup"][29] = "FAQ";
+$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 
 $LANGTREEVIEW["warning"][0]="Das Plugin freport wurde nicht gefunden";
 

@@ -68,6 +68,7 @@ $LANGTREEVIEW["setup"][26]="Nom complet";
 $LANGTREEVIEW["setup"][27]="Commentaires";
 $LANGTREEVIEW["setup"][28] = "Mode d'emploi";
 $LANGTREEVIEW["setup"][29] = "FAQ";
+$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 
 $LANGTREEVIEW["warning"][0]="Le plugin freport n'est pas installé";
 

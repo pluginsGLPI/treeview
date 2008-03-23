@@ -60,7 +60,7 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		}
 	}else{ 
 		echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
-		echo "<b>".$LANG["login"][5]."</b></div>"; 
+		echo "<b>".$LANGTREEVIEW["setup"][30]."</b></div>"; 
 	}
 }elseif(isset($_POST["update"])){
 		checkRight("config","w");
