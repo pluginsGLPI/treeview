@@ -55,7 +55,16 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 			echo "<tr><th>".$LANGTREEVIEW["setup"][2];
 			echo "</th></tr>";
 			echo "<tr class='tab_bg_1'><td>";
-			echo "<a href='plugin_treeview.install.php'>".$LANGTREEVIEW["setup"][3]."</a></td></tr>";
+			echo "<a href='plugin_treeview.install.php'>".$LANGTREEVIEW["setup"][1]."</a></td></tr>";
+			echo "</table></div>";
+		}elseif(!TableExists("glpi_plugin_treeview_preference")){
+		
+			echo "<div align='center'>";
+			echo "<table class='tab_cadre' cellpadding='5'>";
+			echo "<tr><th>".$LANGTREEVIEW["setup"][2];
+			echo "</th></tr>";
+			echo "<tr class='tab_bg_1'><td>";
+			echo "<a href='plugin_treeview.update.php'>".$LANGTREEVIEW["setup"][3]."</a></td></tr>";
 			echo "</table></div>";
 		}
 	}else{ 

@@ -35,7 +35,20 @@
 if (!defined('GLPI_ROOT')){
 	die("Sorry. You can't access directly to this file");
 	}
+
+function plugin_treeview_addpreference($ID,$user_id,$show){
 	
+	GLOBAL $DB;
+	
+	if ($ID){
+		$query = "UPDATE `glpi_plugin_treeview_preference` SET `show` = '".$show."' WHERE `glpi_plugin_treeview_preference`.`id` ='".$ID."';";
+		$DB->query($query);
+	}else{
+		$query = "INSERT INTO `glpi_plugin_treeview_preference` (`id` ,`user_id` ,`show` ) VALUES (NULL , '$user_id', '$show');";
+		$DB->query($query);
+	}
+}
+		
 function plugin_treeview_createfirstaccess($ID){
 
 	GLOBAL $DB;

@@ -43,7 +43,17 @@ class plugin_treeview_display extends CommonDBTM
 		$this->table="glpi_plugin_treeview_display";
 	}
 }
-
+/**
+ * class plugin_treeview_preference
+ * Load and store the preference configuration from the database
+ */
+class plugin_treeview_preference extends CommonDBTM
+{
+	function plugin_treeview_preference()
+	{
+		$this->table="glpi_plugin_treeview_preference";
+	}
+}
 /**
  * class plugin_treeview_Treeview_Config
  * Contains the display configuration of the treeview

@@ -36,7 +36,7 @@
 function plugin_treeview_initSession() {
 	global $DB;
 	
-	if(TableExists("glpi_plugin_treeview_display")){
+	if(TableExists("glpi_plugin_treeview_preference")){
 		$profile=new plugin_treeview_Profile();
 	
 		$query = "SELECT DISTINCT glpi_profiles.* FROM glpi_users_profiles INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
@@ -53,6 +53,15 @@ function plugin_treeview_initSession() {
 					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
 				}
 				$_SESSION["glpi_plugin_treeview_installed"]=1;
+				
+				$query_pref = "SELECT * FROM glpi_plugin_treeview_preference WHERE user_id ='".$_SESSION['glpiID']."' ";
+				$result_pref = $DB->query($query_pref);
+						
+				if ($DB->numrows($result_pref)>0)
+					$data_pref=$DB->fetch_assoc($result_pref);
+					if ($data_pref['show']!=0)
+						$_SESSION["glpi_plugin_treeview_loaded"]=0;
+
 			}
 		}
 	}
