@@ -33,50 +33,25 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-/**
- * Install the plugin tables on the GLPI database
- * @param 
- * @return 
- **/
-function plugin_treeview_Install()
-{
-	global $DB;
-	
-	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-1.1-empty.sql";
-	$DBf_handle = fopen($DB_file, "rt");
-	$sql_query = fread($DBf_handle, filesize($DB_file));
-	fclose($DBf_handle);
-	foreach ( explode(";\n", "$sql_query") as $sql_line) {
-		if (get_magic_quotes_runtime()) $sql_line=stripslashes_deep($sql_line);
-		$DB->query($sql_line);
-	}
-}
+$NEEDED_ITEMS=array("profile");
+define('GLPI_ROOT', '../../..');
+include (GLPI_ROOT . "/inc/includes.php");
 
-function plugin_treeview_Update()
-{
-	global $DB;
-	
-	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-1.1-update.sql";
-	$DBf_handle = fopen($DB_file, "rt");
-	$sql_query = fread($DBf_handle, filesize($DB_file));
-	fclose($DBf_handle);
-	foreach ( explode(";\n", "$sql_query") as $sql_line) {
-		if (get_magic_quotes_runtime()) $sql_line=stripslashes_deep($sql_line);
-		$DB->query($sql_line);
+// Have the user sufficient rights to uninstall the plugin
+if(haveRight("config","w") && haveRight("profile","w")){
+	if(!TableExists("glpi_plugin_treeview_preference")){
+		cleanCache("GLPI_HEADER_".$_SESSION["glpiID"]);
+		plugin_treeview_update();
+		plugin_treeview_createfirstaccess($_SESSION['glpiactiveprofile']['ID']);
+		plugin_treeview_initSession();
 	}
+	glpi_header($_SERVER['HTTP_REFERER']);
 }
-/**
- * Drop the plugin tables from the GLPI database
- * @param 
- * @return 
- **/
-function plugin_treeview_uninstall()
-{
-	global $DB;
-	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
-	$DB->query($query) or die($DB->error());
-	
-	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
-	$DB->query($query) or die($DB->error());
+// Print warning message if not
+else{
+	commonHeader($LANG["login"][5],$_SERVER["PHP_SELF"]);
+	echo "<div align='center'><br><br><img src=\"".GLPI_ROOT."/pics/warning.png\" alt=\"warning\"><br><br>";
+	echo "<b>".$LANG["login"][5]."</b></div>";
+	commonFooter();
 }
 ?>

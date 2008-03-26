@@ -46,7 +46,7 @@ include_once ("inc/plugin_treeview.classes.php");
  **/
 function plugin_init_treeview() 
 {
-	global $PLUGIN_HOOKS;
+	global $PLUGIN_HOOKS,$DB;
 	
 	$PLUGIN_HOOKS['init_session']['treeview'] = 'plugin_treeview_initSession';
 	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeprofile';
@@ -57,6 +57,12 @@ function plugin_init_treeview()
 		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"])){
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
+						
+			if ($_SERVER['PHP_SELF'] = "central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
+				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
+				glpi_header(GLPI_ROOT."/plugins/treeview/front/plugin_treeview.see.php");
+				
+			}		
 		}
 	// Config page
 		if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
@@ -69,6 +75,8 @@ function plugin_init_treeview()
 		$PLUGIN_HOOKS['add_css']['treeview']="style.css";
 		$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
 		$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
+		
+		
 	}
 }
 

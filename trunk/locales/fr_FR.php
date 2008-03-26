@@ -42,9 +42,11 @@ $LANGTREEVIEW["profile"][2] = "Configuration";
 $LANGTREEVIEW["profile"][3] = "Utiliser l'arborescence";
 $LANGTREEVIEW["profile"][4] = "Listes des profils déjà configurés";
 
+$LANGTREEVIEW["setup"][0]="Configuration de vos préférences";
+$LANGTREEVIEW["setup"][1]="Installer le plugin $title 1.1";
 $LANGTREEVIEW["setup"][2]="Configuration du plugin ".$title."";
-$LANGTREEVIEW["setup"][3]="Installer le plugin $title";
-$LANGTREEVIEW["setup"][4]="Désinstaller le plugin $title";
+$LANGTREEVIEW["setup"][3]="Mettre à jour le plugin $title vers la version 1.1";
+$LANGTREEVIEW["setup"][4]="Désinstaller le plugin $title 1.1";
 $LANGTREEVIEW["setup"][5]="Attention, la désinstallation du plugin est irréversible.<br> Vous perdrez toutes les données.";
 $LANGTREEVIEW["setup"][6]="Affichage";
 $LANGTREEVIEW["setup"][7]="Oui";
@@ -69,6 +71,8 @@ $LANGTREEVIEW["setup"][27]="Commentaires";
 $LANGTREEVIEW["setup"][28] = "Mode d'emploi";
 $LANGTREEVIEW["setup"][29] = "FAQ";
 $LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
+$LANGTREEVIEW["setup"][31] = "Lancer le plugin Treeview au démarrage de GLPI";
+$LANGTREEVIEW["setup"][32] = "Charger l'arborescence";
 
 $LANGTREEVIEW["warning"][0]="Le plugin freport n'est pas installé";
 
