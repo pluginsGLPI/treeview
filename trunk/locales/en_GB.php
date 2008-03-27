@@ -42,9 +42,10 @@ $LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Use the tree";
 $LANGTREEVIEW["profile"][4] = "List of profiles already configured";
 
+$LANGTREEVIEW["setup"][1]="Install $title plugin 1.1";
 $LANGTREEVIEW["setup"][2]="Setup of plugin ".$title."";
-$LANGTREEVIEW["setup"][3]="Install $title plugin ";
-$LANGTREEVIEW["setup"][4]="Uninstall $title plugin";
+$LANGTREEVIEW["setup"][3]="Update $title to version 1.1";
+$LANGTREEVIEW["setup"][4]="Uninstall $title plugin 1.1";
 $LANGTREEVIEW["setup"][5]="Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
 $LANGTREEVIEW["setup"][6]="Display";
 $LANGTREEVIEW["setup"][7]="Yes";
@@ -69,6 +70,7 @@ $LANGTREEVIEW["setup"][27]="Comment";
 $LANGTREEVIEW["setup"][28] = "Instructions";
 $LANGTREEVIEW["setup"][29] = "FAQ";
 $LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
+$LANGTREEVIEW["setup"][31] = "Launch the plugin Treeview with GLPI launching";
 
 $LANGTREEVIEW["warning"][0]="freport plugin does not exist";
 

@@ -42,9 +42,10 @@ $LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Use the tree";
 $LANGTREEVIEW["profile"][4] = "List of profiles already configured";
 
+$LANGTREEVIEW["setup"][3]="Plugin $title installieren 1.1";
 $LANGTREEVIEW["setup"][2]="".$title." Einstellungen";
-$LANGTREEVIEW["setup"][3]="Plugin $title installieren";
-$LANGTREEVIEW["setup"][4]="Plugin $title deinstallieren";
+$LANGTREEVIEW["setup"][3]="Update $title to version 1.1";
+$LANGTREEVIEW["setup"][4]="Plugin $title deinstallieren 1.1";
 $LANGTREEVIEW["setup"][5]="Vorsicht, Die Deinstallation kann nicht rückgängig gemacht werden.<br> Die Daten werden unwiderruflich gelöscht.";
 $LANGTREEVIEW["setup"][6]="Ansicht";
 $LANGTREEVIEW["setup"][7]="Ja";
@@ -69,6 +70,7 @@ $LANGTREEVIEW["setup"][27]="Kommentar";
 $LANGTREEVIEW["setup"][28] = "Instructions";
 $LANGTREEVIEW["setup"][29] = "FAQ";
 $LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
+$LANGTREEVIEW["setup"][31] = "Launch the plugin Treeview with GLPI launching";
 
 $LANGTREEVIEW["warning"][0]="Das Plugin freport wurde nicht gefunden";
 

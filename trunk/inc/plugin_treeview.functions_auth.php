@@ -53,13 +53,11 @@ function plugin_treeview_initSession() {
 					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
 				}
 				$_SESSION["glpi_plugin_treeview_installed"]=1;
-				
-				$query_pref = "SELECT * FROM glpi_plugin_treeview_preference WHERE user_id ='".$_SESSION['glpiID']."' ";
-				$result_pref = $DB->query($query_pref);
-						
-				if ($DB->numrows($result_pref)>0)
-					$data_pref=$DB->fetch_assoc($result_pref);
-					if ($data_pref['show']!=0)
+
+				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+				if ($pref_ID)
+					$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
+					if ($pref_value)
 						$_SESSION["glpi_plugin_treeview_loaded"]=0;
 
 			}

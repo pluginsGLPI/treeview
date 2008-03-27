@@ -56,11 +56,13 @@ function plugin_init_treeview()
 	// Display a menu entry
 		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"])){
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
+			$PLUGIN_HOOKS['user_preferences']['treeview'] = 'plugin_user_preferences_treeview'; 
+			//$PLUGIN_HOOKS['action_user_preferences']['treeview'] = 'plugin_action_user_preferences_treeview'; 
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 						
 			if ($_SERVER['PHP_SELF'] = "central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
-				glpi_header(GLPI_ROOT."/plugins/treeview/front/plugin_treeview.see.php");
+				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
 				
 			}		
 		}
@@ -112,6 +114,19 @@ function plugin_pre_item_delete_treeview($input){
 function plugin_change_entity_treeview(){
 	if ($_SESSION['glpiactiveprofile']['interface'] == 'central')
 	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+}
+
+function plugin_user_preferences_treeview($target,$ID,$entity,$post){
+
+	$pref = new plugin_treeview_preference;
+	if (isset($post["update_user_preferences_treeview"]))
+		$pref->update($post);
+		
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($ID);
+	if (!$pref_ID)
+		$pref_ID=plugin_treeview_addDefaultPreference($ID);
+	
+	$pref->showForm($target,$pref_ID,$ID);
 }
 
 ?>
