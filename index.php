@@ -42,7 +42,7 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 } 
 else {
 	
-	glpi_header("front/plugin_treeview.preference.php");
+	plugin_treeview_SeeTreeview();
 }
 
 ?>

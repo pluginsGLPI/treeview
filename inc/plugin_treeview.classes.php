@@ -52,6 +52,34 @@ class plugin_treeview_preference extends CommonDBTM
 	function plugin_treeview_preference()
 	{
 		$this->table="glpi_plugin_treeview_preference";
+		$this->type=-1;
+	}
+	
+	function showForm($target,$ID,$user_id){
+		global $LANG,$LANGTREEVIEW,$DB;
+		
+		$this->getFromDB($ID);
+		echo "<form action='".$target."' method='post'>";
+		echo "<div align='center'>";
+
+		echo "<table class='tab_cadre' cellpadding='5'>";
+		echo "<tr class='tab_bg_1' align='center'><td>".$LANGTREEVIEW["setup"][31]."</td>";
+		echo "<td>";
+		echo "<select name=\"show\">";
+		echo "<option value='0' ".($this->fields["show"]==0?" selected ":"").">".$LANG["choice"][0]."</option>";
+		echo "<option value='1' ".($this->fields["show"]==1?" selected ":"").">".$LANG["choice"][1]."</option>";
+		echo "</select>";
+			
+		echo "</td></tr>";
+		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
+		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG["buttons"][2]."' class='submit' />";
+		echo "<input type='hidden' name='ID' value='".$ID."'/>";
+		echo "</td></tr>";
+		echo "</table>";
+
+		echo "</div>";
+		echo "</form>";
+		
 	}
 }
 /**

@@ -36,19 +36,36 @@ if (!defined('GLPI_ROOT')){
 	die("Sorry. You can't access directly to this file");
 	}
 
-function plugin_treeview_addpreference($ID,$user_id,$show){
-	
-	GLOBAL $DB;
-	
-	if ($ID){
-		$query = "UPDATE `glpi_plugin_treeview_preference` SET `show` = '".$show."' WHERE `glpi_plugin_treeview_preference`.`id` ='".$ID."';";
-		$DB->query($query);
-	}else{
-		$query = "INSERT INTO `glpi_plugin_treeview_preference` (`id` ,`user_id` ,`show` ) VALUES (NULL , '$user_id', '$show');";
-		$DB->query($query);
-	}
+function plugin_treeview_checkIfPreferenceExists($user_id)
+{
+	global $DB;
+	$result = $DB->query("SELECT ID FROM glpi_plugin_treeview_preference WHERE user_id=".$user_id);
+	if ($DB->numrows($result) > 0)
+		return $DB->result($result,0,"ID");
+	else
+		return 0;	
 }
-		
+
+function plugin_treeview_addDefaultPreference($user_id)
+{
+	$input["user_id"]=$user_id;
+	$input["show"]=0;
+	
+	$pref = new plugin_treeview_preference;
+	return $pref->add($input);
+}
+
+function plugin_treeview_checkPreferenceValue($user_id)
+{
+	global $DB;
+	$result = $DB->query("SELECT * FROM glpi_plugin_treeview_preference WHERE user_id=".$user_id);
+	if ($DB->numrows($result) > 0)
+		return $DB->result($result,0,"show");
+	else
+		return 0;	
+}
+
+	
 function plugin_treeview_createfirstaccess($ID){
 
 	GLOBAL $DB;
@@ -65,7 +82,6 @@ function plugin_treeview_createfirstaccess($ID){
 	}
 }
 
-	
 function plugin_treeview_createaccess($ID){
 
 	GLOBAL $DB;
