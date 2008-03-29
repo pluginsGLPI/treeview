@@ -58,11 +58,14 @@ class plugin_treeview_preference extends CommonDBTM
 	function showForm($target,$ID,$user_id){
 		global $LANG,$LANGTREEVIEW,$DB;
 		
+		$data=plugin_version_treeview();
 		$this->getFromDB($ID);
 		echo "<form action='".$target."' method='post'>";
 		echo "<div align='center'>";
 
 		echo "<table class='tab_cadre' cellpadding='5'>";
+		echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
+
 		echo "<tr class='tab_bg_1' align='center'><td>".$LANGTREEVIEW["setup"][31]."</td>";
 		echo "<td>";
 		echo "<select name=\"show\">";
