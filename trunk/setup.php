@@ -116,17 +116,17 @@ function plugin_change_entity_treeview(){
 	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 }
 
-function plugin_user_preferences_treeview($target,$ID,$entity,$post){
+function plugin_user_preferences_treeview($parm){
 
 	$pref = new plugin_treeview_preference;
-	if (isset($post["update_user_preferences_treeview"]))
-		$pref->update($post);
+	if (isset($parm["update_user_preferences_treeview"]))
+		$pref->update($parm);
 		
-	$pref_ID=plugin_treeview_checkIfPreferenceExists($ID);
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
 	if (!$pref_ID)
-		$pref_ID=plugin_treeview_addDefaultPreference($ID);
+		$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
 	
-	$pref->showForm($target,$pref_ID,$ID);
+	$pref->showForm($_SERVER['PHP_SELF'],$pref_ID,$_SESSION['glpiID']);
 }
 
 ?>
