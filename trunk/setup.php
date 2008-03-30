@@ -46,7 +46,7 @@ include_once ("inc/plugin_treeview.classes.php");
  **/
 function plugin_init_treeview() 
 {
-	global $PLUGIN_HOOKS,$DB;
+	global $PLUGIN_HOOKS,$DB,$CFG_GLPI;
 	
 	$PLUGIN_HOOKS['init_session']['treeview'] = 'plugin_treeview_initSession';
 	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeprofile';
@@ -60,7 +60,7 @@ function plugin_init_treeview()
 			//$PLUGIN_HOOKS['action_user_preferences']['treeview'] = 'plugin_action_user_preferences_treeview'; 
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 						
-			if ($_SERVER['PHP_SELF'] == "central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
+			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
 				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
 				
