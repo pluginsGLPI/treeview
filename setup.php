@@ -60,7 +60,7 @@ function plugin_init_treeview()
 			//$PLUGIN_HOOKS['action_user_preferences']['treeview'] = 'plugin_action_user_preferences_treeview'; 
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 						
-			if ($_SERVER['PHP_SELF'] = "central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
+			if ($_SERVER['PHP_SELF'] == "central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
 				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
 				
