@@ -49,7 +49,7 @@ function plugin_treeview_checkIfPreferenceExists($user_id)
 function plugin_treeview_addDefaultPreference($user_id)
 {
 	$input["user_id"]=$user_id;
-	$input["show"]=0;
+	$input["show"]=2;
 	
 	$pref = new plugin_treeview_preference;
 	return $pref->add($input);

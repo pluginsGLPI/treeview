@@ -44,6 +44,7 @@ if(haveRight("config","w") && haveRight("profile","w")){
 		plugin_treeview_update();
 		plugin_treeview_createfirstaccess($_SESSION['glpiactiveprofile']['ID']);
 		plugin_treeview_initSession();
+		plugin_treeview_addDefaultPreference($_SESSION["glpiID"]);
 	}
 	glpi_header($_SERVER['HTTP_REFERER']);
 }

@@ -55,10 +55,12 @@ function plugin_treeview_initSession() {
 				$_SESSION["glpi_plugin_treeview_installed"]=1;
 
 				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-				if ($pref_ID)
+				if ($pref_ID){
 					$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
-					if ($pref_value)
+					if ($pref_value!=0) {
 						$_SESSION["glpi_plugin_treeview_loaded"]=0;
+					}
+				}
 
 			}
 		}
