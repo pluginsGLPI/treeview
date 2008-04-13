@@ -92,6 +92,7 @@ function plugin_version_treeview()
 	global $LANGTREEVIEW;
 
 	return array( 	'name'    => $LANGTREEVIEW["title"][0],
+					'minGlpiVersion' => '0.71',
 					'version' => '1.1');
 }
 
