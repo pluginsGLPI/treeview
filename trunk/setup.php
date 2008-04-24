@@ -103,9 +103,11 @@ function plugin_pre_item_update_treeview($input){
 	if (isset($input["_item_type_"]))
 		if (in_array($input["_item_type_"],array(COMPUTER_TYPE,
 				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_TYPE,CARTRIDGE_TYPE))){
+					
 				$ci = new CommonItem();
-				$ci->GetfromDB($input["ID"]);
-				if ($input["location"]!=$ci->fields["location"])
+				$ci->GetfromDB($input["_item_type_"],$input["ID"]);
+					
+				if ($input["location"]!=$ci->obj->fields["location"])
 				echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 		}
 	return $input;
