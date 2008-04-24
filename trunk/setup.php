@@ -57,7 +57,7 @@ function plugin_init_treeview()
 		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"])){
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 			$PLUGIN_HOOKS['user_preferences']['treeview'] = 'plugin_user_preferences_treeview'; 
-			//$PLUGIN_HOOKS['action_user_preferences']['treeview'] = 'plugin_action_user_preferences_treeview'; 
+			$PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 						
 			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
@@ -97,6 +97,19 @@ function plugin_version_treeview()
 }
 
 //////////////////////////////
+
+// Hook done on before update item case
+function plugin_pre_item_update_treeview($input){
+	if (isset($input["_item_type_"]))
+		if (in_array($input["_item_type_"],array(COMPUTER_TYPE,
+				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_TYPE,CARTRIDGE_TYPE))){
+				$ci = new CommonItem();
+				$ci->GetfromDB($input["ID"]);
+				if ($input["location"]!=$ci->fields["location"])
+				echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+		}
+	return $input;
+}
 
 // Hook done on delete item case
 
