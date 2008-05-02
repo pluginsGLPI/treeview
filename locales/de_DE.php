@@ -38,7 +38,6 @@ $LANGTREEVIEW["title"][0]="".$title."";
 
 $LANGTREEVIEW["profile"][0] = "Rights management";
 $LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Use the tree";
 $LANGTREEVIEW["profile"][4] = "List of profiles already configured";
 
@@ -55,7 +54,6 @@ $LANGTREEVIEW["setup"][10]="Ordner können Verweise enthalten";
 $LANGTREEVIEW["setup"][11]="Knoten können markiert werden";
 $LANGTREEVIEW["setup"][13]="Der Baum wird mit Linien dargestellt";
 $LANGTREEVIEW["setup"][14]="Der Baum wird mit Symbolen dargestellt";
-$LANGTREEVIEW["setup"][15]="Knotenname in der <br>Statuszeile anzeigen";
 $LANGTREEVIEW["setup"][16]="Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
 $LANGTREEVIEW["setup"][17]="Neues Fenster";
 $LANGTREEVIEW["setup"][18]="Aktuelles Fenster";

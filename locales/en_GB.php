@@ -38,7 +38,6 @@ $LANGTREEVIEW["title"][0]="".$title."";
 
 $LANGTREEVIEW["profile"][0] = "Rights management";
 $LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Use the tree";
 $LANGTREEVIEW["profile"][4] = "List of profiles already configured";
 
@@ -55,7 +54,6 @@ $LANGTREEVIEW["setup"][10]="Should folders be links";
 $LANGTREEVIEW["setup"][11]="Nodes can be highlighted";
 $LANGTREEVIEW["setup"][13]="Tree is drawn with lines";
 $LANGTREEVIEW["setup"][14]="Tree is drawn with icons";
-$LANGTREEVIEW["setup"][15]="Displays node names in the<br>statusbar instead of the url";
 $LANGTREEVIEW["setup"][16]="Only one node within a parent<br>can be expanded at the same time.";
 $LANGTREEVIEW["setup"][17]="New window";
 $LANGTREEVIEW["setup"][18]="Same window";

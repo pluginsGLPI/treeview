@@ -38,7 +38,6 @@ $LANGTREEVIEW["title"][0]="".$title."";
 
 $LANGTREEVIEW["profile"][0] = "Настройка прав";
 $LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][2] = "Setup";
 $LANGTREEVIEW["profile"][3] = "Использование плагина";
 $LANGTREEVIEW["profile"][4] = "Имеющиеся права для профилей";
 
@@ -55,7 +54,6 @@ $LANGTREEVIEW["setup"][10]="Папки типов устройств имеют 
 $LANGTREEVIEW["setup"][11]="Выделять выбранный элемент в списке";
 $LANGTREEVIEW["setup"][13]="Рисовать линии";
 $LANGTREEVIEW["setup"][14]="Рисовать иконки";
-$LANGTREEVIEW["setup"][15]="Displays node names in the<br>statusbar instead of the url";
 $LANGTREEVIEW["setup"][16]="Одновременно раскрывать<br>только одну ветку.";
 $LANGTREEVIEW["setup"][17]="новом окне";
 $LANGTREEVIEW["setup"][18]="Same window";

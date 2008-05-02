@@ -38,7 +38,6 @@ $LANGTREEVIEW["title"][0]="".$title."";
 
 $LANGTREEVIEW["profile"][0] = "Gestion des droits";
 $LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][2] = "Configuration";
 $LANGTREEVIEW["profile"][3] = "Utiliser l'arborescence";
 $LANGTREEVIEW["profile"][4] = "Listes des profils déjà configurés";
 
@@ -55,7 +54,6 @@ $LANGTREEVIEW["setup"][10]="Utiliser les répertoires des lieux sous forme de li
 $LANGTREEVIEW["setup"][11]="Les noeuds peuvent être en surbrillance";
 $LANGTREEVIEW["setup"][13]="L'arborescence est dessinée avec des lignes";
 $LANGTREEVIEW["setup"][14]="L'arborescence est dessinée avec des icônes";
-$LANGTREEVIEW["setup"][15]="Afficher les noms des noeuds <br> dans la barre de statut au lieu de l'url";
 $LANGTREEVIEW["setup"][16]="Seulement un noeud avec un parent <br> peut être affiché en même temps";
 $LANGTREEVIEW["setup"][17]="Dans une nouvelle fenêtre";
 $LANGTREEVIEW["setup"][18]="";
