@@ -78,6 +78,9 @@ class plugin_treeview_preference extends CommonDBTM
 		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG["buttons"][2]."' class='submit'>";
 		echo "<input type='hidden' name='ID' value='".$ID."'>";
 		echo "</td></tr>";
+		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
+		echo $LANGTREEVIEW["setup"][32];
+		echo "</td></tr>";
 		echo "</table>";
 
 		echo "</div>";
