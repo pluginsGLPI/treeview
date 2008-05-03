@@ -69,6 +69,7 @@ $LANGTREEVIEW["setup"][28] = "Mode d'emploi";
 $LANGTREEVIEW["setup"][29] = "FAQ";
 $LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 $LANGTREEVIEW["setup"][31] = "Lancer le plugin Treeview au démarrage de GLPI";
+$LANGTREEVIEW["setup"][32] = "Attention : si plusieurs plugins sont lancés au démarrage, seul le premier sera actif";
 
 $LANGTREEVIEW["warning"][0]="Le plugin freport n'est pas installé";
 

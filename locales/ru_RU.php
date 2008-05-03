@@ -69,6 +69,7 @@ $LANGTREEVIEW["setup"][28] = "Инструкции";
 $LANGTREEVIEW["setup"][29] = "FAQ";
 $LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entit� racine (voir tous)";
 $LANGTREEVIEW["setup"][31] = "Открывать окно Списка по местонахождению при входе в GLPI";
+$LANGTREEVIEW["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
 $LANGTREEVIEW["warning"][0]="freport plugin does not exist";
 
