@@ -64,6 +64,11 @@ function plugin_init_treeview()
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
 				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
 				
+			}
+			
+			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/logout.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 1)){
+				plugin_treeview_HideTreeview();
+				
 			}		
 		}
 	// Config page
