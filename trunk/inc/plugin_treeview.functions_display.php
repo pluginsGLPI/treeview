@@ -204,7 +204,7 @@ function plugin_treeview_getNodesFromDb()
 						if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == COMPUTER_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == MONITOR_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == NETWORKING_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PERIPHERAL_TYPE  || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PRINTER_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == SOFTWARE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == PHONE_TYPE)
 						$query.= " AND is_template=0 AND FK_entities='" . $_SESSION["glpiactive_entity"] . "'";
 						
-						$query.= " ORDER BY name $limit ;";
+						$query.= "  ORDER BY " .$LINK_ID_TABLE[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. ".name $limit ;";
 						//echo "document.write(\"<b>".$query."\"+'</b><br>');";
 						$result_1 = $DB->query($query);
 						if($DB->numrows($result_1)) {
