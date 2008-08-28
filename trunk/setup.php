@@ -56,10 +56,10 @@ function plugin_init_treeview()
 	// Display a menu entry
 		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"])){
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
-			$PLUGIN_HOOKS['user_preferences']['treeview'] = 'plugin_user_preferences_treeview'; 
 			$PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
-						
+			$PLUGIN_HOOKS['headings']['treeview'] = 'plugin_get_headings_treeview';
+			$PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_headings_actions_treeview';			
 			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
 				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
@@ -135,6 +135,35 @@ function plugin_pre_item_delete_treeview($input){
 function plugin_change_entity_treeview(){
 	if ($_SESSION['glpiactiveprofile']['interface'] == 'central')
 	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+}
+
+// Define headings added by the plugin //
+function plugin_get_headings_treeview($type,$withtemplate){
+
+	global $LANGTREEVIEW;
+	
+	if (in_array($type,array("prefs"))){
+		// template case
+		if ($withtemplate)
+			return array();
+		// Non template case
+		else 
+			return array(
+					1 => $LANGTREEVIEW["title"][0],
+					);
+	}else
+		return false;
+}
+
+// Define headings actions added by the plugin	 
+function plugin_headings_actions_treeview($type){
+	
+	if (in_array($type,array("prefs"))){
+		return array(
+				1 => "plugin_user_preferences_treeview",
+				);
+	}else
+		return false;	
 }
 
 function plugin_user_preferences_treeview($parm){

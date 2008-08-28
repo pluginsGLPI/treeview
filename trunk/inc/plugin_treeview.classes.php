@@ -206,17 +206,14 @@ class plugin_treeview_Profile extends CommonDBTM {
 		echo "</select></th>";
 		echo "</tr></table>";
 		echo "</div>";
-
+		echo "<div align='center' id='profile_form'>";
 		$params=array('interface'=>'__VALUE__',
 				'ID'=>$ID,
 		);
 		ajaxUpdateItemOnSelectEvent("profile_interface","profile_form",$CFG_GLPI["root_doc"]."/plugins/treeview/ajax/profiles.php",$params,false);
 		ajaxUpdateItem("profile_form",$CFG_GLPI["root_doc"]."/plugins/treeview/ajax/profiles.php",$params,false,'profile_interface');
-		echo "<br>";
 
-		echo "<div align='center' id='profile_form'>";
 		echo "</div>";
-
 		echo "</form>";
 
 	}
@@ -233,9 +230,9 @@ class plugin_treeview_Profile extends CommonDBTM {
 			$this->getEmpty();
 		}
 
-		echo "<table class='tab_cadre'><tr>";
+		echo "<br><table class='tab_cadre'>";
 
-		echo "<tr><th colspan='2' align='center'><strong>".$LANGTREEVIEW["profile"][0]."</strong></td></tr>";
+		echo "<tr><th colspan='2' align='center'><strong>".$LANGTREEVIEW["profile"][0]."</strong></th></tr>";
 
 		echo "<tr class='tab_bg_2'>";
 		echo "<td>".$LANGTREEVIEW["profile"][3].":</td><td>";
