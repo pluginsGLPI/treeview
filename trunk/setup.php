@@ -174,14 +174,12 @@ function plugin_headings_treeview($type,$ID,$withtemplate=0){
 
 			case "prefs":
 				$pref = new plugin_treeview_preference;
-				if (isset($parm["update_user_preferences_treeview"]))
-					$pref->update($parm);
-					
 				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
 				if (!$pref_ID)
 					$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
 				
-				$pref->showForm($CFG_GLPI['root_doc']."/front/user.form.my.php",$pref_ID,$_SESSION['glpiID']);
+				$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
+				
 			break;
 			default :
 			break;
