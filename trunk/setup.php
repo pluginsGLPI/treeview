@@ -160,23 +160,32 @@ function plugin_headings_actions_treeview($type){
 	
 	if (in_array($type,array("prefs"))){
 		return array(
-				1 => "plugin_user_preferences_treeview",
+				1 => "plugin_headings_treeview",
 				);
 	}else
 		return false;	
 }
 
-function plugin_user_preferences_treeview($parm){
+// action heading
+function plugin_headings_treeview($type,$ID,$withtemplate=0){
+	global $CFG_GLPI;
 
-	$pref = new plugin_treeview_preference;
-	if (isset($parm["update_user_preferences_treeview"]))
-		$pref->update($parm);
-		
-	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-	if (!$pref_ID)
-		$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
-	
-	$pref->showForm($_SERVER['PHP_SELF'],$pref_ID,$_SESSION['glpiID']);
+		switch ($type){
+
+			case "prefs":
+				$pref = new plugin_treeview_preference;
+				if (isset($parm["update_user_preferences_treeview"]))
+					$pref->update($parm);
+					
+				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+				if (!$pref_ID)
+					$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
+				
+				$pref->showForm($CFG_GLPI['root_doc']."/front/user.form.my.php",$pref_ID,$_SESSION['glpiID']);
+			break;
+			default :
+			break;
+		}
 }
 
 ?>
