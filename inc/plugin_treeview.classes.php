@@ -63,7 +63,7 @@ class plugin_treeview_preference extends CommonDBTM
 		echo "<form action='".$target."' method='post'>";
 		echo "<div align='center'>";
 
-		echo "<table class='tab_cadre' cellpadding='5'>";
+		echo "<table class='tab_cadre_fixe' cellpadding='5'>";
 		echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
 
 		echo "<tr class='tab_bg_1' align='center'><td>".$LANGTREEVIEW["setup"][31]."</td>";
