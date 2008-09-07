@@ -112,7 +112,7 @@ function plugin_pre_item_update_treeview($input){
 				$ci = new CommonItem();
 				$ci->GetfromDB($input["_item_type_"],$input["ID"]);
 					
-				if ($input["location"]!=$ci->obj->fields["location"])
+				if (isset($input["location"]) && isset($ci->obj->fields["location"]) && $input["location"]!=$ci->obj->fields["location"])
 				echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 		}
 	return $input;
