@@ -185,11 +185,6 @@ if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin
 		echo "<table class='tab_cadre' cellpadding='5'>";
 		echo "<tr><th>".$LANGTREEVIEW["setup"][2];
 		echo "</th></tr>";
-		if (haveRight("config","w") && haveRight("profile","w")){
-			echo "<tr class='tab_bg_1'><td align='center'>";
-			echo "<a href=\"./plugin_treeview.profile.php\">".$LANGTREEVIEW["profile"][0]."</a>";
-			echo "</td></tr>";
-			}
 		echo "<tr class='tab_bg_1'><td align='center'>";
 			echo "<a href='http://glpi-project.org/wiki/doku.php?id=".substr($_SESSION["glpilanguage"],0,2).":plugins:treeview_use' target='_blank'>".$LANGTREEVIEW["setup"][28]."&nbsp;</a>";
 			echo "/&nbsp;<a href='http://glpi-project.org/wiki/doku.php?id=".substr($_SESSION["glpilanguage"],0,2).":plugins:treeview_faq' target='_blank'>".$LANGTREEVIEW["setup"][29]." </a>";
