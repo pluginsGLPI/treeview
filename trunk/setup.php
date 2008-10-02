@@ -59,7 +59,7 @@ function plugin_init_treeview()
 			$PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
 			$PLUGIN_HOOKS['headings']['treeview'] = 'plugin_get_headings_treeview';
-			$PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_headings_actions_treeview';			
+			$PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_headings_actions_treeview';		
 			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)){
 				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
 				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
@@ -142,7 +142,7 @@ function plugin_get_headings_treeview($type,$withtemplate){
 
 	global $LANGTREEVIEW;
 	
-	if (in_array($type,array("prefs"))){
+	if (in_array($type,array("prefs",PROFILE_TYPE))){
 		// template case
 		if ($withtemplate)
 			return array();
@@ -158,7 +158,7 @@ function plugin_get_headings_treeview($type,$withtemplate){
 // Define headings actions added by the plugin	 
 function plugin_headings_actions_treeview($type){
 	
-	if (in_array($type,array("prefs"))){
+	if (in_array($type,array("prefs",PROFILE_TYPE))){
 		return array(
 				1 => "plugin_headings_treeview",
 				);
@@ -180,6 +180,12 @@ function plugin_headings_treeview($type,$ID,$withtemplate=0){
 				
 				$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
 				
+			break;
+			case PROFILE_TYPE :
+				$prof=new plugin_treeview_Profile();	
+				if (!$prof->GetfromDB($ID))
+					plugin_treeview_createaccess($ID);				
+				$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);		
 			break;
 			default :
 			break;
