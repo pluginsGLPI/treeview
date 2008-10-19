@@ -32,45 +32,46 @@
 // Original Author of file: AL-Rubeiy Hussein
 // Purpose of file:
 // ----------------------------------------------------------------------
+
 $title="Tree View";
 
-$LANGTREEVIEW["title"][0]="".$title."";
+$LANG['plugin_treeview']["title"][0]="".$title."";
 
-$LANGTREEVIEW["profile"][0] = "Rights management";
-$LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][3] = "Use the tree";
-$LANGTREEVIEW["profile"][4] = "List of profiles already configured";
+$LANG['plugin_treeview']["profile"][0] = "Rights management";
+$LANG['plugin_treeview']["profile"][1] = "$title";
+$LANG['plugin_treeview']["profile"][3] = "Use the tree";
+$LANG['plugin_treeview']["profile"][4] = "List of profiles already configured";
 
-$LANGTREEVIEW["setup"][1]="Install $title plugin 1.1";
-$LANGTREEVIEW["setup"][2]="Setup of plugin ".$title."";
-$LANGTREEVIEW["setup"][3]="Update $title to version 1.1";
-$LANGTREEVIEW["setup"][4]="Uninstall $title plugin 1.1";
-$LANGTREEVIEW["setup"][5]="Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
-$LANGTREEVIEW["setup"][6]="Display";
-$LANGTREEVIEW["setup"][7]="Yes";
-$LANGTREEVIEW["setup"][8]="No";
-$LANGTREEVIEW["setup"][9]="Target for all the nodes";
-$LANGTREEVIEW["setup"][10]="Should folders be links";
-$LANGTREEVIEW["setup"][11]="Nodes can be highlighted";
-$LANGTREEVIEW["setup"][13]="Tree is drawn with lines";
-$LANGTREEVIEW["setup"][14]="Tree is drawn with icons";
-$LANGTREEVIEW["setup"][16]="Only one node within a parent<br>can be expanded at the same time.";
-$LANGTREEVIEW["setup"][17]="New window";
-$LANGTREEVIEW["setup"][18]="Same window";
-$LANGTREEVIEW["setup"][20]="The central console";
-$LANGTREEVIEW["setup"][21]="Item name";
-$LANGTREEVIEW["setup"][22]="Location name";
-$LANGTREEVIEW["setup"][23]="Name";
-$LANGTREEVIEW["setup"][24]="Inventory number";
-$LANGTREEVIEW["setup"][25]="Short name";
-$LANGTREEVIEW["setup"][26]="Long name";
-$LANGTREEVIEW["setup"][27]="Comment";
-$LANGTREEVIEW["setup"][28] = "Instructions";
-$LANGTREEVIEW["setup"][29] = "FAQ";
-$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
-$LANGTREEVIEW["setup"][31] = "Launch the plugin Treeview with GLPI launching";
-$LANGTREEVIEW["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
+$LANG['plugin_treeview']["setup"][1]="Install $title plugin 1.1";
+$LANG['plugin_treeview']["setup"][2]="Setup of plugin ".$title."";
+$LANG['plugin_treeview']["setup"][3]="Update $title to version 1.1";
+$LANG['plugin_treeview']["setup"][4]="Uninstall $title plugin 1.1";
+$LANG['plugin_treeview']["setup"][5]="Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
+$LANG['plugin_treeview']["setup"][6]="Display";
+$LANG['plugin_treeview']["setup"][7]="Yes";
+$LANG['plugin_treeview']["setup"][8]="No";
+$LANG['plugin_treeview']["setup"][9]="Target for all the nodes";
+$LANG['plugin_treeview']["setup"][10]="Should folders be links";
+$LANG['plugin_treeview']["setup"][11]="Nodes can be highlighted";
+$LANG['plugin_treeview']["setup"][13]="Tree is drawn with lines";
+$LANG['plugin_treeview']["setup"][14]="Tree is drawn with icons";
+$LANG['plugin_treeview']["setup"][16]="Only one node within a parent<br>can be expanded at the same time.";
+$LANG['plugin_treeview']["setup"][17]="New window";
+$LANG['plugin_treeview']["setup"][18]="Same window";
+$LANG['plugin_treeview']["setup"][20]="The central console";
+$LANG['plugin_treeview']["setup"][21]="Item name";
+$LANG['plugin_treeview']["setup"][22]="Location name";
+$LANG['plugin_treeview']["setup"][23]="Name";
+$LANG['plugin_treeview']["setup"][24]="Inventory number";
+$LANG['plugin_treeview']["setup"][25]="Short name";
+$LANG['plugin_treeview']["setup"][26]="Long name";
+$LANG['plugin_treeview']["setup"][27]="Comment";
+$LANG['plugin_treeview']["setup"][28] = "Instructions";
+$LANG['plugin_treeview']["setup"][29] = "FAQ";
+$LANG['plugin_treeview']["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
+$LANG['plugin_treeview']["setup"][31] = "Launch the plugin Treeview with GLPI launching";
+$LANG['plugin_treeview']["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
-$LANGTREEVIEW["warning"][0]="freport plugin does not exist";
+$LANG['plugin_treeview']["warning"][0]="freport plugin does not exist";
 
 ?>

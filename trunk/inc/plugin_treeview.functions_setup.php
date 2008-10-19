@@ -38,11 +38,11 @@
  * @param 
  * @return 
  **/
-function plugin_treeview_Install()
+function plugin_treeview_installing($version)
 {
 	global $DB;
 	
-	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-1.1-empty.sql";
+	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-$version-empty.sql";
 	$DBf_handle = fopen($DB_file, "rt");
 	$sql_query = fread($DBf_handle, filesize($DB_file));
 	fclose($DBf_handle);
@@ -52,11 +52,11 @@ function plugin_treeview_Install()
 	}
 }
 
-function plugin_treeview_Update()
+function plugin_treeview_Update($version)
 {
 	global $DB;
 	
-	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-1.1-update.sql";
+	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-$version-update.sql";
 	$DBf_handle = fopen($DB_file, "rt");
 	$sql_query = fread($DBf_handle, filesize($DB_file));
 	fclose($DBf_handle);
@@ -65,18 +65,5 @@ function plugin_treeview_Update()
 		$DB->query($sql_line);
 	}
 }
-/**
- * Drop the plugin tables from the GLPI database
- * @param 
- * @return 
- **/
-function plugin_treeview_uninstall()
-{
-	global $DB;
-	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
-	$DB->query($query) or die($DB->error());
-	
-	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
-	$DB->query($query) or die($DB->error());
-}
+
 ?>

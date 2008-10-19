@@ -41,7 +41,7 @@ include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
-	echo "\n<html><head><title>GLPI - ".$LANGTREEVIEW["title"][0]."</title>";
+	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']["title"][0]."</title>";
 	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
 	// Send extra expires header if configured
 	if ($CFG_GLPI["sendexpire"]) {
@@ -57,7 +57,7 @@ echo '</div>';
 echo "<body>";
 // Title bar
 echo '<div id=explorer_bar><div id=explorer_title>';
-echo $LANGTREEVIEW["title"][0] . '</div>';
+echo $LANG['plugin_treeview']["title"][0] . '</div>';
 echo "<div id=explorer_close><img border=0 src=\"pics/close.gif\" name=\"explorer_close\"' onmouseover=\"ChangeImg(document.images.explorer_close, 'pics/close_hover.gif');\" onmouseout=\"ChangeImg(document.images.explorer_close, 'pics/close.gif');\" onclick=\"parent.location.href = parent.right.location.href;\"></div>";
 echo "</div>";
 

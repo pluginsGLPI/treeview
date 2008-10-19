@@ -32,45 +32,46 @@
 // Original Author of file: AL-Rubeiy Hussein
 // Purpose of file:
 // ----------------------------------------------------------------------
+
 $title="Список по местонахождению";
 
-$LANGTREEVIEW["title"][0]="".$title."";
+$LANG['plugin_treeview']["title"][0]="".$title."";
 
-$LANGTREEVIEW["profile"][0] = "Настройка прав";
-$LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][3] = "Использование плагина";
-$LANGTREEVIEW["profile"][4] = "Имеющиеся права для профилей";
+$LANG['plugin_treeview']["profile"][0] = "Настройка прав";
+$LANG['plugin_treeview']["profile"][1] = "$title";
+$LANG['plugin_treeview']["profile"][3] = "Использование плагина";
+$LANG['plugin_treeview']["profile"][4] = "Имеющиеся права для профилей";
 
-$LANGTREEVIEW["setup"][1]="Установить плагин $title 1.1";
-$LANGTREEVIEW["setup"][2]="Настройка плагина ".$title."";
-$LANGTREEVIEW["setup"][3]="Обновить $title до версии 1.1";
-$LANGTREEVIEW["setup"][4]="Удалить плагин $title 1.1";
-$LANGTREEVIEW["setup"][5]="Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
-$LANGTREEVIEW["setup"][6]="Настройка меню";
-$LANGTREEVIEW["setup"][7]="Да";
-$LANGTREEVIEW["setup"][8]="Нет";
-$LANGTREEVIEW["setup"][9]="Открывать в";
-$LANGTREEVIEW["setup"][10]="Папки типов устройств имеют ссылки";
-$LANGTREEVIEW["setup"][11]="Выделять выбранный элемент в списке";
-$LANGTREEVIEW["setup"][13]="Рисовать линии";
-$LANGTREEVIEW["setup"][14]="Рисовать иконки";
-$LANGTREEVIEW["setup"][16]="Одновременно раскрывать<br>только одну ветку.";
-$LANGTREEVIEW["setup"][17]="новом окне";
-$LANGTREEVIEW["setup"][18]="Same window";
-$LANGTREEVIEW["setup"][20]="окно GLPI";
-$LANGTREEVIEW["setup"][21]="Название объектов";
-$LANGTREEVIEW["setup"][22]="Название местоположения";
-$LANGTREEVIEW["setup"][23]="Название";
-$LANGTREEVIEW["setup"][24]="Инвентарный номер";
-$LANGTREEVIEW["setup"][25]="Краткое название";
-$LANGTREEVIEW["setup"][26]="Длинное название";
-$LANGTREEVIEW["setup"][27]="Примечание";
-$LANGTREEVIEW["setup"][28] = "Инструкции";
-$LANGTREEVIEW["setup"][29] = "FAQ";
-$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entit� racine (voir tous)";
-$LANGTREEVIEW["setup"][31] = "Открывать окно Списка по местонахождению при входе в GLPI";
-$LANGTREEVIEW["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
+$LANG['plugin_treeview']["setup"][1]="Установить плагин $title 1.1";
+$LANG['plugin_treeview']["setup"][2]="Настройка плагина ".$title."";
+$LANG['plugin_treeview']["setup"][3]="Обновить $title до версии 1.1";
+$LANG['plugin_treeview']["setup"][4]="Удалить плагин $title 1.1";
+$LANG['plugin_treeview']["setup"][5]="Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
+$LANG['plugin_treeview']["setup"][6]="Настройка меню";
+$LANG['plugin_treeview']["setup"][7]="Да";
+$LANG['plugin_treeview']["setup"][8]="Нет";
+$LANG['plugin_treeview']["setup"][9]="Открывать в";
+$LANG['plugin_treeview']["setup"][10]="Папки типов устройств имеют ссылки";
+$LANG['plugin_treeview']["setup"][11]="Выделять выбранный элемент в списке";
+$LANG['plugin_treeview']["setup"][13]="Рисовать линии";
+$LANG['plugin_treeview']["setup"][14]="Рисовать иконки";
+$LANG['plugin_treeview']["setup"][16]="Одновременно раскрывать<br>только одну ветку.";
+$LANG['plugin_treeview']["setup"][17]="новом окне";
+$LANG['plugin_treeview']["setup"][18]="Same window";
+$LANG['plugin_treeview']["setup"][20]="окно GLPI";
+$LANG['plugin_treeview']["setup"][21]="Название объектов";
+$LANG['plugin_treeview']["setup"][22]="Название местоположения";
+$LANG['plugin_treeview']["setup"][23]="Название";
+$LANG['plugin_treeview']["setup"][24]="Инвентарный номер";
+$LANG['plugin_treeview']["setup"][25]="Краткое название";
+$LANG['plugin_treeview']["setup"][26]="Длинное название";
+$LANG['plugin_treeview']["setup"][27]="Примечание";
+$LANG['plugin_treeview']["setup"][28] = "Инструкции";
+$LANG['plugin_treeview']["setup"][29] = "FAQ";
+$LANG['plugin_treeview']["setup"][30] = "Merci de vous placer sur l'entit� racine (voir tous)";
+$LANG['plugin_treeview']["setup"][31] = "Открывать окно Списка по местонахождению при входе в GLPI";
+$LANG['plugin_treeview']["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
-$LANGTREEVIEW["warning"][0]="freport plugin does not exist";
+$LANG['plugin_treeview']["warning"][0]="freport plugin does not exist";
 
 ?>

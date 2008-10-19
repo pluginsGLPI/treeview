@@ -77,7 +77,7 @@ function plugin_treeview_createfirstaccess($ID){
 		$Profile->GetfromDB($ID);
 		$name=$Profile->fields["name"];
 
-		$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`) VALUES ('$ID', '$name','treeview','0','r');";
+		$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name`, `treeview`) VALUES ('$ID', '$name','r');";
 		$DB->query($query);
 	}
 }
@@ -90,7 +90,7 @@ function plugin_treeview_createaccess($ID){
 	$Profile->GetfromDB($ID);
 	$name=$Profile->fields["name"];
 
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `interface`, `is_default`, `treeview`) VALUES ('$ID', '$name','treeview','0',NULL);";
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `treeview`) VALUES ('$ID', '$name',NULL);";
 
 	$DB->query($query);
 

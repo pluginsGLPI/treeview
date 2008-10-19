@@ -36,13 +36,10 @@
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
-// Redirect to configuration page if plugin is not installed yet
-if(!isset($_SESSION["glpi_plugin_treeview_installed"]) || $_SESSION["glpi_plugin_treeview_installed"]!=1) {
-	glpi_header("./front/plugin_treeview.config.php");
-} 
-else {
-	$_SESSION["glpi_plugin_treeview_loaded"] = 1;
-	plugin_treeview_SeeTreeview();
-}
+include_once ("inc/plugin_treeview.functions_display.php");
+
+$_SESSION["glpi_plugin_treeview_loaded"] = 1;
+plugin_treeview_SeeTreeview();
+
 
 ?>

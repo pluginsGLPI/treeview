@@ -69,7 +69,8 @@ function plugin_treeview_initSession() {
 
 function plugin_treeview_changeprofile()
 {
-	if(isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"]==1){
+	$plugin = new Plugin();
+	if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")){
 		$prof=new plugin_treeview_Profile();
 		if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
 			$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;

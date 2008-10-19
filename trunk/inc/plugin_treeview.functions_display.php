@@ -40,10 +40,10 @@
 **/
 function plugin_treeview_SeeTreeview()
 {
-	global $CFG_GLPI,$LANGTREEVIEW;
+	global $CFG_GLPI,$LANG;
 	
 	echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
-	echo "\n<html><head><title>GLPI - ".$LANGTREEVIEW["title"][0]."</title>";
+	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']["title"][0]."</title>";
 	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
 	// Send extra expires header if configured
 	if ($CFG_GLPI["sendexpire"]) {
@@ -78,10 +78,10 @@ function plugin_treeview_SeeTreeview()
 **/
 function plugin_treeview_HideTreeview()
 {
-	global $CFG_GLPI,$LANGTREEVIEW;
+	global $CFG_GLPI;
 	
 	echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
-	echo "\n<html><head><title>GLPI - ".$LANGTREEVIEW["title"][0]."</title>";
+	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']["title"][0]."</title>";
 	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
 	// Send extra expires header if configured
 	if ($CFG_GLPI["sendexpire"]) {
@@ -138,10 +138,7 @@ function plugin_treeview_buildTreeview()
  **/
 function plugin_treeview_getNodesFromDb()
 {	
-	global $LINK_ID_TABLE;
-	global $INFOFORM_PAGES;
-	global $PLUGIN_TREEVIEW_DEVICES;
-	global $DB;
+	global $LINK_ID_TABLE,$INFOFORM_PAGES,$PLUGIN_TREEVIEW_DEVICES,$DB;
 	
 	// The tree object
 	echo "var d = new dTree('d');";	
@@ -220,10 +217,11 @@ function plugin_treeview_getNodesFromDb()
 					if($r['comments'] != "")
 						$l_name .= ' (' . $r['comments'] . ')';				
 				}
-				if(isset($_SESSION["glpi_plugin_freport_installed"]) && $_SESSION["glpi_plugin_freport_installed"]==1)
-				$locationLink = 'front/plugin_treeview.freport.php?ID=' . $r['ID'];
+				$plugin = new Plugin();
+				if ($plugin->isInstalled("freport") && $plugin->isActivated("freport"))
+					$locationLink = 'front/plugin_treeview.freport.php?ID=' . $r['ID'];
 				else
-				$locationLink = '';
+					$locationLink = '';
 				// Is this location requested by the user to be opened
 				if(in_array($r['ID'], $nodes)) {
 					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,"\"","`")."\", true, -1, '" .$locationLink. "');\n";
