@@ -32,45 +32,46 @@
 // Original Author of file: AL-Rubeiy Hussein
 // Purpose of file:
 // ----------------------------------------------------------------------
+
 $title="Baumstruktur";
 
-$LANGTREEVIEW["title"][0]="".$title."";
+$LANG['plugin_treeview']["title"][0]="".$title."";
 
-$LANGTREEVIEW["profile"][0] = "Rights management";
-$LANGTREEVIEW["profile"][1] = "$title";
-$LANGTREEVIEW["profile"][3] = "Use the tree";
-$LANGTREEVIEW["profile"][4] = "List of profiles already configured";
+$LANG['plugin_treeview']["profile"][0] = "Rights management";
+$LANG['plugin_treeview']["profile"][1] = "$title";
+$LANG['plugin_treeview']["profile"][3] = "Use the tree";
+$LANG['plugin_treeview']["profile"][4] = "List of profiles already configured";
 
-$LANGTREEVIEW["setup"][1]="Plugin $title installieren 1.1";
-$LANGTREEVIEW["setup"][2]="".$title." Einstellungen";
-$LANGTREEVIEW["setup"][3]="Update $title to version 1.1";
-$LANGTREEVIEW["setup"][4]="Plugin $title deinstallieren 1.1";
-$LANGTREEVIEW["setup"][5]="Vorsicht, Die Deinstallation kann nicht rückgängig gemacht werden.<br> Die Daten werden unwiderruflich gelöscht.";
-$LANGTREEVIEW["setup"][6]="Ansicht";
-$LANGTREEVIEW["setup"][7]="Ja";
-$LANGTREEVIEW["setup"][8]="Nein";
-$LANGTREEVIEW["setup"][9]="Zielfenster für alle Verweise";
-$LANGTREEVIEW["setup"][10]="Ordner können Verweise enthalten";
-$LANGTREEVIEW["setup"][11]="Knoten können markiert werden";
-$LANGTREEVIEW["setup"][13]="Der Baum wird mit Linien dargestellt";
-$LANGTREEVIEW["setup"][14]="Der Baum wird mit Symbolen dargestellt";
-$LANGTREEVIEW["setup"][16]="Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
-$LANGTREEVIEW["setup"][17]="Neues Fenster";
-$LANGTREEVIEW["setup"][18]="Aktuelles Fenster";
-$LANGTREEVIEW["setup"][20]="Die Zentralkonsole";
-$LANGTREEVIEW["setup"][21]="Materialname";
-$LANGTREEVIEW["setup"][22]="Standortname";
-$LANGTREEVIEW["setup"][23]="Name";
-$LANGTREEVIEW["setup"][24]="Inventarnummer";
-$LANGTREEVIEW["setup"][25]="Kurzer Name";
-$LANGTREEVIEW["setup"][26]="Langer Name";
-$LANGTREEVIEW["setup"][27]="Kommentar";
-$LANGTREEVIEW["setup"][28] = "Instructions";
-$LANGTREEVIEW["setup"][29] = "FAQ";
-$LANGTREEVIEW["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
-$LANGTREEVIEW["setup"][31] = "Launch the plugin Treeview with GLPI launching";
-$LANGTREEVIEW["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
+$LANG['plugin_treeview']["setup"][1]="Plugin $title installieren 1.1";
+$LANG['plugin_treeview']["setup"][2]="".$title." Einstellungen";
+$LANG['plugin_treeview']["setup"][3]="Update $title to version 1.1";
+$LANG['plugin_treeview']["setup"][4]="Plugin $title deinstallieren 1.1";
+$LANG['plugin_treeview']["setup"][5]="Vorsicht, Die Deinstallation kann nicht rückgängig gemacht werden.<br> Die Daten werden unwiderruflich gelöscht.";
+$LANG['plugin_treeview']["setup"][6]="Ansicht";
+$LANG['plugin_treeview']["setup"][7]="Ja";
+$LANG['plugin_treeview']["setup"][8]="Nein";
+$LANG['plugin_treeview']["setup"][9]="Zielfenster für alle Verweise";
+$LANG['plugin_treeview']["setup"][10]="Ordner können Verweise enthalten";
+$LANG['plugin_treeview']["setup"][11]="Knoten können markiert werden";
+$LANG['plugin_treeview']["setup"][13]="Der Baum wird mit Linien dargestellt";
+$LANG['plugin_treeview']["setup"][14]="Der Baum wird mit Symbolen dargestellt";
+$LANG['plugin_treeview']["setup"][16]="Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
+$LANG['plugin_treeview']["setup"][17]="Neues Fenster";
+$LANG['plugin_treeview']["setup"][18]="Aktuelles Fenster";
+$LANG['plugin_treeview']["setup"][20]="Die Zentralkonsole";
+$LANG['plugin_treeview']["setup"][21]="Materialname";
+$LANG['plugin_treeview']["setup"][22]="Standortname";
+$LANG['plugin_treeview']["setup"][23]="Name";
+$LANG['plugin_treeview']["setup"][24]="Inventarnummer";
+$LANG['plugin_treeview']["setup"][25]="Kurzer Name";
+$LANG['plugin_treeview']["setup"][26]="Langer Name";
+$LANG['plugin_treeview']["setup"][27]="Kommentar";
+$LANG['plugin_treeview']["setup"][28] = "Instructions";
+$LANG['plugin_treeview']["setup"][29] = "FAQ";
+$LANG['plugin_treeview']["setup"][30] = "Merci de vous placer sur l'entité racine (voir tous)";
+$LANG['plugin_treeview']["setup"][31] = "Launch the plugin Treeview with GLPI launching";
+$LANG['plugin_treeview']["setup"][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
-$LANGTREEVIEW["warning"][0]="Das Plugin freport wurde nicht gefunden";
+$LANG['plugin_treeview']["warning"][0]="Das Plugin freport wurde nicht gefunden";
 
 ?>

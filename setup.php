@@ -34,7 +34,6 @@
 // ----------------------------------------------------------------------
 
 include_once ("inc/plugin_treeview.functions_db.php");
-include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 include_once ("inc/plugin_treeview.functions_setup.php");
 include_once ("inc/plugin_treeview.classes.php");
@@ -54,7 +53,7 @@ function plugin_init_treeview()
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry
-		if(plugin_treeview_haveRight("treeview","r") && (isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1) && isset($_SESSION["glpi_plugin_treeview_profile"])){
+		if(plugin_treeview_haveRight("treeview","r") && isset($_SESSION["glpi_plugin_treeview_installed"]) && $_SESSION["glpi_plugin_treeview_installed"] == 1){
 			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 			$PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
 			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
@@ -94,102 +93,72 @@ function plugin_init_treeview()
  **/
 function plugin_version_treeview()
 {
-	global $LANGTREEVIEW;
-
-	return array( 	'name'    => $LANGTREEVIEW["title"][0],
-					'minGlpiVersion' => '0.71',
-					'version' => '1.1');
-}
-
-//////////////////////////////
-
-// Hook done on before update item case
-function plugin_pre_item_update_treeview($input){
-	if (isset($input["_item_type_"]))
-		if (in_array($input["_item_type_"],array(COMPUTER_TYPE,
-				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_TYPE,CARTRIDGE_TYPE))){
-					
-				$ci = new CommonItem();
-				$ci->GetfromDB($input["_item_type_"],$input["ID"]);
-					
-				if (isset($input["location"]) && isset($ci->obj->fields["location"]) && $input["location"]!=$ci->obj->fields["location"])
-				echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
-		}
-	return $input;
-}
-
-// Hook done on delete item case
-
-function plugin_pre_item_delete_treeview($input){
-	if (isset($input["_item_type_"]))
-		switch ($input["_item_type_"]){
-			case PROFILE_TYPE :
-				// Manipulate data if needed 
-				$plugin_treeview_Profile=new plugin_treeview_Profile;
-				$plugin_treeview_Profile->cleanProfiles($input["ID"]);
-				break;
-		}
-	return $input;
-}
-
-function plugin_change_entity_treeview(){
-	if ($_SESSION['glpiactiveprofile']['interface'] == 'central')
-	echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
-}
-
-// Define headings added by the plugin //
-function plugin_get_headings_treeview($type,$withtemplate){
-
-	global $LANGTREEVIEW;
+	global $LANG;
 	
-	if (in_array($type,array("prefs",PROFILE_TYPE))){
-		// template case
-		if ($withtemplate)
-			return array();
-		// Non template case
-		else 
-			return array(
-					1 => $LANGTREEVIEW["title"][0],
-					);
-	}else
-		return false;
+	return array (
+		'name' => $LANG['plugin_treeview']["title"][0],
+		'version' => '1.2',
+		'author'=>'AL-Rubeiy Hussein, Xavier Caillaud',
+		'homepage'=>'http://glpi-project.org/wiki/doku.php?id='.substr($_SESSION["glpilanguage"],0,2).':plugins:pluginslist',
+		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
+	);
 }
 
-// Define headings actions added by the plugin	 
-function plugin_headings_actions_treeview($type){
+function plugin_treeview_install(){
+		
+	include_once (GLPI_ROOT."/inc/profile.class.php");
 	
-	if (in_array($type,array("prefs",PROFILE_TYPE))){
-		return array(
-				1 => "plugin_headings_treeview",
-				);
-	}else
-		return false;	
+	if(!TableExists("glpi_plugin_treeview_display") ){
+	
+		plugin_treeview_installing("1.2");
+	
+	}elseif(!TableExists("glpi_plugin_treeview_preference")) {
+	
+		plugin_treeview_update("1.1");
+		plugin_treeview_update("1.2");
+
+	}elseif(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
+	
+		plugin_treeview_update("1.2");
+
+	}
+	
+	plugin_treeview_createfirstaccess($_SESSION['glpiactiveprofile']['ID']);
+	plugin_treeview_initSession();
+	return true;
 }
 
-// action heading
-function plugin_headings_treeview($type,$ID,$withtemplate=0){
-	global $CFG_GLPI;
+function plugin_treeview_uninstall(){
+	global $DB;
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
+	$DB->query($query);
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
+	$DB->query($query);
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_preference`;";
+	$DB->query($query);
+	
+	unset($_SESSION["glpi_plugin_treeview_installed"]);
+	plugin_init_treeview();
+	cleanCache("GLPI_HEADER_".$_SESSION["glpiID"]);
 
-		switch ($type){
+	return true;
+}
 
-			case "prefs":
-				$pref = new plugin_treeview_preference;
-				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-				if (!$pref_ID)
-					$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
-				
-				$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
-				
-			break;
-			case PROFILE_TYPE :
-				$prof=new plugin_treeview_Profile();	
-				if (!$prof->GetfromDB($ID))
-					plugin_treeview_createaccess($ID);				
-				$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);		
-			break;
-			default :
-			break;
-		}
+// Optional : check prerequisites before install : may print errors or add to message after redirect
+function plugin_treeview_check_prerequisites(){
+	if (GLPI_VERSION>=0.72){
+		return true;
+	} else {
+		echo "GLPI version not compatible need 0.72";
+	}
+}
+
+// Uninstall process for plugin : need to return true if succeeded : may display messages or add to message after redirect
+function plugin_treeview_check_config(){
+	return true;
 }
 
 ?>
