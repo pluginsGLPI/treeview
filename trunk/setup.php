@@ -97,7 +97,7 @@ function plugin_version_treeview()
 	
 	return array (
 		'name' => $LANG['plugin_treeview']["title"][0],
-		'version' => '1.2',
+		'version' => '1.2.0',
 		'author'=>'AL-Rubeiy Hussein, Xavier Caillaud',
 		'homepage'=>'http://glpi-project.org/wiki/doku.php?id='.substr($_SESSION["glpilanguage"],0,2).':plugins:pluginslist',
 		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
@@ -110,16 +110,16 @@ function plugin_treeview_install(){
 	
 	if(!TableExists("glpi_plugin_treeview_display") ){
 	
-		plugin_treeview_installing("1.2");
+		plugin_treeview_installing("1.2.0");
 	
 	}elseif(!TableExists("glpi_plugin_treeview_preference")) {
 	
 		plugin_treeview_update("1.1");
-		plugin_treeview_update("1.2");
+		plugin_treeview_update("1.2.0");
 
 	}elseif(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
 	
-		plugin_treeview_update("1.2");
+		plugin_treeview_update("1.2.0");
 
 	}
 	
