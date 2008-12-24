@@ -1,0 +1,42 @@
+
+.skin0{
+position:absolute;
+width:165px;
+border:2px solid black;
+background-color:menu;
+font-family:Verdana;
+line-height:20px;
+cursor:default;
+font-size:14px;
+z-index:100;
+visibility:hidden;
+}
+
+.menuitems{
+padding-left:10px;
+padding-right:10px;
+}
+
+body {
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+#explorer_bar {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color:#D4D0C8;
+	border-left:1px solid white;
+	border-top:1px solid white;
+	border-right:1px solid black;
+	border-bottom:1px solid black;
+}
+#explorer_title {
+	padding: 3px;
+	float:left;
+}
+#explorer_close {
+	padding: 3px;
+	text-align:right;
+}
+
