@@ -116,7 +116,7 @@ function plugin_treeview_HideTreeview()
 function plugin_treeview_buildTreeview()
 {
 	global $CFG_GLPI;
-	
+
 	# necessary files needed for the tree to work.
 	echo "<link rel='stylesheet' type='text/css'  href='".$CFG_GLPI["root_doc"]."/plugins/treeview/dtree.css' type=\"text/css\" >\n";
 	echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/dtree.js'></script>\n";
@@ -190,15 +190,19 @@ function plugin_treeview_getNodesFromDb()
 		// If yes then get only the root node
 		$nodes[0] = 0;
 	}
+	
 	// If an item group is requested, then save its type to use it later in the openTo function
 	if(isset($_GET['openedType']) && is_numeric($_GET['openedType']) && $_GET['openedType'] != "")
 		$openedType = $_GET['openedType'];
 	else
 		$openedType = -1;
 	
+	// Characters which need to be removed from JS output.
+	$trans=array("\""=>"`", "\r"=>" ", "\n"=>" ");
+	
 	for($n=1; $n<=count($nodes); $n++) {
 		if($nodes[$n-1] <= $max_id && $n <= $max_level) {
-			$query = "SELECT * FROM `glpi_dropdown_locations` WHERE `level` = '". $n ."' AND `parentID` = '". $nodes[$n-1] ."' AND FK_entities='" . $_SESSION["glpiactive_entity"]."' ORDER BY `completename` ASC";			 
+			$query = "SELECT * FROM `glpi_dropdown_locations` WHERE `level` = '". $n ."' AND `parentID` = '". $nodes[$n-1] ."' AND FK_entities='" . $_SESSION["glpiactive_entity"]."' ORDER BY `completename` ASC";
 			//echo "document.write(\"".$query."\"+'<br>');";
 			$result = $DB->query($query);
 			while($r = $DB->fetch_assoc($result)) {
@@ -224,7 +228,7 @@ function plugin_treeview_getNodesFromDb()
 					$locationLink = '';
 				// Is this location requested by the user to be opened
 				if(in_array($r['ID'], $nodes)) {
-					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,"\"","`")."\", true, -1, '" .$locationLink. "');\n";
+					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,$trans)."\", true, -1, '" .$locationLink. "');\n";
 					// If the items parent node is closed, then request only one item
 					//if($nodes[$n+1] <= $max_id) {
 					//	$limit = " LIMIT 0, 10";
@@ -256,7 +260,7 @@ function plugin_treeview_getNodesFromDb()
 							}	
 							$getParam = '?contains[0]=' .str_replace("'","\'",$name_location). '&field[0]=' .$field_num. '&sort=1&deleted=0&start=0';
 							// Add items parent node
-							echo "d.add(".$tv_id.",".$r['ID'].",\"".strtr($PLUGIN_TREEVIEW_DEVICES[$a]['name'],"\"","`")."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
+							echo "d.add(".$tv_id.",".$r['ID'].",\"".strtr($PLUGIN_TREEVIEW_DEVICES[$a]['name'],$trans)."\", " . $dontLoad . ", " .$PLUGIN_TREEVIEW_DEVICES[$a]['type']. ", '" . GLPI_ROOT . $PLUGIN_TREEVIEW_DEVICES[$a]['page'] . $getParam . "', '', '', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic']. "', '" . $config->iconFolder . $PLUGIN_TREEVIEW_DEVICES[$a]['pic'] . "');";
 							
 							if($openedType == $PLUGIN_TREEVIEW_DEVICES[$a]['type'] && $nodes[count($nodes)-1] == $tv_id)
 								$openedType = $tv_id;
@@ -286,13 +290,13 @@ function plugin_treeview_getNodesFromDb()
 									$i_name = $r_1['name'];				
 							}
 							// Add the item
-							echo "d.add(".$tv_id++.",".$pid.",\"" . strtr($i_name,"\"","`") . "\", true, -1, '" .GLPI_ROOT. "/" .$INFOFORM_PAGES[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "?ID=" .$r_1['ID']. "', '', '', '" . $config->iconFolder . "node.gif', '" . $config->iconFolder . "node.gif');";
+							echo "d.add(".$tv_id++.",".$pid.",\"" . strtr($i_name,$trans) . "\", true, -1, '" .GLPI_ROOT. "/" .$INFOFORM_PAGES[$PLUGIN_TREEVIEW_DEVICES[$a]['type']]. "?ID=" .$r_1['ID']. "', '', '', '" . $config->iconFolder . "node.gif', '" . $config->iconFolder . "node.gif');";
 						}
 					}
 				}
 				// Add only the location without its items
 				else {
-					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,"\"","`")."\", false, -1, '" .$locationLink. "', '', '', '', '', false, true);";
+					echo "d.add(".$r['ID'].",".$r['parentID'].",\"".strtr($l_name,$trans)."\", false, -1, '" .$locationLink. "', '', '', '', '', false, true);";
 				}	
 			}
 		}
@@ -304,10 +308,11 @@ function plugin_treeview_getNodesFromDb()
 	
 	
 	// Open the tree to the desired node
-	if($openedType != -1)
+	if($openedType != -1) {
 		echo "d.openTo(" .$openedType. ");";
-	else
+	} else {
 		echo "d.openTo(" .$nodes[count($nodes)-1]. ");";
+	}
 }
 
 ?>
