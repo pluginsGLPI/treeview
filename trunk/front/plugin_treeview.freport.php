@@ -41,7 +41,9 @@ $plugin = new Plugin();
 if ($plugin->isInstalled("freport") && $plugin->isActivated("freport")){
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
 	if (file_exists($filename)){
-	$query = "SELECT completename FROM `glpi_dropdown_locations` WHERE `ID` = '". $_GET['ID'] ."'";
+	$query = "SELECT completename 
+				FROM `glpi_dropdown_locations` 
+				WHERE `ID` = '". $_GET['ID'] ."'";
 	$result = $DB->query($query);
 	while($r = $DB->fetch_assoc($result)) {
 		$name_location=	$r['completename'];

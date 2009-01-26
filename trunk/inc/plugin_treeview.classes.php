@@ -172,7 +172,9 @@ class plugin_treeview_Profile extends CommonDBTM {
 	function cleanProfiles($ID) {
 	
 		global $DB;
-		$query = "DELETE FROM glpi_plugin_treeview_profiles WHERE ID='$ID' ";
+		$query = "DELETE 
+					FROM glpi_plugin_treeview_profiles 
+					WHERE ID='$ID' ";
 		$DB->query($query);
 	}
 

@@ -39,7 +39,10 @@ function plugin_treeview_initSession() {
 	if(TableExists("glpi_plugin_treeview_preference")){
 		$profile=new plugin_treeview_Profile();
 	
-		$query = "SELECT DISTINCT glpi_profiles.* FROM glpi_users_profiles INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
+		$query = "SELECT DISTINCT glpi_profiles.* 
+					FROM glpi_users_profiles 
+					INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) 
+					WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
 		$result = $DB->query($query);
 		$_SESSION['glpi_plugin_treeview_profile'] = array ();
 		if ($DB->numrows($result)) {
