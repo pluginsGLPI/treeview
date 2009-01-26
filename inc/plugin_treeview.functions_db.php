@@ -39,7 +39,9 @@ if (!defined('GLPI_ROOT')){
 function plugin_treeview_checkIfPreferenceExists($user_id)
 {
 	global $DB;
-	$result = $DB->query("SELECT ID FROM glpi_plugin_treeview_preference WHERE user_id=".$user_id);
+	$result = $DB->query("SELECT ID 
+							FROM glpi_plugin_treeview_preference 
+							WHERE user_id='".$user_id."' ");
 	if ($DB->numrows($result) > 0)
 		return $DB->result($result,0,"ID");
 	else
@@ -58,7 +60,9 @@ function plugin_treeview_addDefaultPreference($user_id)
 function plugin_treeview_checkPreferenceValue($user_id)
 {
 	global $DB;
-	$result = $DB->query("SELECT * FROM glpi_plugin_treeview_preference WHERE user_id=".$user_id);
+	$result = $DB->query("SELECT ID 
+							FROM glpi_plugin_treeview_preference 
+							WHERE user_id='".$user_id."' ");
 	if ($DB->numrows($result) > 0)
 		return $DB->result($result,0,"show");
 	else
@@ -77,7 +81,8 @@ function plugin_treeview_createfirstaccess($ID){
 		$Profile->GetfromDB($ID);
 		$name=$Profile->fields["name"];
 
-		$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name`, `treeview`) VALUES ('$ID', '$name','r');";
+		$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name`, `treeview`) 
+				VALUES ('$ID', '$name','r');";
 		$DB->query($query);
 	}
 }
@@ -90,7 +95,8 @@ function plugin_treeview_createaccess($ID){
 	$Profile->GetfromDB($ID);
 	$name=$Profile->fields["name"];
 
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `treeview`) VALUES ('$ID', '$name',NULL);";
+	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `treeview`) 
+			VALUES ('$ID', '$name',NULL);";
 
 	$DB->query($query);
 

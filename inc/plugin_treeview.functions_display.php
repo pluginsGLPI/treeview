@@ -175,7 +175,8 @@ function plugin_treeview_getNodesFromDb()
 	
 	// Get the lowest level of the tree nodes and the highest primary key		 
 	$query = "	SELECT MAX(`ID`) AS `max_ID`, MAX(`level`) AS `max_level` 
-				FROM `glpi_dropdown_locations` WHERE FK_entities='".$_SESSION["glpiactive_entity"]."';";			 
+				FROM `glpi_dropdown_locations` 
+				WHERE FK_entities='".$_SESSION["glpiactive_entity"]."';";			 
 	$result = $DB->query($query);
 	$max_level = $DB->result($result, 0, "max_level");
 	$tv_id = $max_id = $DB->result($result, 0, "max_ID");
@@ -202,7 +203,12 @@ function plugin_treeview_getNodesFromDb()
 	
 	for($n=1; $n<=count($nodes); $n++) {
 		if($nodes[$n-1] <= $max_id && $n <= $max_level) {
-			$query = "SELECT * FROM `glpi_dropdown_locations` WHERE `level` = '". $n ."' AND `parentID` = '". $nodes[$n-1] ."' AND FK_entities='" . $_SESSION["glpiactive_entity"]."' ORDER BY `completename` ASC";
+			$query = "SELECT * 
+					FROM `glpi_dropdown_locations` 
+					WHERE `level` = '". $n ."' 
+					AND `parentID` = '". $nodes[$n-1] ."' 
+					AND FK_entities='" . $_SESSION["glpiactive_entity"]."' 
+					ORDER BY `completename` ASC";
 			//echo "document.write(\"".$query."\"+'<br>');";
 			$result = $DB->query($query);
 			while($r = $DB->fetch_assoc($result)) {
