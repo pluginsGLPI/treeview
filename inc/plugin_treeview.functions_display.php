@@ -78,7 +78,7 @@ function plugin_treeview_SeeTreeview()
 **/
 function plugin_treeview_HideTreeview()
 {
-	global $CFG_GLPI;
+	global $CFG_GLPI,$LANG;
 	
 	echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
 	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']["title"][0]."</title>";
