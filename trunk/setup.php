@@ -33,6 +33,7 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_db.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 include_once ("inc/plugin_treeview.functions_setup.php");

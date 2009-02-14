@@ -60,7 +60,7 @@ function plugin_treeview_addDefaultPreference($user_id)
 function plugin_treeview_checkPreferenceValue($user_id)
 {
 	global $DB;
-	$result = $DB->query("SELECT ID 
+	$result = $DB->query("SELECT * 
 							FROM glpi_plugin_treeview_preference 
 							WHERE user_id='".$user_id."' ");
 	if ($DB->numrows($result) > 0)
