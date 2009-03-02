@@ -56,9 +56,9 @@ if ($plugin->isInstalled("freport") && $plugin->isActivated("freport")){
 } 
 // Print error message if not
 else {
-    commonHeader($LANG['plugin_treeview']["title"][0],$_SERVER["PHP_SELF"],"plugins","treeview");
+    commonHeader($LANG['plugin_treeview']['title'][0],$_SERVER["PHP_SELF"],"plugins","treeview");
     echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
-			echo "<b>".$LANG['plugin_treeview']["warning"][0]."</b></div>"; 
+			echo "<b>".$LANG['plugin_treeview']['warning'][0]."</b></div>"; 
 	commonFooter();
 }
 ?>
