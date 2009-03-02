@@ -82,7 +82,7 @@ function plugin_get_headings_treeview($type,$withtemplate){
 		// Non template case
 		else 
 			return array(
-					1 => $LANG['plugin_treeview']["title"][0],
+					1 => $LANG['plugin_treeview']['title'][0],
 					);
 	}else
 		return false;

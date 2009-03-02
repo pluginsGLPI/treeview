@@ -66,20 +66,20 @@ class plugin_treeview_preference extends CommonDBTM
 		echo "<table class='tab_cadre_fixe' cellpadding='5'>";
 		echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
 
-		echo "<tr class='tab_bg_1' align='center'><td>".$LANG['plugin_treeview']["setup"][31]."</td>";
+		echo "<tr class='tab_bg_1' align='center'><td>".$LANG['plugin_treeview']['setup'][31]."</td>";
 		echo "<td>";
 		echo "<select name=\"show\">";
-		echo "<option value='2' ".($this->fields["show"]==2?" selected ":"").">".$LANG["choice"][0]."</option>";
-		echo "<option value='1' ".($this->fields["show"]==1?" selected ":"").">".$LANG["choice"][1]."</option>";
+		echo "<option value='2' ".($this->fields["show"]==2?" selected ":"").">".$LANG['choice'][0]."</option>";
+		echo "<option value='1' ".($this->fields["show"]==1?" selected ":"").">".$LANG['choice'][1]."</option>";
 		echo "</select>";
 			
 		echo "</td></tr>";
 		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
-		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG["buttons"][2]."' class='submit'>";
+		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG['buttons'][2]."' class='submit'>";
 		echo "<input type='hidden' name='ID' value='".$ID."'>";
 		echo "</td></tr>";
 		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
-		echo $LANG['plugin_treeview']["setup"][32];
+		echo $LANG['plugin_treeview']['setup'][32];
 		echo "</td></tr>";
 		echo "</table>";
 
@@ -190,10 +190,10 @@ class plugin_treeview_Profile extends CommonDBTM {
 		echo "<form action='".$target."' method='post'>";
 		echo "<table class='tab_cadre_fixe'>";
 
-		echo "<tr><th colspan='2' align='center'><strong>".$LANG['plugin_treeview']["profile"][0]." ".$this->fields["name"]."</strong></th></tr>";
+		echo "<tr><th colspan='2' align='center'><strong>".$LANG['plugin_treeview']['profile'][0]." ".$this->fields["name"]."</strong></th></tr>";
 
 		echo "<tr class='tab_bg_2'>";
-		echo "<td>".$LANG['plugin_treeview']["profile"][3].":</td><td>";
+		echo "<td>".$LANG['plugin_treeview']['profile'][3].":</td><td>";
 		dropdownNoneReadWrite("treeview",$this->fields["treeview"],1,1,0);
 		echo "</td>";
 		echo "</tr>";
@@ -202,7 +202,7 @@ class plugin_treeview_Profile extends CommonDBTM {
 			echo "<tr class='tab_bg_1'>";
 			echo "<td align='center' colspan='2'>";
 			echo "<input type='hidden' name='ID' value=$ID>";
-			echo "<input type='submit' name='update_user_profile' value=\"".$LANG["buttons"][7]."\" class='submit'>";
+			echo "<input type='submit' name='update_user_profile' value=\"".$LANG['buttons'][7]."\" class='submit'>";
 			echo "</td></tr>";
 		}
 		echo "</table></form>";
