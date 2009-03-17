@@ -52,10 +52,10 @@ if(isset($_POST["update"])){
 }else{
 
 	$plugin = new Plugin();
-	if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
-	
+	if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview"))
 		commonHeader($LANG['plugin_treeview']['title'][0],$_SERVER["PHP_SELF"],"plugins","treeview");
-	
+	else
+		commonHeader($LANG['common'][12],$_SERVER['PHP_SELF'],"config","plugins");
 		// Get the configuration from the database and show it 
 		echo "	<script type='text/javascript'>
 				if (top != self)
@@ -157,12 +157,6 @@ if(isset($_POST["update"])){
 		echo "<div align='center'><input type='submit' name='update' value=\"".$LANG['buttons'][2]."\" class='submit' ></div></td></tr>";
 		echo "</table>";
 		echo "</form>";
-		
-	}else{
-			commonHeader($LANG['common'][12],$_SERVER['PHP_SELF'],"config","plugins");
-			echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>";
-			echo "<b>Please activate the plugin</b></div>";
-	}
 	
 	commonFooter();
 	
