@@ -81,7 +81,7 @@ function plugin_treeview_createfirstaccess($ID){
 		$plugin_treeview_Profile->add(array(
 			'ID' => $ID,
 			'name' => $name,
-			'treeview' => 'w'));
+			'treeview' => 'r'));
 	}
 	
 }
