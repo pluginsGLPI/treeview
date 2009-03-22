@@ -36,6 +36,7 @@
 include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.functions_auth.php");
 include_once ("inc/plugin_treeview.classes.php");
+include_once ("inc/plugin_treeview.functions_db.php");
 
 /**
  * Init the hooks of the plugins -Needed
