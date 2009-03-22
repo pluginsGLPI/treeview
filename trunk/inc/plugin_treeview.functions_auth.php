@@ -33,52 +33,20 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-function plugin_treeview_initSession() {
-	global $DB;
-	
-	if(TableExists("glpi_plugin_treeview_preference")){
-		$profile=new plugin_treeview_Profile();
-	
-		$query = "SELECT DISTINCT glpi_profiles.* 
-					FROM glpi_users_profiles 
-					INNER JOIN glpi_profiles ON (glpi_users_profiles.FK_profiles = glpi_profiles.ID) 
-					WHERE glpi_users_profiles.FK_users='".$_SESSION["glpiID"]."'";
-		$result = $DB->query($query);
-		$_SESSION['glpi_plugin_treeview_profile'] = array ();
-		if ($DB->numrows($result)) {
-			while ($data = $DB->fetch_assoc($result)) {
-				$profile->fields = array ();
-				if(isset($_SESSION["glpiactiveprofile"]["ID"])){
-					$profile->getFromDB($_SESSION["glpiactiveprofile"]["ID"]);
-					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
-				}else{
-					$profile->getFromDB($data['ID']);
-					$_SESSION['glpi_plugin_treeview_profile'] = $profile->fields;
-				}
-				$_SESSION["glpi_plugin_treeview_installed"]=1;
-
-				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-				if ($pref_ID){
-					$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
-					if ($pref_value==1) {
-						$_SESSION["glpi_plugin_treeview_loaded"]=0;
-					}
-				}
-
-			}
-		}
-	}
-}
-
 function plugin_treeview_changeprofile()
 {
-	$plugin = new Plugin();
-	if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")){
-		$prof=new plugin_treeview_Profile();
-		if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
-			$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
-		else
-			unset($_SESSION["glpi_plugin_treeview_profile"]);
+	$prof=new plugin_treeview_Profile();
+	if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
+		$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
+	else
+		unset($_SESSION["glpi_plugin_treeview_profile"]);
+	
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+	if ($pref_ID){
+		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
+		if ($pref_value==1) {
+			$_SESSION["glpi_plugin_treeview_loaded"]=0;
+		}
 	}
 }
 
