@@ -69,11 +69,8 @@ function plugin_treeview_checkPreferenceValue($user_id)
 		return 0;	
 }
 
-	
 function plugin_treeview_createfirstaccess($ID){
 
-	GLOBAL $DB;
-	
 	$plugin_treeview_Profile=new plugin_treeview_Profile();
 	if (!$plugin_treeview_Profile->GetfromDB($ID)){
 		
@@ -81,25 +78,24 @@ function plugin_treeview_createfirstaccess($ID){
 		$Profile->GetfromDB($ID);
 		$name=$Profile->fields["name"];
 
-		$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name`, `treeview`) 
-				VALUES ('$ID', '$name','r');";
-		$DB->query($query);
+		$plugin_treeview_Profile->add(array(
+			'ID' => $ID,
+			'name' => $name,
+			'treeview' => 'w'));
 	}
+	
 }
 
 function plugin_treeview_createaccess($ID){
 
-	GLOBAL $DB;
-	
+	$plugin_treeview_Profile=new plugin_treeview_Profile();
 	$Profile=new Profile();
 	$Profile->GetfromDB($ID);
 	$name=$Profile->fields["name"];
-
-	$query ="INSERT INTO `glpi_plugin_treeview_profiles` ( `ID`, `name` , `treeview`) 
-			VALUES ('$ID', '$name',NULL);";
-
-	$DB->query($query);
-
+	
+	$plugin_treeview_Profile->add(array(
+		'ID' => $ID,
+		'name' => $name));
 }
 
 ?>

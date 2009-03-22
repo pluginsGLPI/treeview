@@ -35,6 +35,58 @@
 
 include_once ("inc/plugin_treeview.functions_display.php");
 include_once ("inc/plugin_treeview.classes.php");
+include_once ("inc/plugin_treeview.functions_db.php");
+include_once ("inc/plugin_treeview.functions_setup.php");
+
+function plugin_treeview_install(){
+		
+	include_once (GLPI_ROOT."/inc/profile.class.php");
+	
+	if(!TableExists("glpi_plugin_treeview_display") ){
+	
+		plugin_treeview_installing("1.2.0");
+	
+	}elseif(!TableExists("glpi_plugin_treeview_preference")) {
+	
+		plugin_treeview_update("1.1");
+		plugin_treeview_update("1.2.0");
+
+	}elseif(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
+	
+		plugin_treeview_update("1.2.0");
+
+	}
+	
+	plugin_treeview_createfirstaccess($_SESSION['glpiactiveprofile']['ID']);
+
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+	if ($pref_ID){
+		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
+		if ($pref_value==1) {
+			$_SESSION["glpi_plugin_treeview_loaded"]=0;
+		}
+	}
+	
+	return true;
+}
+
+function plugin_treeview_uninstall(){
+	global $DB;
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
+	$DB->query($query);
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
+	$DB->query($query);
+	
+	$query = "DROP TABLE `glpi_plugin_treeview_preference`;";
+	$DB->query($query);
+	
+	plugin_init_treeview();
+	cleanCache("GLPI_HEADER_".$_SESSION["glpiID"]);
+
+	return true;
+}
 
 // Hook done on before update item case
 function plugin_pre_item_update_treeview($input){
