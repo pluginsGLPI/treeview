@@ -153,7 +153,7 @@ function plugin_headings_actions_treeview($type){
 
 // action heading
 function plugin_headings_treeview($type,$ID,$withtemplate=0){
-	global $CFG_GLPI;
+	global $CFG_GLPI,$LANG;
 
 		switch ($type){
 
@@ -167,10 +167,18 @@ function plugin_headings_treeview($type,$ID,$withtemplate=0){
 				
 			break;
 			case PROFILE_TYPE :
-				$prof=new plugin_treeview_Profile();	
-				if (!$prof->GetfromDB($ID))
-					plugin_treeview_createaccess($ID);				
-				$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);		
+				$profile=new profile;
+				$profile->GetfromDB($ID);
+				if ($profile->fields["interface"]!="helpdesk"){
+					$prof=new plugin_treeview_Profile();	
+					if (!$prof->GetfromDB($ID))
+						plugin_treeview_createaccess($ID);				
+					$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);
+				}else{
+					echo "<table class='tab_cadre_fixe'><tr class='tab_bg_2'><td align='center'>";
+					echo $LANG['plugin_treeview']['setup'][18];
+					echo "</td></tr></table>";
+				}
 			break;
 			default :
 			break;
