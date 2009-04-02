@@ -69,33 +69,4 @@ function plugin_treeview_checkPreferenceValue($user_id)
 		return 0;	
 }
 
-function plugin_treeview_createfirstaccess($ID){
-
-	$plugin_treeview_Profile=new plugin_treeview_Profile();
-	if (!$plugin_treeview_Profile->GetfromDB($ID)){
-		
-		$Profile=new Profile();
-		$Profile->GetfromDB($ID);
-		$name=$Profile->fields["name"];
-
-		$plugin_treeview_Profile->add(array(
-			'ID' => $ID,
-			'name' => $name,
-			'treeview' => 'r'));
-	}
-	
-}
-
-function plugin_treeview_createaccess($ID){
-
-	$plugin_treeview_Profile=new plugin_treeview_Profile();
-	$Profile=new Profile();
-	$Profile->GetfromDB($ID);
-	$name=$Profile->fields["name"];
-	
-	$plugin_treeview_Profile->add(array(
-		'ID' => $ID,
-		'name' => $name));
-}
-
 ?>

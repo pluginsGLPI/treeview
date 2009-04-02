@@ -33,6 +33,39 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+if (!defined('GLPI_ROOT')){
+	die("Sorry. You can't access directly to this file");
+	}
+	
+function plugin_treeview_createfirstaccess($ID){
+
+	$plugin_treeview_Profile=new plugin_treeview_Profile();
+	if (!$plugin_treeview_Profile->GetfromDB($ID)){
+		
+		$Profile=new Profile();
+		$Profile->GetfromDB($ID);
+		$name=$Profile->fields["name"];
+
+		$plugin_treeview_Profile->add(array(
+			'ID' => $ID,
+			'name' => $name,
+			'treeview' => 'r'));
+	}
+	
+}
+
+function plugin_treeview_createaccess($ID){
+
+	$plugin_treeview_Profile=new plugin_treeview_Profile();
+	$Profile=new Profile();
+	$Profile->GetfromDB($ID);
+	$name=$Profile->fields["name"];
+	
+	$plugin_treeview_Profile->add(array(
+		'ID' => $ID,
+		'name' => $name));
+}
+
 function plugin_treeview_changeprofile()
 {
 	$prof=new plugin_treeview_Profile();
