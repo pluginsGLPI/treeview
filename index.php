@@ -36,7 +36,7 @@
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
-include_once ("inc/plugin_treeview.functions_display.php");
+useplugin('treeview',true);
 
 $_SESSION["glpi_plugin_treeview_loaded"] = 1;
 plugin_treeview_SeeTreeview();

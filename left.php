@@ -35,10 +35,7 @@
 
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
-include_once ("inc/plugin_treeview.constant.php");
-include_once ("inc/plugin_treeview.classes.php");
-include_once ("inc/plugin_treeview.functions_display.php");
-include_once ("inc/plugin_treeview.functions_auth.php");
+useplugin('treeview',true);
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
 	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
