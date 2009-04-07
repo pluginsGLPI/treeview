@@ -38,15 +38,8 @@ $title="Arborescence";
 $LANG['plugin_treeview']['title'][0] = "".$title."";
 
 $LANG['plugin_treeview']['profile'][0] = "Gestion des droits";
-$LANG['plugin_treeview']['profile'][1] = "$title";
 $LANG['plugin_treeview']['profile'][3] = "Utiliser l'arborescence";
-$LANG['plugin_treeview']['profile'][4] = "Listes des profils déjà configurés";
 
-$LANG['plugin_treeview']['setup'][1] = "Installer le plugin $title 1.1";
-$LANG['plugin_treeview']['setup'][2] = "Configuration du plugin ".$title."";
-$LANG['plugin_treeview']['setup'][3] = "Mettre à jour le plugin $title vers la version 1.1";
-$LANG['plugin_treeview']['setup'][4] = "Désinstaller le plugin $title 1.1";
-$LANG['plugin_treeview']['setup'][5] = "Attention, la désinstallation du plugin est irréversible.<br> Vous perdrez toutes les données.";
 $LANG['plugin_treeview']['setup'][6] = "Affichage";
 $LANG['plugin_treeview']['setup'][7] = "Oui";
 $LANG['plugin_treeview']['setup'][8] = "Non";
@@ -66,9 +59,6 @@ $LANG['plugin_treeview']['setup'][24] = "Numéro d'inventaire";
 $LANG['plugin_treeview']['setup'][25] = "Nom court";
 $LANG['plugin_treeview']['setup'][26] = "Nom complet";
 $LANG['plugin_treeview']['setup'][27] = "Commentaires";
-$LANG['plugin_treeview']['setup'][28] = "Mode d'emploi";
-$LANG['plugin_treeview']['setup'][29] = "FAQ";
-$LANG['plugin_treeview']['setup'][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 $LANG['plugin_treeview']['setup'][31] = "Lancer le plugin Treeview au démarrage de GLPI";
 $LANG['plugin_treeview']['setup'][32] = "Attention : si plusieurs plugins sont lancés au démarrage, seul le premier sera actif";
 

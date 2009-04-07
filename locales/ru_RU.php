@@ -38,15 +38,8 @@ $title="Список по местонахождению";
 $LANG['plugin_treeview']['title'][0] = "".$title."";
 
 $LANG['plugin_treeview']['profile'][0] = "Настройка прав";
-$LANG['plugin_treeview']['profile'][1] = "$title";
 $LANG['plugin_treeview']['profile'][3] = "Использование плагина";
-$LANG['plugin_treeview']['profile'][4] = "Имеющиеся права для профилей";
 
-$LANG['plugin_treeview']['setup'][1] = "Установить плагин $title 1.1";
-$LANG['plugin_treeview']['setup'][2] = "Настройка плагина ".$title."";
-$LANG['plugin_treeview']['setup'][3] = "Обновить $title до версии 1.1";
-$LANG['plugin_treeview']['setup'][4] = "Удалить плагин $title 1.1";
-$LANG['plugin_treeview']['setup'][5] = "Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
 $LANG['plugin_treeview']['setup'][6] = "Настройка меню";
 $LANG['plugin_treeview']['setup'][7] = "Да";
 $LANG['plugin_treeview']['setup'][8] = "Нет";
@@ -66,9 +59,6 @@ $LANG['plugin_treeview']['setup'][24] = "Инвентарный номер";
 $LANG['plugin_treeview']['setup'][25] = "Краткое название";
 $LANG['plugin_treeview']['setup'][26] = "Длинное название";
 $LANG['plugin_treeview']['setup'][27] = "Примечание";
-$LANG['plugin_treeview']['setup'][28] = "Инструкции";
-$LANG['plugin_treeview']['setup'][29] = "FAQ";
-$LANG['plugin_treeview']['setup'][30] = "Merci de vous placer sur l'entit� racine (voir tous)";
 $LANG['plugin_treeview']['setup'][31] = "Открывать окно Списка по местонахождению при входе в GLPI";
 $LANG['plugin_treeview']['setup'][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
