@@ -38,15 +38,8 @@ $title="Tree View";
 $LANG['plugin_treeview']['title'][0] = "".$title."";
 
 $LANG['plugin_treeview']['profile'][0] = "Rights management";
-$LANG['plugin_treeview']['profile'][1] = "$title";
 $LANG['plugin_treeview']['profile'][3] = "Use the tree";
-$LANG['plugin_treeview']['profile'][4] = "List of profiles already configured";
 
-$LANG['plugin_treeview']['setup'][1] = "Install $title plugin 1.1";
-$LANG['plugin_treeview']['setup'][2] = "Setup of plugin ".$title."";
-$LANG['plugin_treeview']['setup'][3] = "Update $title to version 1.1";
-$LANG['plugin_treeview']['setup'][4] = "Uninstall $title plugin 1.1";
-$LANG['plugin_treeview']['setup'][5] = "Warning, the uninstallation of the plugin is irreversible.<br> You will loose all the data.";
 $LANG['plugin_treeview']['setup'][6] = "Display";
 $LANG['plugin_treeview']['setup'][7] = "Yes";
 $LANG['plugin_treeview']['setup'][8] = "No";
@@ -66,9 +59,6 @@ $LANG['plugin_treeview']['setup'][24] = "Inventory number";
 $LANG['plugin_treeview']['setup'][25] = "Short name";
 $LANG['plugin_treeview']['setup'][26] = "Long name";
 $LANG['plugin_treeview']['setup'][27] = "Comment";
-$LANG['plugin_treeview']['setup'][28] = "Instructions";
-$LANG['plugin_treeview']['setup'][29] = "FAQ";
-$LANG['plugin_treeview']['setup'][30] = "Merci de vous placer sur l'entité racine (voir tous)";
 $LANG['plugin_treeview']['setup'][31] = "Launch the plugin Treeview with GLPI launching";
 $LANG['plugin_treeview']['setup'][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
