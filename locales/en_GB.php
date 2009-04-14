@@ -50,7 +50,6 @@ $LANG['plugin_treeview']['setup'][13] = "Tree is drawn with lines";
 $LANG['plugin_treeview']['setup'][14] = "Tree is drawn with icons";
 $LANG['plugin_treeview']['setup'][16] = "Only one node within a parent<br>can be expanded at the same time.";
 $LANG['plugin_treeview']['setup'][17] = "New window";
-$LANG['plugin_treeview']['setup'][18] = "You cannot use this plugin on helpdesk";
 $LANG['plugin_treeview']['setup'][20] = "The central console";
 $LANG['plugin_treeview']['setup'][21] = "Item name";
 $LANG['plugin_treeview']['setup'][22] = "Location name";

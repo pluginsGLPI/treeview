@@ -50,7 +50,6 @@ $LANG['plugin_treeview']['setup'][13] = "Рисовать линии";
 $LANG['plugin_treeview']['setup'][14] = "Рисовать иконки";
 $LANG['plugin_treeview']['setup'][16] = "Одновременно раскрывать<br>только одну ветку.";
 $LANG['plugin_treeview']['setup'][17] = "новом окне";
-$LANG['plugin_treeview']['setup'][18] = "You cannot use this plugin on helpdesk";
 $LANG['plugin_treeview']['setup'][20] = "окно GLPI";
 $LANG['plugin_treeview']['setup'][21] = "Название объектов";
 $LANG['plugin_treeview']['setup'][22] = "Название местоположения";
