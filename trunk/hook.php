@@ -123,21 +123,34 @@ function plugin_change_entity_treeview(){
 }
 
 // Define headings added by the plugin //
-function plugin_get_headings_treeview($type,$withtemplate){
+function plugin_get_headings_treeview($type,$ID,$withtemplate){
 
 	global $LANG;
 	
-	if (in_array($type,array("prefs",PROFILE_TYPE))){
-		// template case
-		if ($withtemplate)
-			return array();
-		// Non template case
-		else 
+	if ($type==PROFILE_TYPE) {
+		$prof = new Profile();
+		if ($ID>0 && $prof->getFromDB($ID) && $prof->fields['interface']!='helpdesk') {
 			return array(
-					1 => $LANG['plugin_treeview']['title'][0],
-					);
-	}else
-		return false;
+				1 => $LANG['plugin_treeview']['title'][0],
+				);
+		} else {
+			return array();			
+		}
+	}		
+		
+	if ($type=="prefs") {
+		// template case
+		if ($withtemplate) {
+			return array();
+
+		// Non template case
+		} else  {
+			return array(
+				1 => $LANG['plugin_treeview']['title'][0],
+				);
+		}
+	}
+	return false;
 }
 
 // Define headings actions added by the plugin	 
@@ -156,31 +169,21 @@ function plugin_headings_treeview($type,$ID,$withtemplate=0){
 	global $CFG_GLPI,$LANG;
 
 		switch ($type){
-
-			case "prefs":
-				$pref = new plugin_treeview_preference;
-				$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-				if (!$pref_ID)
-					$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
-				
-				$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
-				
-			break;
 			case PROFILE_TYPE :
-				$profile=new profile;
-				$profile->GetfromDB($ID);
-				if ($profile->fields["interface"]!="helpdesk"){
-					$prof=new plugin_treeview_Profile();	
-					if (!$prof->GetfromDB($ID))
-						plugin_treeview_createaccess($ID);				
-					$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);
-				}else{
-					echo "<table class='tab_cadre_fixe'><tr class='tab_bg_2'><td align='center'>";
-					echo $LANG['plugin_treeview']['setup'][18];
-					echo "</td></tr></table>";
-				}
+				$prof=new plugin_treeview_Profile();	
+				if (!$prof->GetfromDB($ID))
+					plugin_treeview_createaccess($ID);				
+				$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);
 			break;
 			default :
+				if ($type=="prefs"){
+					$pref = new plugin_treeview_preference;
+					$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+					if (!$pref_ID)
+						$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
+					
+					$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
+				}
 			break;
 		}
 }

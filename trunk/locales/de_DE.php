@@ -50,7 +50,6 @@ $LANG['plugin_treeview']['setup'][13] = "Der Baum wird mit Linien dargestellt";
 $LANG['plugin_treeview']['setup'][14] = "Der Baum wird mit Symbolen dargestellt";
 $LANG['plugin_treeview']['setup'][16] = "Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
 $LANG['plugin_treeview']['setup'][17] = "Neues Fenster";
-$LANG['plugin_treeview']['setup'][18] = "You cannot use this plugin on helpdesk";
 $LANG['plugin_treeview']['setup'][20] = "Die Zentralkonsole";
 $LANG['plugin_treeview']['setup'][21] = "Materialname";
 $LANG['plugin_treeview']['setup'][22] = "Standortname";

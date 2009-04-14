@@ -50,7 +50,6 @@ $LANG['plugin_treeview']['setup'][13] = "L'arborescence est dessinée avec des l
 $LANG['plugin_treeview']['setup'][14] = "L'arborescence est dessinée avec des icônes";
 $LANG['plugin_treeview']['setup'][16] = "Seulement un noeud avec un parent <br> peut être affiché en même temps";
 $LANG['plugin_treeview']['setup'][17] = "Dans une nouvelle fenêtre";
-$LANG['plugin_treeview']['setup'][18] = "Plugin non utilisable depuis le helpdesk";
 $LANG['plugin_treeview']['setup'][20] = "Dans la console centrale";
 $LANG['plugin_treeview']['setup'][21] = "Affichage du matériel";
 $LANG['plugin_treeview']['setup'][22] = "Affichage du lieu";
