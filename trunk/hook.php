@@ -139,16 +139,9 @@ function plugin_get_headings_treeview($type,$ID,$withtemplate){
 	}		
 		
 	if ($type=="prefs") {
-		// template case
-		if ($withtemplate) {
-			return array();
-
-		// Non template case
-		} else  {
-			return array(
-				1 => $LANG['plugin_treeview']['title'][0],
-				);
-		}
+		return array(
+			1 => $LANG['plugin_treeview']['title'][0],
+			);
 	}
 	return false;
 }
