@@ -52,7 +52,7 @@ if(isset($_POST["update"])){
 }else{
 
 	$plugin = new Plugin();
-	if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview"))
+	if ($plugin->isActivated("treeview"))
 		commonHeader($LANG['plugin_treeview']['title'][0],$_SERVER["PHP_SELF"],"plugins","treeview");
 	else
 		commonHeader($LANG['common'][12],$_SERVER['PHP_SELF'],"config","plugins");

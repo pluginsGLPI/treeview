@@ -228,7 +228,7 @@ function plugin_treeview_getNodesFromDb()
 						$l_name .= ' (' . $r['comments'] . ')';				
 				}
 				$plugin = new Plugin();
-				if ($plugin->isInstalled("freport") && $plugin->isActivated("freport"))
+				if ($plugin->isActivated("freport"))
 					$locationLink = 'front/plugin_treeview.freport.php?ID=' . $r['ID'];
 				else
 					$locationLink = '';
