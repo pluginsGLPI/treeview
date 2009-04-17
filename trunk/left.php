@@ -35,6 +35,7 @@
 
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
+include_once ("inc/plugin_treeview.constant.php");
 useplugin('treeview',true);
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
