@@ -41,7 +41,7 @@ if(!defined('GLPI_ROOT')){
 
 checkRight("config","w");
 
-useplugin('treeview');
+useplugin('treeview',true);
 
 if(isset($_POST["update"])){
 		checkRight("config","w");
