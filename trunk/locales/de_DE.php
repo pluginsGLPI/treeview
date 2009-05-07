@@ -35,10 +35,10 @@
 
 $title="Baumstruktur";
 
-$LANG['plugin_treeview']['title'][0] = "".$title."";
+$LANG['plugin_treeview']['title'][0]="".$title."";
 
-$LANG['plugin_treeview']['profile'][0] = "Rights management";
-$LANG['plugin_treeview']['profile'][3] = "Use the tree";
+$LANG['plugin_treeview']['profile'][0] = "Rechteverwaltung";
+$LANG['plugin_treeview']['profile'][3] = "Baumstruktur benutzen";
 
 $LANG['plugin_treeview']['setup'][6] = "Ansicht";
 $LANG['plugin_treeview']['setup'][7] = "Ja";
@@ -58,9 +58,9 @@ $LANG['plugin_treeview']['setup'][24] = "Inventarnummer";
 $LANG['plugin_treeview']['setup'][25] = "Kurzer Name";
 $LANG['plugin_treeview']['setup'][26] = "Langer Name";
 $LANG['plugin_treeview']['setup'][27] = "Kommentar";
-$LANG['plugin_treeview']['setup'][31] = "Launch the plugin Treeview with GLPI launching";
-$LANG['plugin_treeview']['setup'][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
+$LANG['plugin_treeview']['setup'][31] = "Das Plugin Baumstruktur beim Start von GLPI mitladen";
+$LANG['plugin_treeview']['setup'][32] = "Warnung: Ist mehr als ein Plugin zum automatischen Laden beim Start aktiviert, wird nur das erste geladen";
 
-$LANG['plugin_treeview']['warning'][0] = "Das Plugin freport wurde nicht gefunden";
+$LANG['plugin_treeview']['warning'][0] = "Das Plugin Finanzrapport (glpi-freport) wurde nicht gefunden";
 
 ?>
