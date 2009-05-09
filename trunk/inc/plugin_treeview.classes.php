@@ -68,11 +68,7 @@ class plugin_treeview_preference extends CommonDBTM
 
 		echo "<tr class='tab_bg_1' align='center'><td>".$LANG['plugin_treeview']['setup'][31]."</td>";
 		echo "<td>";
-		echo "<select name=\"show\">";
-		echo "<option value='2' ".($this->fields["show"]==2?" selected ":"").">".$LANG['choice'][0]."</option>";
-		echo "<option value='1' ".($this->fields["show"]==1?" selected ":"").">".$LANG['choice'][1]."</option>";
-		echo "</select>";
-			
+		dropdownyesno("show",$this->fields["show"]);
 		echo "</td></tr>";
 		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
 		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG['buttons'][2]."' class='submit'>";
