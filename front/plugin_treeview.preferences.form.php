@@ -36,6 +36,7 @@ if(!defined('GLPI_ROOT')){
 	define('GLPI_ROOT', '../../..'); 
 }
 include_once (GLPI_ROOT . "/inc/includes.php");
+useplugin('treeview',true);
 
 //Save user preferences
 if (isset ($_POST['update_user_preferences_treeview'])) {
