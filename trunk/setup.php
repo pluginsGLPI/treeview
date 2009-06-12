@@ -33,8 +33,8 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-include_once ("inc/plugin_treeview.functions_display.php");
-include_once ("inc/plugin_treeview.functions_auth.php");
+include_once ("inc/plugin_treeview.display.function.php");
+include_once ("inc/plugin_treeview.auth.function.php");
 
 /**
  * Init the hooks of the plugins -Needed
