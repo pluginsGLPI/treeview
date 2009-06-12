@@ -33,10 +33,10 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-include_once ("inc/plugin_treeview.functions_display.php");
-include_once ("inc/plugin_treeview.classes.php");
-include_once ("inc/plugin_treeview.functions_db.php");
-include_once ("inc/plugin_treeview.functions_setup.php");
+include_once ("inc/plugin_treeview.display.function.php");
+include_once ("inc/plugin_treeview.class.php");
+include_once ("inc/plugin_treeview.db.function.php");
+include_once ("inc/plugin_treeview.setup.function.php");
 
 function plugin_treeview_install(){
 		
