@@ -144,23 +144,23 @@ function plugin_treeview_getNodesFromDb()
 	echo "var d = new dTree('d');";	
 	echo "d.add(0,-1,'GLPI Desktop');";
 	
-	$config = new plugin_treeview_Treeview_Config();
-	$plugin_treeview_display = new plugin_treeview_display;
+	$config = new PluginTreeViewConfig();
+	$PluginTreeViewDisplay = new PluginTreeViewDisplay;
 	
 	// Request the display settings from the database and store them in the global object $config
-	$plugin_treeview_display->getFromDB(1);
+	$PluginTreeViewDisplay->getFromDB(1);
 	
 	//$config->useCookies = $plugin_treeview_display->fields["useCookies"];
-	$config->itemName = $plugin_treeview_display->fields["itemName"];
-	$config->locationName = $plugin_treeview_display->fields["locationName"];
+	$config->itemName = $PluginTreeViewDisplay->fields["itemName"];
+	$config->locationName = $PluginTreeViewDisplay->fields["locationName"];
 
 	
-	$config->target = $plugin_treeview_display->fields["target"];
-	$config->folderLinks = $plugin_treeview_display->fields["folderLinks"];
-	$config->useSelection = $plugin_treeview_display->fields["useSelection"];
-	$config->useLines = $plugin_treeview_display->fields["useLines"];
-	$config->useIcons = $plugin_treeview_display->fields["useIcons"];
-	$config->closeSameLevel = $plugin_treeview_display->fields["closeSameLevel"];
+	$config->target = $PluginTreeViewDisplay->fields["target"];
+	$config->folderLinks = $PluginTreeViewDisplay->fields["folderLinks"];
+	$config->useSelection = $PluginTreeViewDisplay->fields["useSelection"];
+	$config->useLines = $PluginTreeViewDisplay->fields["useLines"];
+	$config->useIcons = $PluginTreeViewDisplay->fields["useIcons"];
+	$config->closeSameLevel = $PluginTreeViewDisplay->fields["closeSameLevel"];
 	
 	
 	// Load the settings in JavaSript so that dTree script can apply them
@@ -176,7 +176,7 @@ function plugin_treeview_getNodesFromDb()
 	// Get the lowest level of the tree nodes and the highest primary key		 
 	$query = "	SELECT MAX(`ID`) AS `max_ID`, MAX(`level`) AS `max_level` 
 				FROM `glpi_dropdown_locations` 
-				WHERE FK_entities='".$_SESSION["glpiactive_entity"]."';";			 
+				WHERE `FK_entities` = '".$_SESSION["glpiactive_entity"]."';";			 
 	$result = $DB->query($query);
 	$max_level = $DB->result($result, 0, "max_level");
 	$tv_id = $max_id = $DB->result($result, 0, "max_ID");
@@ -207,7 +207,7 @@ function plugin_treeview_getNodesFromDb()
 					FROM `glpi_dropdown_locations` 
 					WHERE `level` = '". $n ."' 
 					AND `parentID` = '". $nodes[$n-1] ."' 
-					AND FK_entities='" . $_SESSION["glpiactive_entity"]."' 
+					AND `FK_entities` = '" . $_SESSION["glpiactive_entity"]."' 
 					ORDER BY `completename` ASC";
 			//echo "document.write(\"".$query."\"+'<br>');";
 			$result = $DB->query($query);
@@ -259,7 +259,7 @@ function plugin_treeview_getNodesFromDb()
 							if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CARTRIDGE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CONSUMABLE_TYPE)
 								$field_num = 6;
 							
-							$query_location = "SELECT completename FROM `glpi_dropdown_locations` WHERE `ID` = '". $r['ID'] ."'";
+							$query_location = "SELECT `completename` FROM `glpi_dropdown_locations` WHERE `ID` = '". $r['ID'] ."'";
 							$result_location = $DB->query($query_location);
 							while($row = $DB->fetch_assoc($result_location)) {
 								$name_location=	$row['completename'];

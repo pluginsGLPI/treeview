@@ -40,7 +40,7 @@ useplugin('treeview',true);
 
 //Save user preferences
 if (isset ($_POST['update_user_preferences_treeview'])) {
-	$pref = new plugin_treeview_preference;
+	$pref = new PluginTreeViewPreference;
 	$pref->update($_POST);
 	glpi_header($_SERVER['HTTP_REFERER']);
 }

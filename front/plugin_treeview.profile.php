@@ -38,7 +38,7 @@ define('GLPI_ROOT', '../../..');
 include (GLPI_ROOT."/inc/includes.php");
 checkRight("profile","r");
 
-$prof=new plugin_treeview_Profile();
+$prof=new PluginTreeViewProfile();
 
 //Save profile
 if (isset ($_POST['update_user_profile'])) {
