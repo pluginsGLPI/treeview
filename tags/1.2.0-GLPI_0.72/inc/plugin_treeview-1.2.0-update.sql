@@ -1,0 +1,1 @@
+ALTER TABLE `glpi_plugin_treeview_profiles` DROP COLUMN `interface`, DROP COLUMN `is_default`;
