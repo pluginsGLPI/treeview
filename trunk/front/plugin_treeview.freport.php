@@ -41,7 +41,7 @@ $plugin = new Plugin();
 if ($plugin->isActivated("freport")){
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
 	if (file_exists($filename)){
-	$query = "SELECT completename 
+	$query = "SELECT `completename` 
 				FROM `glpi_dropdown_locations` 
 				WHERE `ID` = '". $_GET['ID'] ."'";
 	$result = $DB->query($query);
@@ -56,9 +56,9 @@ if ($plugin->isActivated("freport")){
 } 
 // Print error message if not
 else {
-    commonHeader($LANG['plugin_treeview']['title'][0],$_SERVER["PHP_SELF"],"plugins","treeview");
-    echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
-			echo "<b>".$LANG['plugin_treeview']['warning'][0]."</b></div>"; 
+	commonHeader($LANG['plugin_treeview']['title'][0],$_SERVER["PHP_SELF"],"plugins","treeview");
+	echo "<div align='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt=\"warning\"><br><br>"; 
+	echo "<b>".$LANG['plugin_treeview']['warning'][0]."</b></div>"; 
 	commonFooter();
 }
 ?>

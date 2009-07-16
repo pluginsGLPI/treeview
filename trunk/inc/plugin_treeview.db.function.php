@@ -39,9 +39,9 @@ if (!defined('GLPI_ROOT')){
 function plugin_treeview_checkIfPreferenceExists($user_id)
 {
 	global $DB;
-	$result = $DB->query("SELECT ID 
-							FROM glpi_plugin_treeview_preference 
-							WHERE user_id='".$user_id."' ");
+	$result = $DB->query("SELECT `ID` 
+							FROM `glpi_plugin_treeview_preference` 
+							WHERE `user_id` = '".$user_id."' ");
 	if ($DB->numrows($result) > 0)
 		return $DB->result($result,0,"ID");
 	else
@@ -53,7 +53,7 @@ function plugin_treeview_addDefaultPreference($user_id)
 	$input["user_id"]=$user_id;
 	$input["show"]=2;
 	
-	$pref = new plugin_treeview_preference;
+	$pref = new PluginTreeViewPreference;
 	return $pref->add($input);
 }
 
@@ -61,8 +61,8 @@ function plugin_treeview_checkPreferenceValue($user_id)
 {
 	global $DB;
 	$result = $DB->query("SELECT * 
-							FROM glpi_plugin_treeview_preference 
-							WHERE user_id='".$user_id."' ");
+							FROM `glpi_plugin_treeview_preference` 
+							WHERE `user_id` = '".$user_id."' ");
 	if ($DB->numrows($result) > 0)
 		return $DB->result($result,0,"show");
 	else

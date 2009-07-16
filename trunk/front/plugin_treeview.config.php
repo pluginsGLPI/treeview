@@ -45,8 +45,8 @@ useplugin('treeview',true);
 
 if(isset($_POST["update"])){
 		checkRight("config","w");
-		$plugin_treeview_display = new plugin_treeview_display;
-		$plugin_treeview_display->update($_POST);
+		$PluginTreeViewDisplay = new PluginTreeViewDisplay;
+		$PluginTreeViewDisplay->update($_POST);
 		glpi_header($_SERVER['HTTP_REFERER']);
 
 }else{
@@ -65,17 +65,17 @@ if(isset($_POST["update"])){
 		echo "<div align='center'>";
 		
 		// Requests the settings from the database
-		$plugin_treeview_display = new plugin_treeview_display;
-		$plugin_treeview_display->getFromDB('1');
+		$PluginTreeViewDisplay = new PluginTreeViewDisplay;
+		$PluginTreeViewDisplay->getFromDB('1');
 		
-		$target=$plugin_treeview_display->fields["target"];
-		$folderLinks=$plugin_treeview_display->fields["folderLinks"];
-		$useSelection=$plugin_treeview_display->fields["useSelection"];	
-		$useLines=$plugin_treeview_display->fields["useLines"];
-		$useIcons=$plugin_treeview_display->fields["useIcons"];
-		$closeSameLevel=$plugin_treeview_display->fields["closeSameLevel"];
-		$itemName=$plugin_treeview_display->fields["itemName"];
-		$locationName=$plugin_treeview_display->fields["locationName"];
+		$target=$PluginTreeViewDisplay->fields["target"];
+		$folderLinks=$PluginTreeViewDisplay->fields["folderLinks"];
+		$useSelection=$PluginTreeViewDisplay->fields["useSelection"];	
+		$useLines=$PluginTreeViewDisplay->fields["useLines"];
+		$useIcons=$PluginTreeViewDisplay->fields["useIcons"];
+		$closeSameLevel=$PluginTreeViewDisplay->fields["closeSameLevel"];
+		$itemName=$PluginTreeViewDisplay->fields["itemName"];
+		$locationName=$PluginTreeViewDisplay->fields["locationName"];
 		
 		// Configuration form
 		echo "<form method='post' action=\"./plugin_treeview.config.php\">";		

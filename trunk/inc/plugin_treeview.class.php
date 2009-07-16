@@ -36,7 +36,7 @@
  * class plugin_treeview_display
  * Load and store the display configuration from the database
  */
-class plugin_treeview_display extends CommonDBTM
+class PluginTreeViewDisplay extends CommonDBTM
 {
 	function __construct()
 	{
@@ -47,7 +47,7 @@ class plugin_treeview_display extends CommonDBTM
  * class plugin_treeview_preference
  * Load and store the preference configuration from the database
  */
-class plugin_treeview_preference extends CommonDBTM
+class PluginTreeViewPreference extends CommonDBTM
 {
 	function __construct()
 	{
@@ -88,7 +88,7 @@ class plugin_treeview_preference extends CommonDBTM
  * class plugin_treeview_Treeview_Config
  * Contains the display configuration of the treeview
  */
-class plugin_treeview_Treeview_Config
+class PluginTreeViewConfig
 {
 	/**
     * the default target of the nodes
@@ -141,7 +141,7 @@ class plugin_treeview_Treeview_Config
     */
 	var $locationName;
 	
-	function plugin_treeview_Treeview_Config()
+	function __construct()
 	{
 		$this->target;
 		$this->folderLinks = true;
@@ -157,7 +157,7 @@ class plugin_treeview_Treeview_Config
 	}
 }
 
-class plugin_treeview_Profile extends CommonDBTM {
+class PluginTreeViewProfile extends CommonDBTM {
 
 	function __construct () {
 		$this->table="glpi_plugin_treeview_profiles";
@@ -167,11 +167,7 @@ class plugin_treeview_Profile extends CommonDBTM {
 	//if profile deleted
 	function cleanProfiles($ID) {
 	
-		global $DB;
-		$query = "DELETE 
-					FROM glpi_plugin_treeview_profiles 
-					WHERE ID='$ID' ";
-		$DB->query($query);
+		$this->delete(array('ID'=>$ID));
 	}
 
 	//profiles modification

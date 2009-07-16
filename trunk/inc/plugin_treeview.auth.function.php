@@ -37,16 +37,16 @@ if (!defined('GLPI_ROOT')){
 	die("Sorry. You can't access directly to this file");
 	}
 	
-function plugin_treeview_createfirstaccess($ID){
+function plugin_treeview_createFirstAccess($ID){
 
-	$plugin_treeview_Profile=new plugin_treeview_Profile();
-	if (!$plugin_treeview_Profile->GetfromDB($ID)){
+	$PluginTreeViewProfile=new PluginTreeViewProfile();
+	if (!$PluginTreeViewProfile->GetfromDB($ID)){
 		
 		$Profile=new Profile();
 		$Profile->GetfromDB($ID);
 		$name=$Profile->fields["name"];
 
-		$plugin_treeview_Profile->add(array(
+		$PluginTreeViewProfile->add(array(
 			'ID' => $ID,
 			'name' => $name,
 			'treeview' => 'r'));
@@ -54,21 +54,21 @@ function plugin_treeview_createfirstaccess($ID){
 	
 }
 
-function plugin_treeview_createaccess($ID){
+function plugin_treeview_createAccess($ID){
 
-	$plugin_treeview_Profile=new plugin_treeview_Profile();
+	$PluginTreeViewProfile=new PluginTreeViewProfile();
 	$Profile=new Profile();
 	$Profile->GetfromDB($ID);
 	$name=$Profile->fields["name"];
 	
-	$plugin_treeview_Profile->add(array(
+	$PluginTreeViewProfile->add(array(
 		'ID' => $ID,
 		'name' => $name));
 }
 
-function plugin_treeview_changeprofile()
+function plugin_treeview_changeProfile()
 {
-	$prof=new plugin_treeview_Profile();
+	$prof=new PluginTreeViewProfile();
 	if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
 		$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
 	else
