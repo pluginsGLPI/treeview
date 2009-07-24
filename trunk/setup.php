@@ -94,7 +94,7 @@ function plugin_version_treeview()
 	
 	return array (
 		'name' => $LANG['plugin_treeview']['title'][0],
-		'version' => '1.2.0',
+		'version' => '1.2.1',
 		'author'=>'AL-Rubeiy Hussein, Xavier Caillaud',
 		'homepage'=>'http://glpi-project.org/wiki/doku.php?id='.substr($_SESSION["glpilanguage"],0,2).':plugins:pluginslist',
 		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
