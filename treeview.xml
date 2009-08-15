@@ -10,7 +10,7 @@
          <en><![CDATA[Tree view. This plugin allows you to see your asset with tree view.]]></en>
       </short>
       <long>
-         <fr><![CDATA[Ce plugin vous permet de voir votre parc GLPI sous forme d’arborescence.<br />-Possibilité d'utiliser les répertoires des lieux sous forme de liens<br />-Les noeuds peuvent être en surbrillance.<br />-L'arborescence peut être dessinée avec des lignes ou des icones.<br />-Possibilité de lancement du plugin au démarrage de GLPI]]></fr>
+         <fr><![CDATA[Ce plugin vous permet de voir votre parc GLPI sous forme d’arborescence.<br />-Possibilité d'utiliser les répertoires des lieux sous forme de liens<br />-Les noeuds peuvent être en surbrillance.<br />-L'arborescence peut être dessinée avec des lignes ou des icônes.<br />-Possibilité de lancement du plugin au démarrage de GLPI]]></fr>
          <en><![CDATA[This plugin allows you to see your asset with tree view.<br />-Should folders be links<br />-Nodes can be highlighted.<br />-Tree can be drawn with lines or pics.<br />-The plugin can be launched when GLPI loading]]></en>
       </long>
    </description>
