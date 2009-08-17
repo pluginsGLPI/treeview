@@ -36,22 +36,22 @@ if (!defined('GLPI_ROOT')){
 	die("Sorry. You can't access directly to this file");
 	}
 
-function plugin_treeview_checkIfPreferenceExists($user_id)
+function plugin_treeview_checkIfPreferenceExists($users_id)
 {
 	global $DB;
-	$result = $DB->query("SELECT `ID` 
-							FROM `glpi_plugin_treeview_preference` 
-							WHERE `user_id` = '".$user_id."' ");
+	$result = $DB->query("SELECT `id` 
+							FROM `glpi_plugin_treeview_preferences` 
+							WHERE `users_id` = '".$users_id."' ");
 	if ($DB->numrows($result) > 0)
-		return $DB->result($result,0,"ID");
+		return $DB->result($result,0,"id");
 	else
 		return 0;	
 }
 
-function plugin_treeview_addDefaultPreference($user_id)
+function plugin_treeview_addDefaultPreference($users_id)
 {
-	$input["user_id"]=$user_id;
-	$input["show"]=2;
+	$input["users_id"]=$users_id;
+	$input["show_on_load"]=2;
 	
 	$pref = new PluginTreeViewPreference;
 	return $pref->add($input);
@@ -61,10 +61,10 @@ function plugin_treeview_checkPreferenceValue($user_id)
 {
 	global $DB;
 	$result = $DB->query("SELECT * 
-							FROM `glpi_plugin_treeview_preference` 
-							WHERE `user_id` = '".$user_id."' ");
+							FROM `glpi_plugin_treeview_preferences` 
+							WHERE `users_id` = '".$users_id."' ");
 	if ($DB->numrows($result) > 0)
-		return $DB->result($result,0,"show");
+		return $DB->result($result,0,"show_on_load");
 	else
 		return 0;	
 }

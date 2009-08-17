@@ -94,19 +94,19 @@ function plugin_version_treeview()
 	
 	return array (
 		'name' => $LANG['plugin_treeview']['title'][0],
-		'version' => '1.2.1',
+		'version' => '1.3.0',
 		'author'=>'AL-Rubeiy Hussein, Xavier Caillaud',
-		'homepage'=>'http://glpi-project.org/wiki/doku.php?id='.substr($_SESSION["glpilanguage"],0,2).':plugins:pluginslist',
-		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
+		'homepage'=>'https://forge.indepnet.net/projects/show/treeview',
+		'minGlpiVersion' => '0.80',// For compatibility / no install in version < 0.72
 	);
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_treeview_check_prerequisites(){
-	if (GLPI_VERSION>=0.72){
+	if (GLPI_VERSION>=0.80){
 		return true;
 	} else {
-		echo "GLPI version not compatible need 0.72";
+		echo "GLPI version not compatible need 0.80";
 	}
 }
 

@@ -45,8 +45,8 @@ useplugin('treeview',true);
 
 if(isset($_POST["update"])){
 		checkRight("config","w");
-		$PluginTreeViewDisplay = new PluginTreeViewDisplay;
-		$PluginTreeViewDisplay->update($_POST);
+		$PluginTreeViewDisplayPrefPref = new PluginTreeViewDisplayPrefPref;
+		$PluginTreeViewDisplayPref->update($_POST);
 		glpi_header($_SERVER['HTTP_REFERER']);
 
 }else{
@@ -65,17 +65,17 @@ if(isset($_POST["update"])){
 		echo "<div align='center'>";
 		
 		// Requests the settings from the database
-		$PluginTreeViewDisplay = new PluginTreeViewDisplay;
-		$PluginTreeViewDisplay->getFromDB('1');
+		$PluginTreeViewDisplayPref = new PluginTreeViewDisplayPref;
+		$PluginTreeViewDisplayPref->getFromDB('1');
 		
-		$target=$PluginTreeViewDisplay->fields["target"];
-		$folderLinks=$PluginTreeViewDisplay->fields["folderLinks"];
-		$useSelection=$PluginTreeViewDisplay->fields["useSelection"];	
-		$useLines=$PluginTreeViewDisplay->fields["useLines"];
-		$useIcons=$PluginTreeViewDisplay->fields["useIcons"];
-		$closeSameLevel=$PluginTreeViewDisplay->fields["closeSameLevel"];
-		$itemName=$PluginTreeViewDisplay->fields["itemName"];
-		$locationName=$PluginTreeViewDisplay->fields["locationName"];
+		$target=$PluginTreeViewDisplayPref->fields["target"];
+		$folderLinks=$PluginTreeViewDisplayPref->fields["folderLinks"];
+		$useSelection=$PluginTreeViewDisplayPref->fields["useSelection"];	
+		$useLines=$PluginTreeViewDisplayPref->fields["useLines"];
+		$useIcons=$PluginTreeViewDisplayPref->fields["useIcons"];
+		$closeSameLevel=$PluginTreeViewDisplayPref->fields["closeSameLevel"];
+		$itemName=$PluginTreeViewDisplayPref->fields["itemName"];
+		$locationName=$PluginTreeViewDisplayPref->fields["locationName"];
 		
 		// Configuration form
 		echo "<form method='post' action=\"./plugin_treeview.config.php\">";		
@@ -153,7 +153,7 @@ if(isset($_POST["update"])){
 		echo "</tr>";
 
 		echo "<tr class='tab_bg_2'><td colspan='2'>";
-		echo "<input type='hidden' name='ID' value=\"1\">";
+		echo "<input type='hidden' name='id' value=\"1\">";
 		echo "<div align='center'><input type='submit' name='update' value=\"".$LANG['buttons'][2]."\" class='submit' ></div></td></tr>";
 		echo "</table>";
 		echo "</form>";

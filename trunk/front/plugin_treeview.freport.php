@@ -42,13 +42,13 @@ if ($plugin->isActivated("freport")){
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
 	if (file_exists($filename)){
 	$query = "SELECT `completename` 
-				FROM `glpi_dropdown_locations` 
-				WHERE `ID` = '". $_GET['ID'] ."'";
+				FROM `glpi_locations` 
+				WHERE `id` = '". $_GET['id'] ."'";
 	$result = $DB->query($query);
 	while($r = $DB->fetch_assoc($result)) {
 		$name_location=	$r['completename'];
 	}		
-	$getParam = '?contains[0]=' .str_replace("'","\'",$name_location).  '&field[0]=0&sort=1&deleted=0&start=0&from=treeview';
+	$getParam = '?contains[0]=' .str_replace("'","\'",$name_location).  '&field[0]=0&sort=1&is_deleted=0&start=0&from=treeview';
 	$target = $filename . $getParam;
 //	echo $target;
 	echo "<script language=javascript>window.location=\"".html_entity_decode($target)."\"</script>";
