@@ -47,7 +47,7 @@ function plugin_treeview_createFirstAccess($ID){
 		$name=$Profile->fields["name"];
 
 		$PluginTreeViewProfile->add(array(
-			'ID' => $ID,
+			'id' => $ID,
 			'name' => $name,
 			'treeview' => 'r'));
 	}
@@ -62,14 +62,14 @@ function plugin_treeview_createAccess($ID){
 	$name=$Profile->fields["name"];
 	
 	$PluginTreeViewProfile->add(array(
-		'ID' => $ID,
+		'id' => $ID,
 		'name' => $name));
 }
 
 function plugin_treeview_changeProfile()
 {
 	$prof=new PluginTreeViewProfile();
-	if($prof->getFromDB($_SESSION['glpiactiveprofile']['ID']))
+	if($prof->getFromDB($_SESSION['glpiactiveprofile']['id']))
 		$_SESSION["glpi_plugin_treeview_profile"]=$prof->fields;
 	else
 		unset($_SESSION["glpi_plugin_treeview_profile"]);

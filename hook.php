@@ -42,26 +42,32 @@ function plugin_treeview_install(){
 		
 	include_once (GLPI_ROOT."/inc/profile.class.php");
 	
-	if(!TableExists("glpi_plugin_treeview_display") ){
+	if(!TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_displayprefs")){
 	
-		plugin_treeview_installing("1.2.0");
+		plugin_treeview_installing("1.3.0");
 	
 	}elseif(!TableExists("glpi_plugin_treeview_preference")) {
 	
 		plugin_treeview_update("1.1");
 		plugin_treeview_update("1.2.0");
+		plugin_treeview_update("1.3.0");
 
 	}elseif(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
 	
 		plugin_treeview_update("1.2.0");
+		plugin_treeview_update("1.3.0");
+
+	}elseif(!TableExists("glpi_plugin_treeview_displayprefs")) {
+	
+		plugin_treeview_update("1.3.0");
 
 	}
 	
-	plugin_treeview_createFirstAccess($_SESSION['glpiactiveprofile']['ID']);
+	plugin_treeview_createFirstAccess($_SESSION['glpiactiveprofile']['id']);
 
-	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiactiveprofile']['id']);
 	if ($pref_ID){
-		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
+		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiactiveprofile']['id']);
 		if ($pref_value==1) {
 			$_SESSION["glpi_plugin_treeview_loaded"]=0;
 		}
@@ -73,17 +79,16 @@ function plugin_treeview_install(){
 function plugin_treeview_uninstall(){
 	global $DB;
 	
-	$query = "DROP TABLE `glpi_plugin_treeview_display`;";
+	$query = "DROP TABLE `glpi_plugin_treeview_displayprefs`;";
 	$DB->query($query);
 	
 	$query = "DROP TABLE `glpi_plugin_treeview_profiles`;";
 	$DB->query($query);
 	
-	$query = "DROP TABLE `glpi_plugin_treeview_preference`;";
+	$query = "DROP TABLE `glpi_plugin_treeview_preferences`;";
 	$DB->query($query);
 	
 	plugin_init_treeview();
-	cleanCache("GLPI_HEADER_".$_SESSION["glpiID"]);
 
 	return true;
 }
@@ -95,10 +100,10 @@ function plugin_pre_item_update_treeview($input){
 				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_TYPE,CARTRIDGE_TYPE))){
 					
 				$ci = new CommonItem();
-				$ci->GetfromDB($input["_item_type_"],$input["ID"]);
+				$ci->GetfromDB($input["_item_type_"],$input["id"]);
 					
-				if (isset($input["location"]) && isset($ci->obj->fields["location"]) && $input["location"]!=$ci->obj->fields["location"])
-				echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+				if (isset($input["locations_id"]) && isset($ci->obj->fields["locations_id"]) && $input["locations_id"]!=$ci->obj->fields["locations_id"])
+          echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 		}
 	return $input;
 }
@@ -111,7 +116,7 @@ function plugin_pre_item_delete_treeview($input){
 			case PROFILE_TYPE :
 				// Manipulate data if needed 
 				$PluginTreeViewProfile=new PluginTreeViewProfile;
-				$PluginTreeViewProfile->cleanProfiles($input["ID"]);
+				$PluginTreeViewProfile->cleanProfiles($input["id"]);
 				break;
 		}
 	return $input;

@@ -36,11 +36,11 @@
  * class plugin_treeview_display
  * Load and store the display configuration from the database
  */
-class PluginTreeViewDisplay extends CommonDBTM
+class PluginTreeViewDisplayPref extends CommonDBTM
 {
 	function __construct()
 	{
-		$this->table="glpi_plugin_treeview_display";
+		$this->table="glpi_plugin_treeview_displayprefs";
 	}
 }
 /**
@@ -51,11 +51,11 @@ class PluginTreeViewPreference extends CommonDBTM
 {
 	function __construct()
 	{
-		$this->table="glpi_plugin_treeview_preference";
+		$this->table="glpi_plugin_treeview_preferences";
 		$this->type=-1;
 	}
 	
-	function showForm($target,$ID,$user_id){
+	function showForm($target,$ID,$users_id){
 		global $LANG,$DB;
 		
 		$data=plugin_version_treeview();
@@ -68,11 +68,11 @@ class PluginTreeViewPreference extends CommonDBTM
 
 		echo "<tr class='tab_bg_1' align='center'><td>".$LANG['plugin_treeview']['setup'][31]."</td>";
 		echo "<td>";
-		dropdownyesno("show",$this->fields["show"]);
+		dropdownyesno("show_on_load",$this->fields["show_on_load"]);
 		echo "</td></tr>";
 		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
 		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG['buttons'][2]."' class='submit'>";
-		echo "<input type='hidden' name='ID' value='".$ID."'>";
+		echo "<input type='hidden' name='id' value='".$ID."'>";
 		echo "</td></tr>";
 		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
 		echo $LANG['plugin_treeview']['setup'][32];
@@ -193,7 +193,7 @@ class PluginTreeViewProfile extends CommonDBTM {
 		if ($canedit){
 			echo "<tr class='tab_bg_1'>";
 			echo "<td align='center' colspan='2'>";
-			echo "<input type='hidden' name='ID' value=$ID>";
+			echo "<input type='hidden' name='id' value=$ID>";
 			echo "<input type='submit' name='update_user_profile' value=\"".$LANG['buttons'][7]."\" class='submit'>";
 			echo "</td></tr>";
 		}

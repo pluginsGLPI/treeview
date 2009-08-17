@@ -39,14 +39,12 @@ include_once ("inc/plugin_treeview.constant.php");
 useplugin('treeview',true);
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
-	echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
-	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
-	// Send extra expires header if configured
-	if ($CFG_GLPI["sendexpire"]) {
-		echo "<meta http-equiv=\"Expires\" content=\"Fri, Jun 12 1981 08:20:00 GMT\">\n";
-		echo "<meta http-equiv=\"Pragma\" content=\"no-cache\">\n";
-		echo "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\n";
-	}
+echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8 \" >";
+// Send extra expires header if configured
+echo "<meta http-equiv=\"Expires\" content=\"Fri, Jun 12 1981 08:20:00 GMT\">\n";
+echo "<meta http-equiv=\"Pragma\" content=\"no-cache\">\n";
+echo "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\n";
 echo "<link rel='stylesheet' type='text/css'  href='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.css' type=\"text/css\" >\n";
 echo "<script type=\"text/javascript\" src='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.js'></script></head>\n";
 
