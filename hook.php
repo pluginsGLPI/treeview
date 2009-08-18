@@ -46,7 +46,7 @@ function plugin_treeview_install(){
 	
 		plugin_treeview_installing("1.3.0");
 	
-	}elseif(!TableExists("glpi_plugin_treeview_preference")) {
+	}elseif(TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_preference")) {
 	
 		plugin_treeview_update("1.1");
 		plugin_treeview_update("1.2.0");
