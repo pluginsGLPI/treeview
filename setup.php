@@ -47,6 +47,7 @@ function plugin_init_treeview()
 	
 	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeProfile';
 	$PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
+	
 	if (isset($_SESSION["glpiID"])){
 	
 	// Display a menu entry

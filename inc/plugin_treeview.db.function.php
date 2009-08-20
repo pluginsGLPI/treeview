@@ -51,13 +51,13 @@ function plugin_treeview_checkIfPreferenceExists($users_id)
 function plugin_treeview_addDefaultPreference($users_id)
 {
 	$input["users_id"]=$users_id;
-	$input["show_on_load"]=2;
+	$input["show_on_load"]=0;
 	
 	$pref = new PluginTreeViewPreference;
 	return $pref->add($input);
 }
 
-function plugin_treeview_checkPreferenceValue($user_id)
+function plugin_treeview_checkPreferenceValue($users_id)
 {
 	global $DB;
 	$result = $DB->query("SELECT * 

@@ -74,9 +74,9 @@ function plugin_treeview_changeProfile()
 	else
 		unset($_SESSION["glpi_plugin_treeview_profile"]);
 	
-	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiactiveprofile']['id']);
+	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
 	if ($pref_ID){
-		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiactiveprofile']['id']);
+		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
 		if ($pref_value==1) {
 			$_SESSION["glpi_plugin_treeview_loaded"]=0;
 		}
