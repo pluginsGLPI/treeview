@@ -83,7 +83,7 @@ $PLUGIN_TREEVIEW_DEVICES[5]['page'] = '/front/software.php';
 /**
 * Cartridge
 */
-$PLUGIN_TREEVIEW_DEVICES[6]['type'] = CARTRIDGE_TYPE;
+$PLUGIN_TREEVIEW_DEVICES[6]['type'] = CARTRIDGE_ITEMTYPE;
 $PLUGIN_TREEVIEW_DEVICES[6]['name'] = $LANG['Menu'][21];
 $PLUGIN_TREEVIEW_DEVICES[6]['pic'] = 'page.gif';
 $PLUGIN_TREEVIEW_DEVICES[6]['page'] = '/front/cartridge.php';
@@ -99,7 +99,7 @@ $PLUGIN_TREEVIEW_DEVICES[7]['page'] = '/front/phone.php';
 /**
 * Consumable
 */
-$PLUGIN_TREEVIEW_DEVICES[8]['type'] = CONSUMABLE_TYPE;
+$PLUGIN_TREEVIEW_DEVICES[8]['type'] = CONSUMABLE_ITEMTYPE;
 $PLUGIN_TREEVIEW_DEVICES[8]['name'] = $LANG['Menu'][32];
 $PLUGIN_TREEVIEW_DEVICES[8]['pic'] = 'cd.gif';
 $PLUGIN_TREEVIEW_DEVICES[8]['page'] = '/front/consumable.php';
