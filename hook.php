@@ -97,7 +97,7 @@ function plugin_treeview_uninstall(){
 function plugin_pre_item_update_treeview($input){
 	if (isset($input["_item_type_"]))
 		if (in_array($input["_item_type_"],array(COMPUTER_TYPE,
-				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_TYPE,CARTRIDGE_TYPE))){
+				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_ITEMTYPE,CARTRIDGE_ITEMTYPE))){
 					
 				$ci = new CommonItem();
 				$ci->GetfromDB($input["_item_type_"],$input["id"]);

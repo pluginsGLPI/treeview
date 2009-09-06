@@ -252,7 +252,7 @@ function plugin_treeview_getNodesFromDb()
 						if($DB->numrows($result_1)) {
 							$pid = $tv_id;
 							$field_num = 3;
-							if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CARTRIDGE_TYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CONSUMABLE_TYPE)
+							if($PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CARTRIDGE_ITEMTYPE || $PLUGIN_TREEVIEW_DEVICES[$a]['type'] == CONSUMABLEITEM_TYPE)
 								$field_num = 6;
 							
 							$query_location = "SELECT `completename` FROM `glpi_locations` WHERE `id` = '". $r['id'] ."'";
