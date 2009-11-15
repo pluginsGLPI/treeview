@@ -44,7 +44,7 @@
       <lang>de_DE</lang>
       <lang>ru_RU</lang>
    </langs>
-   <license>GPL v2+</license>
+   <license><![CDATA[GPL v2+]]></license>
    <tags>
          <fr>
             <tag>Vue</tag>
