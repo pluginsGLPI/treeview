@@ -39,7 +39,8 @@ include (GLPI_ROOT . "/inc/includes.php");
 useplugin('treeview',true);
 
 $_SESSION["glpi_plugin_treeview_loaded"] = 1;
-plugin_treeview_SeeTreeview();
+$PluginTreeViewDisplayPref=new PluginTreeViewDisplayPref();
+$PluginTreeViewDisplayPref->seeTreeview();
 
 
 ?>

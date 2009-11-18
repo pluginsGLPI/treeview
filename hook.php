@@ -33,41 +33,39 @@
 // ----------------------------------------------------------------------
  */
 
-include_once ("inc/plugin_treeview.display.function.php");
-include_once ("inc/plugin_treeview.class.php");
-include_once ("inc/plugin_treeview.db.function.php");
-include_once ("inc/plugin_treeview.setup.function.php");
+foreach (glob(GLPI_ROOT . '/plugins/treeview/inc/*.php') as $file)
+	include_once ($file);
 
-function plugin_treeview_install(){
+function plugin_treeview_install() {
 		
 	include_once (GLPI_ROOT."/inc/profile.class.php");
 	
-	if(!TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_displayprefs")){
+	if(!TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_displayprefs")) {
 	
 		plugin_treeview_installing("1.3.0");
 	
-	}elseif(TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_preference")) {
+	} else if(TableExists("glpi_plugin_treeview_display") && !TableExists("glpi_plugin_treeview_preference")) {
 	
 		plugin_treeview_update("1.1");
 		plugin_treeview_update("1.2.0");
 		plugin_treeview_update("1.3.0");
 
-	}elseif(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
+	} else if(TableExists("glpi_plugin_treeview_profiles") && FieldExists("glpi_plugin_treeview_profiles","interface")) {
 	
 		plugin_treeview_update("1.2.0");
 		plugin_treeview_update("1.3.0");
 
-	}elseif(!TableExists("glpi_plugin_treeview_displayprefs")) {
+	} else if(!TableExists("glpi_plugin_treeview_displayprefs")) {
 	
 		plugin_treeview_update("1.3.0");
 
 	}
-	
-	plugin_treeview_createFirstAccess($_SESSION['glpiactiveprofile']['id']);
-
-	$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-	if ($pref_ID){
-		$pref_value=plugin_treeview_checkPreferenceValue($_SESSION['glpiID']);
+	$PluginTreeViewProfile=new PluginTreeViewProfile();
+	$PluginTreeViewProfile->createFirstAccess($_SESSION['glpiactiveprofile']['id']);
+   $PluginTreeViewPreference=new PluginTreeViewPreference();
+	$pref_ID=$PluginTreeViewPreference->checkIfPreferenceExists($_SESSION['glpiID']);
+	if ($pref_ID) {
+		$pref_value=$PluginTreeViewPreference->checkPreferenceValue($_SESSION['glpiID']);
 		if ($pref_value==1) {
 			$_SESSION["glpi_plugin_treeview_loaded"]=0;
 		}
@@ -76,7 +74,7 @@ function plugin_treeview_install(){
 	return true;
 }
 
-function plugin_treeview_uninstall(){
+function plugin_treeview_uninstall() {
 	global $DB;
 	
 	$query = "DROP TABLE `glpi_plugin_treeview_displayprefs`;";
@@ -94,10 +92,12 @@ function plugin_treeview_uninstall(){
 }
 
 // Hook done on before update item case
-function plugin_pre_item_update_treeview($input){
+function plugin_pre_item_update_treeview($input) {
+   
+   $PluginTreeViewItem=new PluginTreeViewItem();
+   
 	if (isset($input["_item_type_"]))
-		if (in_array($input["_item_type_"],array(COMPUTER_TYPE,
-				MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,SOFTWARE_TYPE,CONSUMABLE_ITEMTYPE,CARTRIDGE_ITEMTYPE))){
+		if (in_array($input["_item_type_"],$PluginTreeViewItem->getTypes())) {
 					
 				$ci = new CommonItem();
 				$ci->GetfromDB($input["_item_type_"],$input["id"]);
@@ -110,9 +110,10 @@ function plugin_pre_item_update_treeview($input){
 
 // Hook done on delete item case
 
-function plugin_pre_item_delete_treeview($input){
+function plugin_pre_item_delete_treeview($input) {
+
 	if (isset($input["_item_type_"]))
-		switch ($input["_item_type_"]){
+		switch ($input["_item_type_"]) {
 			case PROFILE_TYPE :
 				// Manipulate data if needed 
 				$PluginTreeViewProfile=new PluginTreeViewProfile;
@@ -122,13 +123,14 @@ function plugin_pre_item_delete_treeview($input){
 	return $input;
 }
 
-function plugin_change_entity_Treeview(){
+function plugin_change_entity_Treeview() {
+
 	if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 1))
 		echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 }
 
 // Define headings added by the plugin //
-function plugin_get_headings_treeview($type,$ID,$withtemplate){
+function plugin_get_headings_treeview($type,$ID,$withtemplate) {
 
 	global $LANG;
 	
@@ -152,38 +154,38 @@ function plugin_get_headings_treeview($type,$ID,$withtemplate){
 }
 
 // Define headings actions added by the plugin	 
-function plugin_headings_actions_treeview($type){
+function plugin_headings_actions_treeview($type) {
 	
-	if (in_array($type,array("prefs",PROFILE_TYPE))){
+	if (in_array($type,array("prefs",PROFILE_TYPE))) {
 		return array(
-				1 => "plugin_headings_treeview",
-				);
-	}else
+         1 => "plugin_headings_treeview",
+         );
+	} else
 		return false;	
 }
 
 // action heading
-function plugin_headings_treeview($type,$ID,$withtemplate=0){
+function plugin_headings_treeview($type,$ID,$withtemplate=0) {
 	global $CFG_GLPI,$LANG;
-
-		switch ($type){
-			case PROFILE_TYPE :
-				$prof=new PluginTreeViewProfile();	
-				if (!$prof->GetfromDB($ID))
-					plugin_treeview_createAccess($ID);				
-				$prof->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);
-			break;
-			default :
-				if ($type=="prefs"){
-					$pref = new PluginTreeViewPreference;
-					$pref_ID=plugin_treeview_checkIfPreferenceExists($_SESSION['glpiID']);
-					if (!$pref_ID)
-						$pref_ID=plugin_treeview_addDefaultPreference($_SESSION['glpiID']);
-					
-					$pref->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
-				}
-			break;
-		}
+   
+   $PluginTreeViewProfile=new PluginTreeViewProfile();
+   $PluginTreeViewPreference=new PluginTreeViewPreference();
+   
+   switch ($type) {
+      case PROFILE_TYPE :   
+         if (!$PluginTreeViewProfile->GetfromDB($ID))
+            $PluginTreeViewProfile->createAccess($ID);				
+         $PluginTreeViewProfile->showForm($CFG_GLPI["root_doc"]."/plugins/treeview/front/plugin_treeview.profile.php",$ID);
+         break;
+      default :
+         if ($type=="prefs") {
+            $pref_ID=$PluginTreeViewPreference->checkIfPreferenceExists($_SESSION['glpiID']);
+            if (!$pref_ID)
+               $pref_ID=$PluginTreeViewPreference->addDefaultPreference($_SESSION['glpiID']);
+            $PluginTreeViewPreference->showForm($CFG_GLPI['root_doc']."/plugins/treeview/front/plugin_treeview.preferences.form.php",$pref_ID,$_SESSION['glpiID']);
+         }
+         break;
+   }
 }
 
 ?>

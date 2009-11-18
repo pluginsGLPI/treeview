@@ -38,8 +38,7 @@
  * @param 
  * @return 
  **/
-function plugin_treeview_installing($version)
-{
+function plugin_treeview_installing($version) {
 	global $DB;
 	
 	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-$version-empty.sql";
@@ -52,8 +51,7 @@ function plugin_treeview_installing($version)
 	}
 }
 
-function plugin_treeview_Update($version)
-{
+function plugin_treeview_Update($version) {
 	global $DB;
 	
 	$DB_file = GLPI_ROOT ."/plugins/treeview/inc/plugin_treeview-$version-update.sql";

@@ -38,9 +38,9 @@ include (GLPI_ROOT . "/inc/includes.php");
 
 // Check if the freport plugin is installed
 $plugin = new Plugin();
-if ($plugin->isActivated("freport")){
+if ($plugin->isActivated("freport")) {
 	$filename = GLPI_ROOT . '/plugins/freport/index.php';
-	if (file_exists($filename)){
+	if (file_exists($filename)) {
 	$query = "SELECT `completename` 
 				FROM `glpi_locations` 
 				WHERE `id` = '". $_GET['id'] ."'";

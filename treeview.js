@@ -49,7 +49,7 @@ var ns6=document.getElementById&&!document.all
 if (ie5||ns6)
 var menuobj=document.getElementById("ie5menu")
 
-function showmenuie5(e){
+function showmenuie5(e) {
 //Find out how close the mouse is to the corner of the window
 var rightedge=ie5? document.body.clientWidth-event.clientX : window.innerWidth-e.clientX
 var bottomedge=ie5? document.body.clientHeight-event.clientY : window.innerHeight-e.clientY
@@ -72,13 +72,13 @@ menuobj.style.visibility="visible"
 return false
 }
 
-function hidemenuie5(e){
+function hidemenuie5(e) {
 menuobj.style.visibility="hidden"
 }
 
-function highlightie5(e){
+function highlightie5(e) {
 var firingobj=ie5? event.srcElement : e.target
-if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems"){
+if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems") {
 if (ns6&&firingobj.parentNode.className=="menuitems") firingobj=firingobj.parentNode //up one node
 firingobj.style.backgroundColor="highlight"
 firingobj.style.color="white"
@@ -87,9 +87,9 @@ window.status=event.srcElement.url
 }
 }
 
-function lowlightie5(e){
+function lowlightie5(e) {
 var firingobj=ie5? event.srcElement : e.target
-if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems"){
+if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems") {
 if (ns6&&firingobj.parentNode.className=="menuitems") firingobj=firingobj.parentNode //up one node
 firingobj.style.backgroundColor=""
 firingobj.style.color="black"
@@ -97,9 +97,9 @@ window.status=''
 }
 }
 
-function jumptoie5(e){
+function jumptoie5(e) {
 var firingobj=ie5? event.srcElement : e.target
-if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems"){
+if (firingobj.className=="menuitems"||ns6&&firingobj.parentNode.className=="menuitems") {
 if (ns6&&firingobj.parentNode.className=="menuitems") firingobj=firingobj.parentNode
 if (firingobj.getAttribute("target"))
 window.open(firingobj.getAttribute("url"),firingobj.getAttribute("target"))
