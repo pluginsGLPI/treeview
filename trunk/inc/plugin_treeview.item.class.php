@@ -28,46 +28,36 @@
  --------------------------------------------------------------------------
  
 // ----------------------------------------------------------------------
-// Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
-// Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
+// Original Author of file: CAILLAUD Xavier
+// Purpose of file: plugin accounts v1.6.0 - GLPI 0.80
 // ----------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')){
+if (!defined('GLPI_ROOT')) {
 	die("Sorry. You can't access directly to this file");
-	}
-
-function plugin_treeview_checkIfPreferenceExists($users_id)
-{
-	global $DB;
-	$result = $DB->query("SELECT `id` 
-							FROM `glpi_plugin_treeview_preferences` 
-							WHERE `users_id` = '".$users_id."' ");
-	if ($DB->numrows($result) > 0)
-		return $DB->result($result,0,"id");
-	else
-		return 0;	
 }
 
-function plugin_treeview_addDefaultPreference($users_id)
-{
-	$input["users_id"]=$users_id;
-	$input["show_on_load"]=0;
+class PluginTreeViewItem extends CommonDBTM {
 	
-	$pref = new PluginTreeViewPreference;
-	return $pref->add($input);
-}
+	function getTypes () {
+      static $types = NULL;
 
-function plugin_treeview_checkPreferenceValue($users_id)
-{
-	global $DB;
-	$result = $DB->query("SELECT * 
-							FROM `glpi_plugin_treeview_preferences` 
-							WHERE `users_id` = '".$users_id."' ");
-	if ($DB->numrows($result) > 0)
-		return $DB->result($result,0,"show_on_load");
-	else
-		return 0;	
+      if (is_null($types)) {
+         $types = array(
+            COMPUTER_TYPE,MONITOR_TYPE,NETWORKING_TYPE,PERIPHERAL_TYPE,PHONE_TYPE,PRINTER_TYPE,
+            SOFTWARE_TYPE
+         );
+      }
+
+      foreach($types as $key=>$type) {
+         if(!haveTypeRight($type,'r')) {
+            unset($types[$key]);
+         }
+      }
+
+      return $types;
+   }
+   
 }
 
 ?>

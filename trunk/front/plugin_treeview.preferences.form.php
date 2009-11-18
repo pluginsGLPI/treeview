@@ -35,7 +35,7 @@
 // ----------------------------------------------------------------------
  */
 
-if(!defined('GLPI_ROOT')){
+if(!defined('GLPI_ROOT')) {
 	define('GLPI_ROOT', '../../..'); 
 }
 include_once (GLPI_ROOT . "/inc/includes.php");

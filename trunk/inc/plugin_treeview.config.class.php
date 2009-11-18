@@ -33,58 +33,10 @@
 // ----------------------------------------------------------------------
  */
 
-/**
- * class plugin_treeview_display
- * Load and store the display configuration from the database
- */
-class PluginTreeViewDisplayPref extends CommonDBTM
-{
-	function __construct()
-	{
-		$this->table="glpi_plugin_treeview_displayprefs";
-	}
+if (!defined('GLPI_ROOT')) {
+	die("Sorry. You can't access directly to this file");
 }
-/**
- * class plugin_treeview_preference
- * Load and store the preference configuration from the database
- */
-class PluginTreeViewPreference extends CommonDBTM
-{
-	function __construct()
-	{
-		$this->table="glpi_plugin_treeview_preferences";
-		$this->type=-1;
-	}
-	
-	function showForm($target,$ID,$users_id){
-		global $LANG,$DB;
-		
-		$data=plugin_version_treeview();
-		$this->getFromDB($ID);
-		echo "<form action='".$target."' method='post'>";
-		echo "<div align='center'>";
 
-		echo "<table class='tab_cadre_fixe' cellpadding='5'>";
-		echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
-
-		echo "<tr class='tab_bg_1' align='center'><td>".$LANG['plugin_treeview']['setup'][31]."</td>";
-		echo "<td>";
-		dropdownyesno("show_on_load",$this->fields["show_on_load"]);
-		echo "</td></tr>";
-		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
-		echo "<input type='submit' name='update_user_preferences_treeview' value='".$LANG['buttons'][2]."' class='submit'>";
-		echo "<input type='hidden' name='id' value='".$ID."'>";
-		echo "</td></tr>";
-		echo "<tr class='tab_bg_1' align='center'><td colspan='2'>";
-		echo $LANG['plugin_treeview']['setup'][32];
-		echo "</td></tr>";
-		echo "</table>";
-
-		echo "</div>";
-		echo "</form>";
-		
-	}
-}
 /**
  * class plugin_treeview_Treeview_Config
  * Contains the display configuration of the treeview
@@ -155,51 +107,6 @@ class PluginTreeViewConfig
 		$this->iconFolder = 'pics/';
 		$this->itemName = 3;
 		$this->locationName = 0;
-	}
-}
-
-class PluginTreeViewProfile extends CommonDBTM {
-
-	function __construct () {
-		$this->table="glpi_plugin_treeview_profiles";
-		$this->type=-1;
-	}
-
-	//if profile deleted
-	function cleanProfiles($ID) {
-	
-		$this->delete(array('ID'=>$ID));
-	}
-
-	//profiles modification
-	function showForm($target,$ID){
-		global $LANG;
-
-		if (!haveRight("profile","r")) return false;
-		$canedit=haveRight("profile","w");
-		if ($ID){
-			$this->getFromDB($ID);
-		}
-		echo "<form action='".$target."' method='post'>";
-		echo "<table class='tab_cadre_fixe'>";
-
-		echo "<tr><th colspan='2' align='center'><strong>".$LANG['plugin_treeview']['profile'][0]." ".$this->fields["name"]."</strong></th></tr>";
-
-		echo "<tr class='tab_bg_2'>";
-		echo "<td>".$LANG['plugin_treeview']['profile'][3].":</td><td>";
-		dropdownNoneReadWrite("treeview",$this->fields["treeview"],1,1,0);
-		echo "</td>";
-		echo "</tr>";
-
-		if ($canedit){
-			echo "<tr class='tab_bg_1'>";
-			echo "<td align='center' colspan='2'>";
-			echo "<input type='hidden' name='id' value=$ID>";
-			echo "<input type='submit' name='update_user_profile' value=\"".$LANG['buttons'][7]."\" class='submit'>";
-			echo "</td></tr>";
-		}
-		echo "</table></form>";
-
 	}
 }
 

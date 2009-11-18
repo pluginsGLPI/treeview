@@ -33,7 +33,7 @@
 // ----------------------------------------------------------------------
  */
 
-if(!defined('GLPI_ROOT')){
+if(!defined('GLPI_ROOT')) {
 	define('GLPI_ROOT', '../../..');
 	$NEEDED_ITEMS=array("setup");
 	include (GLPI_ROOT . "/inc/includes.php");
@@ -43,13 +43,13 @@ checkRight("config","w");
 
 useplugin('treeview',true);
 
-if(isset($_POST["update"])){
+if(isset($_POST["update"])) {
 		checkRight("config","w");
 		$PluginTreeViewDisplayPrefPref = new PluginTreeViewDisplayPrefPref;
 		$PluginTreeViewDisplayPref->update($_POST);
 		glpi_header($_SERVER['HTTP_REFERER']);
 
-}else{
+} else {
 
 	$plugin = new Plugin();
 	if ($plugin->isActivated("treeview"))
