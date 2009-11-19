@@ -33,11 +33,16 @@
 // ----------------------------------------------------------------------
  */
 
+if (!defined('GLPI_ROOT')) {
+	die("Sorry. You can't access directly to this file");
+}
+
 /**
  * Install the plugin tables on the GLPI database
  * @param 
  * @return 
  **/
+
 function plugin_treeview_installing($version) {
 	global $DB;
 	
