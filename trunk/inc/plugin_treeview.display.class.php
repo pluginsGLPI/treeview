@@ -73,7 +73,7 @@ class PluginTreeViewDisplayPref extends CommonDBTM {
       $tab[2]['type'] = NETWORKING_TYPE;
       $tab[2]['name'] = $LANG['Menu'][1];
       $tab[2]['pic'] = 'page.gif';
-      $tab[2]['page'] = '/front/networking.php';
+      $tab[2]['page'] = '/front/networkequipment.php';
 
       /**
       * Peripheral
