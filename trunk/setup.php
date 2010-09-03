@@ -26,109 +26,119 @@
  along with GLPI; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  --------------------------------------------------------------------------
- 
+
 // ----------------------------------------------------------------------
 // Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
 // Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
 // ----------------------------------------------------------------------
  */
 
-include_once ("inc/plugin_treeview.profile.class.php");
-
 /**
  * Init the hooks of the plugins -Needed
- * @param 
- * @return 
  **/
 function plugin_init_treeview() {
-	global $PLUGIN_HOOKS,$CFG_GLPI;
-	
-	$PLUGIN_HOOKS['change_profile']['treeview'] = 'plugin_treeview_changeProfile';
+   global $PLUGIN_HOOKS, $CFG_GLPI;
+
+   Plugin::registerClass('PluginTreeviewProfile');
+   Plugin::registerClass('PluginTreeviewConfig');
+   Plugin::registerClass('PluginTreeviewPreference');
+
+   $PLUGIN_HOOKS['change_profile']['treeview'] = array('PluginTreeviewProfile','changeprofile');
+
+   if (isset($_SESSION["glpi_plugin_treeview_profile"])
+       && $_SESSION["glpi_plugin_treeview_profile"]["treeview"]) {
+
+      $PLUGIN_HOOKS['headings']['treeview']        = 'plugin_treeview_get_headings';
+      $PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_treeview_headings_actions';
+
+      $PLUGIN_HOOKS['pre_item_purge']['treeview']
+                              = array('Profile' => array('PluginTreeviewProfile','cleanProfiles'));
+   }
+
 	$PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
-	
-	if (isset($_SESSION["glpiID"])) {
-	
-	// Display a menu entry
-		if(plugin_treeview_haveRight("treeview","r")) {
-			$PLUGIN_HOOKS['menu_entry']['treeview'] = true;
-			$PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
-			$PLUGIN_HOOKS['pre_item_delete']['treeview'] = 'plugin_pre_item_delete_treeview';
-			$PLUGIN_HOOKS['headings']['treeview'] = 'plugin_get_headings_treeview';
-			$PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_headings_actions_treeview';		
-			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 0)) {
-				$_SESSION["glpi_plugin_treeview_loaded"] = 1;
-				glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
-				
-			}
-			
-			if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/logout.php" && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 1)) {
-				$PluginTreeViewDisplayPref=new PluginTreeViewDisplayPref();
-            $PluginTreeViewDisplayPref->hideTreeview();
-				
-			}		
-		}
-	// Config page
-		if (plugin_treeview_haveRight("treeview","r") || haveRight("config","w"))
-			$PLUGIN_HOOKS['config_page']['treeview'] = 'front/plugin_treeview.config.php';
-		
-	// Add specific files to add to the header : javascript or css
-		$PLUGIN_HOOKS['add_javascript']['treeview']="dtree.js";
-		$PLUGIN_HOOKS['add_css']['treeview']="dtree.css";
-		$PLUGIN_HOOKS['add_javascript']['treeview']="functions.js";
-		$PLUGIN_HOOKS['add_css']['treeview']="style.css";
-		$PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
-		$PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
-		
-	}
+
+   $PLUGIN_HOOKS['pre_item_update']['treeview'] = 'plugin_pre_item_update_treeview';
+   $PLUGIN_HOOKS['pre_item_purge']['treeview'] = array('Profile' => array('PluginTreeviewProfile', 'cleanProfile'),
+                                                       'Entity'  => array('PluginTreeviewEntity', 'cleanEntity'));
+
+
+//	if (isset($_SESSION["glpiID"])) {
+   if (isset($_SESSION["glpi_plugin_treeview_profile"])) {
+      $PLUGIN_HOOKS['menu_entry']['treeview'] = true;
+   }
+
+   if (plugin_treeview_haveRight("treeview","r")) {
+      if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/front/central.php"
+          && (isset($_SESSION["glpi_plugin_treeview_loaded"])
+          && $_SESSION["glpi_plugin_treeview_loaded"] == 0)) {
+
+            $_SESSION["glpi_plugin_treeview_loaded"] = 1;
+            glpi_header(GLPI_ROOT."/plugins/treeview/index.php");
+      }
+
+      if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/logout.php"
+          && (isset($_SESSION["glpi_plugin_treeview_loaded"])
+          && $_SESSION["glpi_plugin_treeview_loaded"] == 1)) {
+
+         $config = new PluginTreeviewConfig();
+         $config->hideTreeview();
+      }
+   }
+
+   // Config page
+   if (haveRight("config","w") || haveRight("profile","w")) {
+      $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
+
+      // Add specific files to add to the header : javascript or css
+      $PLUGIN_HOOKS['add_javascript']['treeview']="dtree.js";
+      $PLUGIN_HOOKS['add_css']['treeview']="dtree.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']="functions.js";
+      $PLUGIN_HOOKS['add_css']['treeview']="style.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']="treeview.js";
+      $PLUGIN_HOOKS['add_css']['treeview']="treeview.css";
+   }
 }
+
+
+function plugin_treeview_haveRight($module,$right) {
+   $matches=array(
+         ""  => array("","r","w"), // ne doit pas arriver normalement
+         "r" => array("r","w"),
+         "w" => array("w"),
+         "1" => array("1"),
+         "0" => array("0","1"), // ne doit pas arriver non plus
+            );
+   if (isset($_SESSION["glpi_plugin_treeview_profile"][$module])&&in_array($_SESSION["glpi_plugin_treeview_profile"][$module],$matches[$right]))
+      return true;
+   else return false;
+}
+
 
 /**
  * Get the name and the version of the plugin - Needed
- * @param 
- * @return 
  **/
 function plugin_version_treeview() {
-	global $LANG;
-	
-	return array (
-		'name' => $LANG['plugin_treeview']['title'][0],
-		'version' => '1.3.0',
-		'author'=>'AL-Rubeiy Hussein, Xavier Caillaud',
-		'homepage'=>'https://forge.indepnet.net/projects/show/treeview',
-		'minGlpiVersion' => '0.80',// For compatibility / no install in version < 0.72
-	);
+   global $LANG;
+
+   return array('name'           => $LANG['plugin_treeview']['title'][0],
+                'version'        => '1.4.0',
+                'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
+                'homepage'       => 'https://forge.indepnet.net/projects/show/treeview',
+                'minGlpiVersion' => '0.78'); // For compatibility / no install in version < 0.78
 }
 
-// Optional : check prerequisites before install : may print errors or add to message after redirect
+
 function plugin_treeview_check_prerequisites() {
-	if (GLPI_VERSION>=0.80) {
-		return true;
-	} else {
-		echo "GLPI version not compatible need 0.80";
-	}
+
+   if (GLPI_VERSION >= 0.78) {
+      return true;
+   }
+   echo "This plugin requires GLPI 0.78 or later";
 }
 
-// Uninstall process for plugin : need to return true if succeeded : may display messages or add to message after redirect
+
 function plugin_treeview_check_config() {
-	return true;
-}
-
-function plugin_treeview_changeProfile() {
-	$PluginTreeViewProfile=new PluginTreeViewProfile();
-	$PluginTreeViewProfile->changeProfile();
-}
-
-function plugin_treeview_haveRight($module,$right) {
-	$matches=array(
-			""  => array("","r","w"), // ne doit pas arriver normalement
-			"r" => array("r","w"),
-			"w" => array("w"),
-			"1" => array("1"),
-			"0" => array("0","1"), // ne doit pas arriver non plus
-		      );
-	if (isset($_SESSION["glpi_plugin_treeview_profile"][$module])&&in_array($_SESSION["glpi_plugin_treeview_profile"][$module],$matches[$right]))
-		return true;
-	else return false;
+   return true;
 }
 
 ?>

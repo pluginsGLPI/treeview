@@ -26,7 +26,7 @@
  along with GLPI; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  --------------------------------------------------------------------------
- 
+
 // ----------------------------------------------------------------------
 // Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
 // Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
@@ -35,8 +35,8 @@
 
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
-
-useplugin('treeview',true);
+require "inc/config.class.php";
+//useplugin('treeview',true);
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">";
 echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
@@ -65,8 +65,8 @@ echo "<input type='hidden' name='openedType' value=''>";
 echo "</form>";
 
 // Print the tree
-$PluginTreeViewDisplayPref=new PluginTreeViewDisplayPref();
-$PluginTreeViewDisplayPref->buildTreeview();
+$config = new PluginTreeviewConfig();
+$config->buildTreeview();
 
 echo "</body>";
 echo "</html>";
