@@ -51,86 +51,86 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $this->getFromDB($id);
       echo "<form method='post' action='./config.form.php' method='post'>";
       echo "<table class='tab_cadre' cellpadding='5'>";
-      echo "<tr><th colspan='2'>".$LANG['plugin_treeview']['setup'][6]."&nbsp;: </th></tr>";
+      echo "<tr><th colspan='2'>".$LANG['plugin_treeview']['setup'][1]."&nbsp;: </th></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][9]."</td>";
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][4]."</td>";
       echo "<td><select name='target'>";
       echo "<option value='_blank' ".($this->fields["target"]=='_blank'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][17]."</option>";
+             $LANG['plugin_treeview']['setup'][10]."</option>";
       echo "<option value='right' ".($this->fields["target"]=='right'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][20]."</option>";
+             $LANG['plugin_treeview']['setup'][11]."</option>";
       echo "</select></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".$LANG['plugin_treeview']['setup'][10]."</td>";
+      echo "<td>".$LANG['plugin_treeview']['setup'][5]."</td>";
       echo "<td><select name='folderLinks'>";
       echo "<option value='0' ".($this->fields["folderLinks"]==0?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][8]."</option>";
+             $LANG['plugin_treeview']['setup'][3]."</option>";
       echo "<option value='1' ".($this->fields["folderLinks"]==1?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][7]."</option>";
+             $LANG['plugin_treeview']['setup'][2]."</option>";
       echo "</select></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".$LANG['plugin_treeview']['setup'][11]."</td>";
+      echo "<td>".$LANG['plugin_treeview']['setup'][6]."</td>";
       echo "<td><select name='useSelection'>";
       echo "<option value='1' ".($this->fields["useSelection"]==1?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][7]."</option>";
+             $LANG['plugin_treeview']['setup'][2]."</option>";
       echo "<option value='0' ".($this->fields["useSelection"]==0?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][8]."</option>";
+             $LANG['plugin_treeview']['setup'][3]."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][13]."</td>";
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][7]."</td>";
       echo "<td><select name='useLines'>";
       echo "<option value='1' ".($this->fields["useLines"]==1?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][7]."</option>";
+             $LANG['plugin_treeview']['setup'][2]."</option>";
       echo "<option value='0' ".($this->fields["useLines"]==0?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][8]."</option>";
+             $LANG['plugin_treeview']['setup'][3]."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][14]."</td>";
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][8]."</td>";
       echo "<td>";
       echo "<select name='useIcons'>";
       echo "<option value='1' ".($this->fields["useIcons"]==1?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][7]."</option>";
+             $LANG['plugin_treeview']['setup'][2]."</option>";
       echo "<option value='0' ".($this->fields["useIcons"]==0?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][8]."</option>";
+             $LANG['plugin_treeview']['setup'][3]."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][16];
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][9];
       echo "<td>";
       echo "<select name='closeSameLevel'>";
       echo "<option value='1' ".($this->fields["closeSameLevel"]==1?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][7]."</option>";
+             $LANG['plugin_treeview']['setup'][2]."</option>";
       echo "<option value='0' ".($this->fields["closeSameLevel"]==0?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][8]."</option>";
+             $LANG['plugin_treeview']['setup'][3]."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][21]."</td>";
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][12]."</td>";
       echo "<td><select name='itemName'>";
       echo "<option value='0' ".($this->fields["itemName"]=='0'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][23]."</option>";
+             $LANG['plugin_treeview']['setup'][14]."</option>";
       echo "<option value='1' ".($this->fields["itemName"]=='1'? " selected ":"").">".
-             $LANG['plugin_treeview']['setup'][24]."</option>";
+             $LANG['plugin_treeview']['setup'][15]."</option>";
       echo "<option value='2' ".($this->fields["itemName"]=='2'? " selected ":"").">".
-             $LANG['plugin_treeview']['setup'][23].' / '.$LANG['plugin_treeview']['setup'][24].
+             $LANG['plugin_treeview']['setup'][14].' / '.$LANG['plugin_treeview']['setup'][15].
             "</option>";
       echo "<option value='3' ".($this->fields["itemName"]=='3'? " selected ":"").">".
-             $LANG['plugin_treeview']['setup'][24].' / '.$LANG['plugin_treeview']['setup'][23].
+             $LANG['plugin_treeview']['setup'][15].' / '.$LANG['plugin_treeview']['setup'][14].
             "</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][22]."</td>";
+      echo "<tr class='tab_bg_1'><td>".$LANG['plugin_treeview']['setup'][13]."</td>";
       echo "<td>";
       echo "<select name='locationName'>";
       echo "<option value='0' ".($this->fields["locationName"]=='0'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][25]."</option>";
+             $LANG['plugin_treeview']['setup'][16]."</option>";
       echo "<option value='1' ".($this->fields["locationName"]=='1'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][26]."</option>";
+             $LANG['plugin_treeview']['setup'][17]."</option>";
       echo "<option value='2' ".($this->fields["locationName"]=='2'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][25].' / '.$LANG['plugin_treeview']['setup'][27].
+             $LANG['plugin_treeview']['setup'][16].' / '.$LANG['plugin_treeview']['setup'][18].
             "</option>";
       echo "<option value='3' ".($this->fields["locationName"]=='3'?" selected ":"").">".
-             $LANG['plugin_treeview']['setup'][26].' / '.$LANG['plugin_treeview']['setup'][27].
+             $LANG['plugin_treeview']['setup'][17].' / '.$LANG['plugin_treeview']['setup'][18].
             "</option>";
       echo "</select></td></tr>";
 
@@ -182,23 +182,11 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $tab[5]['pic']  = 'software.gif';
       $tab[5]['page'] = '/front/software.php';
 
-      // Cartridge
-      $tab[6]['type'] = 'CartridgeItem';
-      $tab[6]['name'] = $LANG['Menu'][21];
-      $tab[6]['pic']  = 'page.gif';
-      $tab[6]['page'] = '/front/cartridgeitem.php';
-
       // Phone
       $tab[6]['type'] = 'Phone';
       $tab[6]['name'] = $LANG['Menu'][34];
       $tab[6]['pic']  = 'phone.gif';
       $tab[6]['page'] = '/front/phone.php';
-
-      // Consumable
-      $tab[8]['type'] = 'Consumable';
-      $tab[8]['name'] = $LANG['Menu'][32];
-      $tab[8]['pic']  = 'cd.gif';
-      $tab[8]['page'] = '/front/consumableitem.php';
 
       return $tab;
    }
@@ -252,6 +240,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
              'http://www.w3.org/TR/html4/frameset.dtd'>";
       echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
       echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
+
       // Send extra expires header if configured
       echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
       echo "<meta http-equiv='Pragma' content='no-cache'>\n";
@@ -260,6 +249,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
              $CFG_GLPI["root_doc"]."/css/print.css' >\n";
       echo "<link rel='shortcut icon' type='images/x-icon' href='".
              $CFG_GLPI["root_doc"]."/pics/favicon.ico' >\n";
+
       // Must be always the top window
       echo "<script type=\"text/javascript\">";
          echo "if (top != self)";
@@ -291,11 +281,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
              "/plugins/treeview/dtree.js'></script>\n";
 
       echo "<div class='dtree'>";
-
       echo "<script type='text/javascript'>";
-
       $this->getNodesFromDb();
-
       echo "</script>";
       echo "</div>";
    }
@@ -305,14 +292,14 @@ class PluginTreeviewConfig  extends CommonDBTM {
     * Requests the nodes from the GLPI database
     **/
    function getNodesFromDb() {
-      global $LINK_ID_TABLE, $INFOFORM_PAGES, $DB;
+      global $DB;
 
       $searchopt = array();
       $searchopt = $this->getSearchOptions();
 
       // The tree object
-      echo "var d = new dTree('d');";
-      echo "d.add(0,-1,'GLPI Desktop');";
+      echo "var d = new dTree('d');\n";
+      echo "d.add(0,-1,'GLPI Desktop');\n";
 
       $config = new PluginTreeviewConfig();
 
@@ -331,12 +318,12 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
 
       // Load the settings in JavaSript so that dTree script can apply them
-      echo "d.config.target = '" .$target. "';";
-      echo "d.config.folderLinks = " .$folderLinks. ";";
-      echo "d.config.useSelection = " .$useSelection. ";";
-      echo "d.config.useLines = " .$useLines. ";";
-      echo "d.config.useIcons = " .$useIcons. ";";
-      echo "d.config.closeSameLevel = " .$closeSameLevel. ";";
+      echo "d.config.target = '" .$target. "';\n";
+      echo "d.config.folderLinks = " .$folderLinks. ";\n";
+      echo "d.config.useSelection = " .$useSelection. ";\n";
+      echo "d.config.useLines = " .$useLines. ";\n";
+      echo "d.config.useIcons = " .$useIcons. ";\n";
+      echo "d.config.closeSameLevel = " .$closeSameLevel. ";\n";
 
       $dontLoad = 'false';
 
@@ -360,10 +347,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
       }
 
       // If an item group is requested, then save its type to use it later in the openTo function
-      if (isset($_GET['openedType'])
-          && is_numeric($_GET['openedType'])
-          && $_GET['openedType'] != "") {
-
+      if (isset($_GET['openedType']) && $_GET['openedType'] != "") {
          $openedType = $_GET['openedType'];
       } else {
          $openedType = -1;
@@ -398,32 +382,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
                      $l_name .= ' (' . $r['comment'] . ')';
                   }
 
-               } else if($locationName == 3) {
+               } else if ($locationName == 3) {
                   $l_name = $r['completename'];
                   if ($r['comment'] != "") {
                      $l_name .= ' (' . $r['comment'] . ')';
                   }
                }
 
-               $plugin = new Plugin();
-               if ($plugin->isActivated("freport")) {
-                  $locationLink = 'front/plugin_treeview.freport.php?id=' . $r['id'];
-               } else {
-                  $locationLink = '';
-               }
-
                // Is this location requested by the user to be opened
                if (in_array($r['id'], $nodes)) {
                   echo "d.add(".$r['id'].", ".$r['locations_id'].", \"".strtr($l_name,$trans).
-                              "\", true, -1, '" .$locationLink. "');\n";
-                  // If the items parent node is closed, then request only one item
-                  //if($nodes[$n+1] <= $max_id) {
-                  // $limit = " LIMIT 0, 10";
-                  //}
-                  // Else display all the items
-                  //else {
+                              "\", true, -1,'');\n";
                   $dontLoad = 'true';
-                  //}
                   // Then add aloso its items
                   for ($a=0 ; $a<count($searchopt) ; $a++) {
                      $type = $searchopt[$a]['type'];
@@ -432,25 +402,15 @@ class PluginTreeviewConfig  extends CommonDBTM {
                      $query = "SELECT *
                                FROM `$itemtable`
                                WHERE `locations_id` = '".$r['id']."'
-                                     AND `is_deleted` = '0' ";
+                                     AND `is_deleted` = '0'
+                                     AND `is_template` = '0'
+                                     AND `entities_id`= '" . $_SESSION["glpiactive_entity"] . "'
+                               ORDER BY `$itemtable`.`name`";
 
-                     if ($type == 'Computer'             || $type == 'Monitor'
-                         || $type == 'NetworkEquipment'  || $type == 'Peripharal'
-                         || $type == 'Printer'           || $type == 'Software'
-                         || $type == 'Phone') {
-
-                        $query .= " AND `is_template` = '0'
-                                    AND `entities_id`= '" . $_SESSION["glpiactive_entity"] . "'";
-                     }
-                     $query .= " ORDER BY `$itemtable`.`name`";
-                     //echo "document.write(\"<b>".$query."\"+'</b><br>');";
                      $result_1 = $DB->query($query);
                      if ($DB->numrows($result_1)) {
                         $pid = $tv_id;
                         $field_num = 3;
-                        if ($type == 'CartridgeItem' || $type == 'Consumable') {
-                           $field_num = 6;
-                        }
 
                         $query_location = "SELECT `completename`
                                            FROM `glpi_locations`
@@ -459,13 +419,14 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         while ($row = $DB->fetch_assoc($result_location)) {
                            $name_location= $row['completename'];
                         }
-                        $getParam = '?contains[0]=' .str_replace("'","\'",$name_location).
-                                    '&field[0]=' .$field_num. '&sort=1&is_deleted=0&start=0';
+
+                        $getParam = '?searchtype[0]=equals&contains[0]=' .$r['id'].
+                                    '&field[0]=' .$field_num. '&sort=1&is_deleted=0&start=0&reset=reset';
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($searchopt[$a]['name'], $trans).
-                             "\", $dontLoad, " .$searchopt[$a]['type'].", '" .GLPI_ROOT .
+                             "\", $dontLoad, '" .$searchopt[$a]['type']."', '" .GLPI_ROOT .
                              $searchopt[$a]['page'] . $getParam . "', '', '', 'pics/" .
-                             $searchopt[$a]['pic']. "', 'pics/". $searchopt[$a]['pic'] . "');";
+                             $searchopt[$a]['pic']. "', 'pics/". $searchopt[$a]['pic'] . "');\n";
 
                         if ($openedType == $type && $nodes[count($nodes)-1] == $tv_id) {
                            $openedType = $tv_id;
@@ -504,33 +465,50 @@ class PluginTreeviewConfig  extends CommonDBTM {
                            }
                         }
                         // Add the item
-                        echo "d.add($tv_id++, $pid, \"" . strtr($i_name,$trans) . "\", true, -1, '" .
+                        echo "d.add(".$tv_id++.", $pid, \"" . strtr($i_name,$trans) . "\", true, -1, '" .
                                     getItemTypeFormURL($type). "?id=" .$r_1['id'].
-                                    "', '', '', 'pics/node.gif', 'pics/node.gif');";
+                                    "', '', '', 'pics/node.gif', 'pics/node.gif');\n";
                      }
                   }
 
                // Add only the location without its items
                } else {
                   echo "d.add(".$r['id'].",".$r['locations_id'].",\"".strtr($l_name,$trans).
-                              "\", false, -1, '" .$locationLink. "', '', '', '', '', false, true);";
+                              "\", false, -1,'', '', '', '', '', false, true);\n";
                }
             }
          }
       }
 
       // Print the node from JavaScript
-      echo "document.write(d);";
-      //echo "document.write('".$openedType."');";
-
+      echo "document.write(d);\n";
 
       // Open the tree to the desired node
       if ($openedType != -1) {
-         echo "d.openTo(" .$openedType. ");";
+         echo "d.openTo(" .$openedType. ");\n";
       } else {
-         echo "d.openTo(" .$nodes[count($nodes)-1]. ");";
+         echo "d.openTo(" .$nodes[count($nodes)-1]. ");\n";
       }
    }
+
+
+   static function getTypes () {
+      static $types = NULL;
+
+      if (is_null($types)) {
+         $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
+                        'Software');
+      }
+
+      foreach ($types as $key=>$type) {
+         $item = new $type();
+         if (!$item->canGlobal('r')) {
+            unset($types[$key]);
+         }
+      }
+      return $types;
+   }
+
 }
 
 ?>

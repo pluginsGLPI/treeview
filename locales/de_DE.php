@@ -26,7 +26,7 @@
  along with GLPI; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  --------------------------------------------------------------------------
- 
+
 // ----------------------------------------------------------------------
 // Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
 // Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
@@ -38,29 +38,27 @@ $title="Baumstruktur";
 $LANG['plugin_treeview']['title'][0]="".$title."";
 
 $LANG['plugin_treeview']['profile'][0] = "Rechteverwaltung";
-$LANG['plugin_treeview']['profile'][3] = "Baumstruktur benutzen";
+$LANG['plugin_treeview']['profile'][1] = "Baumstruktur benutzen";
 
-$LANG['plugin_treeview']['setup'][6] = "Ansicht";
-$LANG['plugin_treeview']['setup'][7] = "Ja";
-$LANG['plugin_treeview']['setup'][8] = "Nein";
-$LANG['plugin_treeview']['setup'][9] = "Zielfenster für alle Verweise";
-$LANG['plugin_treeview']['setup'][10] = "Ordner können Verweise enthalten";
-$LANG['plugin_treeview']['setup'][11] = "Knoten können markiert werden";
-$LANG['plugin_treeview']['setup'][13] = "Der Baum wird mit Linien dargestellt";
-$LANG['plugin_treeview']['setup'][14] = "Der Baum wird mit Symbolen dargestellt";
-$LANG['plugin_treeview']['setup'][16] = "Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
-$LANG['plugin_treeview']['setup'][17] = "Neues Fenster";
-$LANG['plugin_treeview']['setup'][20] = "Die Zentralkonsole";
-$LANG['plugin_treeview']['setup'][21] = "Materialname";
-$LANG['plugin_treeview']['setup'][22] = "Standortname";
-$LANG['plugin_treeview']['setup'][23] = "Name";
-$LANG['plugin_treeview']['setup'][24] = "Inventarnummer";
-$LANG['plugin_treeview']['setup'][25] = "Kurzer Name";
-$LANG['plugin_treeview']['setup'][26] = "Langer Name";
-$LANG['plugin_treeview']['setup'][27] = "Kommentar";
-$LANG['plugin_treeview']['setup'][31] = "Das Plugin Baumstruktur beim Start von GLPI mitladen";
-$LANG['plugin_treeview']['setup'][32] = "Warnung: Ist mehr als ein Plugin zum automatischen Laden beim Start aktiviert, wird nur das erste geladen";
-
-$LANG['plugin_treeview']['warning'][0] = "Das Plugin Finanzrapport (glpi-freport) wurde nicht gefunden";
+$LANG['plugin_treeview']['setup'][1] = "Ansicht";
+$LANG['plugin_treeview']['setup'][2] = "Ja";
+$LANG['plugin_treeview']['setup'][3] = "Nein";
+$LANG['plugin_treeview']['setup'][4] = "Zielfenster für alle Verweise";
+$LANG['plugin_treeview']['setup'][5] = "Ordner können Verweise enthalten";
+$LANG['plugin_treeview']['setup'][6] = "Knoten können markiert werden";
+$LANG['plugin_treeview']['setup'][7] = "Der Baum wird mit Linien dargestellt";
+$LANG['plugin_treeview']['setup'][8] = "Der Baum wird mit Symbolen dargestellt";
+$LANG['plugin_treeview']['setup'][9] = "Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
+$LANG['plugin_treeview']['setup'][10] = "Neues Fenster";
+$LANG['plugin_treeview']['setup'][11] = "Die Zentralkonsole";
+$LANG['plugin_treeview']['setup'][12] = "Materialname";
+$LANG['plugin_treeview']['setup'][13] = "Standortname";
+$LANG['plugin_treeview']['setup'][14] = "Name";
+$LANG['plugin_treeview']['setup'][15] = "Inventarnummer";
+$LANG['plugin_treeview']['setup'][16] = "Kurzer Name";
+$LANG['plugin_treeview']['setup'][17] = "Langer Name";
+$LANG['plugin_treeview']['setup'][18] = "Kommentar";
+$LANG['plugin_treeview']['setup'][19] = "Das Plugin Baumstruktur beim Start von GLPI mitladen";
+$LANG['plugin_treeview']['setup'][20] = "Warnung: Ist mehr als ein Plugin zum automatischen Laden beim Start aktiviert, wird nur das erste geladen";
 
 ?>

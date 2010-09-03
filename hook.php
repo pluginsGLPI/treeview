@@ -39,24 +39,24 @@ function plugin_treeview_install() {
    // version 1.0
    if (TableExists("glpi_plugin_treeview_display")
        && !TableExists("glpi_plugin_treeview_preference")) {
-         plugin_treeview_upgrade10to11;
+         plugin_treeview_upgrade10to11();
    }
 
    // version 1.1
    if (TableExists("glpi_plugin_treeview_profiles")
        && FieldExists("glpi_plugin_treeview_profiles", "interface")) {
-      plugin_treeview_upgrade11to12;
+      plugin_treeview_upgrade11to12();
    }
 
    // version 1.2
    if (!TableExists("glpi_plugin_treeview_displayprefs")
        && TableExists("glpi_plugin_treeview_profiles")) {
-      plugin_treeview_upgrade12to13;
+      plugin_treeview_upgrade12to13();
    }
 
    // version 1.3
    if (TableExists("glpi_plugin_treeview_preferences")) {
-      plugin_treeview_upgrade13to14;
+      plugin_treeview_upgrade13to14();
    }
 
    // not installed
@@ -105,18 +105,6 @@ function plugin_treeview_install() {
       $DB->query($query) or die($DB->error());
 
    }
-/*
-	$PluginTreeViewProfile=new PluginTreeViewProfile();
-	$PluginTreeViewProfile->createFirstAccess($_SESSION['glpiactiveprofile']['id']);
-   $PluginTreeViewPreference=new PluginTreeViewPreference();
-	$pref_ID=$PluginTreeViewPreference->checkIfPreferenceExists($_SESSION['glpiID']);
-	if ($pref_ID) {
-		$pref_value=$PluginTreeViewPreference->checkPreferenceValue($_SESSION['glpiID']);
-		if ($pref_value==1) {
-			$_SESSION["glpi_plugin_treeview_loaded"]=0;
-		}
-	}
-   */
 
    // No autoload when plugin is not activated
    require 'inc/profile.class.php';
@@ -255,41 +243,30 @@ function plugin_treeview_uninstall() {
 
 
 // Hook done on before update item case
-function plugin_pre_item_update_treeview($input) {
+function plugin_item_update_treeview($item) {
 
-   $PluginTreeViewItem=new PluginTreeViewItem();
-
-	if (isset($input["_item_type_"]))
-		if (in_array($input["_item_type_"],$PluginTreeViewItem->getTypes())) {
-
-				$ci = new CommonItem();
-				$ci->GetfromDB($input["_item_type_"],$input["id"]);
-
-				if (isset($input["locations_id"]) && isset($ci->obj->fields["locations_id"]) && $input["locations_id"]!=$ci->obj->fields["locations_id"])
-          echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
-		}
-	return $input;
+   if (in_array('locations_id', $item->updates)) {
+      echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+   }
 }
 
 
-
-function plugin_pre_item_delete_treeview($input) {
-
-	if (isset($input["_item_type_"]))
-		switch ($input["_item_type_"]) {
-			case PROFILE_TYPE :
-				// Manipulate data if needed
-				$PluginTreeViewProfile=new PluginTreeviewProfile;
-				$PluginTreeViewProfile->cleanProfiles($input["id"]);
-				break;
-		}
-	return $input;
+/*
+ * non affichage des objets mis à la corbeille
+ */
+function plugin_treeview_reload($item) {
+   echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
 }
+
 
 function plugin_change_entity_Treeview() {
 
-	if ($_SESSION['glpiactiveprofile']['interface'] == 'central' && (isset($_SESSION["glpi_plugin_treeview_loaded"]) && $_SESSION["glpi_plugin_treeview_loaded"] == 1))
-		echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+   if ($_SESSION['glpiactiveprofile']['interface'] == 'central'
+       && (isset($_SESSION["glpi_plugin_treeview_loaded"])
+       && $_SESSION["glpi_plugin_treeview_loaded"] == 1)) {
+
+      echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+   }
 }
 
 
@@ -300,14 +277,11 @@ function plugin_treeview_get_headings($item,$withtemplate) {
    if ($type == 'Preference') {
       return array(1 => $LANG['plugin_treeview']['title'][0]);
 
-   } else if ($type == 'Profile') {
+   }
+
+   if ($type == 'Profile') {
       if ($item->fields['interface']!='helpdesk') {
          return array(1 => $LANG['plugin_treeview']['title'][0]);
-      }
-
-   } else if (isset($PLUGIN_HOOKS['plugin_treeview'][$type])) {
-      if ($item->getField('id') && !$withtemplate) {
-         return array( 1 => $LANG['plugin_treeview']['title'][0]);
       }
    }
    return false;
@@ -323,9 +297,9 @@ function plugin_treeview_headings_actions($item) {
             return array(1 => "plugin_treeview_headings");
          }
          break;
+
       case 'Preference' :
          return array(1 => "plugin_treeview_headings");
-
    }
    return false;
 }
