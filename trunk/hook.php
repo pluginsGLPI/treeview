@@ -180,9 +180,9 @@ function plugin_treeview_upgrade12to13() {
          $query .= " CHANGE `itemName` `itemName` int(11) NOT NULL default '0',";
       }
       if (FieldExists("glpi_plugin_treeview_displayprefs", "locationName")) {
-         $query .= " CHANGE `locationName` `locationName` int(11) NOT NULL default '0',";
+         $query .= " CHANGE `locationName` `locationName` int(11) NOT NULL default '0'";
       }
-      $query .= " ADD PRIMARY KEY (`id`)";
+
       $DB->query($query) or die($DB->error());
    }
 
@@ -190,7 +190,7 @@ function plugin_treeview_upgrade12to13() {
       $query = "ALTER TABLE `glpi_plugin_treeview_profiles` ";
 
       if (FieldExists("glpi_plugin_treeview_profiles", "ID")) {
-         $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
+         $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment";
       }
       $DB->query($query) or die($DB->error());
    }
