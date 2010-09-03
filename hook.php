@@ -159,7 +159,7 @@ function plugin_treeview_upgrade12to13() {
       $query = "ALTER TABLE `glpi_plugin_treeview_displayprefs` ";
 
       if (FieldExists("glpi_plugin_treeview_displayprefs", "ID")) {
-         $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment";
+         $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
       }
       if (FieldExists("glpi_plugin_treeview_displayprefs", "folderLinks")) {
          $query .= " CHANGE `folderLinks` `folderLinks` tinyint(1) NOT NULL default '0',";
