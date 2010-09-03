@@ -26,7 +26,7 @@
  along with GLPI; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  --------------------------------------------------------------------------
- 
+
 // ----------------------------------------------------------------------
 // Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
 // Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
@@ -38,29 +38,27 @@ $title="Tree View";
 $LANG['plugin_treeview']['title'][0] = "".$title."";
 
 $LANG['plugin_treeview']['profile'][0] = "Rights management";
-$LANG['plugin_treeview']['profile'][3] = "Use the tree";
+$LANG['plugin_treeview']['profile'][1] = "Use the tree";
 
-$LANG['plugin_treeview']['setup'][6] = "Display";
-$LANG['plugin_treeview']['setup'][7] = "Yes";
-$LANG['plugin_treeview']['setup'][8] = "No";
-$LANG['plugin_treeview']['setup'][9] = "Target for all the nodes";
-$LANG['plugin_treeview']['setup'][10] = "Should folders be links";
-$LANG['plugin_treeview']['setup'][11] = "Nodes can be highlighted";
-$LANG['plugin_treeview']['setup'][13] = "Tree is drawn with lines";
-$LANG['plugin_treeview']['setup'][14] = "Tree is drawn with icons";
-$LANG['plugin_treeview']['setup'][16] = "Only one node within a parent<br>can be expanded at the same time.";
-$LANG['plugin_treeview']['setup'][17] = "New window";
-$LANG['plugin_treeview']['setup'][20] = "The central console";
-$LANG['plugin_treeview']['setup'][21] = "Item name";
-$LANG['plugin_treeview']['setup'][22] = "Location name";
-$LANG['plugin_treeview']['setup'][23] = "Name";
-$LANG['plugin_treeview']['setup'][24] = "Inventory number";
-$LANG['plugin_treeview']['setup'][25] = "Short name";
-$LANG['plugin_treeview']['setup'][26] = "Long name";
-$LANG['plugin_treeview']['setup'][27] = "Comment";
-$LANG['plugin_treeview']['setup'][31] = "Launch the plugin Treeview with GLPI launching";
-$LANG['plugin_treeview']['setup'][32] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
-
-$LANG['plugin_treeview']['warning'][0] = "freport plugin does not exist";
+$LANG['plugin_treeview']['setup'][1] = "Display";
+$LANG['plugin_treeview']['setup'][2] = "Yes";
+$LANG['plugin_treeview']['setup'][3] = "No";
+$LANG['plugin_treeview']['setup'][4] = "Target for all the nodes";
+$LANG['plugin_treeview']['setup'][5] = "Should folders be links";
+$LANG['plugin_treeview']['setup'][6] = "Nodes can be highlighted";
+$LANG['plugin_treeview']['setup'][7] = "Tree is drawn with lines";
+$LANG['plugin_treeview']['setup'][8] = "Tree is drawn with icons";
+$LANG['plugin_treeview']['setup'][9] = "Only one node within a parent<br>can be expanded at the same time.";
+$LANG['plugin_treeview']['setup'][10] = "New window";
+$LANG['plugin_treeview']['setup'][11] = "The central console";
+$LANG['plugin_treeview']['setup'][12] = "Item name";
+$LANG['plugin_treeview']['setup'][13] = "Location name";
+$LANG['plugin_treeview']['setup'][14] = "Name";
+$LANG['plugin_treeview']['setup'][15] = "Inventory number";
+$LANG['plugin_treeview']['setup'][16] = "Short name";
+$LANG['plugin_treeview']['setup'][17] = "Long name";
+$LANG['plugin_treeview']['setup'][18] = "Comment";
+$LANG['plugin_treeview']['setup'][19] = "Launch the plugin Treeview with GLPI launching";
+$LANG['plugin_treeview']['setup'][20] = "Warning : If there are more than one plugin which be loaded at startup, then only the first will be used";
 
 ?>

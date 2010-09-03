@@ -70,30 +70,14 @@ class PluginTreeviewProfile extends CommonDBTM {
          unset($_SESSION["glpi_plugin_treeview_profile"]);
       }
 
-   require 'preference.class.php';
+//   require 'preference.class.php';
 
-   $Pref = new PluginTreeviewPreference();
-   $pref_ID = $Pref->checkIfPreferenceExists($_SESSION['glpiID']);
-   if ($pref_ID) {
+      $Pref = new PluginTreeviewPreference();
       $pref_value = $Pref->checkPreferenceValue($_SESSION['glpiID']);
       if ($pref_value==1) {
-         $_SESSION["glpi_plugin_treeview_loaded"] = 0;
-      }
-   }
-   }
-
-
-   function checkRight($module, $right) {
-      global $CFG_GLPI;
-
-      if (!plugin_treeview_haveRight($module, $right)) {
-         // Gestion timeout session
-         if (!isset ($_SESSION["glpiID"])) {
-            glpi_header($CFG_GLPI["root_doc"] . "/index.php");
-            exit ();
-         }
-
-         displayRightError();
+         $_SESSION["glpi_plugin_treeview_preference"] = 1;
+      } else {
+         unset($_SESSION["glpi_plugin_treeview_preference"]);
       }
    }
 
@@ -123,7 +107,7 @@ class PluginTreeviewProfile extends CommonDBTM {
             $this->fields["name"]."</th></tr>";
 
       echo "<tr class='tab_bg_2'>";
-      echo "<td>".$LANG['plugin_treeview']['profile'][3]."&nbsp;:</td><td>";
+      echo "<td>".$LANG['plugin_treeview']['profile'][1]."&nbsp;:</td><td>";
       Profile::dropdownNoneReadWrite("treeview", $this->fields["treeview"], 1, 1, 0);
       echo "</td></tr>";
 

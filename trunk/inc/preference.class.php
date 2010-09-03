@@ -52,7 +52,7 @@ class PluginTreeviewPreference extends CommonDBTM {
       echo "<table class='tab_cadre_fixe' cellpadding='5'>";
       echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
 
-      echo "<tr class='tab_bg_1 center'><td>".$LANG['plugin_treeview']['setup'][31]."</td>";
+      echo "<tr class='tab_bg_1 center'><td>".$LANG['plugin_treeview']['setup'][19]."</td>";
       echo "<td>";
       Dropdown::showYesNo("show_on_load",$this->fields["show_on_load"]);
       echo "</td></tr>";
@@ -63,7 +63,7 @@ class PluginTreeviewPreference extends CommonDBTM {
       echo "<input type='hidden' name='id' value='$id'></td></tr>";
 
       echo "<tr class='tab_bg_1 center'>";
-      echo "<td colspan='2'>".$LANG['plugin_treeview']['setup'][32]."</td></tr>";
+      echo "<td colspan='2'>".$LANG['plugin_treeview']['setup'][20]."</td></tr>";
 
       echo "</table></form>";
    }
