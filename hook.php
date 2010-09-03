@@ -156,30 +156,30 @@ function plugin_treeview_upgrade12to13() {
    if (TableExists("glpi_plugin_treeview_display")) {
       $DB->query("RENAME TABLE `glpi_plugin_treeview_display` to `glpi_plugin_treeview_displayprefs`");
 
-      $query = "ALTER TABLE `glpi_plugin_treeview_display` ";
+      $query = "ALTER TABLE `glpi_plugin_treeview_displayprefs` ";
 
-      if (FieldExists("glpi_plugin_treeview_display", "ID")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "ID")) {
          $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "folderLinks")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "folderLinks")) {
          $query .= " CHANGE `folderLinks` `folderLinks` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "useSelection")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "useSelection")) {
          $query .= " CHANGE `useSelection` `useSelection` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "useLines")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "useLines")) {
          $query .= " CHANGE `useLines` `useLines` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "useIcons")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "useIcons")) {
          $query .= " CHANGE `useIcons` `useIcons` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "closeSameLevel")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "closeSameLevel")) {
          $query .= " CHANGE `closeSameLevel` `closeSameLevel` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "itemName")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "itemName")) {
          $query .= " CHANGE `itemName` `itemName` int(11) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_display", "locationName")) {
+      if (FieldExists("glpi_plugin_treeview_displayprefs", "locationName")) {
          $query .= " CHANGE `locationName` `locationName` int(11) NOT NULL default '0',";
       }
       $query .= " ADD PRIMARY KEY (`id`)";
