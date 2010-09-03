@@ -33,14 +33,34 @@
 // ----------------------------------------------------------------------
  */
 
-define('GLPI_ROOT', '../..');
+if (!defined('GLPI_ROOT')) {
+   define('GLPI_ROOT', '../../..');
+}
+
 include (GLPI_ROOT . "/inc/includes.php");
 
-Plugin::load('treeview', true);
+Plugin::load('treeview', true).
 
-$_SESSION["glpi_plugin_treeview_loaded"] = 1;
-$config = new PluginTreeviewConfig();
-$config->seeTreeview();
+$config = new PluginTreeviewConfig;
+if (isset($_POST["update"])) {
+   $config->update($_POST);
+   glpi_header($_SERVER['HTTP_REFERER']);
 
+} else {
+   $plugin = new Plugin();
+   if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
+      commonHeader($LANG['plugin_treeview']['title'][0], $_SERVER["PHP_SELF"], "config", "plugins");
+      $config->showForm(1);
+
+   } else {
+      commonHeader($LANG['common'][12], $_SERVER['PHP_SELF'], "config", "plugins");
+      // Get the configuration from the database and show it
+      echo " <script type='text/javascript'>
+         if (top != self)
+         top.location = self.location;
+         </script>";
+   }
+}
+commonFooter();
 
 ?>

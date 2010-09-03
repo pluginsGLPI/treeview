@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * @version $Id: HEADER 1 2009-09-21 14:58 Tsmr $
  -------------------------------------------------------------------------
@@ -28,24 +26,28 @@
  along with GLPI; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  --------------------------------------------------------------------------
- 
+
 // ----------------------------------------------------------------------
 // Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
 // Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
 // ----------------------------------------------------------------------
  */
 
-if(!defined('GLPI_ROOT')) {
-	define('GLPI_ROOT', '../../..'); 
+if (!defined('GLPI_ROOT')) {
+   define('GLPI_ROOT', '../../..');
 }
-include_once (GLPI_ROOT . "/inc/includes.php");
-useplugin('treeview',true);
 
-//Save user preferences
-if (isset ($_POST['update_user_preferences_treeview'])) {
-	$pref = new PluginTreeViewPreference;
-	$pref->update($_POST);
-	glpi_header($_SERVER['HTTP_REFERER']);
+include (GLPI_ROOT."/inc/includes.php");
+checkRight("profile","r");
+
+// if not actived
+Plugin::load('treeview',true);
+
+$prof = new PluginTreeviewProfile();
+
+if (isset($_POST['update_user_profile'])) {
+   $prof->update($_POST);
+   glpi_header($_SERVER['HTTP_REFERER']);
 }
 
 
