@@ -39,9 +39,7 @@ if (!defined('GLPI_ROOT')) {
 
 include (GLPI_ROOT . "/inc/includes.php");
 
-Plugin::load('treeview', true).
-
-$config = new PluginTreeviewConfig;
+$config = new PluginTreeviewConfig();
 if (isset($_POST["update"])) {
    $config->update($_POST);
    glpi_header($_SERVER['HTTP_REFERER']);
