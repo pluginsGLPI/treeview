@@ -318,7 +318,7 @@ function plugin_treeview_headings($item, $withtemplate=0) {
             $prof->createAccess($item);
          }
          $prof->showForm($ID,
-                         array('target' => $CFG_GLPI["root_doc"]."/plugins/treeview/front/profile.php"));
+                         array('target' => $CFG_GLPI["root_doc"]."/plugins/treeview/front/profile.form.php"));
          break;
 
       case 'Preference' :

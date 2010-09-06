@@ -40,7 +40,7 @@ if (!defined('GLPI_ROOT')) {
 }
 include_once (GLPI_ROOT . "/inc/includes.php");
 
-$pref = new PluginTreeviewPreference;
+$pref = new PluginTreeviewPreference();
 
 //Save user preferences
 if (isset($_POST['plugin_treeview_user_preferences_save'])) {

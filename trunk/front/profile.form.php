@@ -38,10 +38,8 @@ if (!defined('GLPI_ROOT')) {
 }
 
 include (GLPI_ROOT."/inc/includes.php");
-checkRight("profile","r");
 
-// if not actived
-Plugin::load('treeview',true);
+checkRight("profile","r");
 
 $prof = new PluginTreeviewProfile();
 
