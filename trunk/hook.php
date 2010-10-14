@@ -139,7 +139,7 @@ function plugin_treeview_upgrade11to12() {
       $query = "ALTER TABLE `glpi_plugin_treeview_profiles` ";
 
       if (FieldExists("glpi_plugin_treeview_profiles", "interface")) {
-         $query .= " DROP `delete_frequency`,";
+         $query .= " DROP `interface`,";
       }
       if (FieldExists("glpi_plugin_treeview_profiles", "is_default")) {
          $query .= " DROP `is_default`";
