@@ -82,7 +82,9 @@ class PluginTreeviewProfile extends CommonDBTM {
    }
 
 
-   //profiles modification
+   /**
+    * profiles modification
+   **/
    function showForm($id, $options) {
       global $LANG;
 

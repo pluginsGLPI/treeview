@@ -318,7 +318,8 @@ function plugin_treeview_headings($item, $withtemplate=0) {
             $prof->createAccess($item);
          }
          $prof->showForm($ID,
-                         array('target' => $CFG_GLPI["root_doc"]."/plugins/treeview/front/profile.form.php"));
+                         array('target' => $CFG_GLPI["root_doc"].
+                                           "/plugins/treeview/front/profile.form.php"));
          break;
 
       case 'Preference' :
@@ -327,7 +328,8 @@ function plugin_treeview_headings($item, $withtemplate=0) {
          if (!$pref_ID) {
              $pref_ID = $pref->addDefaultPreference($_SESSION['glpiID']);
          }
-         $pref->showFormUserPreference($CFG_GLPI['root_doc']."/plugins/treeview/front/preference.form.php",
+         $pref->showFormUserPreference($CFG_GLPI['root_doc'].
+                                          "/plugins/treeview/front/preference.form.php",
                                        $pref_ID);
          break;
    }

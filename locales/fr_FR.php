@@ -33,22 +33,20 @@
 // ----------------------------------------------------------------------
  */
 
-$title="Arborescence";
-
-$LANG['plugin_treeview']['title'][0] = "".$title."";
+$LANG['plugin_treeview']['title'][0] = "Arborescence";
 
 $LANG['plugin_treeview']['profile'][0] = "Gestion des droits";
 $LANG['plugin_treeview']['profile'][1] = "Utiliser l'arborescence";
 
-$LANG['plugin_treeview']['setup'][1] = "Affichage";
-$LANG['plugin_treeview']['setup'][2] = "Oui";
-$LANG['plugin_treeview']['setup'][3] = "Non";
-$LANG['plugin_treeview']['setup'][4] = "Ouverture des liens";
-$LANG['plugin_treeview']['setup'][5] = "Utiliser les répertoires des lieux sous forme de liens";
-$LANG['plugin_treeview']['setup'][6] = "Les noeuds peuvent être en surbrillance";
-$LANG['plugin_treeview']['setup'][7] = "L'arborescence est dessinée avec des lignes";
-$LANG['plugin_treeview']['setup'][8] = "L'arborescence est dessinée avec des icônes";
-$LANG['plugin_treeview']['setup'][9] = "Seulement un noeud avec un parent <br> peut être affiché en même temps";
+$LANG['plugin_treeview']['setup'][1]  = "Affichage";
+$LANG['plugin_treeview']['setup'][2]  = "Oui";
+$LANG['plugin_treeview']['setup'][3]  = "Non";
+$LANG['plugin_treeview']['setup'][4]  = "Ouverture des liens";
+$LANG['plugin_treeview']['setup'][5]  = "Utiliser les répertoires des lieux sous forme de liens";
+$LANG['plugin_treeview']['setup'][6]  = "Les noeuds peuvent être en surbrillance";
+$LANG['plugin_treeview']['setup'][7]  = "L'arborescence est dessinée avec des lignes";
+$LANG['plugin_treeview']['setup'][8]  = "L'arborescence est dessinée avec des icônes";
+$LANG['plugin_treeview']['setup'][9]  = "Seulement un noeud avec un parent <br> peut être affiché en même temps";
 $LANG['plugin_treeview']['setup'][10] = "Dans une nouvelle fenêtre";
 $LANG['plugin_treeview']['setup'][11] = "Dans la console centrale";
 $LANG['plugin_treeview']['setup'][12] = "Affichage du matériel";

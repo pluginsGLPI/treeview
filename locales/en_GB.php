@@ -33,22 +33,20 @@
 // ----------------------------------------------------------------------
  */
 
-$title="Tree View";
-
-$LANG['plugin_treeview']['title'][0] = "".$title."";
+$LANG['plugin_treeview']['title'][0] = "Tree View";
 
 $LANG['plugin_treeview']['profile'][0] = "Rights management";
 $LANG['plugin_treeview']['profile'][1] = "Use the tree";
 
-$LANG['plugin_treeview']['setup'][1] = "Display";
-$LANG['plugin_treeview']['setup'][2] = "Yes";
-$LANG['plugin_treeview']['setup'][3] = "No";
-$LANG['plugin_treeview']['setup'][4] = "Target for all the nodes";
-$LANG['plugin_treeview']['setup'][5] = "Should folders be links";
-$LANG['plugin_treeview']['setup'][6] = "Nodes can be highlighted";
-$LANG['plugin_treeview']['setup'][7] = "Tree is drawn with lines";
-$LANG['plugin_treeview']['setup'][8] = "Tree is drawn with icons";
-$LANG['plugin_treeview']['setup'][9] = "Only one node within a parent<br>can be expanded at the same time.";
+$LANG['plugin_treeview']['setup'][1]  = "Display";
+$LANG['plugin_treeview']['setup'][2]  = "Yes";
+$LANG['plugin_treeview']['setup'][3]  = "No";
+$LANG['plugin_treeview']['setup'][4]  = "Target for all the nodes";
+$LANG['plugin_treeview']['setup'][5]  = "Should folders be links";
+$LANG['plugin_treeview']['setup'][6]  = "Nodes can be highlighted";
+$LANG['plugin_treeview']['setup'][7]  = "Tree is drawn with lines";
+$LANG['plugin_treeview']['setup'][8]  = "Tree is drawn with icons";
+$LANG['plugin_treeview']['setup'][9]  = "Only one node within a parent<br>can be expanded at the same time.";
 $LANG['plugin_treeview']['setup'][10] = "New window";
 $LANG['plugin_treeview']['setup'][11] = "The central console";
 $LANG['plugin_treeview']['setup'][12] = "Item name";

@@ -39,12 +39,12 @@ if (!defined('GLPI_ROOT')) {
 
 /**
  * Contains the display configuration of the treeview
- */
+**/
 class PluginTreeviewConfig  extends CommonDBTM {
 
    /**
     * Configuration form
-    */
+   **/
    function showForm($id, $options=array()) {
       global $LANG;
 
@@ -231,7 +231,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
 
    /**
-    * The function to see the treeview
+    * The function to hide the treeview
    **/
    function hideTreeview() {
       global $CFG_GLPI,$LANG;
@@ -290,7 +290,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
    /**
     * Requests the nodes from the GLPI database
-    **/
+   **/
    function getNodesFromDb() {
       global $DB;
 
@@ -306,23 +306,23 @@ class PluginTreeviewConfig  extends CommonDBTM {
       // Request the display settings from the database and store them in the global object $config
       $this->getFromDB(1);
 
-      $itemName = $this->fields["itemName"];
-      $locationName = $this->fields["locationName"];
+      $itemName       = $this->fields["itemName"];
+      $locationName   = $this->fields["locationName"];
 
-      $target = $this->fields["target"];
-      $folderLinks = $this->fields["folderLinks"];
-      $useSelection = $this->fields["useSelection"];
-      $useLines = $this->fields["useLines"];
-      $useIcons = $this->fields["useIcons"];
+      $target         = $this->fields["target"];
+      $folderLinks    = $this->fields["folderLinks"];
+      $useSelection   = $this->fields["useSelection"];
+      $useLines       = $this->fields["useLines"];
+      $useIcons       = $this->fields["useIcons"];
       $closeSameLevel = $this->fields["closeSameLevel"];
 
 
       // Load the settings in JavaSript so that dTree script can apply them
-      echo "d.config.target = '" .$target. "';\n";
-      echo "d.config.folderLinks = " .$folderLinks. ";\n";
-      echo "d.config.useSelection = " .$useSelection. ";\n";
-      echo "d.config.useLines = " .$useLines. ";\n";
-      echo "d.config.useIcons = " .$useIcons. ";\n";
+      echo "d.config.target         = '" .$target. "';\n";
+      echo "d.config.folderLinks    = " .$folderLinks. ";\n";
+      echo "d.config.useSelection   = " .$useSelection. ";\n";
+      echo "d.config.useLines       = " .$useLines. ";\n";
+      echo "d.config.useIcons       = " .$useIcons. ";\n";
       echo "d.config.closeSameLevel = " .$closeSameLevel. ";\n";
 
       $dontLoad = 'false';
@@ -333,8 +333,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
                   FROM `glpi_locations`
                   WHERE `entities_id` = '".$_SESSION["glpiactive_entity"]."'";
       $result = $DB->query($query);
+
       $max_level = $DB->result($result, 0, "max_level");
-      $tv_id = $max_id = $DB->result($result, 0, "max_id");
+      $tv_id     = $max_id = $DB->result($result, 0, "max_id");
       $tv_id++;
 
       // Is this the first time we load the page?
@@ -355,8 +356,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       // Characters which need to be removed from JS output.
       $trans = array("\"" => "`",
-                     "\r"=>" ",
-                     "\n"=>" ");
+                     "\r" =>" ",
+                     "\n" =>" ");
 
       for ($n=1 ; $n<=count($nodes) ; $n++) {
          if ($nodes[$n-1] <= $max_id && $n <= $max_level) {
@@ -366,8 +367,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
                             AND `locations_id` = '". $nodes[$n-1] ."'
                             AND `entities_id` = '" . $_SESSION["glpiactive_entity"]."'
                       ORDER BY `completename` ASC";
-            //echo "document.write(\"".$query."\"+'<br>');";
             $result = $DB->query($query);
+
             while ($r = $DB->fetch_assoc($result)) {
                // Location's name schema
                if ($locationName == 0) {
@@ -396,7 +397,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                   $dontLoad = 'true';
                   // Then add aloso its items
                   for ($a=0 ; $a<count($searchopt) ; $a++) {
-                     $type = $searchopt[$a]['type'];
+                     $type      = $searchopt[$a]['type'];
                      $itemtable = getTableForItemType($type);
 
                      $query = "SELECT *
@@ -416,12 +417,14 @@ class PluginTreeviewConfig  extends CommonDBTM {
                                            FROM `glpi_locations`
                                            WHERE `id` = '". $r['id'] ."'";
                         $result_location = $DB->query($query_location);
+
                         while ($row = $DB->fetch_assoc($result_location)) {
                            $name_location= $row['completename'];
                         }
 
                         $getParam = '?searchtype[0]=equals&contains[0]=' .$r['id'].
-                                    '&field[0]=' .$field_num. '&sort=1&is_deleted=0&start=0&reset=reset';
+                                    '&field[0]=' .$field_num.
+                                    '&sort=1&is_deleted=0&start=0&reset=reset';
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($searchopt[$a]['name'], $trans).
                              "\", $dontLoad, '" .$searchopt[$a]['type']."', '" .GLPI_ROOT .
