@@ -324,9 +324,9 @@ function plugin_treeview_headings($item, $withtemplate=0) {
 
       case 'Preference' :
          $pref = new PluginTreeviewPreference;
-         $pref_ID = $pref->checkIfPreferenceExists($_SESSION['glpiID']);
+         $pref_ID = $pref->checkIfPreferenceExists(getLoginUserID());
          if (!$pref_ID) {
-             $pref_ID = $pref->addDefaultPreference($_SESSION['glpiID']);
+             $pref_ID = $pref->addDefaultPreference(getLoginUserID());
          }
          $pref->showFormUserPreference($CFG_GLPI['root_doc'].
                                           "/plugins/treeview/front/preference.form.php",
