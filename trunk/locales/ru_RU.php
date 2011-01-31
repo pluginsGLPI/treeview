@@ -33,22 +33,20 @@
 // ----------------------------------------------------------------------
  */
 
-$title="Список по местонахождению";
-
-$LANG['plugin_treeview']['title'][0] = "".$title."";
+$LANG['plugin_treeview']['title'][0] = "Список по местонахождению";
 
 $LANG['plugin_treeview']['profile'][0] = "Настройка прав";
 $LANG['plugin_treeview']['profile'][1] = "Использование плагина";
 
-$LANG['plugin_treeview']['setup'][1] = "Настройка меню";
-$LANG['plugin_treeview']['setup'][2] = "Да";
-$LANG['plugin_treeview']['setup'][3] = "Нет";
-$LANG['plugin_treeview']['setup'][4] = "Открывать в";
-$LANG['plugin_treeview']['setup'][5] = "Папки типов устройств имеют ссылки";
-$LANG['plugin_treeview']['setup'][6] = "Выделять выбранный элемент в списке";
-$LANG['plugin_treeview']['setup'][7] = "Рисовать линии";
-$LANG['plugin_treeview']['setup'][8] = "Рисовать иконки";
-$LANG['plugin_treeview']['setup'][9] = "Одновременно раскрывать<br>только одну ветку.";
+$LANG['plugin_treeview']['setup'][1]  = "Настройка меню";
+$LANG['plugin_treeview']['setup'][2]  = "Да";
+$LANG['plugin_treeview']['setup'][3]  = "Нет";
+$LANG['plugin_treeview']['setup'][4]  = "Открывать в";
+$LANG['plugin_treeview']['setup'][5]  = "Папки типов устройств имеют ссылки";
+$LANG['plugin_treeview']['setup'][6]  = "Выделять выбранный элемент в списке";
+$LANG['plugin_treeview']['setup'][7]  = "Рисовать линии";
+$LANG['plugin_treeview']['setup'][8]  = "Рисовать иконки";
+$LANG['plugin_treeview']['setup'][9]  = "Одновременно раскрывать<br>только одну ветку.";
 $LANG['plugin_treeview']['setup'][10] = "новом окне";
 $LANG['plugin_treeview']['setup'][11] = "окно GLPI";
 $LANG['plugin_treeview']['setup'][12] = "Название объектов";

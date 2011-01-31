@@ -33,22 +33,20 @@
 // ----------------------------------------------------------------------
  */
 
-$title="Baumstruktur";
-
-$LANG['plugin_treeview']['title'][0]="".$title."";
+$LANG['plugin_treeview']['title'][0] = "Baumstruktur";
 
 $LANG['plugin_treeview']['profile'][0] = "Rechteverwaltung";
 $LANG['plugin_treeview']['profile'][1] = "Baumstruktur benutzen";
 
-$LANG['plugin_treeview']['setup'][1] = "Ansicht";
-$LANG['plugin_treeview']['setup'][2] = "Ja";
-$LANG['plugin_treeview']['setup'][3] = "Nein";
-$LANG['plugin_treeview']['setup'][4] = "Zielfenster für alle Verweise";
-$LANG['plugin_treeview']['setup'][5] = "Ordner können Verweise enthalten";
-$LANG['plugin_treeview']['setup'][6] = "Knoten können markiert werden";
-$LANG['plugin_treeview']['setup'][7] = "Der Baum wird mit Linien dargestellt";
-$LANG['plugin_treeview']['setup'][8] = "Der Baum wird mit Symbolen dargestellt";
-$LANG['plugin_treeview']['setup'][9] = "Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
+$LANG['plugin_treeview']['setup'][1]  = "Ansicht";
+$LANG['plugin_treeview']['setup'][2]  = "Ja";
+$LANG['plugin_treeview']['setup'][3]  = "Nein";
+$LANG['plugin_treeview']['setup'][4]  = "Zielfenster für alle Verweise";
+$LANG['plugin_treeview']['setup'][5]  = "Ordner können Verweise enthalten";
+$LANG['plugin_treeview']['setup'][6]  = "Knoten können markiert werden";
+$LANG['plugin_treeview']['setup'][7]  = "Der Baum wird mit Linien dargestellt";
+$LANG['plugin_treeview']['setup'][8]  = "Der Baum wird mit Symbolen dargestellt";
+$LANG['plugin_treeview']['setup'][9]  = "Es kann nur ein einziger Knoten innerhalb<br>demselben Level gleichzeitig expandiert werden.";
 $LANG['plugin_treeview']['setup'][10] = "Neues Fenster";
 $LANG['plugin_treeview']['setup'][11] = "Die Zentralkonsole";
 $LANG['plugin_treeview']['setup'][12] = "Materialname";

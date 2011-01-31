@@ -40,7 +40,7 @@ if (!defined('GLPI_ROOT')) {
 /**
  * class plugin_treeview_preference
  * Load and store the preference configuration from the database
- */
+**/
 class PluginTreeviewPreference extends CommonDBTM {
 
    function showFormUserPreference($target, $id) {
