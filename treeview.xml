@@ -53,10 +53,12 @@
          <fr>
             <tag>Vue</tag>
             <tag>Arborescence</tag>
+            <tag>Gestion</tag>
          </fr>
          <en>
             <tag>View</tag>
             <tag>Tree</tag>
+            <tag>Management</tag>
          </en>
    </tags>
 </root>
