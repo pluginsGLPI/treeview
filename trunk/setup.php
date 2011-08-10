@@ -103,19 +103,20 @@ function plugin_version_treeview() {
    global $LANG;
 
    return array('name'           => $LANG['plugin_treeview']['title'][0],
-                'version'        => '1.4.0',
+                'version'        => '1.5.0',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
                 'homepage'       => 'https://forge.indepnet.net/projects/show/treeview',
-                'minGlpiVersion' => '0.78'); // For compatibility / no install in version < 0.78
+                'minGlpiVersion' => '0.80'); // For compatibility / no install in version < 0.78
 }
 
 
 function plugin_treeview_check_prerequisites() {
 
-   if (GLPI_VERSION >= 0.78) {
-      return true;
+   if (version_compare(GLPI_VERSION,'0.80','lt') || version_compare(GLPI_VERSION,'0.81','ge')) {
+      echo "This plugin requires GLPI >= 0.80 and GLPI < 0.81";
+      return false;
    }
-   echo "This plugin requires GLPI 0.78 or later";
+   return true;
 }
 
 
