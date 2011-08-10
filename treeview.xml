@@ -19,11 +19,12 @@
    <authors>
       <author>Xavier Caillaud</author>
       <author>Hussein AL-Rubeiy</author>
+      <author>Nelly Mahu-Lasson</author>
    </authors>
    <versions>
       <version>
           <num>1.4.0</num>
-          <compatibility>0.78</compatibility>
+          <compatibility>0.80</compatibility>
       </version>
       <version>
           <num>1.2.1</num>
