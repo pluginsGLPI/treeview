@@ -45,7 +45,7 @@ $prof = new PluginTreeviewProfile();
 
 if (isset($_POST['update_user_profile'])) {
    $prof->update($_POST);
-   glpi_header($_SERVER['HTTP_REFERER']);
+   Html::back();
 }
 
 
