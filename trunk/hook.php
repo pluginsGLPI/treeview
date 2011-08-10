@@ -207,7 +207,7 @@ function plugin_treeview_upgrade12to13() {
          $query .= " CHANGE `user_id` `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',";
       }
       if (FieldExists("glpi_plugin_treeview_preferences", "show")) {
-         $query .= " change `show` `show_on_load` int(11) NOT NULL default '0'";
+         $query .= " CHANGE `show` `show_on_load` int(11) NOT NULL default '0'";
       }
       $DB->query($query) or die($DB->error());
    }

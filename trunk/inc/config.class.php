@@ -469,7 +469,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         }
                         // Add the item
                         echo "d.add(".$tv_id++.", $pid, \"" . strtr($i_name,$trans) . "\", true, -1, '" .
-                                    getItemTypeFormURL($type). "?id=" .$r_1['id'].
+                                    Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'].
                                     "', '', '', 'pics/node.gif', 'pics/node.gif');\n";
                      }
                   }
