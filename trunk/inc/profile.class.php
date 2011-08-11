@@ -73,7 +73,7 @@ class PluginTreeviewProfile extends CommonDBTM {
 //   require 'preference.class.php';
 
       $Pref = new PluginTreeviewPreference();
-      $pref_value = $Pref->checkPreferenceValue(getLoginUserID());
+      $pref_value = $Pref->checkPreferenceValue(Session::getLoginUserID());
       if ($pref_value==1) {
          $_SESSION["glpi_plugin_treeview_preference"] = 1;
       } else {
