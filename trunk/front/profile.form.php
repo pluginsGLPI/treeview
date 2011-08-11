@@ -39,7 +39,7 @@ if (!defined('GLPI_ROOT')) {
 
 include (GLPI_ROOT."/inc/includes.php");
 
-checkRight("profile","r");
+Session::checkRight("profile", "r");
 
 $prof = new PluginTreeviewProfile();
 
@@ -47,6 +47,4 @@ if (isset($_POST['update_user_profile'])) {
    $prof->update($_POST);
    Html::back();
 }
-
-
 ?>
