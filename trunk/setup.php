@@ -39,6 +39,12 @@
 function plugin_init_treeview() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
+   Plugin::registerClass('PluginTreeviewPreference',
+                         array('addtabon' => array('Preference')));
+
+   Plugin::registerClass('PluginTreeviewProfile',
+                         array('addtabon' => array('Profile')));
+
    $PLUGIN_HOOKS['change_profile']['treeview'] = array('PluginTreeviewProfile','changeprofile');
 
    if (isset($_SESSION["glpi_plugin_treeview_profile"])
