@@ -42,7 +42,7 @@ include (GLPI_ROOT . "/inc/includes.php");
 $config = new PluginTreeviewConfig();
 if (isset($_POST["update"])) {
    $config->update($_POST);
-   glpi_header($_SERVER['HTTP_REFERER']);
+   Html::back();
 
 } else {
    $plugin = new Plugin();
