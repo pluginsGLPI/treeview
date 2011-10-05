@@ -52,11 +52,8 @@ function plugin_init_treeview() {
 
       $PLUGIN_HOOKS['menu_entry']['treeview'] = true;
 
-      $PLUGIN_HOOKS['headings']['treeview']        = 'plugin_treeview_get_headings';
-      $PLUGIN_HOOKS['headings_action']['treeview'] = 'plugin_treeview_headings_actions';
-
-      $PLUGIN_HOOKS['pre_item_purge']['treeview']
-                              = array('Profile' => array('PluginTreeviewProfile','cleanProfiles'));
+      $PLUGIN_HOOKS['pre_item_purge']['treeview'] = array('Profile' => array('PluginTreeviewProfile',
+                                                                             'cleanProfiles'));
 
       $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
 
