@@ -46,7 +46,7 @@ class PluginTreeviewProfile extends CommonDBTM {
       if (!$firstProf->GetfromDB($ID)) {
          $profile = new Profile();
          $profile->getFromDB($ID);
-         $name = $profile->fields["name"];
+         $name = addslashes($profile->fields["name"]);
 
          $firstProf->add(array('id'        => $ID,
                                'name'      => $name,
@@ -57,7 +57,7 @@ class PluginTreeviewProfile extends CommonDBTM {
 
    function createAccess($profile) {
       return $this->add(array('id'   => $profile->getField('id'),
-                              'name' => $profile->getField('name')));
+                              'name' => addslashes($profile->getField('name'))));
    }
 
 
