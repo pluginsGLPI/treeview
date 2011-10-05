@@ -103,7 +103,7 @@ function plugin_version_treeview() {
    global $LANG;
 
    return array('name'           => $LANG['plugin_treeview']['title'][0],
-                'version'        => '1.5.0',
+                'version'        => '1.5.1',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
                 'homepage'       => 'https://forge.indepnet.net/projects/show/treeview',
                 'minGlpiVersion' => '0.80'); // For compatibility / no install in version < 0.78
