@@ -39,12 +39,14 @@ if (!defined('GLPI_ROOT')) {
 
 include (GLPI_ROOT."/inc/includes.php");
 
-Session::checkRight("profile", "r");
+checkRight("profile","r");
 
 $prof = new PluginTreeviewProfile();
 
 if (isset($_POST['update_user_profile'])) {
    $prof->update($_POST);
-   Html::back();
+   glpi_header($_SERVER['HTTP_REFERER']);
 }
+
+
 ?>

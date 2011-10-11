@@ -207,7 +207,7 @@ function plugin_treeview_upgrade12to13() {
          $query .= " CHANGE `user_id` `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',";
       }
       if (FieldExists("glpi_plugin_treeview_preferences", "show")) {
-         $query .= " CHANGE `show` `show_on_load` int(11) NOT NULL default '0'";
+         $query .= " change `show` `show_on_load` int(11) NOT NULL default '0'";
       }
       $DB->query($query) or die($DB->error());
    }
@@ -268,4 +268,71 @@ function plugin_change_entity_Treeview() {
       echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
    }
 }
+
+
+function plugin_treeview_get_headings($item,$withtemplate) {
+   global $LANG, $PLUGIN_HOOKS;
+
+   $type = get_class($item);
+   if ($type == 'Preference') {
+      return array(1 => $LANG['plugin_treeview']['title'][0]);
+
+   }
+
+   if ($type == 'Profile') {
+      if ($item->fields['interface']!='helpdesk') {
+         return array(1 => $LANG['plugin_treeview']['title'][0]);
+      }
+   }
+   return false;
+}
+
+
+function plugin_treeview_headings_actions($item) {
+
+   $type = get_class($item);
+   switch ($type) {
+      case 'Profile' :
+         if ($item->getField('interface')!='helpdesk') {
+            return array(1 => "plugin_treeview_headings");
+         }
+         break;
+
+      case 'Preference' :
+         return array(1 => "plugin_treeview_headings");
+   }
+   return false;
+}
+
+
+function plugin_treeview_headings($item, $withtemplate=0) {
+   global $CFG_GLPI;
+
+   $type = get_class($item);
+
+   switch ($type) {
+      case 'Profile' :
+         $prof =  new PluginTreeviewProfile();
+         $ID = $item->getField('id');
+         if (!$prof->GetfromDB($ID)) {
+            $prof->createAccess($item);
+         }
+         $prof->showForm($ID,
+                         array('target' => $CFG_GLPI["root_doc"].
+                                           "/plugins/treeview/front/profile.form.php"));
+         break;
+
+      case 'Preference' :
+         $pref = new PluginTreeviewPreference;
+         $pref_ID = $pref->checkIfPreferenceExists(getLoginUserID());
+         if (!$pref_ID) {
+             $pref_ID = $pref->addDefaultPreference(getLoginUserID());
+         }
+         $pref->showFormUserPreference($CFG_GLPI['root_doc'].
+                                          "/plugins/treeview/front/preference.form.php",
+                                       $pref_ID);
+         break;
+   }
+}
+
 ?>

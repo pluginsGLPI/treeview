@@ -102,30 +102,6 @@ class PluginTreeviewPreference extends CommonDBTM {
       }
       return 0;
    }
-
-
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
-
-      if ($item->getType() == 'Preference') {
-         return $LANG['plugin_treeview']['title'][0];
-      }
-      return '';
-   }
-
-
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
-
-      if ($item->getType() == 'Preference') {
-         $pref = new self();
-         $pref_ID = $pref->checkIfPreferenceExists(Session::getLoginUserID());
-         if (!$pref_ID) {
-             $pref_ID = $pref->addDefaultPreference(Session::getLoginUserID());
-         }
-         $pref->showFormUserPreference($pref->getFormURL(), $pref_ID);
-      }
-      return true;
-   }
 }
 
 ?>

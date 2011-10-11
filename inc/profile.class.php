@@ -46,7 +46,7 @@ class PluginTreeviewProfile extends CommonDBTM {
       if (!$firstProf->GetfromDB($ID)) {
          $profile = new Profile();
          $profile->getFromDB($ID);
-         $name = addslashes($profile->fields["name"]);
+         $name = $profile->fields["name"];
 
          $firstProf->add(array('id'        => $ID,
                                'name'      => $name,
@@ -57,7 +57,7 @@ class PluginTreeviewProfile extends CommonDBTM {
 
    function createAccess($profile) {
       return $this->add(array('id'   => $profile->getField('id'),
-                              'name' => addslashes($profile->getField('name'))));
+                              'name' => $profile->getField('name')));
    }
 
 
@@ -73,7 +73,7 @@ class PluginTreeviewProfile extends CommonDBTM {
 //   require 'preference.class.php';
 
       $Pref = new PluginTreeviewPreference();
-      $pref_value = $Pref->checkPreferenceValue(Session::getLoginUserID());
+      $pref_value = $Pref->checkPreferenceValue(getLoginUserID());
       if ($pref_value==1) {
          $_SESSION["glpi_plugin_treeview_preference"] = 1;
       } else {
@@ -85,7 +85,7 @@ class PluginTreeviewProfile extends CommonDBTM {
    /**
     * profiles modification
    **/
-   function showForm($id, $options=array()) {
+   function showForm($id, $options) {
       global $LANG;
 
       $target = $this->getFormURL();
@@ -93,10 +93,10 @@ class PluginTreeviewProfile extends CommonDBTM {
         $target = $options['target'];
       }
 
-      if (!Session::haveRight("profile","r")) {
+      if (!haveRight("profile","r")) {
          return false;
       }
-      $canedit = Session::haveRight("profile", "w");
+      $canedit = haveRight("profile","w");
       $prof = new Profile();
       if ($id){
          $this->getFromDB($id);
@@ -130,29 +130,6 @@ class PluginTreeviewProfile extends CommonDBTM {
       $plugprof = new self();
       $plugprof->delete(array('id' => $prof->getField("id")));
    }
-
-
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
-
-      if ($item->getType() == 'Profile') {
-         return $LANG['plugin_treeview']['title'][0];
-      }
-      return '';
-   }
-
-
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
-
-      if ($item->getType() == 'Profile') {
-         $prof = new self();
-         $ID = $item->getField('id');
-         if (!$prof->GetfromDB($ID)) {
-            $prof->createAccess($item);
-         }
-         $prof->showForm($ID);
-      }
-      return true;
-   }
 }
+
 ?>

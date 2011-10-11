@@ -42,16 +42,16 @@ include (GLPI_ROOT . "/inc/includes.php");
 $config = new PluginTreeviewConfig();
 if (isset($_POST["update"])) {
    $config->update($_POST);
-   Html::back();
+   glpi_header($_SERVER['HTTP_REFERER']);
 
 } else {
    $plugin = new Plugin();
    if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
-      Html::header($LANG['plugin_treeview']['title'][0], $_SERVER["PHP_SELF"], "config", "plugins");
+      commonHeader($LANG['plugin_treeview']['title'][0], $_SERVER["PHP_SELF"], "config", "plugins");
       $config->showForm(1);
 
    } else {
-      Html::header($LANG['common'][12], $_SERVER['PHP_SELF'], "config", "plugins");
+      commonHeader($LANG['common'][12], $_SERVER['PHP_SELF'], "config", "plugins");
       // Get the configuration from the database and show it
       echo " <script type='text/javascript'>
          if (top != self)
@@ -59,5 +59,6 @@ if (isset($_POST["update"])) {
          </script>";
    }
 }
-Html::footer();
+commonFooter();
+
 ?>
