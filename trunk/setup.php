@@ -101,8 +101,9 @@ function plugin_version_treeview() {
 
    return array('name'           => $LANG['plugin_treeview']['title'][0],
                 'version'        => '1.6.0',
+                'license'        => 'GPLv2+',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
-                'homepage'       => 'https://forge.indepnet.net/projects/show/treeview',
+                'homepage'       => 'https://forge.indepnet.net/projects/treeview',
                 'minGlpiVersion' => '0.83'); // For compatibility / no install in version < 0.78
 }
 
