@@ -1,36 +1,30 @@
 <?php
 /*
- * @version $Id: HEADER 1 2009-09-21 14:58 Tsmr $
+ * @version $Id: setup.php 313 2011-12-19 09:39:58Z remi $
  -------------------------------------------------------------------------
- GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2009 by the INDEPNET Development Team.
+ treeview - TreeView browser plugin for GLPI
+ Copyright (C) 2003-2012 by the treeview Development Team.
 
- http://indepnet.net/   http://glpi-project.org
+ https://forge.indepnet.net/projects/treeview
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of GLPI.
+ This file is part of treeview.
 
- GLPI is free software; you can redistribute it and/or modify
+ treeview is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- GLPI is distributed in the hope that it will be useful,
+ treeview is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with GLPI; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ along with treeview. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
-
-// ----------------------------------------------------------------------
-// Original Author of file: CAILLAUD Xavier & AL-RUBEIY Hussein
-// Purpose of file: plugin treeview v1.3.0 - GLPI 0.80
-// ----------------------------------------------------------------------
  */
 
 define('GLPI_ROOT', '../..');
@@ -38,6 +32,7 @@ define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
 require_once "inc/config.class.php";
 
+Session::checkLoginUser();
 
 echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
        'http://www.w3.org/TR/html4/frameset.dtd'>";
