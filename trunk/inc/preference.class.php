@@ -59,7 +59,8 @@ class PluginTreeviewPreference extends CommonDBTM {
       echo "<tr class='tab_bg_1 center'>";
       echo "<td colspan='2'>".$LANG['plugin_treeview']['setup'][20]."</td></tr>";
 
-      echo "</table></form>";
+      echo "</table>";
+      Html::closeForm();
    }
 
 
