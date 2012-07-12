@@ -53,5 +53,6 @@ if (isset($_POST["update"])) {
          </script>";
    }
 }
+
 Html::footer();
 ?>
