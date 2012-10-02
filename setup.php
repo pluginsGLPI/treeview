@@ -99,9 +99,8 @@ function plugin_init_treeview() {
  * Get the name and the version of the plugin - Needed
 **/
 function plugin_version_treeview() {
-   global $LANG;
 
-   return array('name'           => $LANG['plugin_treeview']['title'][0],
+   return array('name'           => __('Tree view'),
                 'version'        => '1.6.2',
                 'license'        => 'GPLv2+',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',

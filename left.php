@@ -36,7 +36,7 @@ Session::checkLoginUser();
 
 echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
        'http://www.w3.org/TR/html4/frameset.dtd'>";
-echo "\n<html><head><title>GLPI - ".$LANG['plugin_treeview']['title'][0]."</title>";
+echo "\n<html><head><title>".sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view'))."</title>";
 echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
 // Send extra expires header if configured
 echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
@@ -53,7 +53,7 @@ echo '</div>';
 echo "<body>";
 // Title bar
 echo '<div id=explorer_bar>';
-echo '<div id=explorer_title>'.$LANG['plugin_treeview']['title'][0] . '</div>';
+echo '<div id=explorer_title>'.sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view')) . '</div>';
 echo "<div id=explorer_close>";
 echo "<img border=0 src='pics/close.gif' name='explorer_close'
        onmouseover=\"ChangeImg(document.images.explorer_close, 'pics/close_hover.gif');\"
