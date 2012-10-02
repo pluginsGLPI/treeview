@@ -41,11 +41,11 @@ if (isset($_POST["update"])) {
 } else {
    $plugin = new Plugin();
    if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
-      Html::header($LANG['plugin_treeview']['title'][0], $_SERVER["PHP_SELF"], "config", "plugins");
+      Html::header(__('Tree view'), $_SERVER["PHP_SELF"], "config", "plugins");
       $config->showForm(1);
 
    } else {
-      Html::header($LANG['common'][12], $_SERVER['PHP_SELF'], "config", "plugins");
+      Html::header(__('Setup'), $_SERVER['PHP_SELF'], "config", "plugins");
       // Get the configuration from the database and show it
       echo " <script type='text/javascript'>
          if (top != self)
