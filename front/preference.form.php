@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * @version $Id: setup.php 313 2011-12-19 09:39:58Z remi $
  -------------------------------------------------------------------------
@@ -41,6 +39,4 @@ if (isset($_POST['plugin_treeview_user_preferences_save'])) {
    $pref->update($_POST);
    Html::back();
 }
-
-
 ?>
