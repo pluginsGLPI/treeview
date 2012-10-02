@@ -38,26 +38,28 @@ if (!defined('GLPI_ROOT')) {
 class PluginTreeviewPreference extends CommonDBTM {
 
    function showFormUserPreference($target, $id) {
-      global $LANG;
 
       $data = plugin_version_treeview();
       $this->getFromDB($id);
       echo "<form action='".$target."' method='post'>";
       echo "<table class='tab_cadre_fixe' cellpadding='5'>";
-      echo "<tr><th colspan='2'>" . $data['name'] . " - ". $data['version'] . "</th></tr>";
+      echo "<tr><th colspan='2'>" .sprintf(__('%1$s - %2$s'), $data['name'], $data['version']);
+      echo "</th></tr>";
 
-      echo "<tr class='tab_bg_1 center'><td>".$LANG['plugin_treeview']['setup'][19]."</td>";
+      echo "<tr class='tab_bg_1 center'>";
+      echo "<td>".__('Launch the plugin Treeview with GLPI launching')."</td>";
       echo "<td>";
       Dropdown::showYesNo("show_on_load",$this->fields["show_on_load"]);
       echo "</td></tr>";
 
       echo "<tr class='tab_bg_1 center'><td colspan='2'>";
       echo "<input type='submit' name='plugin_treeview_user_preferences_save' value='".
-             $LANG['buttons'][2]."' class='submit'>";
+             _sx('button', 'Post')."' class='submit'>";
       echo "<input type='hidden' name='id' value='$id'></td></tr>";
 
       echo "<tr class='tab_bg_1 center'>";
-      echo "<td colspan='2'>".$LANG['plugin_treeview']['setup'][20]."</td></tr>";
+      echo "<td colspan='2'>".__('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used');
+      echo "</td></tr>";
 
       echo "</table>";
       Html::closeForm();
@@ -100,10 +102,9 @@ class PluginTreeviewPreference extends CommonDBTM {
 
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
 
       if ($item->getType() == 'Preference') {
-         return $LANG['plugin_treeview']['title'][0];
+         return __('Tree view');
       }
       return '';
    }
@@ -122,5 +123,4 @@ class PluginTreeviewPreference extends CommonDBTM {
       return true;
    }
 }
-
 ?>

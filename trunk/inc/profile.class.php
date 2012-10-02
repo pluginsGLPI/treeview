@@ -50,6 +50,7 @@ class PluginTreeviewProfile extends CommonDBTM {
 
 
    function createAccess($profile) {
+
       return $this->add(array('id'   => $profile->getField('id'),
                               'name' => addslashes($profile->getField('name'))));
    }
@@ -80,7 +81,6 @@ class PluginTreeviewProfile extends CommonDBTM {
     * profiles modification
    **/
    function showForm($id, $options=array()) {
-      global $LANG;
 
       $target = $this->getFormURL();
       if (isset($options['target'])) {
@@ -99,11 +99,12 @@ class PluginTreeviewProfile extends CommonDBTM {
 
       echo "<form action='".$target."' method='post'>";
       echo "<table class='tab_cadre_fixe'>";
-      echo "<tr><th colspan='2' class='center b'>".$LANG['plugin_treeview']['profile'][0]." ".
-            $this->fields["name"]."</th></tr>";
+      echo "<tr><th colspan='2' class='center b'>".sprintf(__('%1$s %2$s'), __('Rights management'),
+                                                           $this->fields["name"]);
+      echo "</th></tr>";
 
       echo "<tr class='tab_bg_2'>";
-      echo "<td>".$LANG['plugin_treeview']['profile'][1]."&nbsp;:</td><td>";
+      echo "<td>".__('Use the tree')."</td><td>";
       Profile::dropdownNoneReadWrite("treeview", $this->fields["treeview"], 1, 1, 0);
       echo "</td></tr>";
 
@@ -111,7 +112,7 @@ class PluginTreeviewProfile extends CommonDBTM {
          echo "<tr class='tab_bg_1'>";
          echo "<td class='center' colspan='2'>";
          echo "<input type='hidden' name='id' value=$id>";
-         echo "<input type='submit' name='update_user_profile' value='".$LANG['buttons'][7]."'
+         echo "<input type='submit' name='update_user_profile' value='"._sx('button', 'Update')."'
                 class='submit'>";
          echo "</td></tr>";
       }
@@ -128,10 +129,9 @@ class PluginTreeviewProfile extends CommonDBTM {
 
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
 
       if ($item->getType() == 'Profile') {
-         return $LANG['plugin_treeview']['title'][0];
+         return __('Tree view');
       }
       return '';
    }
