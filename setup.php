@@ -54,7 +54,8 @@ function plugin_init_treeview() {
       $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
 
       if (isset($_SESSION["glpi_plugin_treeview_loaded"])
-          && $_SESSION["glpi_plugin_treeview_loaded"] == 1) {
+          && $_SESSION["glpi_plugin_treeview_loaded"] == 1
+          && class_exists('PluginTreeviewConfig')) {
 
          foreach (PluginTreeviewConfig::getTypes() as $type) {
             $PLUGIN_HOOKS['item_update']['treeview'][$type]  = 'plugin_item_update_treeview';
@@ -74,7 +75,8 @@ function plugin_init_treeview() {
 
       if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/logout.php"
           && (isset($_SESSION["glpi_plugin_treeview_loaded"])
-          && $_SESSION["glpi_plugin_treeview_loaded"] == 1)) {
+          && $_SESSION["glpi_plugin_treeview_loaded"] == 1
+          && class_exists('PluginTreeviewConfig'))) {
 
          $config = new PluginTreeviewConfig();
          $config->hideTreeview();
