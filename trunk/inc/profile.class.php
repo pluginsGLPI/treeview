@@ -104,7 +104,7 @@ class PluginTreeviewProfile extends CommonDBTM {
       echo "</th></tr>";
 
       echo "<tr class='tab_bg_2'>";
-      echo "<td>".__('Use the tree')."</td><td>";
+      echo "<td>".__('Use the tree', 'treeview')."</td><td>";
       Profile::dropdownNoneReadWrite("treeview", $this->fields["treeview"], 1, 1, 0);
       echo "</td></tr>";
 
@@ -131,7 +131,7 @@ class PluginTreeviewProfile extends CommonDBTM {
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
 
       if ($item->getType() == 'Profile') {
-         return __('Tree view');
+         return __('Tree view', 'treeview');
       }
       return '';
    }

@@ -52,11 +52,11 @@ msgstr "La struttura � visualizzata con delle icone"
 
 #: inc/config.class.php:93
 msgid "Only one node within a parent"
-msgstr ""
+msgstr "Solo un nodo con voce padre"
 
 #: inc/config.class.php:93
 msgid "can be expanded at the same time."
-msgstr ""
+msgstr "pu� essere esploso per volta."
 
 #: inc/config.class.php:102
 msgid "Item name"
@@ -91,7 +91,7 @@ msgstr "Lancia il plugin Treeview quanto viene avviato GLPI"
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
-msgstr ""
+msgstr "Attenzione : Se viene caricato pi� di un plugin all'avvio, verr� utilizzato solo il primo"
 
 #: inc/profile.class.php:102
 msgid "Rights management"

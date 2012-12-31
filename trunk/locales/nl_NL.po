@@ -52,11 +52,11 @@ msgstr "Tree wordt getekend met iconen"
 
 #: inc/config.class.php:93
 msgid "Only one node within a parent"
-msgstr ""
+msgstr "Slechts &eacute&eacuten node binnen een ouder"
 
 #: inc/config.class.php:93
 msgid "can be expanded at the same time."
-msgstr ""
+msgstr "kan worden uitgeklapt."
 
 #: inc/config.class.php:102
 msgid "Item name"
@@ -91,7 +91,7 @@ msgstr "Start de plugin Treeview op als GLPI start"
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
-msgstr ""
+msgstr "Let op: Als er meer dan &eacute&eacuten plugin geladen wordt tijdens het opstarten wordt alleen de eerste gebruikt."
 
 #: inc/profile.class.php:102
 msgid "Rights management"

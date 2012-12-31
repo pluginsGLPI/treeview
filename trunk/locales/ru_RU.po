@@ -52,11 +52,11 @@ msgstr "Рисовать иконки"
 
 #: inc/config.class.php:93
 msgid "Only one node within a parent"
-msgstr ""
+msgstr "Одновременно раскрывать"
 
 #: inc/config.class.php:93
 msgid "can be expanded at the same time."
-msgstr ""
+msgstr "только одну ветку."
 
 #: inc/config.class.php:102
 msgid "Item name"
