@@ -44,18 +44,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $this->getFromDB($id);
       echo "<form method='post' action='./config.form.php' method='post'>";
       echo "<table class='tab_cadre' cellpadding='5'>";
-      echo "<tr><th colspan='2'>".__('Display'). "</th></tr>";
+      echo "<tr><th colspan='2'>".__('Display', 'treeview'). "</th></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".__('Target for all the nodes')."</td>";
+      echo "<tr class='tab_bg_1'><td>".__('Target for all the nodes', 'treeview')."</td>";
       echo "<td><select name='target'>";
       echo "<option value='_blank' ".(($this->fields["target"] == '_blank')?" selected ":"").">".
-             __('New window')."</option>";
+             __('New window', 'treeview')."</option>";
       echo "<option value='right' ".(($this->fields["target"] == 'right')?" selected ":"").">".
-             __('The central console')."</option>";
+             __('The central console', 'treeview')."</option>";
       echo "</select></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Should folders be links')."</td>";
+      echo "<td>".__('Should folders be links', 'treeview')."</td>";
       echo "<td><select name='folderLinks'>";
       echo "<option value='0' ".(($this->fields["folderLinks"] == 0)?" selected ":"").">".
              __('No')."</option>";
@@ -64,7 +64,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "</select></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Nodes can be highlighted')."</td>";
+      echo "<td>".__('Nodes can be highlighted', 'treeview')."</td>";
       echo "<td><select name='useSelection'>";
       echo "<option value='1' ".(($this->fields["useSelection"] == 1)?" selected ":"").">".
              __('Yes')."</option>";
@@ -72,7 +72,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
              __('No')."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".__('Tree is drawn with lines')."</td>";
+      echo "<tr class='tab_bg_1'><td>".__('Tree is drawn with lines', 'treeview')."</td>";
       echo "<td><select name='useLines'>";
       echo "<option value='1' ".(($this->fields["useLines"] == 1)?" selected ":"").">".
              __('Yes')."</option>";
@@ -80,7 +80,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
              __('No')."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".__('Tree is drawn with icons')."</td>";
+      echo "<tr class='tab_bg_1'><td>".__('Tree is drawn with icons', 'treeview')."</td>";
       echo "<td>";
       echo "<select name='useIcons'>";
       echo "<option value='1' ".(($this->fields["useIcons"] == 1)?" selected ":"").">".
@@ -90,7 +90,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "</select></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Only one node within a parent')."<br>".__('can be expanded at the same time.');
+      echo "<td>".__('Only one node within a parent', 'treeview')."<br>".
+                 __('can be expanded at the same time.', 'treeview');
       echo "<td>";
       echo "<select name='closeSameLevel'>";
       echo "<option value='1' ".(($this->fields["closeSameLevel"] == 1)?" selected ":"").">".
@@ -99,7 +100,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
              __('No')."</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".__('Item name')."</td>";
+      echo "<tr class='tab_bg_1'><td>".__('Item name', 'treeview')."</td>";
       echo "<td><select name='itemName'>";
       echo "<option value='0' ".(($this->fields["itemName"] == '0')?" selected ":"").">".
              __('Name')."</option>";
@@ -113,18 +114,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "</option>";
       echo "</select></td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>".__('Location name')."</td>";
+      echo "<tr class='tab_bg_1'><td>".__('Location name', 'treeview')."</td>";
       echo "<td>";
       echo "<select name='locationName'>";
       echo "<option value='0' ".(($this->fields["locationName"] == '0')?" selected ":"").">".
-             __('Short name')."</option>";
+             __('Short name', 'treeview')."</option>";
       echo "<option value='1' ".(($this->fields["locationName"] == '1')?" selected ":"").">".
-             __('Long name')."</option>";
+             __('Long name', 'treeview')."</option>";
       echo "<option value='2' ".(($this->fields["locationName"] == '2')?" selected ":"").">";
-      printf(__('%1$s / %2$s'), __('Short name'), __('Comment'));
+      printf(__('%1$s / %2$s'), __('Short name', 'treeview'), __('Comment', 'treeview'));
       echo "</option>";
       echo "<option value='3' ".(($this->fields["locationName"] == '3')?" selected ":"").">";
-      printf(__('%1$s / %2$s'), __('Long name'), __('Comment'));
+      printf(__('%1$s / %2$s'), __('Long name', 'treeview'), __('Comment', 'treeview'));
       echo "</option>";
       echo "</select></td></tr>";
 
@@ -193,7 +194,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
              'http://www.w3.org/TR/html4/frameset.dtd'>";
-      echo "\n<html><head><title>". sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view'))."</title>";
+      echo "\n<html><head><title>". sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
+      echo "</title>";
       echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
 
       // Send extra expires header if configured
@@ -231,7 +233,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
              'http://www.w3.org/TR/html4/frameset.dtd'>";
-      echo "\n<html><head><title>". sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view'))."</title>";
+      echo "\n<html><head><title>". sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
+      echo "</title>";
       echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
 
       // Send extra expires header if configured

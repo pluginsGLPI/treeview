@@ -102,7 +102,7 @@ function plugin_init_treeview() {
 **/
 function plugin_version_treeview() {
 
-   return array('name'           => __('Tree view'),
+   return array('name'           => __('Tree view', 'treeview'),
                 'version'        => '1.6.2',
                 'license'        => 'GPLv2+',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
