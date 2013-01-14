@@ -133,7 +133,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "<input type='hidden' name='id' value='1'>";
       echo "<input type='submit' name='update' value='"._sx('button', 'Post')."' class='submit'>";
       echo "</td></tr>";
-      echo "</table></form>";
+      echo "</table>";
+      Html::closeForm();
    }
 
 
