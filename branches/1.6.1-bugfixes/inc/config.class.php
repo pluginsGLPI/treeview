@@ -132,7 +132,8 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "<input type='hidden' name='id' value='1'>";
       echo "<input type='submit' name='update' value='".$LANG['buttons'][2]."' class='submit'>";
       echo "</td></tr>";
-      echo "</table></form>";
+      echo "</table>";
+      Html::closeForm();
    }
 
 
