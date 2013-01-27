@@ -27,10 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('GLPI_ROOT', '../..');
-
-include (GLPI_ROOT . "/inc/includes.php");
-require_once "inc/config.class.php";
+include ('../../inc/includes.php');
 
 Session::checkLoginUser();
 

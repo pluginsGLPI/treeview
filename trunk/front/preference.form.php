@@ -27,10 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-   define('GLPI_ROOT', '../../..');
-}
-include_once (GLPI_ROOT . "/inc/includes.php");
+include ('../../../inc/includes.php');
 
 $pref = new PluginTreeviewPreference();
 
