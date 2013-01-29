@@ -289,7 +289,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
     * Requests the nodes from the GLPI database
    **/
    function getNodesFromDb() {
-      global $DB;
+      global $DB,$CFG_GLPI;
 
       $searchopt = array();
       $searchopt = $this->getSearchOptions();
@@ -425,7 +425,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                                     '&sort=1&is_deleted=0&start=0&reset=reset';
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($searchopt[$a]['name'], $trans).
-                             "\", $dontLoad, '" .$searchopt[$a]['type']."', '" .GLPI_ROOT .
+                             "\", $dontLoad, '" .$searchopt[$a]['type']."', '" .$CFG_GLPI["root_doc"] .
                              $searchopt[$a]['page'] . $getParam . "', '', '', 'pics/" .
                              $searchopt[$a]['pic']. "', 'pics/". $searchopt[$a]['pic'] . "');\n";
 
