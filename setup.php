@@ -70,7 +70,7 @@ function plugin_init_treeview() {
           && isset($_SESSION["glpi_plugin_treeview_preference"])
           && $_SESSION["glpi_plugin_treeview_preference"] == 1) {
 
-            Html::redirect(GLPI_ROOT."/plugins/treeview/index.php");
+            Html::redirect($CFG_GLPI["root_doc"]."/plugins/treeview/index.php");
       }
 
       if ($_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"]."/logout.php"
