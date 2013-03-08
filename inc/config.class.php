@@ -431,12 +431,21 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
                      $query = "SELECT *
                                FROM `$itemtable`
-                               WHERE `locations_id` = '".$r['id']."'
-                                     AND `is_deleted` = '0'
-                                     AND `is_template` = '0'
-                                     AND `entities_id`= '" . $_SESSION["glpiactive_entity"] . "'
-                               ORDER BY `$itemtable`.`name`";
-
+                               WHERE `locations_id` = '".$r['id']."'";
+                     
+                     if ($item->maybeTemplate()) {
+                        $query .= " AND `$itemtable`.`is_template` = '0'";
+                     }
+                     if ($item->maybeDeleted()) {
+                        $query .= " AND `$itemtable`.`is_deleted` = '0'";
+                     }
+                     
+                     if ($this->isEntityAssign()) {
+                        $query .= " AND `$itemtable`.`entities_id` = '".$_SESSION["glpiactive_entity"]."'";
+                     }
+                     
+                     $query .= " ORDER BY `$itemtable`.`name`";
+                     
                      $result_1 = $DB->query($query);
                      if ($DB->numrows($result_1)) {
                         $pid = $tv_id;
