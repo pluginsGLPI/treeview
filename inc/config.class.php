@@ -36,6 +36,8 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewConfig  extends CommonDBTM {
 
+   static $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
+                        'Software');
    /**
     * Configuration form
    **/
@@ -43,7 +45,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       $this->getFromDB($id);
       echo "<form method='post' action='./config.form.php' method='post'>";
-      echo "<table class='tab_cadre' cellpadding='5'>";
+      echo "<table class='tab_cadre_fixe' cellpadding='5'>";
       echo "<tr><th colspan='2'>".__('Display', 'treeview'). "</th></tr>";
 
       echo "<tr class='tab_bg_1'><td>".__('Target for all the nodes', 'treeview')."</td>";
@@ -137,53 +139,85 @@ class PluginTreeviewConfig  extends CommonDBTM {
       Html::closeForm();
    }
 
+   
+   /**
+    * For other plugins, add a type to the linkable types
+    *
+    *
+    * @param $type string class name
+   **/
+   static function registerType($type) {
+      if (!in_array($type, self::$types)) {
+         self::$types[] = $type;
+      }
+   }
 
-   function getSearchOptions() {
+   /**
+    * Type than could be linked to a Resource
+    *
+    * @param $all boolean, all type, or only allowed ones
+    *
+    * @return array of types
+   **/
+   static function getTypes($all=false) {
 
-      $tab = array();
-      //Computer
-      $tab[0]['type'] = 'Computer';
-      $tab[0]['name'] = _n('Computer', 'Computers', 2);
-      $tab[0]['pic']  = 'computer.gif';
-      $tab[0]['page'] = '/front/computer.php';
+      if ($all) {
+         return self::$types;
+      }
 
-      //Monitor
-      $tab[1]['type'] = 'Monitor';
-      $tab[1]['name'] = _n('Monitor', 'Monitors', 2);
-      $tab[1]['pic']  = 'monitor.gif';
-      $tab[1]['page'] = '/front/monitor.php';
+      // Only allowed types
+      $types = self::$types;
 
-      // Networking
-      $tab[2]['type'] = 'NetworkEquipment';
-      $tab[2]['name'] = _n('Network', 'Networks', 2);
-      $tab[2]['pic']  = 'page.gif';
-      $tab[2]['page'] = '/front/networkequipment.php';
+      foreach ($types as $key => $type) {
+         if (!class_exists($type)) {
+            continue;
+         }
 
-      // Peripheral
-      $tab[3]['type'] = 'Peripheral';
-      $tab[3]['name'] = _n('Device', 'Devices', 2);
-      $tab[3]['pic']  = 'device.gif';
-      $tab[3]['page'] = '/front/peripheral.php';
-
-      // Printer
-      $tab[4]['type'] = 'Printer';
-      $tab[4]['name'] = _n('Printer', 'Printers', 2);
-      $tab[4]['pic']  = 'printer.gif';
-      $tab[4]['page'] = '/front/printer.php';
-
-      // Software
-      $tab[5]['type'] = 'Software';
-      $tab[5]['name'] = _n('Software', 'Software', 2);
-      $tab[5]['pic']  = 'software.gif';
-      $tab[5]['page'] = '/front/software.php';
-
-      // Phone
-      $tab[6]['type'] = 'Phone';
-      $tab[6]['name'] = _n('Phone', 'Phones', 2);
-      $tab[6]['pic']  = 'phone.gif';
-      $tab[6]['page'] = '/front/phone.php';
-
-      return $tab;
+         $item = new $type();
+         if (!$item->canView()) {
+            unset($types[$key]);
+         }
+      }
+      return $types;
+   }
+   
+   static function getPicbyType($type) {
+      global $PLUGIN_HOOKS;
+      
+      $pic = '';
+      switch ($type) {
+         case 'Computer' :
+            $pic = 'pics/computer.gif';
+            break;
+         case 'Monitor' :
+            $pic = 'pics/monitor.gif';
+            break;
+         case 'NetworkEquipment' :
+            $pic = 'pics/page.gif';
+            break;
+         case 'Peripheral' :
+            $pic = 'pics/device.gif';
+            break;
+         case 'Printer' :
+            $pic = 'pics/printer.gif';
+            break;
+         case 'Software' :
+            $pic = 'pics/software.gif';
+            break;
+         case 'Phone' :
+            $pic = 'pics/phone.gif';
+            break;
+      }
+      //Like $PLUGIN_HOOKS['treeview']['PluginExampleExample'] = '../example/pics/mypic.png';
+      if (in_array($type, self::$types) 
+            && isPluginItemtype($type)) {
+            if (isset($PLUGIN_HOOKS['treeview'][$type])) {
+               return $PLUGIN_HOOKS['treeview'][$type];
+            }
+            
+      }
+      
+      return $pic;
    }
 
 
@@ -291,12 +325,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
    function getNodesFromDb() {
       global $DB,$CFG_GLPI;
 
-      $searchopt = array();
-      $searchopt = $this->getSearchOptions();
-
       // The tree object
       echo "var d = new dTree('d');\n";
-      echo "d.add(0,-1,'GLPI Desktop');\n";
+      echo "d.add(0,-1,'".__('Tree view', 'treeview')."');\n";
 
       $config = new PluginTreeviewConfig();
 
@@ -394,9 +425,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
                               "\", true, -1,'');\n";
                   $dontLoad = 'true';
                   // Then add aloso its items
-                  for ($a=0 ; $a<count($searchopt) ; $a++) {
-                     $type      = $searchopt[$a]['type'];
-                     $itemtable = getTableForItemType($type);
+                  foreach (self::$types as $type) {
+                     $item       = new $type();
+                     $itemtable  = getTableForItemType($type);
 
                      $query = "SELECT *
                                FROM `$itemtable`
@@ -424,10 +455,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
                                     '&field[0]=' .$field_num.
                                     '&sort=1&is_deleted=0&start=0&reset=reset';
                         // Add items parent node
-                        echo "d.add($tv_id,".$r['id'].",\"".strtr($searchopt[$a]['name'], $trans).
-                             "\", $dontLoad, '" .$searchopt[$a]['type']."', '" .$CFG_GLPI["root_doc"] .
-                             $searchopt[$a]['page'] . $getParam . "', '', '', 'pics/" .
-                             $searchopt[$a]['pic']. "', 'pics/". $searchopt[$a]['pic'] . "');\n";
+                        echo "d.add($tv_id,".$r['id'].",\"".strtr($item::getTypeName(2), $trans).
+                             "\", $dontLoad, '" .$type ."', '" .Toolbox::getItemTypeSearchURL($type) . $getParam . "', '', '', '" .
+                             self::getPicbyType($type). "', '". self::getPicbyType($type) . "');\n";
 
                         if ($openedType == $type && $nodes[count($nodes)-1] == $tv_id) {
                            $openedType = $tv_id;
@@ -465,10 +495,20 @@ class PluginTreeviewConfig  extends CommonDBTM {
                               $i_name = $r_1['name'];
                            }
                         }
+                        
+                        $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
+                        $pic = "pics/node.gif";
+                        $name = strtr($i_name,$trans);
+
+                        $params = array('itemtype' => $type,
+                                         'id' => $r_1['id']);
+                        $url = Plugin::doHookFunction('treeview_url', $params);
+                        $pic = Plugin::doHookFunction('treeview_pic', $params);
+                           
                         // Add the item
-                        echo "d.add(".$tv_id++.", $pid, \"" . strtr($i_name,$trans) . "\", true, -1, '" .
-                                    Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'].
-                                    "', '', '', 'pics/node.gif', 'pics/node.gif');\n";
+                        echo "d.add(".$tv_id++.", $pid, \"" . $name . "\", true, -1, '" .
+                                    $url."', '', '', '".$pic."','".$pic."');\n";
+                        
                      }
                   }
 
@@ -491,24 +531,5 @@ class PluginTreeviewConfig  extends CommonDBTM {
          echo "d.openTo(" .$nodes[count($nodes)-1]. ");\n";
       }
    }
-
-
-   static function getTypes () {
-      static $types = NULL;
-
-      if (is_null($types)) {
-         $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
-                        'Software');
-      }
-
-      foreach ($types as $key=>$type) {
-         $item = new $type();
-         if (!$item->canGlobal('r')) {
-            unset($types[$key]);
-         }
-      }
-      return $types;
-   }
-
 }
 ?>
