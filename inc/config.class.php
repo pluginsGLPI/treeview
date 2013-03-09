@@ -512,7 +512,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $pic = "pics/node.gif";
                         $name = strtr($i_name,$trans);
                         $opt = array('url'     => $url,
-                                      'pic'     => $pic
+                                      'pic'     => $pic,
                                       'name'     => $name);
                                       
                         $params = array('itemtype' => $type,
