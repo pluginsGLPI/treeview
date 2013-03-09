@@ -511,15 +511,21 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
                         $pic = "pics/node.gif";
                         $name = strtr($i_name,$trans);
-
+                        $opt = array('url'     => $url,
+                                      'pic'     => $pic
+                                      'name'     => $name);
+                                      
                         $params = array('itemtype' => $type,
-                                         'id' => $r_1['id']);
-                        $url = Plugin::doHookFunction('treeview_url', $params);
-                        $pic = Plugin::doHookFunction('treeview_pic', $params);
-                           
+                                         'id'      => $r_1['id'],
+                                         'url'     => $url,
+                                         'pic'     => $pic,
+                                         'name'    => $name);
+                                         
+                        $opt = Plugin::doHookFunction('treeview_params', $params);
+
                         // Add the item
-                        echo "d.add(".$tv_id++.", $pid, \"" . $name . "\", true, -1, '" .
-                                    $url."', '', '', '".$pic."','".$pic."');\n";
+                        echo "d.add(".$tv_id++.", $pid, \"" . $opt['name'] . "\", true, -1, '" .
+                                    $opt['url']."', '', '', '".$opt['pic']."','".$opt['pic']."');\n";
                         
                      }
                   }
