@@ -358,8 +358,10 @@ class PluginTreeviewConfig  extends CommonDBTM {
       // Get the lowest level of the tree nodes and the highest primary key
       $query = "  SELECT MAX(`id`) AS `max_id`,
                          MAX(`level`) AS `max_level`
-                  FROM `glpi_locations`
-                  WHERE `entities_id` = '".$_SESSION["glpiactive_entity"]."'";
+                  FROM `glpi_locations` ";
+      
+      $query.= getEntitiesRestrictRequest(" WHERE ","glpi_locations",'','',true);
+            
       $result = $DB->query($query);
 
       $max_level = $DB->result($result, 0, "max_level");
@@ -392,10 +394,11 @@ class PluginTreeviewConfig  extends CommonDBTM {
             $query = "SELECT *
                       FROM `glpi_locations`
                       WHERE `level` = '$n'
-                            AND `locations_id` = '". $nodes[$n-1] ."'
-                            AND (`entities_id` = '" . $_SESSION["glpiactive_entity"]."'
-                                 OR  `glpi_locations`.`is_recursive`= 1)
-                      ORDER BY `completename` ASC";
+                            AND `locations_id` = '". $nodes[$n-1] ."'";
+            
+            $query.= getEntitiesRestrictRequest(" AND ","glpi_locations",'','',true);
+            $query.= "ORDER BY `completename` ASC";
+            
             $result = $DB->query($query);
 
             while ($r = $DB->fetch_assoc($result)) {
