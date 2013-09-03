@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-02 19:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: inc/config.class.php:47
+msgid "Display"
+msgstr "Visualizza"
+
+#: inc/config.class.php:49
+msgid "Target for all the nodes"
+msgstr "I nodi sono collegati agli oggetti"
+
+#: inc/config.class.php:52
+msgid "New window"
+msgstr "Nuova finestra"
+
+#: inc/config.class.php:54
+msgid "The central console"
+msgstr "Console centrale"
+
+#: inc/config.class.php:58
+msgid "Should folders be links"
+msgstr "Le cartelle sono esposte come links"
+
+#: inc/config.class.php:67
+msgid "Nodes can be highlighted"
+msgstr "I nodi possono essere selezionati"
+
+#: inc/config.class.php:75
+msgid "Tree is drawn with lines"
+msgstr "La struttura � visualizzata ad albero"
+
+#: inc/config.class.php:83
+msgid "Tree is drawn with icons"
+msgstr "La struttura � visualizzata con delle icone"
+
+#: inc/config.class.php:93
+msgid "Only one node within a parent"
+msgstr "Solo un nodo con voce padre"
+
+#: inc/config.class.php:93
+msgid "can be expanded at the same time."
+msgstr "pu� essere esploso per volta."
+
+#: inc/config.class.php:102
+msgid "Item name"
+msgstr "Nome dell'oggetto"
+
+#: inc/config.class.php:116
+msgid "Location name"
+msgstr "Posizione"
+
+#: inc/config.class.php:120 inc/config.class.php:124
+msgid "Short name"
+msgstr "Nome breve"
+
+#: inc/config.class.php:122 inc/config.class.php:127
+msgid "Long name"
+msgstr "Nome completo"
+
+#: inc/config.class.php:124 inc/config.class.php:127
+msgid "Comment"
+msgstr "Commenti"
+
+#: inc/config.class.php:196 inc/config.class.php:234
+#: inc/preference.class.php:107 inc/profile.class.php:134
+msgid "Tree view"
+msgstr "Visualizzazione struttura"
+
+#: inc/preference.class.php:50
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "Lancia il plugin Treeview quanto viene avviato GLPI"
+
+#: inc/preference.class.php:61
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr "Attenzione : Se viene caricato pi� di un plugin all'avvio, verr� utilizzato solo il primo"
+
+#: inc/profile.class.php:102
+msgid "Rights management"
+msgstr "Gestione permessi"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "Usa la visualizzazione struttura"

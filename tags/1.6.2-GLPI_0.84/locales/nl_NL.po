@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-02 19:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: inc/config.class.php:47
+msgid "Display"
+msgstr "Overzicht"
+
+#: inc/config.class.php:49
+msgid "Target for all the nodes"
+msgstr "Doel voor alle nodes"
+
+#: inc/config.class.php:52
+msgid "New window"
+msgstr "Nieuw venster"
+
+#: inc/config.class.php:54
+msgid "The central console"
+msgstr "Het centrale console"
+
+#: inc/config.class.php:58
+msgid "Should folders be links"
+msgstr "Moeten folders worden gelinkt?"
+
+#: inc/config.class.php:67
+msgid "Nodes can be highlighted"
+msgstr "Nodes kunnen worden gemarkeerd"
+
+#: inc/config.class.php:75
+msgid "Tree is drawn with lines"
+msgstr "Tree wordt getekend met lijnen"
+
+#: inc/config.class.php:83
+msgid "Tree is drawn with icons"
+msgstr "Tree wordt getekend met iconen"
+
+#: inc/config.class.php:93
+msgid "Only one node within a parent"
+msgstr "Slechts &eacute&eacuten node binnen een ouder"
+
+#: inc/config.class.php:93
+msgid "can be expanded at the same time."
+msgstr "kan worden uitgeklapt."
+
+#: inc/config.class.php:102
+msgid "Item name"
+msgstr "Item naam"
+
+#: inc/config.class.php:116
+msgid "Location name"
+msgstr "Locatie naam"
+
+#: inc/config.class.php:120 inc/config.class.php:124
+msgid "Short name"
+msgstr "Verkorte naam"
+
+#: inc/config.class.php:122 inc/config.class.php:127
+msgid "Long name"
+msgstr "Lange naam"
+
+#: inc/config.class.php:124 inc/config.class.php:127
+msgid "Comment"
+msgstr "Opmerking"
+
+#: inc/config.class.php:196 inc/config.class.php:234
+#: inc/preference.class.php:107 inc/profile.class.php:134
+msgid "Tree view"
+msgstr "Tree View"
+
+#: inc/preference.class.php:50
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "Start de plugin Treeview op als GLPI start"
+
+#: inc/preference.class.php:61
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr "Let op: Als er meer dan &eacute&eacuten plugin geladen wordt tijdens het opstarten wordt alleen de eerste gebruikt."
+
+#: inc/profile.class.php:102
+msgid "Rights management"
+msgstr "Rechten management"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "Gebruik de tree"
