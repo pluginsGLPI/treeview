@@ -37,6 +37,14 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewPreference extends CommonDBTM {
 
+   static function getMenuContent() {
+      global $CFG_GLPI;
+      $menu          = array();
+      $menu['title'] = __('Tree view', 'treeview');
+      $menu['page']  = '/plugins/treeview/index.php';
+      return $menu;
+   }
+
    function showFormUserPreference($target, $id) {
 
       $data = plugin_version_treeview();
