@@ -112,12 +112,7 @@ function plugin_version_treeview() {
 
 
 function plugin_treeview_check_prerequisites() {
-
-   if (version_compare(GLPI_VERSION,'0.84','lt') || version_compare(GLPI_VERSION,'0.85','ge')) {
-      echo "This plugin requires GLPI >= 0.84 and GLPI < 0.85";
-      return false;
-   }
-   return true;
+  return true;
 }
 
 
