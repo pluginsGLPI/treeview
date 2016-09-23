@@ -91,7 +91,7 @@ function plugin_init_treeview() {
    }
 
    // Config page
-   if (Session::haveRight("config","w") || Session::haveRight("profile", "w")) {
+   if (Session::haveRight("config", UPDATE) || Session::haveRight("profile", UPDATE)) {
       $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
    }
 }
