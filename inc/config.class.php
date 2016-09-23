@@ -462,10 +462,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         while ($row = $DB->fetch_assoc($result_location)) {
                            $name_location= $row['completename'];
                         }
-
-                        $getParam = '?searchtype[0]=equals&contains[0]=' .$r['id'].
-                                    '&field[0]=' .$field_num.
-                                    '&sort=1&is_deleted=0&start=0&reset=reset';
+                        $value = $r['id'];
+                        $token = Session::getNewCSRFToken();
+                        $getParam = "?is_deleted=0&criteria[0][field]=$field_num&criteria[0][searchtype]=equals&criteria[0][value]=$value&search=Rechercher&start=0&_glpi_csrf_token=$token";
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($item::getTypeName(2), $trans).
                              "\", $dontLoad, '" .$type ."', '" .Toolbox::getItemTypeSearchURL($type) . $getParam . "', '', '', '" .
