@@ -87,10 +87,10 @@ class PluginTreeviewProfile extends CommonDBTM {
         $target = $options['target'];
       }
 
-      if (!Session::haveRight("profile","r")) {
+      if (!Session::haveRight("profile",READ)) {
          return false;
       }
-      $canedit = Session::haveRight("profile", "w");
+      $canedit = Session::haveRight("profile", UPDATE);
       $prof = new Profile();
       if ($id){
          $this->getFromDB($id);
