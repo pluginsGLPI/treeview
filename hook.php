@@ -233,6 +233,8 @@ function plugin_treeview_uninstall() {
       $DB->query($query) or die($DB->error());
    }
 
+   unset($_SESSION['glpimenu']['plugins']['content']['plugintreeviewpreference']);
+
 }
 
 
