@@ -53,9 +53,7 @@ echo '<div id=explorer_bar>';
 echo '<div id=explorer_title>'.sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
 echo '</div>';
 echo "<div id=explorer_close>";
-echo "<img border=0 src='pics/close.gif' name='explorer_close'
-       onmouseover=\"ChangeImg(document.images.explorer_close, 'pics/close_hover.gif');\"
-       onmouseout=\"ChangeImg(document.images.explorer_close, 'pics/close.gif');\"
+echo "<img border=0 src='pics/close.png' name='explorer_close'
        onclick='parent.location.href = parent.right.location.href;'></div>";
 echo "</div>";
 

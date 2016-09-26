@@ -98,11 +98,11 @@ function dTree(objName) {
 
 	this.icon = {
 
-		root				: this.config.iconFolder + 'base.gif',
+		root				: this.config.iconFolder + 'base.ico',
 
-		folder			: this.config.iconFolder + 'folder.gif',
+		folder			: this.config.iconFolder + 'folder.png',
 
-		folderOpen	: this.config.iconFolder + 'folderopen.gif',
+		folderOpen	: this.config.iconFolder + 'folderopen.png',
 
 		node				: this.config.iconFolder + 'page.gif',
 

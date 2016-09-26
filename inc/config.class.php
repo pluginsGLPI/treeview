@@ -187,25 +187,25 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $pic = '';
       switch ($type) {
          case 'Computer' :
-            $pic = 'pics/computer.gif';
+            $pic = 'pics/computer.png';
             break;
          case 'Monitor' :
-            $pic = 'pics/monitor.gif';
+            $pic = 'pics/monitor.png';
             break;
          case 'NetworkEquipment' :
-            $pic = 'pics/page.gif';
+            $pic = 'pics/network.png';
             break;
          case 'Peripheral' :
             $pic = 'pics/device.gif';
             break;
          case 'Printer' :
-            $pic = 'pics/printer.gif';
+            $pic = 'pics/printer.png';
             break;
          case 'Software' :
-            $pic = 'pics/software.gif';
+            $pic = 'pics/software.ico';
             break;
          case 'Phone' :
-            $pic = 'pics/phone.gif';
+            $pic = 'pics/phone.png';
             break;
       }
       //Like $PLUGIN_HOOKS['treeview']['PluginExampleExample'] = '../example/pics/mypic.png';
