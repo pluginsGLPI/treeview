@@ -266,36 +266,10 @@ class PluginTreeviewConfig  extends CommonDBTM {
    function hideTreeview() {
       global $CFG_GLPI;
 
-      echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
-             'http://www.w3.org/TR/html4/frameset.dtd'>";
-      echo "\n<html><head><title>". sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
-      echo "</title>";
-      echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
-
-      // Send extra expires header if configured
-      echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
-      echo "<meta http-equiv='Pragma' content='no-cache'>\n";
-      echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
-      echo "<link rel='stylesheet' type='text/css' media='print' href='".
-             $CFG_GLPI["root_doc"]."/css/print.css' >\n";
-      echo "<link rel='shortcut icon' type='images/x-icon' href='".
-             $CFG_GLPI["root_doc"]."/pics/favicon.ico' >\n";
-
-      // Must be always the top window
       echo "<script type=\"text/javascript\">";
          echo "if (top != self)";
          echo "top.location = self.location;";
-      echo "</script></head>";
-      echo "<frameset cols='250,*'>";
-         //echo "<frame src='".$CFG_GLPI['root_doc']."/plugins/treeview/left.php' name='left' scrolling='yes'>";
-         echo "<frame src='".$CFG_GLPI['root_doc']."/front/central.php' name='right'>";
-         echo "<noframes>";
-            echo "<body>";
-               echo "<p><a href='".$CFG_GLPI['root_doc']."/front/central.php'>GLPI</a></p>";
-            echo "</body>";
-         echo "</noframes>";
-      echo "</frameset>";
-      echo "</html>";
+      echo "</script>";
    }
 
 

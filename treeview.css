@@ -65,3 +65,6 @@ body {
 	padding: 3px;
 	text-align:right;
 }
+#explorer_close img {
+	cursor: pointer;
+}
