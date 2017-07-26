@@ -29,19 +29,31 @@
 
 include ('../../../inc/includes.php');
 
+
 $config = new PluginTreeviewConfig();
 if (isset($_POST["update"])) {
    $config->update($_POST);
    Html::back();
 
 } else {
+
    $plugin = new Plugin();
    if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
-      Html::header(__('Tree view', 'treeview'), $_SERVER["PHP_SELF"], "config", "plugins");
-      $config->showForm(1);
+
+      Html::header(PluginTreeviewConfig::getTypeName(),
+                $_SERVER['PHP_SELF'],
+                "plugins",
+                "plugintreeviewpreference",
+                "config");      $config->showForm(1);
 
    } else {
-      Html::header(__('Setup'), $_SERVER['PHP_SELF'], "config", "plugins");
+
+      Html::header(__('Setup'),
+                $_SERVER['PHP_SELF'],
+                "plugins",
+                "plugintreeviewpreference",
+                "config");
+
       // Get the configuration from the database and show it
       echo " <script type='text/javascript'>
          if (top != self)

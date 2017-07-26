@@ -38,6 +38,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
    static $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
                         'Software');
+
+    /**
+    * Display name of itemtype
+    *
+    * @return value name of this itemtype
+    **/
+   public static function getTypeName($nb = 0) {
+
+      return __('Tree view', 'treeview');
+   }
+
+
    /**
     * Configuration form
    **/
