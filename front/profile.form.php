@@ -37,4 +37,3 @@ if (isset($_POST['update_user_profile'])) {
    $prof->update($_POST);
    Html::back();
 }
-?>

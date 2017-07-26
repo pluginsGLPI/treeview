@@ -112,11 +112,14 @@ function plugin_version_treeview() {
 
 
 function plugin_treeview_check_prerequisites() {
-  return true;
+   if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
+      echo 'This plugin requires GLPI >= 9.1';
+      return false;
+   }
+   return true;
 }
 
 
 function plugin_treeview_check_config() {
    return true;
 }
-?>

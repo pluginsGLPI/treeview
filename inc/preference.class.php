@@ -57,7 +57,7 @@ class PluginTreeviewPreference extends CommonDBTM {
       echo "<tr class='tab_bg_1 center'>";
       echo "<td>".__('Launch the plugin Treeview with GLPI launching', 'treeview')."</td>";
       echo "<td>";
-      Dropdown::showYesNo("show_on_load",$this->fields["show_on_load"]);
+      Dropdown::showYesNo("show_on_load", $this->fields["show_on_load"]);
       echo "</td></tr>";
 
       echo "<tr class='tab_bg_1 center'><td colspan='2'>";
@@ -66,7 +66,7 @@ class PluginTreeviewPreference extends CommonDBTM {
       echo "<input type='hidden' name='id' value='$id'></td></tr>";
 
       echo "<tr class='tab_bg_1 center'>";
-      echo "<td colspan='2'>".__('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used','treeview');
+      echo "<td colspan='2'>".__('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used', 'treeview');
       echo "</td></tr>";
 
       echo "</table>";
@@ -131,4 +131,3 @@ class PluginTreeviewPreference extends CommonDBTM {
       return true;
    }
 }
-?>

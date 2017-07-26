@@ -49,7 +49,6 @@ class PluginTreeviewConfig  extends CommonDBTM {
       return __('Tree view', 'treeview');
    }
 
-
    /**
     * Configuration form
    **/
@@ -156,7 +155,6 @@ class PluginTreeviewConfig  extends CommonDBTM {
       Html::closeForm();
    }
 
-   
    /**
     * For other plugins, add a type to the linkable types
     *
@@ -197,10 +195,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
       }
       return $types;
    }
-   
+
    static function getPicbyType($type) {
       global $PLUGIN_HOOKS;
-      
       $pic = '';
       switch ($type) {
          case 'Computer' :
@@ -226,14 +223,11 @@ class PluginTreeviewConfig  extends CommonDBTM {
             break;
       }
       //Like $PLUGIN_HOOKS['treeview']['PluginExampleExample'] = '../example/pics/mypic.png';
-      if (in_array($type, self::$types) 
-            && isPluginItemtype($type)) {
-            if (isset($PLUGIN_HOOKS['treeview'][$type])) {
-               return $PLUGIN_HOOKS['treeview'][$type];
-            }
-            
+      if (in_array($type, self::$types) && isPluginItemtype($type)) {
+         if (isset($PLUGIN_HOOKS['treeview'][$type])) {
+            return $PLUGIN_HOOKS['treeview'][$type];
+         }
       }
-      
       return $pic;
    }
 
@@ -296,7 +290,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
    function buildTreeview() {
       global $CFG_GLPI;
 
-      # necessary files needed for the tree to work.
+      //necessary files needed for the tree to work.
       echo "<link rel='stylesheet' type='text/css' href='".
              $CFG_GLPI["root_doc"]."/plugins/treeview/dtree.css' type=\"text/css\" >\n";
       echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"].
@@ -327,14 +321,12 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       $itemName       = $this->fields["itemName"];
       $locationName   = $this->fields["locationName"];
-
       $target         = $this->fields["target"];
       $folderLinks    = $this->fields["folderLinks"];
       $useSelection   = $this->fields["useSelection"];
       $useLines       = $this->fields["useLines"];
       $useIcons       = $this->fields["useIcons"];
       $closeSameLevel = $this->fields["closeSameLevel"];
-
 
       // Load the settings in JavaSript so that dTree script can apply them
       echo "d.config.target         = '" .$target. "';\n";
@@ -350,9 +342,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $query = "  SELECT MAX(`id`) AS `max_id`,
                          MAX(`level`) AS `max_level`
                   FROM `glpi_locations` ";
-      
-      $query.= getEntitiesRestrictRequest(" WHERE ","glpi_locations",'','',true);
-            
+
+      $query.= getEntitiesRestrictRequest(" WHERE ", "glpi_locations", '', '', true);
+
       $result = $DB->query($query);
 
       $max_level = $DB->result($result, 0, "max_level");
@@ -380,16 +372,16 @@ class PluginTreeviewConfig  extends CommonDBTM {
                      "\r" =>" ",
                      "\n" =>" ");
 
-      for ($n=1 ; $n<=count($nodes) ; $n++) {
+      for ($n=1; $n<=count($nodes); $n++) {
          if ($nodes[$n-1] <= $max_id && $n <= $max_level) {
             $query = "SELECT *
                       FROM `glpi_locations`
                       WHERE `level` = '$n'
                             AND `locations_id` = '". $nodes[$n-1] ."'";
-            
-            $query.= getEntitiesRestrictRequest(" AND ","glpi_locations",'','',true);
+
+            $query.= getEntitiesRestrictRequest(" AND ", "glpi_locations", '', '', true);
             $query.= "ORDER BY `completename` ASC";
-            
+
             $result = $DB->query($query);
 
             while ($r = $DB->fetch_assoc($result)) {
@@ -415,7 +407,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
                // Is this location requested by the user to be opened
                if (in_array($r['id'], $nodes)) {
-                  echo "d.add(".$r['id'].", ".$r['locations_id'].", \"".strtr($l_name,$trans).
+                  echo "d.add(".$r['id'].", ".$r['locations_id'].", \"".strtr($l_name, $trans).
                               "\", true, -1,'');\n";
                   $dontLoad = 'true';
                   // Then add aloso its items
@@ -426,20 +418,20 @@ class PluginTreeviewConfig  extends CommonDBTM {
                      $query = "SELECT *
                                FROM `$itemtable`
                                WHERE `locations_id` = '".$r['id']."'";
-                     
+
                      if ($item->maybeTemplate()) {
                         $query .= " AND `$itemtable`.`is_template` = '0'";
                      }
                      if ($item->maybeDeleted()) {
                         $query .= " AND `$itemtable`.`is_deleted` = '0'";
                      }
-                     
+
                      if ($this->isEntityAssign()) {
                         $query .= " AND `$itemtable`.`entities_id` = '".$_SESSION["glpiactive_entity"]."'";
                      }
-                     
+
                      $query .= " ORDER BY `$itemtable`.`name`";
-                     
+
                      $result_1 = $DB->query($query);
                      if ($DB->numrows($result_1)) {
                         $pid = $tv_id;
@@ -497,32 +489,32 @@ class PluginTreeviewConfig  extends CommonDBTM {
                               $i_name = $r_1['name'];
                            }
                         }
-                        
+
                         $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
                         $pic = "pics/node.gif";
-                        $name = strtr($i_name,$trans);
+                        $name = strtr($i_name, $trans);
                         $opt = array('url'     => $url,
                                       'pic'     => $pic,
                                       'name'     => $name);
-                                      
+
                         $params = array('itemtype' => $type,
                                          'id'      => $r_1['id'],
                                          'url'     => $url,
                                          'pic'     => $pic,
                                          'name'    => $name);
-                                         
+
                         $opt = Plugin::doHookFunction('treeview_params', $params);
 
                         // Add the item
                         echo "d.add(".$tv_id++.", $pid, \"" . $opt['name'] . "\", true, -1, '" .
                                     $opt['url']."', '', '', '".$opt['pic']."','".$opt['pic']."');\n";
-                        
+
                      }
                   }
 
-               // Add only the location without its items
+                  // Add only the location without its items
                } else {
-                  echo "d.add(".$r['id'].",".$r['locations_id'].",\"".strtr($l_name,$trans).
+                  echo "d.add(".$r['id'].",".$r['locations_id'].",\"".strtr($l_name, $trans).
                               "\", false, -1,'', '', '', '', '', false, true);\n";
                }
             }
@@ -540,4 +532,3 @@ class PluginTreeviewConfig  extends CommonDBTM {
       }
    }
 }
-?>

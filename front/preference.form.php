@@ -36,4 +36,3 @@ if (isset($_POST['plugin_treeview_user_preferences_save'])) {
    $pref->update($_POST);
    Html::back();
 }
-?>

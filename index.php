@@ -34,4 +34,3 @@ Plugin::load('treeview', true);
 $_SESSION["glpi_plugin_treeview_loaded"] = 1;
 $config = new PluginTreeviewConfig();
 $config->seeTreeview();
-?>

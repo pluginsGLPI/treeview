@@ -65,8 +65,7 @@ class PluginTreeviewProfile extends CommonDBTM {
          unset($_SESSION["glpi_plugin_treeview_profile"]);
       }
 
-//   require 'preference.class.php';
-
+      //require 'preference.class.php';
       $Pref = new PluginTreeviewPreference();
       $pref_value = $Pref->checkPreferenceValue(Session::getLoginUserID());
       if ($pref_value==1) {
@@ -84,15 +83,15 @@ class PluginTreeviewProfile extends CommonDBTM {
 
       $target = $this->getFormURL();
       if (isset($options['target'])) {
-        $target = $options['target'];
+         $target = $options['target'];
       }
 
-      if (!Session::haveRight("profile",READ)) {
+      if (!Session::haveRight("profile", READ)) {
          return false;
       }
       $canedit = Session::haveRight("profile", UPDATE);
       $prof = new Profile();
-      if ($id){
+      if ($id) {
          $this->getFromDB($id);
          $prof->getFromDB($id);
       }
@@ -150,4 +149,3 @@ class PluginTreeviewProfile extends CommonDBTM {
       return true;
    }
 }
-?>

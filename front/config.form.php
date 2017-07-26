@@ -44,7 +44,8 @@ if (isset($_POST["update"])) {
                 $_SERVER['PHP_SELF'],
                 "plugins",
                 "plugintreeviewpreference",
-                "config");      $config->showForm(1);
+                "config");
+      $config->showForm(1);
 
    } else {
 
@@ -63,4 +64,3 @@ if (isset($_POST["update"])) {
 }
 
 Html::footer();
-?>

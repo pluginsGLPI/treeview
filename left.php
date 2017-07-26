@@ -70,4 +70,3 @@ $config->buildTreeview();
 
 echo "</body>";
 echo "</html>";
-?>
