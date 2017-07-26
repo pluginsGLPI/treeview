@@ -46,7 +46,7 @@ function plugin_init_treeview() {
    if (isset($_SESSION["glpi_plugin_treeview_profile"])
        && $_SESSION["glpi_plugin_treeview_profile"]["treeview"]) {
 
-      $PLUGIN_HOOKS['menu_toadd']['treeview']['plugins'] = 'PluginTreeviewPreference';
+      $PLUGIN_HOOKS['menu_toadd']['treeview']['tools'] = 'PluginTreeviewPreference';
 
       $PLUGIN_HOOKS['pre_item_purge']['treeview'] = array('Profile' => array('PluginTreeviewProfile',
                                                                              'cleanProfiles'));
