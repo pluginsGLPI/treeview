@@ -1,8 +1,13 @@
 # Treeview GLPI plugin
 
+[![Build Status](https://secure.travis-ci.org/pluginsGLPI/treeview.svg?branch=master)](https://secure.travis-ci.org/pluginsGLPI/treeview)
+
 This plugin allows you to browse through your inventory via a tree view in a panel located on the left side of the screen. 
 
 You can browse the tree of your site to see the equipment.
+
+![3.-Screenshot](/screenshot.png "Screenshot")
+
 
 ## Contributing
 
