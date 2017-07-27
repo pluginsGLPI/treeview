@@ -9,5 +9,6 @@ require_once 'vendor/autoload.php';
 
 class RoboFile extends Glpi\Tools\RoboFile
 {
+   protected $csignore = ['/vendor/', '/css/', '/js/', '/tools/'];
    //Own plugin's robo stuff
 }
