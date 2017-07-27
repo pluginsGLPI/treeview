@@ -88,7 +88,6 @@ function plugin_treeview_install() {
 
       $DB->query($query) or die($DB->error());
 
-
       $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_treeview_preferences` (
                   `id` int(11) NOT NULL auto_increment,
                   `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',
@@ -195,7 +194,7 @@ function plugin_treeview_upgrade12to13() {
       $query = "ALTER TABLE `glpi_plugin_treeview_preferences` ";
 
       if (FieldExists("glpi_plugin_treeview_preferences", "ID")) {
-        $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
+         $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
       }
       if (FieldExists("glpi_plugin_treeview_preferences", "user_id")) {
          $query .= " CHANGE `user_id` `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',";
@@ -264,4 +263,3 @@ function plugin_change_entity_Treeview() {
       echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
    }
 }
-?>
