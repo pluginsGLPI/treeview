@@ -40,8 +40,8 @@ echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
 echo "<meta http-equiv='Pragma' content='no-cache'>\n";
 echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
 echo "<link rel='stylesheet' type='text/css' href='".$CFG_GLPI["root_doc"].
-       "/plugins/treeview/treeview.css' type='text/css'>\n";
-echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"]."/plugins/treeview/treeview.js'>
+       "/plugins/treeview/css/treeview.css' type='text/css'>\n";
+echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"]."/plugins/treeview/js/treeview.js'>
       </script></head>\n";
 
 echo '<div id="ie5menu" class="skin0" onMouseover="highlightie5(event)" ' .
