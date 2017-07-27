@@ -82,12 +82,12 @@ function plugin_init_treeview() {
          $config->hideTreeview();
       }
       // Add specific files to add to the header : javascript or css
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "dtree.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "dtree.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "functions.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "style.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "treeview.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "treeview.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/dtree.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/dtree.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/functions.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/style.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/treeview.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/treeview.css";
    }
 
    // Config page

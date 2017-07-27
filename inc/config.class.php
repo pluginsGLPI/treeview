@@ -292,9 +292,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       //necessary files needed for the tree to work.
       echo "<link rel='stylesheet' type='text/css' href='".
-             $CFG_GLPI["root_doc"]."/plugins/treeview/dtree.css' type=\"text/css\" >\n";
+             $CFG_GLPI["root_doc"]."/plugins/treeview/css/dtree.css' type=\"text/css\" >\n";
       echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"].
-             "/plugins/treeview/dtree.js'></script>\n";
+             "/plugins/treeview/js/dtree.js'></script>\n";
 
       echo "<div class='dtree'>";
       echo "<script type='text/javascript'>";
