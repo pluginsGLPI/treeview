@@ -452,6 +452,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
 
                         $params = array('itemtype'  => $type,
+                                        'locations_id' => $value,
                                         'searchurl' => $searchUrl);
 
                         $opt = Plugin::doHookFunction('treeview_search_url_parent_node', $params);
