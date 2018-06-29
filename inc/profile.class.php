@@ -104,7 +104,11 @@ class PluginTreeviewProfile extends CommonDBTM {
 
       echo "<tr class='tab_bg_2'>";
       echo "<td>".__('Use the tree', 'treeview')."</td><td>";
-      Profile::dropdownNoneReadWrite("treeview", $this->fields["treeview"], 1, 1, 0);
+      Profile::dropdownRight("treeview",
+                             ['value'   => $this->fields["treeview"],
+                              'nonone'  => 0,
+                              'noread'  => 0,
+                              'nowrite' => 1]);
       echo "</td></tr>";
 
       if ($canedit) {

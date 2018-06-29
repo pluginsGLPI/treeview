@@ -107,17 +107,17 @@ function plugin_version_treeview() {
                 'license'        => 'GPLv2+',
                 'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
                 'homepage'       => 'https://forge.indepnet.net/projects/treeview',
-                'minGlpiVersion' => '9.1'); // For compatibility
+                'minGlpiVersion' => '9.2'); // For compatibility
 }
 
 
 function plugin_treeview_check_prerequisites() {
    // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION, '9.1', 'lt')) {
+   if (version_compare(GLPI_VERSION, '9.2', 'lt')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.1');
+         echo Plugin::messageIncompatible('core', '9.2');
       } else {
-         echo "This plugin requires GLPI >= 9.1";
+         echo "This plugin requires GLPI >= 9.2";
       }
       return false;
    }
