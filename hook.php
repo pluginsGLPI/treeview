@@ -31,30 +31,30 @@ function plugin_treeview_install() {
    global $DB;
 
    // version 1.0
-   if (TableExists("glpi_plugin_treeview_display")
-       && !TableExists("glpi_plugin_treeview_preference")) {
+   if ($DB->tableExists("glpi_plugin_treeview_display")
+       && !$DB->tableExists("glpi_plugin_treeview_preference")) {
          plugin_treeview_upgrade10to11();
    }
 
    // version 1.1
-   if (TableExists("glpi_plugin_treeview_profiles")
-       && FieldExists("glpi_plugin_treeview_profiles", "interface")) {
+   if ($DB->tableExists("glpi_plugin_treeview_profiles")
+       && $DB->fieldExists("glpi_plugin_treeview_profiles", "interface")) {
       plugin_treeview_upgrade11to12();
    }
 
    // version 1.2
-   if (!TableExists("glpi_plugin_treeview_displayprefs")
-       && TableExists("glpi_plugin_treeview_profiles")) {
+   if (!$DB->tableExists("glpi_plugin_treeview_displayprefs")
+       && $DB->tableExists("glpi_plugin_treeview_profiles")) {
       plugin_treeview_upgrade12to13();
    }
 
    // version 1.3
-   if (TableExists("glpi_plugin_treeview_preferences")) {
+   if ($DB->tableExists("glpi_plugin_treeview_preferences")) {
       plugin_treeview_upgrade13to14();
    }
 
    // not installed
-   if (!TableExists("glpi_plugin_treeview_configs")) {
+   if (!$DB->tableExists("glpi_plugin_treeview_configs")) {
 
       $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_treeview_configs` (
                   `id` int(11) NOT NULL auto_increment,
@@ -112,7 +112,7 @@ function plugin_treeview_upgrade10to11() {
    global $DB;
 
    // plugin tables
-   if (!TableExists("glpi_plugin_treeview_preference")) {
+   if (!$DB->tableExists("glpi_plugin_treeview_preference")) {
       $query = "CREATE TABLE `glpi_plugin_treeview_preference` (
                   `ID` int(11) auto_increment,
                   `user_id` int(11) NOT NULL default '0',
@@ -128,13 +128,13 @@ function plugin_treeview_upgrade10to11() {
 function plugin_treeview_upgrade11to12() {
    global $DB;
 
-   if (TableExists("glpi_plugin_treeview_profiles")) {
+   if ($DB->tableExists("glpi_plugin_treeview_profiles")) {
       $query = "ALTER TABLE `glpi_plugin_treeview_profiles` ";
 
-      if (FieldExists("glpi_plugin_treeview_profiles", "interface")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_profiles", "interface")) {
          $query .= " DROP `interface`,";
       }
-      if (FieldExists("glpi_plugin_treeview_profiles", "is_default")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_profiles", "is_default")) {
          $query .= " DROP `is_default`";
       }
 
@@ -146,60 +146,60 @@ function plugin_treeview_upgrade11to12() {
 function plugin_treeview_upgrade12to13() {
    global $DB;
 
-   if (TableExists("glpi_plugin_treeview_display")) {
+   if ($DB->tableExists("glpi_plugin_treeview_display")) {
       $DB->query("RENAME TABLE `glpi_plugin_treeview_display` to `glpi_plugin_treeview_displayprefs`");
 
       $query = "ALTER TABLE `glpi_plugin_treeview_displayprefs` ";
 
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "ID")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "ID")) {
          $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "folderLinks")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "folderLinks")) {
          $query .= " CHANGE `folderLinks` `folderLinks` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "useSelection")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "useSelection")) {
          $query .= " CHANGE `useSelection` `useSelection` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "useLines")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "useLines")) {
          $query .= " CHANGE `useLines` `useLines` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "useIcons")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "useIcons")) {
          $query .= " CHANGE `useIcons` `useIcons` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "closeSameLevel")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "closeSameLevel")) {
          $query .= " CHANGE `closeSameLevel` `closeSameLevel` tinyint(1) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "itemName")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "itemName")) {
          $query .= " CHANGE `itemName` `itemName` int(11) NOT NULL default '0',";
       }
-      if (FieldExists("glpi_plugin_treeview_displayprefs", "locationName")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_displayprefs", "locationName")) {
          $query .= " CHANGE `locationName` `locationName` int(11) NOT NULL default '0'";
       }
 
       $DB->query($query) or die($DB->error());
    }
 
-   if (TableExists("glpi_plugin_treeview_profiles")) {
+   if ($DB->tableExists("glpi_plugin_treeview_profiles")) {
       $query = "ALTER TABLE `glpi_plugin_treeview_profiles` ";
 
-      if (FieldExists("glpi_plugin_treeview_profiles", "ID")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_profiles", "ID")) {
          $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment";
       }
       $DB->query($query) or die($DB->error());
    }
 
-   if (TableExists("glpi_plugin_treeview_preference")) {
+   if ($DB->tableExists("glpi_plugin_treeview_preference")) {
       $DB->query("RENAME TABLE `glpi_plugin_treeview_preference` to `glpi_plugin_treeview_preferences`");
 
       $query = "ALTER TABLE `glpi_plugin_treeview_preferences` ";
 
-      if (FieldExists("glpi_plugin_treeview_preferences", "ID")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_preferences", "ID")) {
          $query .= " CHANGE `ID` `id` int(11) NOT NULL auto_increment,";
       }
-      if (FieldExists("glpi_plugin_treeview_preferences", "user_id")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_preferences", "user_id")) {
          $query .= " CHANGE `user_id` `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',";
       }
-      if (FieldExists("glpi_plugin_treeview_preferences", "show")) {
+      if ($DB->fieldExists("glpi_plugin_treeview_preferences", "show")) {
          $query .= " CHANGE `show` `show_on_load` int(11) NOT NULL default '0'";
       }
       $DB->query($query) or die($DB->error());
@@ -210,7 +210,7 @@ function plugin_treeview_upgrade12to13() {
 function plugin_treeview_upgrade13to14() {
    global $DB;
 
-   if (TableExists("glpi_plugin_treeview_displayprefs")) {
+   if ($DB->tableExists("glpi_plugin_treeview_displayprefs")) {
       $query = "RENAME TABLE `glpi_plugin_treeview_displayprefs` to `glpi_plugin_treeview_configs`";
       $DB->query($query) or die($DB->error());
    }
