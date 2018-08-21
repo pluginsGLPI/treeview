@@ -39,7 +39,7 @@ class PluginTreeviewPreference extends CommonDBTM {
 
    static function getMenuContent() {
       global $CFG_GLPI;
-      $menu          = array();
+      $menu          = [];
       $menu['title'] = __('Tree view', 'treeview');
       $menu['page']  = '/plugins/treeview/index.php';
       return $menu;
@@ -109,7 +109,7 @@ class PluginTreeviewPreference extends CommonDBTM {
    }
 
 
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if ($item->getType() == 'Preference') {
          return __('Tree view', 'treeview');
@@ -118,7 +118,7 @@ class PluginTreeviewPreference extends CommonDBTM {
    }
 
 
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
 
       if ($item->getType() == 'Preference') {
          $pref = new self();

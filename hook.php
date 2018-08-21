@@ -220,12 +220,12 @@ function plugin_treeview_upgrade13to14() {
 function plugin_treeview_uninstall() {
    global $DB;
 
-   $tables = array ("glpi_plugin_treeview_display",
-                    "glpi_plugin_treeview_displayprefs",
-                    "glpi_plugin_treeview_configs",
-                    "glpi_plugin_treeview_profiles",
-                    "glpi_plugin_treeview_preference",
-                    "glpi_plugin_treeview_preferences");
+   $tables =  ["glpi_plugin_treeview_display",
+               "glpi_plugin_treeview_displayprefs",
+               "glpi_plugin_treeview_configs",
+               "glpi_plugin_treeview_profiles",
+               "glpi_plugin_treeview_preference",
+               "glpi_plugin_treeview_preferences"];
 
    foreach ($tables as $table) {
       $query = "DROP TABLE IF EXISTS `$table`;";

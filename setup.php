@@ -35,21 +35,20 @@ function plugin_init_treeview() {
 
    $PLUGIN_HOOKS['csrf_compliant']['treeview'] = true;
 
-   Plugin::registerClass('PluginTreeviewPreference',
-                         array('addtabon' => array('Preference')));
+   Plugin::registerClass('PluginTreeviewPreference', ['addtabon' => ['Preference']]);
 
-   Plugin::registerClass('PluginTreeviewProfile',
-                         array('addtabon' => array('Profile')));
+   Plugin::registerClass('PluginTreeviewProfile', ['addtabon' => ['Profile']]);
 
-   $PLUGIN_HOOKS['change_profile']['treeview'] = array('PluginTreeviewProfile','changeprofile');
+   $PLUGIN_HOOKS['change_profile']['treeview'] = ['PluginTreeviewProfile','changeprofile'];
 
    if (isset($_SESSION["glpi_plugin_treeview_profile"])
        && $_SESSION["glpi_plugin_treeview_profile"]["treeview"]) {
 
       $PLUGIN_HOOKS['menu_toadd']['treeview']['tools'] = 'PluginTreeviewPreference';
 
-      $PLUGIN_HOOKS['pre_item_purge']['treeview'] = array('Profile' => array('PluginTreeviewProfile',
-                                                                             'cleanProfiles'));
+      $PLUGIN_HOOKS['pre_item_purge']['treeview'] = [
+         'Profile' => ['PluginTreeviewProfile', 'cleanProfiles']
+      ];
 
       $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
 
@@ -102,12 +101,12 @@ function plugin_init_treeview() {
 **/
 function plugin_version_treeview() {
 
-   return array('name'           => __('Tree view', 'treeview'),
-                'version'        => '1.6.2',
-                'license'        => 'GPLv2+',
-                'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
-                'homepage'       => 'https://forge.indepnet.net/projects/treeview',
-                'minGlpiVersion' => '9.2'); // For compatibility
+   return ['name'           => __('Tree view', 'treeview'),
+           'version'        => '1.6.2',
+           'license'        => 'GPLv2+',
+           'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
+           'homepage'       => 'https://forge.indepnet.net/projects/treeview',
+           'minGlpiVersion' => '9.2']; // For compatibility
 }
 
 

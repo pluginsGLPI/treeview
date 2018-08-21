@@ -36,8 +36,8 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewConfig  extends CommonDBTM {
 
-   static $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
-                        'Software');
+   static $types = ['Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
+                    'Software'];
 
     /**
     * Display name of itemtype
@@ -52,7 +52,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
    /**
     * Configuration form
    **/
-   function showForm($id, $options=array()) {
+   function showForm($id, $options = []) {
 
       $this->getFromDB($id);
       echo "<form method='post' action='./config.form.php' method='post'>";
@@ -174,7 +174,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
     *
     * @return array of types
    **/
-   static function getTypes($all=false) {
+   static function getTypes($all = false) {
 
       if ($all) {
          return self::$types;
@@ -368,9 +368,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
       }
 
       // Characters which need to be removed from JS output.
-      $trans = array("\"" => "`",
-                     "\r" =>" ",
-                     "\n" =>" ");
+      $trans = ["\"" => "`",
+                "\r" => " ",
+                "\n" => " "];
 
       for ($n=1; $n<=count($nodes); $n++) {
          if ($nodes[$n-1] <= $max_id && $n <= $max_level) {
@@ -451,9 +451,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
                         $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
 
-                        $params = array('itemtype'  => $type,
-                                        'locations_id' => $value,
-                                        'searchurl' => $searchUrl);
+                        $params = ['itemtype'  => $type,
+                                   'locations_id' => $value,
+                                   'searchurl' => $searchUrl];
 
                         $opt = Plugin::doHookFunction('treeview_search_url_parent_node', $params);
 
@@ -502,15 +502,15 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
                         $pic = "pics/node.gif";
                         $name = strtr($i_name, $trans);
-                        $opt = array('url'     => $url,
-                                      'pic'     => $pic,
-                                      'name'     => $name);
+                        $opt = ['url'     => $url,
+                                'pic'     => $pic,
+                                'name'     => $name];
 
-                        $params = array('itemtype' => $type,
-                                         'id'      => $r_1['id'],
-                                         'url'     => $url,
-                                         'pic'     => $pic,
-                                         'name'    => $name);
+                        $params = ['itemtype' => $type,
+                                   'id'      => $r_1['id'],
+                                   'url'     => $url,
+                                   'pic'     => $pic,
+                                   'name'    => $name];
 
                         $opt = Plugin::doHookFunction('treeview_params', $params);
 

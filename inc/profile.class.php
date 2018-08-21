@@ -42,17 +42,17 @@ class PluginTreeviewProfile extends CommonDBTM {
          $profile->getFromDB($ID);
          $name = addslashes($profile->fields["name"]);
 
-         $firstProf->add(array('id'        => $ID,
-                               'name'      => $name,
-                               'treeview'  => 'r'));
+         $firstProf->add(['id'        => $ID,
+                          'name'      => $name,
+                          'treeview'  => 'r']);
       }
    }
 
 
    function createAccess($profile) {
 
-      return $this->add(array('id'   => $profile->getField('id'),
-                              'name' => addslashes($profile->getField('name'))));
+      return $this->add(['id'   => $profile->getField('id'),
+                         'name' => addslashes($profile->getField('name'))]);
    }
 
 
@@ -79,7 +79,7 @@ class PluginTreeviewProfile extends CommonDBTM {
    /**
     * profiles modification
    **/
-   function showForm($id, $options=array()) {
+   function showForm($id, $options = []) {
 
       $target = $this->getFormURL();
       if (isset($options['target'])) {
@@ -127,11 +127,11 @@ class PluginTreeviewProfile extends CommonDBTM {
    static function cleanProfiles(Profile $prof) {
 
       $plugprof = new self();
-      $plugprof->delete(array('id' => $prof->getField("id")));
+      $plugprof->delete(['id' => $prof->getField("id")]);
    }
 
 
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if ($item->getType() == 'Profile') {
          return __('Tree view', 'treeview');
@@ -140,7 +140,7 @@ class PluginTreeviewProfile extends CommonDBTM {
    }
 
 
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
 
       if ($item->getType() == 'Profile') {
          $prof = new self();
