@@ -27,6 +27,13 @@
  --------------------------------------------------------------------------
  */
 
+define('PLUGIN_TREEVIEW_VERSION', '1.6.2');
+
+// Minimal GLPI version, inclusive
+define('PLUGIN_TREEVIEW_MIN_GLPI', '9.2');
+// Maximum GLPI version, exclusive
+define('PLUGIN_TREEVIEW_MAX_GLPI', '9.4');
+
 /**
  * Init the hooks of the plugins -Needed
  **/
@@ -101,25 +108,43 @@ function plugin_init_treeview() {
 **/
 function plugin_version_treeview() {
 
-   return ['name'           => __('Tree view', 'treeview'),
-           'version'        => '1.6.2',
-           'license'        => 'GPLv2+',
-           'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
-           'homepage'       => 'https://forge.indepnet.net/projects/treeview',
-           'minGlpiVersion' => '9.2']; // For compatibility
+   return [
+      'name'         => __('Tree view', 'treeview'),
+      'version'      => PLUGIN_TREEVIEW_VERSION,
+      'license'      => 'GPLv2+',
+      'author'       => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
+      'homepage'     => 'https://forge.indepnet.net/projects/treeview',
+      'requirements' => [
+         'glpi' => [
+            'min' => PLUGIN_TREEVIEW_MIN_GLPI,
+            'max' => PLUGIN_TREEVIEW_MAX_GLPI,
+         ]
+      ]
+
+   ];
 }
 
 
 function plugin_treeview_check_prerequisites() {
-   // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION, '9.2', 'lt')) {
-      if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.2');
-      } else {
-         echo "This plugin requires GLPI >= 9.2";
+
+   //Version check is not done by core in GLPI < 9.2 but has to be delegated to core in GLPI >= 9.2.
+   if (!method_exists('Plugin', 'checkGlpiVersion')) {
+      $version = preg_replace('/^((\d+\.?)+).*$/', '$1', GLPI_VERSION);
+      $matchMinGlpiReq = version_compare($version, PLUGIN_TREEVIEW_MIN_GLPI, '>=');
+      $matchMaxGlpiReq = version_compare($version, PLUGIN_TREEVIEW_MAX_GLPI, '<');
+
+      if (!$matchMinGlpiReq || !$matchMaxGlpiReq) {
+         echo vsprintf(
+            'This plugin requires GLPI >= %1$s and < %2$s.',
+            [
+               PLUGIN_TREEVIEW_MIN_GLPI,
+               PLUGIN_TREEVIEW_MAX_GLPI,
+            ]
+         );
+         return false;
       }
-      return false;
    }
+
    return true;
 }
 
