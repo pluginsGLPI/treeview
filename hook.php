@@ -67,7 +67,7 @@ function plugin_treeview_install() {
                   `itemName` int(11) NOT NULL default '0',
                   `locationName`  int(11) NOT NULL default '0',
                   PRIMARY KEY (`id`)
-                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
 
       $DB->query($query) or die($DB->error());
 
@@ -84,7 +84,7 @@ function plugin_treeview_install() {
                   `treeview` char(1) collate utf8_unicode_ci default NULL,
                   PRIMARY KEY (`id`),
                   KEY `name` (`name`)
-                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
 
       $DB->query($query) or die($DB->error());
 
@@ -93,7 +93,7 @@ function plugin_treeview_install() {
                   `users_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',
                   `show_on_load` int(11) NOT NULL default '0',
                   PRIMARY KEY (`id`)
-                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
 
       $DB->query($query) or die($DB->error());
 
@@ -118,7 +118,7 @@ function plugin_treeview_upgrade10to11() {
                   `user_id` int(11) NOT NULL default '0',
                   `show` varchar(255) NOT NULL default '0',
                   PRIMARY KEY (`ID`)
-                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ";
 
       $DB->query($query) or die($DB->error());
    }
