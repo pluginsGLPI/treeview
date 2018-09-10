@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-31 21:43+0100\n"
+"POT-Creation-Date: 2018-08-24 14:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,82 +17,82 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: left.php:39 left.php:56 setup.php:105 front/config.form.php:44
-#: inc/config.class.php:197 inc/config.class.php:236
-#: inc/preference.class.php:107 inc/profile.class.php:134
+#: left.php:36 left.php:53 inc/profile.class.php:137 inc/config.class.php:49
+#: inc/config.class.php:243 inc/config.class.php:315
+#: inc/preference.class.php:43 inc/preference.class.php:115 setup.php:112
 msgid "Tree view"
 msgstr ""
 
-#: inc/config.class.php:47
+#: inc/profile.class.php:106
+msgid "Use the tree"
+msgstr ""
+
+#: inc/config.class.php:60
 msgid "Display"
 msgstr ""
 
-#: inc/config.class.php:49
+#: inc/config.class.php:62
 msgid "Target for all the nodes"
 msgstr ""
 
-#: inc/config.class.php:52
+#: inc/config.class.php:65
 msgid "New window"
 msgstr ""
 
-#: inc/config.class.php:54
+#: inc/config.class.php:67
 msgid "The central console"
 msgstr ""
 
-#: inc/config.class.php:58
+#: inc/config.class.php:71
 msgid "Should folders be links"
 msgstr ""
 
-#: inc/config.class.php:67
+#: inc/config.class.php:80
 msgid "Nodes can be highlighted"
 msgstr ""
 
-#: inc/config.class.php:75
+#: inc/config.class.php:88
 msgid "Tree is drawn with lines"
 msgstr ""
 
-#: inc/config.class.php:83
+#: inc/config.class.php:96
 msgid "Tree is drawn with icons"
 msgstr ""
 
-#: inc/config.class.php:93
+#: inc/config.class.php:106
 msgid "Only one node within a parent"
 msgstr ""
 
-#: inc/config.class.php:94
+#: inc/config.class.php:107
 msgid "can be expanded at the same time."
 msgstr ""
 
-#: inc/config.class.php:103
+#: inc/config.class.php:116
 msgid "Item name"
 msgstr ""
 
-#: inc/config.class.php:117
+#: inc/config.class.php:130
 msgid "Location name"
 msgstr ""
 
-#: inc/config.class.php:121 inc/config.class.php:125
+#: inc/config.class.php:134 inc/config.class.php:138
 msgid "Short name"
 msgstr ""
 
-#: inc/config.class.php:123 inc/config.class.php:128
+#: inc/config.class.php:136 inc/config.class.php:141
 msgid "Long name"
 msgstr ""
 
-#: inc/config.class.php:125 inc/config.class.php:128
+#: inc/config.class.php:138 inc/config.class.php:141
 msgid "Comment"
 msgstr ""
 
-#: inc/preference.class.php:50
+#: inc/preference.class.php:58
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr ""
 
-#: inc/preference.class.php:61
+#: inc/preference.class.php:69
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
-msgstr ""
-
-#: inc/profile.class.php:107
-msgid "Use the tree"
 msgstr ""

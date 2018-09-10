@@ -27,6 +27,13 @@
  --------------------------------------------------------------------------
  */
 
+define('PLUGIN_TREEVIEW_VERSION', '1.7.0');
+
+// Minimal GLPI version, inclusive
+define('PLUGIN_TREEVIEW_MIN_GLPI', '9.2');
+// Maximum GLPI version, exclusive
+define('PLUGIN_TREEVIEW_MAX_GLPI', '9.4');
+
 /**
  * Init the hooks of the plugins -Needed
  **/
@@ -35,21 +42,20 @@ function plugin_init_treeview() {
 
    $PLUGIN_HOOKS['csrf_compliant']['treeview'] = true;
 
-   Plugin::registerClass('PluginTreeviewPreference',
-                         array('addtabon' => array('Preference')));
+   Plugin::registerClass('PluginTreeviewPreference', ['addtabon' => ['Preference']]);
 
-   Plugin::registerClass('PluginTreeviewProfile',
-                         array('addtabon' => array('Profile')));
+   Plugin::registerClass('PluginTreeviewProfile', ['addtabon' => ['Profile']]);
 
-   $PLUGIN_HOOKS['change_profile']['treeview'] = array('PluginTreeviewProfile','changeprofile');
+   $PLUGIN_HOOKS['change_profile']['treeview'] = ['PluginTreeviewProfile','changeprofile'];
 
    if (isset($_SESSION["glpi_plugin_treeview_profile"])
        && $_SESSION["glpi_plugin_treeview_profile"]["treeview"]) {
 
       $PLUGIN_HOOKS['menu_toadd']['treeview']['tools'] = 'PluginTreeviewPreference';
 
-      $PLUGIN_HOOKS['pre_item_purge']['treeview'] = array('Profile' => array('PluginTreeviewProfile',
-                                                                             'cleanProfiles'));
+      $PLUGIN_HOOKS['pre_item_purge']['treeview'] = [
+         'Profile' => ['PluginTreeviewProfile', 'cleanProfiles']
+      ];
 
       $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
 
@@ -82,12 +88,12 @@ function plugin_init_treeview() {
          $config->hideTreeview();
       }
       // Add specific files to add to the header : javascript or css
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "dtree.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "dtree.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "functions.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "style.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "treeview.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "treeview.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/dtree.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/dtree.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/functions.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/style.css";
+      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/treeview.js";
+      $PLUGIN_HOOKS['add_css']['treeview']         = "css/treeview.css";
    }
 
    // Config page
@@ -102,20 +108,43 @@ function plugin_init_treeview() {
 **/
 function plugin_version_treeview() {
 
-   return array('name'           => __('Tree view', 'treeview'),
-                'version'        => '1.6.2',
-                'license'        => 'GPLv2+',
-                'author'         => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
-                'homepage'       => 'https://forge.indepnet.net/projects/treeview',
-                'minGlpiVersion' => '0.84'); // For compatibility / no install in version < 0.78
+   return [
+      'name'         => __('Tree view', 'treeview'),
+      'version'      => PLUGIN_TREEVIEW_VERSION,
+      'license'      => 'GPLv2+',
+      'author'       => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
+      'homepage'     => 'https://forge.indepnet.net/projects/treeview',
+      'requirements' => [
+         'glpi' => [
+            'min' => PLUGIN_TREEVIEW_MIN_GLPI,
+            'max' => PLUGIN_TREEVIEW_MAX_GLPI,
+         ]
+      ]
+
+   ];
 }
 
 
 function plugin_treeview_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      echo 'This plugin requires GLPI >= 9.1';
-      return false;
+
+   //Version check is not done by core in GLPI < 9.2 but has to be delegated to core in GLPI >= 9.2.
+   if (!method_exists('Plugin', 'checkGlpiVersion')) {
+      $version = preg_replace('/^((\d+\.?)+).*$/', '$1', GLPI_VERSION);
+      $matchMinGlpiReq = version_compare($version, PLUGIN_TREEVIEW_MIN_GLPI, '>=');
+      $matchMaxGlpiReq = version_compare($version, PLUGIN_TREEVIEW_MAX_GLPI, '<');
+
+      if (!$matchMinGlpiReq || !$matchMaxGlpiReq) {
+         echo vsprintf(
+            'This plugin requires GLPI >= %1$s and < %2$s.',
+            [
+               PLUGIN_TREEVIEW_MIN_GLPI,
+               PLUGIN_TREEVIEW_MAX_GLPI,
+            ]
+         );
+         return false;
+      }
    }
+
    return true;
 }
 

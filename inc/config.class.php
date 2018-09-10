@@ -36,8 +36,8 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewConfig  extends CommonDBTM {
 
-   static $types = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
-                        'Software');
+   static $types = ['Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
+                    'Software'];
 
     /**
     * Display name of itemtype
@@ -52,7 +52,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
    /**
     * Configuration form
    **/
-   function showForm($id, $options=array()) {
+   function showForm($id, $options = []) {
 
       $this->getFromDB($id);
       echo "<form method='post' action='./config.form.php' method='post'>";
@@ -174,7 +174,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
     *
     * @return array of types
    **/
-   static function getTypes($all=false) {
+   static function getTypes($all = false) {
 
       if ($all) {
          return self::$types;
@@ -292,9 +292,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       //necessary files needed for the tree to work.
       echo "<link rel='stylesheet' type='text/css' href='".
-             $CFG_GLPI["root_doc"]."/plugins/treeview/dtree.css' type=\"text/css\" >\n";
+             $CFG_GLPI["root_doc"]."/plugins/treeview/css/dtree.css' type=\"text/css\" >\n";
       echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"].
-             "/plugins/treeview/dtree.js'></script>\n";
+             "/plugins/treeview/js/dtree.js'></script>\n";
 
       echo "<div class='dtree'>";
       echo "<script type='text/javascript'>";
@@ -368,9 +368,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
       }
 
       // Characters which need to be removed from JS output.
-      $trans = array("\"" => "`",
-                     "\r" =>" ",
-                     "\n" =>" ");
+      $trans = ["\"" => "`",
+                "\r" => " ",
+                "\n" => " "];
 
       for ($n=1; $n<=count($nodes); $n++) {
          if ($nodes[$n-1] <= $max_id && $n <= $max_level) {
@@ -448,9 +448,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $value = $r['id'];
                         $token = Session::getNewCSRFToken();
                         $getParam = "?is_deleted=0&criteria[0][field]=$field_num&criteria[0][searchtype]=equals&criteria[0][value]=$value&search=Rechercher&start=0&_glpi_csrf_token=$token";
+
+                        $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
+
+                        $params = ['itemtype'  => $type,
+                                   'locations_id' => $value,
+                                   'searchurl' => $searchUrl];
+
+                        $opt = Plugin::doHookFunction('treeview_search_url_parent_node', $params);
+
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($item::getTypeName(2), $trans).
-                             "\", $dontLoad, '" .$type ."', '" .Toolbox::getItemTypeSearchURL($type) . $getParam . "', '', '', '" .
+                             "\", $dontLoad, '" .$type ."', '" .$opt['searchurl'] . "', '', '', '" .
                              self::getPicbyType($type). "', '". self::getPicbyType($type) . "');\n";
 
                         if ($openedType == $type && $nodes[count($nodes)-1] == $tv_id) {
@@ -493,15 +502,15 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
                         $pic = "pics/node.gif";
                         $name = strtr($i_name, $trans);
-                        $opt = array('url'     => $url,
-                                      'pic'     => $pic,
-                                      'name'     => $name);
+                        $opt = ['url'     => $url,
+                                'pic'     => $pic,
+                                'name'     => $name];
 
-                        $params = array('itemtype' => $type,
-                                         'id'      => $r_1['id'],
-                                         'url'     => $url,
-                                         'pic'     => $pic,
-                                         'name'    => $name);
+                        $params = ['itemtype' => $type,
+                                   'id'      => $r_1['id'],
+                                   'url'     => $url,
+                                   'pic'     => $pic,
+                                   'name'    => $name];
 
                         $opt = Plugin::doHookFunction('treeview_params', $params);
 
