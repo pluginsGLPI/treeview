@@ -32,7 +32,7 @@ define('PLUGIN_TREEVIEW_VERSION', '1.8.1');
 // Minimal GLPI version, inclusive
 define('PLUGIN_TREEVIEW_MIN_GLPI', '9.2');
 // Maximum GLPI version, exclusive
-define('PLUGIN_TREEVIEW_MAX_GLPI', '9.5');
+define('PLUGIN_TREEVIEW_MAX_GLPI', '9.6');
 
 /**
  * Init the hooks of the plugins -Needed
