@@ -31,6 +31,8 @@ include ('../../inc/includes.php');
 
 Session::checkLoginUser();
 
+$treeview_url = Plugin::getWebDir('treeview');
+
 echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
        'http://www.w3.org/TR/html4/frameset.dtd'>";
 echo "\n<html><head><title>".sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'))."</title>";
@@ -39,9 +41,8 @@ echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
 echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
 echo "<meta http-equiv='Pragma' content='no-cache'>\n";
 echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
-echo "<link rel='stylesheet' type='text/css' href='".$CFG_GLPI["root_doc"].
-       "/plugins/treeview/css/treeview.css' type='text/css'>\n";
-echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"]."/plugins/treeview/js/treeview.js'>
+echo "<link rel='stylesheet' type='text/css' href='$treeview_url/css/treeview.css' type='text/css'>\n";
+echo "<script type='text/javascript' src='$treeview_url/js/treeview.js'>
       </script></head>\n";
 
 echo '<div id="ie5menu" class="skin0" onMouseover="highlightie5(event)" ' .
