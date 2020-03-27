@@ -384,7 +384,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
             $result = $DB->query($query);
 
-            while ($r = $DB->fetch_assoc($result)) {
+            while ($r = $DB->fetchAssoc($result)) {
                // Location's name schema
                if ($locationName == 0) {
                   $l_name = $r['name'];
@@ -442,7 +442,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                                            WHERE `id` = '". $r['id'] ."'";
                         $result_location = $DB->query($query_location);
 
-                        while ($row = $DB->fetch_assoc($result_location)) {
+                        while ($row = $DB->fetchAssoc($result_location)) {
                            $name_location= $row['completename'];
                         }
                         $value = $r['id'];
@@ -468,7 +468,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $tv_id++;
                      }
 
-                     while ($r_1 = $DB->fetch_assoc($result_1)) {
+                     while ($r_1 = $DB->fetchAssoc($result_1)) {
                         // Item's name schema
                         if ($itemName == 0 || $type == 'Software') {
                            $i_name = $r_1['name'];
