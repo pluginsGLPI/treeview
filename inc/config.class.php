@@ -259,7 +259,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
          echo "top.location = self.location;";
       echo "</script></head>";
       echo "<frameset cols='250,*' border='0'>";
-         echo "<frame src='".$CFG_GLPI['root_doc']."/plugins/treeview/left.php' name='left' scrolling='yes'>";
+         echo "<frame src='".Plugin::getWebDir('treeview')."/left.php' name='left' scrolling='yes'>";
          echo "<frame src='".$CFG_GLPI['root_doc']."/front/central.php' name='right'>";
          echo "<noframes>";
             echo "<body>";
@@ -277,7 +277,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
    function hideTreeview() {
       global $CFG_GLPI;
 
-      echo "<script type=\"text/javascript\">";
+      echo "<script type='text/javascript'>";
          echo "if (top != self)";
          echo "top.location = self.location;";
       echo "</script>";
@@ -290,11 +290,11 @@ class PluginTreeviewConfig  extends CommonDBTM {
    function buildTreeview() {
       global $CFG_GLPI;
 
+      $treeview_url = Plugin::getWebDir('treeview');
+
       //necessary files needed for the tree to work.
-      echo "<link rel='stylesheet' type='text/css' href='".
-             $CFG_GLPI["root_doc"]."/plugins/treeview/css/dtree.css' type=\"text/css\" >\n";
-      echo "<script type='text/javascript' src='".$CFG_GLPI["root_doc"].
-             "/plugins/treeview/js/dtree.js'></script>\n";
+      echo "<link rel='stylesheet' type='text/css' href='$treeview_url/css/dtree.css' type='text/css'>";
+      echo "<script type='text/javascript' src='$treeview_url/js/dtree.js'></script>";
 
       echo "<div class='dtree'>";
       echo "<script type='text/javascript'>";
@@ -312,7 +312,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
 
       // The tree object
       echo "var d = new dTree('d');\n";
-      echo "d.add(0,-1,'".__('Tree view', 'treeview')."');\n";
+      echo "d.add(0,-1,'".__('Tree view', 'treeview')."');";
 
       $config = new PluginTreeviewConfig();
 
