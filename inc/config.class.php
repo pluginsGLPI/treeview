@@ -45,6 +45,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
       'Printer',
       'Software',
       'Rack',
+      'Enclosure',
+      'PDU',
+      'PassiveDCEquipment',
    ];
 
     /**
@@ -231,6 +234,15 @@ class PluginTreeviewConfig  extends CommonDBTM {
             break;
          case 'Rack' :
             $pic = 'pics/phone.png';
+            break;
+         case 'PDU' :
+            $pic = 'pics/pdu.png';
+            break;
+         case 'Enclosure' :
+            $pic = 'pics/enclosure.png';
+            break;
+         case 'PassiveDCEquipment' :
+            $pic = 'pics/passivedcequipment.png';
             break;
       }
       //Like $PLUGIN_HOOKS['treeview']['PluginExampleExample'] = '../example/pics/mypic.png';
