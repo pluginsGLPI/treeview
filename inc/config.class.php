@@ -36,8 +36,16 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewConfig  extends CommonDBTM {
 
-   static $types = ['Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer',
-                    'Software'];
+   static $types = [
+      'Computer',
+      'Monitor',
+      'NetworkEquipment',
+      'Peripheral',
+      'Phone',
+      'Printer',
+      'Software',
+      'Rack',
+   ];
 
     /**
     * Display name of itemtype
@@ -219,6 +227,9 @@ class PluginTreeviewConfig  extends CommonDBTM {
             $pic = 'pics/software.ico';
             break;
          case 'Phone' :
+            $pic = 'pics/phone.png';
+            break;
+         case 'Rack' :
             $pic = 'pics/phone.png';
             break;
       }
