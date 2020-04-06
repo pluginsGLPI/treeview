@@ -233,7 +233,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
             $pic = 'pics/phone.png';
             break;
          case 'Rack' :
-            $pic = 'pics/phone.png';
+            $pic = 'pics/rack.png';
             break;
          case 'PDU' :
             $pic = 'pics/pdu.png';
