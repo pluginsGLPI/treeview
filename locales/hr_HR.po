@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-12 11:12+0000\n"
+"POT-Creation-Date: 2020-07-05 11:36+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: milotype <mail@milotype.de>, 2020\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -21,15 +21,28 @@ msgstr ""
 "Language: hr_HR\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: left.php:36 left.php:53 inc/profile.class.php:137 inc/config.class.php:49
-#: inc/config.class.php:243 inc/config.class.php:315
-#: inc/preference.class.php:43 inc/preference.class.php:115 setup.php:112
-msgid "Tree view"
-msgstr "Stablasti prikaz"
-
 #: inc/profile.class.php:106
 msgid "Use the tree"
 msgstr "Koristi stablasti prikaz"
+
+#: inc/profile.class.php:137 inc/preference.class.php:42
+#: inc/preference.class.php:115 inc/config.class.php:49
+#: inc/config.class.php:243 inc/config.class.php:315 setup.php:112 left.php:38
+#: left.php:54
+msgid "Tree view"
+msgstr "Stablasti prikaz"
+
+#: inc/preference.class.php:58
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "Pokreni dodatak „Stablasti prikaz” pri pokretanju GLPI-a"
+
+#: inc/preference.class.php:69
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr ""
+"Upozorenje: Ako postoji više dodataka koji se učitavaju pri pokretanju, tada"
+" će se koristiti samo prvi"
 
 #: inc/config.class.php:60
 msgid "Display"
@@ -90,15 +103,3 @@ msgstr "Dugačko ime"
 #: inc/config.class.php:138 inc/config.class.php:141
 msgid "Comment"
 msgstr "Komentar"
-
-#: inc/preference.class.php:58
-msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "Pokreni dodatak „Stablasti prikaz” pri pokretanju GLPI-a"
-
-#: inc/preference.class.php:69
-msgid ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
-msgstr ""
-"Upozorenje: Ako postoji više dodataka koji se učitavaju pri pokretanju, tada"
-" će se koristiti samo prvi"
