@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-24 14:48+0000\n"
+"POT-Creation-Date: 2020-07-05 11:36+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: Rui Melo <viper5000pt@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Portugal) (https://www.transifex.com/teclib/teams/28042/pt_PT/)\n"
@@ -21,15 +21,28 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: left.php:36 left.php:53 inc/profile.class.php:137 inc/config.class.php:49
-#: inc/config.class.php:243 inc/config.class.php:315
-#: inc/preference.class.php:43 inc/preference.class.php:115 setup.php:112
-msgid "Tree view"
-msgstr "Vista em árvore"
-
 #: inc/profile.class.php:106
 msgid "Use the tree"
 msgstr "Utilizar a árvore"
+
+#: inc/profile.class.php:137 inc/preference.class.php:42
+#: inc/preference.class.php:115 inc/config.class.php:49
+#: inc/config.class.php:243 inc/config.class.php:315 setup.php:112 left.php:38
+#: left.php:54
+msgid "Tree view"
+msgstr "Vista em árvore"
+
+#: inc/preference.class.php:58
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "Activar o Treeview com no arranque do GLPI"
+
+#: inc/preference.class.php:69
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr ""
+"Aviso: Se houver mais de um plugin que seja carregado na inicialização, "
+"então apenas o primeiro será usado"
 
 #: inc/config.class.php:60
 msgid "Display"
@@ -90,15 +103,3 @@ msgstr "Nome completo"
 #: inc/config.class.php:138 inc/config.class.php:141
 msgid "Comment"
 msgstr "Comentário"
-
-#: inc/preference.class.php:58
-msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "Activar o Treeview com no arranque do GLPI"
-
-#: inc/preference.class.php:69
-msgid ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
-msgstr ""
-"Aviso: Se houver mais de um plugin que seja carregado na inicialização, "
-"então apenas o primeiro será usado"
