@@ -38,10 +38,10 @@ if (!defined('GLPI_ROOT')) {
 class PluginTreeviewPreference extends CommonDBTM {
 
    static function getMenuContent() {
-      global $CFG_GLPI;
       $menu          = [];
       $menu['title'] = __('Tree view', 'treeview');
-      $menu['page']  = '/plugins/treeview/index.php';
+      $menu['page']  = '/' . Plugin::getWebDir('treeview', false) . '/index.php';
+      $menu['icon']  = 'fas fa-sitemap';
       return $menu;
    }
 

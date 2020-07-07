@@ -1,14 +1,14 @@
 # English translations for PACKAGE package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2018.
+# Automatically generated, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-24 14:48+0000\n"
-"PO-Revision-Date: 2018-08-24 14:48+0000\n"
+"POT-Creation-Date: 2020-07-05 11:36+0000\n"
+"PO-Revision-Date: 2020-07-05 11:36+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,15 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: left.php:36 left.php:53 inc/profile.class.php:137 inc/config.class.php:49
-#: inc/config.class.php:243 inc/config.class.php:315
-#: inc/preference.class.php:43 inc/preference.class.php:115 setup.php:112
-msgid "Tree view"
-msgstr "Tree view"
-
 #: inc/profile.class.php:106
 msgid "Use the tree"
 msgstr "Use the tree"
+
+#: inc/profile.class.php:137 inc/preference.class.php:42
+#: inc/preference.class.php:115 inc/config.class.php:49
+#: inc/config.class.php:243 inc/config.class.php:315 setup.php:112 left.php:38
+#: left.php:54
+msgid "Tree view"
+msgstr "Tree view"
+
+#: inc/preference.class.php:58
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "Launch the plugin Treeview with GLPI launching"
+
+#: inc/preference.class.php:69
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
 
 #: inc/config.class.php:60
 msgid "Display"
@@ -86,15 +99,3 @@ msgstr "Long name"
 #: inc/config.class.php:138 inc/config.class.php:141
 msgid "Comment"
 msgstr "Comment"
-
-#: inc/preference.class.php:58
-msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "Launch the plugin Treeview with GLPI launching"
-
-#: inc/preference.class.php:69
-msgid ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
-msgstr ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
