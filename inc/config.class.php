@@ -281,7 +281,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
          echo "if (top != self)";
          echo "top.location = self.location;";
       echo "</script></head>";
-      echo "<frameset cols='250,*' border='0'>";
+      echo "<frameset cols='250,*'>";
          echo "<frame src='".Plugin::getWebDir('treeview')."/left.php' name='left' scrolling='yes'>";
          echo "<frame src='".$CFG_GLPI['root_doc']."/front/central.php' name='right'>";
          echo "<noframes>";
