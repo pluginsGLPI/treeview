@@ -101,7 +101,6 @@ function plugin_init_treeview() {
       $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
    }
 
-
    $currentPage =  explode("/", $_SERVER['PHP_SELF']);
    if (array_pop($currentPage) == "index.php") {
       $PLUGIN_HOOKS['display_login']['treeview'] = [
