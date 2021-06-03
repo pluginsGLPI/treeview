@@ -281,7 +281,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
          echo "if (top != self)";
          echo "top.location = self.location;";
       echo "</script></head>";
-      echo "<frameset cols='250,*' border='0'>";
+      echo "<frameset cols='250,*'>";
          echo "<frame src='".Plugin::getWebDir('treeview')."/left.php' name='left' scrolling='yes'>";
          echo "<frame src='".$CFG_GLPI['root_doc']."/front/central.php' name='right'>";
          echo "<noframes>";
@@ -562,5 +562,19 @@ class PluginTreeviewConfig  extends CommonDBTM {
       } else {
          echo "d.openTo(" .$nodes[count($nodes)-1]. ");\n";
       }
+   }
+
+
+   /**
+    * Make sure that GLPI index page location is on top of window hierarchy
+    */
+   public static function loginPageToTop() {
+      echo HTML::scriptBlock("
+      $(document).ready(
+         function() {
+            if (top != self)
+               top.location = self.location;
+         });
+      ");
    }
 }

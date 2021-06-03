@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_TREEVIEW_VERSION', '1.9.0');
+define('PLUGIN_TREEVIEW_VERSION', '1.9.1');
 
 // Minimal GLPI version, inclusive
 define('PLUGIN_TREEVIEW_MIN_GLPI', '9.5');
@@ -99,6 +99,14 @@ function plugin_init_treeview() {
    // Config page
    if (Session::haveRight("config", UPDATE) || Session::haveRight("profile", UPDATE)) {
       $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
+   }
+
+   $currentPage =  explode("/", $_SERVER['PHP_SELF']);
+   if (array_pop($currentPage) == "index.php") {
+      $PLUGIN_HOOKS['display_login']['treeview'] = [
+         "PluginTreeviewConfig",
+         "loginPageToTop"
+      ];
    }
 }
 
