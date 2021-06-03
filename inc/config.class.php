@@ -563,4 +563,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
          echo "d.openTo(" .$nodes[count($nodes)-1]. ");\n";
       }
    }
+
+
+   /**
+    * Make sure that GLPI index page location is on top of window hierarchy
+    */
+   public static function loginPageToTop() {
+      echo HTML::scriptBlock("
+      $(document).ready(
+         function() {
+            if (top != self)
+               top.location = self.location;
+         });
+      ");
+   }
 }
