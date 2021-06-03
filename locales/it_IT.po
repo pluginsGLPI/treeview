@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-05 11:36+0000\n"
+"POT-Creation-Date: 2021-06-03 14:06+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: Cédric Anne, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/teclib/teams/28042/it_IT/)\n"
@@ -26,8 +26,8 @@ msgid "Use the tree"
 msgstr "Usa la visualizzazione struttura"
 
 #: inc/profile.class.php:137 inc/preference.class.php:42
-#: inc/preference.class.php:115 inc/config.class.php:49
-#: inc/config.class.php:243 inc/config.class.php:315 setup.php:112 left.php:38
+#: inc/preference.class.php:115 inc/config.class.php:60
+#: inc/config.class.php:266 inc/config.class.php:338 setup.php:120 left.php:38
 #: left.php:54
 msgid "Tree view"
 msgstr "Visualizzazione struttura"
@@ -44,62 +44,62 @@ msgstr ""
 "Attenzione : Se viene caricato pi� di un plugin all'avvio, verr� utilizzato "
 "solo il primo"
 
-#: inc/config.class.php:60
+#: inc/config.class.php:71
 msgid "Display"
 msgstr "Visualizza"
 
-#: inc/config.class.php:62
+#: inc/config.class.php:73
 msgid "Target for all the nodes"
 msgstr "I nodi sono collegati agli oggetti"
 
-#: inc/config.class.php:65
+#: inc/config.class.php:76
 msgid "New window"
 msgstr "Nuova finestra"
 
-#: inc/config.class.php:67
+#: inc/config.class.php:78
 msgid "The central console"
 msgstr "Console centrale"
 
-#: inc/config.class.php:71
+#: inc/config.class.php:82
 msgid "Should folders be links"
 msgstr "Le cartelle sono esposte come links"
 
-#: inc/config.class.php:80
+#: inc/config.class.php:91
 msgid "Nodes can be highlighted"
 msgstr "I nodi possono essere selezionati"
 
-#: inc/config.class.php:88
+#: inc/config.class.php:99
 msgid "Tree is drawn with lines"
 msgstr "La struttura � visualizzata ad albero"
 
-#: inc/config.class.php:96
+#: inc/config.class.php:107
 msgid "Tree is drawn with icons"
 msgstr "La struttura � visualizzata con delle icone"
 
-#: inc/config.class.php:106
+#: inc/config.class.php:117
 msgid "Only one node within a parent"
 msgstr "Solo un nodo con voce padre"
 
-#: inc/config.class.php:107
+#: inc/config.class.php:118
 msgid "can be expanded at the same time."
 msgstr "pu� essere esploso per volta."
 
-#: inc/config.class.php:116
+#: inc/config.class.php:127
 msgid "Item name"
 msgstr "Nome dell'oggetto"
 
-#: inc/config.class.php:130
+#: inc/config.class.php:141
 msgid "Location name"
 msgstr "Posizione"
 
-#: inc/config.class.php:134 inc/config.class.php:138
+#: inc/config.class.php:145 inc/config.class.php:149
 msgid "Short name"
 msgstr "Nome breve"
 
-#: inc/config.class.php:136 inc/config.class.php:141
+#: inc/config.class.php:147 inc/config.class.php:152
 msgid "Long name"
 msgstr "Nome completo"
 
-#: inc/config.class.php:138 inc/config.class.php:141
+#: inc/config.class.php:149 inc/config.class.php:152
 msgid "Comment"
 msgstr "Commenti"
