@@ -4,7 +4,7 @@
 
 |---------------------------------------------------|
 
-| Copyright (c) 2002-2003 Geir Landr�               |
+| Copyright (c) 2002-2003 Geir Landrö               |
 
 |                                                   |
 
@@ -100,9 +100,9 @@ function dTree(objName) {
 
 		root				: this.config.iconFolder + 'base.ico',
 
-		folder			: this.config.iconFolder + 'folder.png',
+		folder			: 'ti ti-map-pin',
 
-		folderOpen	: this.config.iconFolder + 'folderopen.png',
+		folderOpen		: 'ti ti-map-pin',
 
 		node				: this.config.iconFolder + 'page.gif',
 
@@ -272,9 +272,10 @@ dTree.prototype.node = function(node, nodeId) {
 
 	if (this.config.useIcons) {
 
-		if (!node.icon) node.icon = (this.root.id == node.pid) ? this.icon.root : ((node._hc) ? this.icon.folder : this.icon.node);
 
-		if (!node.iconOpen) node.iconOpen = (node._hc) ? this.icon.folderOpen : this.icon.node;
+		if (!node.icon || node.icon === undefined) node.icon = (this.root.id == node.pid) ? this.icon.root : ((node._hc) ? this.icon.folder : this.icon.node);
+
+		if (!node.iconOpen || node.icon === undefined) node.iconOpen = (node._hc) ? this.icon.folderOpen : this.icon.node;
 
 		if (this.root.id == node.pid) {
 
@@ -284,7 +285,14 @@ dTree.prototype.node = function(node, nodeId) {
 
 		}
 
-		str += '<img id="i' + this.obj + nodeId + '" src="' + ((node._io) ? node.iconOpen : node.icon) + '" alt="" />';
+
+		//if font-awesome / tabler icon
+		if(!node.icon.includes('pics') || !node.iconOpen.includes('pics')){
+			str += '<i id="i' + this.obj + nodeId + '" class="' + ((node._io) ? node.iconOpen : node.icon) + '"></i>';
+		} else {
+			str += '<img id="i' + this.obj + nodeId + '" src="' + ((node._io) ? node.iconOpen : node.icon) + '" alt="" />';
+
+		}
 
 	}
 

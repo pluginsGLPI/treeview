@@ -208,53 +208,6 @@ class PluginTreeviewConfig  extends CommonDBTM {
       return $types;
    }
 
-   static function getPicbyType($type) {
-      global $PLUGIN_HOOKS;
-      $pic = '';
-      switch ($type) {
-         case 'Computer' :
-            $pic = 'pics/computer.png';
-            break;
-         case 'Monitor' :
-            $pic = 'pics/monitor.png';
-            break;
-         case 'NetworkEquipment' :
-            $pic = 'pics/network.png';
-            break;
-         case 'Peripheral' :
-            $pic = 'pics/device.gif';
-            break;
-         case 'Printer' :
-            $pic = 'pics/printer.png';
-            break;
-         case 'Software' :
-            $pic = 'pics/software.ico';
-            break;
-         case 'Phone' :
-            $pic = 'pics/phone.png';
-            break;
-         case 'Rack' :
-            $pic = 'pics/rack.png';
-            break;
-         case 'PDU' :
-            $pic = 'pics/pdu.png';
-            break;
-         case 'Enclosure' :
-            $pic = 'pics/enclosure.png';
-            break;
-         case 'PassiveDCEquipment' :
-            $pic = 'pics/passivedcequipment.png';
-            break;
-      }
-      //Like $PLUGIN_HOOKS['treeview']['PluginExampleExample'] = '../example/pics/mypic.png';
-      if (in_array($type, self::$types) && isPluginItemtype($type)) {
-         if (isset($PLUGIN_HOOKS['treeview'][$type])) {
-            return $PLUGIN_HOOKS['treeview'][$type];
-         }
-      }
-      return $pic;
-   }
-
 
    /**
     * The function to see the treeview
@@ -272,8 +225,6 @@ class PluginTreeviewConfig  extends CommonDBTM {
       echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
       echo "<meta http-equiv='Pragma' content='no-cache'>\n";
       echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
-      echo "<link rel='stylesheet' type='text/css' media='print' href='".
-             $CFG_GLPI["root_doc"]."/css/print.css' >\n";
       echo "<link rel='shortcut icon' type='images/x-icon' href='".
              $CFG_GLPI["root_doc"]."/pics/favicon.ico' >\n";
 
@@ -484,7 +435,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         // Add items parent node
                         echo "d.add($tv_id,".$r['id'].",\"".strtr($item::getTypeName(2), $trans).
                              "\", $dontLoad, '" .$type ."', '" .$opt['searchurl'] . "', '', '', '" .
-                             self::getPicbyType($type). "', '". self::getPicbyType($type) . "');\n";
+                             $type::getIcon(). "', '". $type::getIcon() . "');\n";
 
                         if ($openedType == $type && $nodes[count($nodes)-1] == $tv_id) {
                            $openedType = $tv_id;
@@ -524,7 +475,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         }
 
                         $url = Toolbox::getItemTypeFormURL($type). "?id=" .$r_1['id'];
-                        $pic = "pics/node.gif";
+                        $pic = "ti ti-chevrons-right";
                         $name = strtr($i_name, $trans);
                         $opt = ['url'     => $url,
                                 'pic'     => $pic,
