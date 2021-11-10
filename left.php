@@ -34,22 +34,9 @@ Session::checkLoginUser();
 
 $treeview_url = Plugin::getWebDir('treeview');
 
-echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
-       'http://www.w3.org/TR/html4/frameset.dtd'>";
-echo "\n<html><head><title>".sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'))."</title>";
-echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
-// Send extra expires header if configured
-echo "<meta http-equiv='Expires' content='Fri, Jun 12 1981 08:20:00 GMT'>\n";
-echo "<meta http-equiv='Pragma' content='no-cache'>\n";
-echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
-echo "<link rel='stylesheet' type='text/css' href='$treeview_url/css/treeview.css' type='text/css'>\n";
-echo "<script type='text/javascript' src='$treeview_url/js/treeview.js'>
-      </script></head>\n";
+Html::includeHeader("TreeView");
 
-echo '<div id="ie5menu" class="skin0" onMouseover="highlightie5(event)" ' .
-      'onMouseout="lowlightie5(event)" onClick="jumptoie5(event)" display:none>';
-echo '</div>';
-echo "<body>";
+echo "<body style='overflow:auto; overflow:initial;'>";
 // Title bar
 echo '<div id=explorer_bar>';
 echo '<div id=explorer_title>'.sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));

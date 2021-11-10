@@ -31,9 +31,9 @@
 define('PLUGIN_TREEVIEW_VERSION', '1.9.1');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_TREEVIEW_MIN_GLPI', '9.5');
+define('PLUGIN_TREEVIEW_MIN_GLPI', '10.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_TREEVIEW_MAX_GLPI', '9.6');
+define('PLUGIN_TREEVIEW_MAX_GLPI', '10.0.99');
 
 /**
  * Init the hooks of the plugins -Needed
@@ -89,12 +89,7 @@ function plugin_init_treeview() {
          $config->hideTreeview();
       }
       // Add specific files to add to the header : javascript or css
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/dtree.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "css/dtree.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/functions.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "css/style.css";
-      $PLUGIN_HOOKS['add_javascript']['treeview']  = "js/treeview.js";
-      $PLUGIN_HOOKS['add_css']['treeview']         = "css/treeview.css";
+      $PLUGIN_HOOKS['add_css']['treeview'] = "css/treeview.css";
    }
 
    // Config page

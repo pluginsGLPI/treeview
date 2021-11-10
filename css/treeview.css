@@ -26,24 +26,6 @@
  * -------------------------------------------------------------------------
  */
 
-.skin0{
-position:absolute;
-width:165px;
-border:2px solid black;
-background-color:menu;
-font-family:Verdana;
-line-height:20px;
-cursor:default;
-font-size:14px;
-z-index:100;
-visibility:hidden;
-}
-
-.menuitems{
-padding-left:10px;
-padding-right:10px;
-}
-
 body {
 	margin-top:0px;
 	margin-left:0px;
@@ -52,13 +34,18 @@ body {
 #explorer_bar {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 11px;
-	background-color:#1B2F62;
+	background-color:#2f3f64;
 	color: white;
 	padding: 10px;
 	margin-bottom: 15px;
 }
 #explorer_title {
-	padding: 3px;
+	font-family: var(--tblr-body-font-family);
+	font-size: var(--tblr-body-font-size);
+	font-weight: var(--tblr-body-font-weight);
+	line-height: var(--tblr-body-line-height);
+	text-align: var(--tblr-body-text-align);
+	-webkit-text-size-adjust: 100%;
 	float:left;
 }
 #explorer_close {
