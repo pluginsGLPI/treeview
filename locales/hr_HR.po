@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# milotype <mail@milotype.de>, 2020
+# Milo Ivir <mail@milotype.de>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 14:06+0000\n"
+"POT-Creation-Date: 2022-04-21 08:15+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
-"Last-Translator: milotype <mail@milotype.de>, 2020\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>, 2020\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/teclib/teams/28042/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,22 +21,77 @@ msgstr ""
 "Language: hr_HR\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: inc/profile.class.php:106
-msgid "Use the tree"
-msgstr "Koristi stablasti prikaz"
+#: inc/config.class.php:150 inc/config.class.php:153
+msgid "Comment"
+msgstr "Komentar"
 
-#: inc/profile.class.php:137 inc/preference.class.php:42
-#: inc/preference.class.php:115 inc/config.class.php:60
-#: inc/config.class.php:266 inc/config.class.php:338 setup.php:120 left.php:38
-#: left.php:54
-msgid "Tree view"
-msgstr "Stablasti prikaz"
+#: inc/config.class.php:72
+msgid "Display"
+msgstr "Prikaz"
 
-#: inc/preference.class.php:58
+#: inc/config.class.php:128
+msgid "Item name"
+msgstr "Ime predmeta"
+
+#: inc/preference.class.php:59
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "Pokreni dodatak „Stablasti prikaz” pri pokretanju GLPI-a"
 
-#: inc/preference.class.php:69
+#: inc/config.class.php:142
+msgid "Location name"
+msgstr "Ime lokacije"
+
+#: inc/config.class.php:148 inc/config.class.php:153
+msgid "Long name"
+msgstr "Dugačko ime"
+
+#: inc/config.class.php:77
+msgid "New window"
+msgstr "Novi prozor"
+
+#: inc/config.class.php:92
+msgid "Nodes can be highlighted"
+msgstr "Isticanje čvorova"
+
+#: inc/config.class.php:118
+msgid "Only one node within a parent"
+msgstr "Istovremeno se može rasklopiti samo"
+
+#: inc/config.class.php:146 inc/config.class.php:150
+msgid "Short name"
+msgstr "Kratko ime"
+
+#: inc/config.class.php:83
+msgid "Should folders be links"
+msgstr "Mape kao poveznice"
+
+#: inc/config.class.php:74
+msgid "Target for all the nodes"
+msgstr "Odredište za sve čvorove"
+
+#: inc/config.class.php:79
+msgid "The central console"
+msgstr "Glavna konzola"
+
+#: inc/config.class.php:108
+msgid "Tree is drawn with icons"
+msgstr "Stablo s ikonama"
+
+#: inc/config.class.php:100
+msgid "Tree is drawn with lines"
+msgstr "Stablo s linijama"
+
+#: inc/profile.class.php:138 inc/preference.class.php:43
+#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+msgid "Tree view"
+msgstr "Stablasti prikaz"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "Koristi stablasti prikaz"
+
+#: inc/preference.class.php:70
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
@@ -44,62 +99,6 @@ msgstr ""
 "Upozorenje: Ako postoji više dodataka koji se učitavaju pri pokretanju, tada"
 " će se koristiti samo prvi"
 
-#: inc/config.class.php:71
-msgid "Display"
-msgstr "Prikaz"
-
-#: inc/config.class.php:73
-msgid "Target for all the nodes"
-msgstr "Odredište za sve čvorove"
-
-#: inc/config.class.php:76
-msgid "New window"
-msgstr "Novi prozor"
-
-#: inc/config.class.php:78
-msgid "The central console"
-msgstr "Glavna konzola"
-
-#: inc/config.class.php:82
-msgid "Should folders be links"
-msgstr "Mape kao poveznice"
-
-#: inc/config.class.php:91
-msgid "Nodes can be highlighted"
-msgstr "Isticanje čvorova"
-
-#: inc/config.class.php:99
-msgid "Tree is drawn with lines"
-msgstr "Stablo s linijama"
-
-#: inc/config.class.php:107
-msgid "Tree is drawn with icons"
-msgstr "Stablo s ikonama"
-
-#: inc/config.class.php:117
-msgid "Only one node within a parent"
-msgstr "Istovremeno se može rasklopiti samo"
-
-#: inc/config.class.php:118
+#: inc/config.class.php:119
 msgid "can be expanded at the same time."
 msgstr "jedan čvor unutar nadređene stavke."
-
-#: inc/config.class.php:127
-msgid "Item name"
-msgstr "Ime predmeta"
-
-#: inc/config.class.php:141
-msgid "Location name"
-msgstr "Ime lokacije"
-
-#: inc/config.class.php:145 inc/config.class.php:149
-msgid "Short name"
-msgstr "Kratko ime"
-
-#: inc/config.class.php:147 inc/config.class.php:152
-msgid "Long name"
-msgstr "Dugačko ime"
-
-#: inc/config.class.php:149 inc/config.class.php:152
-msgid "Comment"
-msgstr "Komentar"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 14:06+0000\n"
+"POT-Creation-Date: 2022-04-21 08:15+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>, 2020\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/teclib/teams/28042/cs_CZ/)\n"
@@ -21,22 +21,77 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: inc/profile.class.php:106
-msgid "Use the tree"
-msgstr "Použití stromu"
+#: inc/config.class.php:150 inc/config.class.php:153
+msgid "Comment"
+msgstr "Komentář"
 
-#: inc/profile.class.php:137 inc/preference.class.php:42
-#: inc/preference.class.php:115 inc/config.class.php:60
-#: inc/config.class.php:266 inc/config.class.php:338 setup.php:120 left.php:38
-#: left.php:54
-msgid "Tree view"
-msgstr "Stromový pohled"
+#: inc/config.class.php:72
+msgid "Display"
+msgstr "Zobrazit"
 
-#: inc/preference.class.php:58
+#: inc/config.class.php:128
+msgid "Item name"
+msgstr "Název položky"
+
+#: inc/preference.class.php:59
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "Spustit zásuvný modul Treeview při startu GLPI"
 
-#: inc/preference.class.php:69
+#: inc/config.class.php:142
+msgid "Location name"
+msgstr "Název umístění"
+
+#: inc/config.class.php:148 inc/config.class.php:153
+msgid "Long name"
+msgstr "Dlouhý název"
+
+#: inc/config.class.php:77
+msgid "New window"
+msgstr "Nové okno"
+
+#: inc/config.class.php:92
+msgid "Nodes can be highlighted"
+msgstr "Uzly lze zvýraznit"
+
+#: inc/config.class.php:118
+msgid "Only one node within a parent"
+msgstr "Pouze jeden uzel v rámci rodiče"
+
+#: inc/config.class.php:146 inc/config.class.php:150
+msgid "Short name"
+msgstr "Krátký název"
+
+#: inc/config.class.php:83
+msgid "Should folders be links"
+msgstr "Složky by měly být propojeny"
+
+#: inc/config.class.php:74
+msgid "Target for all the nodes"
+msgstr "Cíl pro všechny uzly"
+
+#: inc/config.class.php:79
+msgid "The central console"
+msgstr "Centrální konzole"
+
+#: inc/config.class.php:108
+msgid "Tree is drawn with icons"
+msgstr "Strom je nakreslen ikonami"
+
+#: inc/config.class.php:100
+msgid "Tree is drawn with lines"
+msgstr "Strom je nakreslen čarami"
+
+#: inc/profile.class.php:138 inc/preference.class.php:43
+#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+msgid "Tree view"
+msgstr "Stromový pohled"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "Použití stromu"
+
+#: inc/preference.class.php:70
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
@@ -44,62 +99,6 @@ msgstr ""
 "Varování: Pokud je při spuštění načteno více než jeden zásuvný modul, "
 "použije se pouze první"
 
-#: inc/config.class.php:71
-msgid "Display"
-msgstr "Zobrazit"
-
-#: inc/config.class.php:73
-msgid "Target for all the nodes"
-msgstr "Cíl pro všechny uzly"
-
-#: inc/config.class.php:76
-msgid "New window"
-msgstr "Nové okno"
-
-#: inc/config.class.php:78
-msgid "The central console"
-msgstr "Centrální konzole"
-
-#: inc/config.class.php:82
-msgid "Should folders be links"
-msgstr "Složky by měly být propojeny"
-
-#: inc/config.class.php:91
-msgid "Nodes can be highlighted"
-msgstr "Uzly lze zvýraznit"
-
-#: inc/config.class.php:99
-msgid "Tree is drawn with lines"
-msgstr "Strom je nakreslen čarami"
-
-#: inc/config.class.php:107
-msgid "Tree is drawn with icons"
-msgstr "Strom je nakreslen ikonami"
-
-#: inc/config.class.php:117
-msgid "Only one node within a parent"
-msgstr "Pouze jeden uzel v rámci rodiče"
-
-#: inc/config.class.php:118
+#: inc/config.class.php:119
 msgid "can be expanded at the same time."
 msgstr "lze rozšířit současně."
-
-#: inc/config.class.php:127
-msgid "Item name"
-msgstr "Název položky"
-
-#: inc/config.class.php:141
-msgid "Location name"
-msgstr "Název umístění"
-
-#: inc/config.class.php:145 inc/config.class.php:149
-msgid "Short name"
-msgstr "Krátký název"
-
-#: inc/config.class.php:147 inc/config.class.php:152
-msgid "Long name"
-msgstr "Dlouhý název"
-
-#: inc/config.class.php:149 inc/config.class.php:152
-msgid "Comment"
-msgstr "Komentář"

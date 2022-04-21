@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 14:06+0000\n"
+"POT-Creation-Date: 2022-04-21 08:15+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: Cédric Anne, 2018\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/teclib/teams/28042/nl_NL/)\n"
@@ -21,22 +21,77 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/profile.class.php:106
-msgid "Use the tree"
-msgstr "Gebruik de tree"
+#: inc/config.class.php:150 inc/config.class.php:153
+msgid "Comment"
+msgstr "Opmerking"
 
-#: inc/profile.class.php:137 inc/preference.class.php:42
-#: inc/preference.class.php:115 inc/config.class.php:60
-#: inc/config.class.php:266 inc/config.class.php:338 setup.php:120 left.php:38
-#: left.php:54
-msgid "Tree view"
-msgstr "Tree View"
+#: inc/config.class.php:72
+msgid "Display"
+msgstr "Overzicht"
 
-#: inc/preference.class.php:58
+#: inc/config.class.php:128
+msgid "Item name"
+msgstr "Item naam"
+
+#: inc/preference.class.php:59
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "Start de plugin Treeview op als GLPI start"
 
-#: inc/preference.class.php:69
+#: inc/config.class.php:142
+msgid "Location name"
+msgstr "Locatie naam"
+
+#: inc/config.class.php:148 inc/config.class.php:153
+msgid "Long name"
+msgstr "Lange naam"
+
+#: inc/config.class.php:77
+msgid "New window"
+msgstr "Nieuw venster"
+
+#: inc/config.class.php:92
+msgid "Nodes can be highlighted"
+msgstr "Nodes kunnen worden gemarkeerd"
+
+#: inc/config.class.php:118
+msgid "Only one node within a parent"
+msgstr "Slechts &eacute&eacuten node binnen een ouder"
+
+#: inc/config.class.php:146 inc/config.class.php:150
+msgid "Short name"
+msgstr "Verkorte naam"
+
+#: inc/config.class.php:83
+msgid "Should folders be links"
+msgstr "Moeten folders worden gelinkt?"
+
+#: inc/config.class.php:74
+msgid "Target for all the nodes"
+msgstr "Doel voor alle nodes"
+
+#: inc/config.class.php:79
+msgid "The central console"
+msgstr "Het centrale console"
+
+#: inc/config.class.php:108
+msgid "Tree is drawn with icons"
+msgstr "Tree wordt getekend met iconen"
+
+#: inc/config.class.php:100
+msgid "Tree is drawn with lines"
+msgstr "Tree wordt getekend met lijnen"
+
+#: inc/profile.class.php:138 inc/preference.class.php:43
+#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+msgid "Tree view"
+msgstr "Tree View"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "Gebruik de tree"
+
+#: inc/preference.class.php:70
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
@@ -44,62 +99,6 @@ msgstr ""
 "Let op: Als er meer dan &eacute&eacuten plugin geladen wordt tijdens het "
 "opstarten wordt alleen de eerste gebruikt."
 
-#: inc/config.class.php:71
-msgid "Display"
-msgstr "Overzicht"
-
-#: inc/config.class.php:73
-msgid "Target for all the nodes"
-msgstr "Doel voor alle nodes"
-
-#: inc/config.class.php:76
-msgid "New window"
-msgstr "Nieuw venster"
-
-#: inc/config.class.php:78
-msgid "The central console"
-msgstr "Het centrale console"
-
-#: inc/config.class.php:82
-msgid "Should folders be links"
-msgstr "Moeten folders worden gelinkt?"
-
-#: inc/config.class.php:91
-msgid "Nodes can be highlighted"
-msgstr "Nodes kunnen worden gemarkeerd"
-
-#: inc/config.class.php:99
-msgid "Tree is drawn with lines"
-msgstr "Tree wordt getekend met lijnen"
-
-#: inc/config.class.php:107
-msgid "Tree is drawn with icons"
-msgstr "Tree wordt getekend met iconen"
-
-#: inc/config.class.php:117
-msgid "Only one node within a parent"
-msgstr "Slechts &eacute&eacuten node binnen een ouder"
-
-#: inc/config.class.php:118
+#: inc/config.class.php:119
 msgid "can be expanded at the same time."
 msgstr "kan worden uitgeklapt."
-
-#: inc/config.class.php:127
-msgid "Item name"
-msgstr "Item naam"
-
-#: inc/config.class.php:141
-msgid "Location name"
-msgstr "Locatie naam"
-
-#: inc/config.class.php:145 inc/config.class.php:149
-msgid "Short name"
-msgstr "Verkorte naam"
-
-#: inc/config.class.php:147 inc/config.class.php:152
-msgid "Long name"
-msgstr "Lange naam"
-
-#: inc/config.class.php:149 inc/config.class.php:152
-msgid "Comment"
-msgstr "Opmerking"

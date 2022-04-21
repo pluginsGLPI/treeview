@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 14:06+0000\n"
+"POT-Creation-Date: 2022-04-21 08:15+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: 李赋 <fu792659@163.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -21,83 +21,82 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: inc/profile.class.php:106
-msgid "Use the tree"
-msgstr "使用树"
+#: inc/config.class.php:150 inc/config.class.php:153
+msgid "Comment"
+msgstr "注释"
 
-#: inc/profile.class.php:137 inc/preference.class.php:42
-#: inc/preference.class.php:115 inc/config.class.php:60
-#: inc/config.class.php:266 inc/config.class.php:338 setup.php:120 left.php:38
-#: left.php:54
-msgid "Tree view"
-msgstr "树型视图"
+#: inc/config.class.php:72
+msgid "Display"
+msgstr "显示"
 
-#: inc/preference.class.php:58
+#: inc/config.class.php:128
+msgid "Item name"
+msgstr "项目名称"
+
+#: inc/preference.class.php:59
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "使用GLPI启动插件Treeview"
 
-#: inc/preference.class.php:69
+#: inc/config.class.php:142
+msgid "Location name"
+msgstr "地点名称"
+
+#: inc/config.class.php:148 inc/config.class.php:153
+msgid "Long name"
+msgstr "全称"
+
+#: inc/config.class.php:77
+msgid "New window"
+msgstr "新窗口"
+
+#: inc/config.class.php:92
+msgid "Nodes can be highlighted"
+msgstr "节点可以突出显示"
+
+#: inc/config.class.php:118
+msgid "Only one node within a parent"
+msgstr "父级中只有一个节点"
+
+#: inc/config.class.php:146 inc/config.class.php:150
+msgid "Short name"
+msgstr "简称"
+
+#: inc/config.class.php:83
+msgid "Should folders be links"
+msgstr ""
+
+#: inc/config.class.php:74
+msgid "Target for all the nodes"
+msgstr "针对所有节点的目标"
+
+#: inc/config.class.php:79
+msgid "The central console"
+msgstr "中央控制台"
+
+#: inc/config.class.php:108
+msgid "Tree is drawn with icons"
+msgstr "树用图标绘制"
+
+#: inc/config.class.php:100
+msgid "Tree is drawn with lines"
+msgstr "树用线条绘制"
+
+#: inc/profile.class.php:138 inc/preference.class.php:43
+#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+msgid "Tree view"
+msgstr "树型视图"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "使用树"
+
+#: inc/preference.class.php:70
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
 msgstr "警告：如果启动时加载了多个插件，则只使用第一个插件"
 
-#: inc/config.class.php:71
-msgid "Display"
-msgstr "显示"
-
-#: inc/config.class.php:73
-msgid "Target for all the nodes"
-msgstr "针对所有节点的目标"
-
-#: inc/config.class.php:76
-msgid "New window"
-msgstr "新窗口"
-
-#: inc/config.class.php:78
-msgid "The central console"
-msgstr "中央控制台"
-
-#: inc/config.class.php:82
-msgid "Should folders be links"
-msgstr ""
-
-#: inc/config.class.php:91
-msgid "Nodes can be highlighted"
-msgstr "节点可以突出显示"
-
-#: inc/config.class.php:99
-msgid "Tree is drawn with lines"
-msgstr "树用线条绘制"
-
-#: inc/config.class.php:107
-msgid "Tree is drawn with icons"
-msgstr "树用图标绘制"
-
-#: inc/config.class.php:117
-msgid "Only one node within a parent"
-msgstr "父级中只有一个节点"
-
-#: inc/config.class.php:118
+#: inc/config.class.php:119
 msgid "can be expanded at the same time."
 msgstr "可以同时扩展。"
-
-#: inc/config.class.php:127
-msgid "Item name"
-msgstr "项目名称"
-
-#: inc/config.class.php:141
-msgid "Location name"
-msgstr "地点名称"
-
-#: inc/config.class.php:145 inc/config.class.php:149
-msgid "Short name"
-msgstr "简称"
-
-#: inc/config.class.php:147 inc/config.class.php:152
-msgid "Long name"
-msgstr "全称"
-
-#: inc/config.class.php:149 inc/config.class.php:152
-msgid "Comment"
-msgstr "注释"
