@@ -38,8 +38,7 @@ if (isset($_POST["update"])) {
 
 } else {
 
-   $plugin = new Plugin();
-   if ($plugin->isInstalled("treeview") && $plugin->isActivated("treeview")) {
+   if (Plugin::isPluginActive("treeview")) {
 
       Html::header(PluginTreeviewConfig::getTypeName(),
                 $_SERVER['PHP_SELF'],
