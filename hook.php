@@ -75,12 +75,17 @@ function plugin_treeview_install() {
 
       $DB->query($query) or die($DB->error());
 
-      $query = "INSERT INTO `glpi_plugin_treeview_configs`
-                     (`id`, `target`, `folderLinks`, `useSelection`, `useLines`, `useIcons`,
-                      `closeSameLevel`, `itemName`, `locationName`)
-                VALUES ('1','right','1','1','1','1','0', '3', '2');";
-
-      $DB->query($query) or die($DB->error());
+      $DB->insertOrDie('glpi_plugin_treeview_configs', [
+         'id' => 1,
+         'target' => 'right',
+         'folderLinks' => 1,
+         'useSelection' => 1,
+         'useLines' => 1,
+         'useIcons' => 1,
+         'closeSameLevel' => 0,
+         'itemName' => 3,
+         'locationName' => 2
+      ]);
 
       $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_treeview_profiles` (
                   `id` int {$default_key_sign} NOT NULL auto_increment,

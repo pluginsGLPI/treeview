@@ -78,11 +78,13 @@ class PluginTreeviewPreference extends CommonDBTM {
    function checkIfPreferenceExists($users_id) {
       global $DB;
 
-      $result = $DB->query("SELECT `id`
-                            FROM `glpi_plugin_treeview_preferences`
-                            WHERE `users_id` = '$users_id'");
-      if ($DB->numrows($result) > 0) {
-         return $DB->result($result, 0, "id");
+       $result = $DB->request([
+         'SELECT' => ['id'],
+         'FROM'   => 'glpi_plugin_treeview_preferences',
+         'WHERE'  => ['users_id' => $users_id]
+      ]);
+      if (count($result) > 0) {
+         return $result->current()['id'];
       }
       return 0;
    }
@@ -100,11 +102,13 @@ class PluginTreeviewPreference extends CommonDBTM {
    function checkPreferenceValue($users_id) {
       global $DB;
 
-      $result = $DB->query("SELECT *
-                            FROM `glpi_plugin_treeview_preferences`
-                            WHERE `users_id` = '$users_id' ");
-      if ($DB->numrows($result) > 0) {
-         return $DB->result($result, 0, "show_on_load");
+      $result = $DB->request([
+         'SELECT' => ['show_on_load'],
+         'FROM'   => 'glpi_plugin_treeview_preferences',
+         'WHERE'  => ['users_id' => $users_id]
+      ]);
+      if (count($result) > 0) {
+         return $result->current()['show_on_load'];
       }
       return 0;
    }
