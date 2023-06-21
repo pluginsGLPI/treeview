@@ -314,16 +314,18 @@ class PluginTreeviewConfig  extends CommonDBTM {
       $dontLoad = 'false';
 
       // Get the lowest level of the tree nodes and the highest primary key
-      $query = "  SELECT MAX(`id`) AS `max_id`,
-                         MAX(`level`) AS `max_level`
-                  FROM `glpi_locations` ";
+      $it = $DB->request([
+         'SELECT' => [
+             new QueryExpression('MAX(' . $DB::quoteName('id') . ') AS ' . $DB::quoteName('max_id')),
+             new QueryExpression('MAX(' . $DB::quoteName('level') . ') AS ' . $DB::quoteName('max_level')),
+         ],
+         'FROM' => 'glpi_locations',
+         'WHERE' => getEntitiesRestrictCriteria('glpi_locations', '', '', true),
+      ]);
+      $result = $it->current();
 
-      $query.= getEntitiesRestrictRequest(" WHERE ", "glpi_locations", '', '', true);
-
-      $result = $DB->query($query);
-
-      $max_level = $DB->result($result, 0, "max_level");
-      $tv_id     = $max_id = $DB->result($result, 0, "max_id");
+      $max_level = $result['max_level'];
+      $tv_id     = $max_id = $result['max_id'];
       $tv_id++;
 
       // Is this the first time we load the page?
@@ -347,19 +349,20 @@ class PluginTreeviewConfig  extends CommonDBTM {
                 "\r" => " ",
                 "\n" => " "];
 
-      for ($n=1; $n<=count($nodes); $n++) {
+      $node_count = count($nodes);
+      for ($n=1; $n <= $node_count; $n++) {
          if ($nodes[$n-1] <= $max_id && $n <= $max_level) {
-            $query = "SELECT *
-                      FROM `glpi_locations`
-                      WHERE `level` = '$n'
-                            AND `locations_id` = '". $nodes[$n-1] ."'";
+            $it = $DB->request([
+               'FROM' => 'glpi_locations',
+               'WHERE' => [
+                  'level' => $n,
+                  'locations_id' => $nodes[$n-1],
+                   getEntitiesRestrictCriteria('glpi_locations', '', '', true)
+               ],
+               'ORDER' => ['completename ASC']
+            ]);
 
-            $query.= getEntitiesRestrictRequest(" AND ", "glpi_locations", '', '', true);
-            $query.= "ORDER BY `completename` ASC";
-
-            $result = $DB->query($query);
-
-            while ($r = $DB->fetchAssoc($result)) {
+            foreach ($it as $r) {
                // Location's name schema
                if ($locationName == 0) {
                   $l_name = $r['name'];
@@ -390,35 +393,38 @@ class PluginTreeviewConfig  extends CommonDBTM {
                      $item       = new $type();
                      $itemtable  = getTableForItemType($type);
 
-                     $query = "SELECT *
-                               FROM `$itemtable`
-                               WHERE `locations_id` = '".$r['id']."'";
+                     $criteria = [
+                        'FROM' => $itemtable,
+                        'WHERE' => [
+                           'locations_id' => $r['id'],
+                        ],
+                        'ORDER' => ["$itemtable.name"]
+                     ];
 
                      if ($item->maybeTemplate()) {
-                        $query .= " AND `$itemtable`.`is_template` = '0'";
+                        $criteria['WHERE']['is_template'] = 0;
                      }
                      if ($item->maybeDeleted()) {
-                        $query .= " AND `$itemtable`.`is_deleted` = '0'";
+                        $criteria['WHERE']['is_deleted'] = 0;
                      }
 
                      if ($this->isEntityAssign()) {
-                        $query .= " AND `$itemtable`.`entities_id` = '".$_SESSION["glpiactive_entity"]."'";
+                        $criteria['WHERE']['entities_id'] = $_SESSION["glpiactive_entity"];
                      }
 
-                     $query .= " ORDER BY `$itemtable`.`name`";
-
-                     $result_1 = $DB->query($query);
-                     if ($DB->numrows($result_1)) {
+                     $result_1 = $DB->request($criteria);
+                     if (count($result_1)) {
                         $pid = $tv_id;
                         $field_num = 3;
 
-                        $query_location = "SELECT `completename`
-                                           FROM `glpi_locations`
-                                           WHERE `id` = '". $r['id'] ."'";
-                        $result_location = $DB->query($query_location);
+                        $result_location = $DB->request([
+                           'SELECT' => ['completename'],
+                           'FROM' => 'glpi_locations',
+                           'WHERE' => ['id' => $r['id']]
+                        ]);
 
-                        while ($row = $DB->fetchAssoc($result_location)) {
-                           $name_location= $row['completename'];
+                        foreach ($result_location as $row) {
+                           $name_location = $row['completename'];
                         }
                         $value = $r['id'];
                         $token = Session::getNewCSRFToken();
@@ -443,7 +449,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                         $tv_id++;
                      }
 
-                     while ($r_1 = $DB->fetchAssoc($result_1)) {
+                     foreach ($result_1 as $r_1) {
                         // Item's name schema
                         if ($itemName == 0 || $type == 'Software') {
                            $i_name = $r_1['name'];
