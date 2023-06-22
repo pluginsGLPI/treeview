@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# INOUE Daisuke, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-21 08:15+0000\n"
+"PO-Revision-Date: 2018-08-24 14:49+0000\n"
+"Last-Translator: INOUE Daisuke, 2023\n"
+"Language-Team: Japanese (Japan) (https://app.transifex.com/teclib/teams/28042/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: inc/config.class.php:150 inc/config.class.php:153
+msgid "Comment"
+msgstr "コメント"
+
+#: inc/config.class.php:72
+msgid "Display"
+msgstr "表示"
+
+#: inc/config.class.php:128
+msgid "Item name"
+msgstr "アイテム名"
+
+#: inc/preference.class.php:59
+msgid "Launch the plugin Treeview with GLPI launching"
+msgstr "GLPI 起動時にツリー表示 プラグインを起動する。"
+
+#: inc/config.class.php:142
+msgid "Location name"
+msgstr "場所名"
+
+#: inc/config.class.php:148 inc/config.class.php:153
+msgid "Long name"
+msgstr "長い名前"
+
+#: inc/config.class.php:77
+msgid "New window"
+msgstr "新しいウィンドウ"
+
+#: inc/config.class.php:92
+msgid "Nodes can be highlighted"
+msgstr "ノードをハイライト可"
+
+#: inc/config.class.php:118
+msgid "Only one node within a parent"
+msgstr "親ごとにノードは１つ"
+
+#: inc/config.class.php:146 inc/config.class.php:150
+msgid "Short name"
+msgstr "短い名前"
+
+#: inc/config.class.php:83
+msgid "Should folders be links"
+msgstr "フォルダーをリンクに"
+
+#: inc/config.class.php:74
+msgid "Target for all the nodes"
+msgstr "すべてのノードの対象"
+
+#: inc/config.class.php:79
+msgid "The central console"
+msgstr "セントラル コンソール"
+
+#: inc/config.class.php:108
+msgid "Tree is drawn with icons"
+msgstr "ツリーをアイコンで描画"
+
+#: inc/config.class.php:100
+msgid "Tree is drawn with lines"
+msgstr "ツリーを線で描画"
+
+#: inc/profile.class.php:138 inc/preference.class.php:43
+#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+msgid "Tree view"
+msgstr "ツリー表示"
+
+#: inc/profile.class.php:107
+msgid "Use the tree"
+msgstr "ツリーを使う"
+
+#: inc/preference.class.php:70
+msgid ""
+"Warning: If there are more than one plugin which be loaded at startup, then "
+"only the first will be used"
+msgstr "警告 : スタートアップで複数のプラグインを起動するように設定すると、最初のものだけが有効になります"
+
+#: inc/config.class.php:119
+msgid "can be expanded at the same time."
+msgstr "同時に展開します。"
