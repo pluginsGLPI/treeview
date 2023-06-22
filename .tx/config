@@ -1,8 +1,8 @@
 [main]
 host = https://www.transifex.com
 
-[glpi-plugin-treeview.treeview-pot]
+[o:teclib:p:glpi-plugin-treeview:r:treeview-pot]
 file_filter = locales/<lang>.po
 source_file = locales/treeview.pot
 source_lang = en_GB
-type = PO
+type        = PO

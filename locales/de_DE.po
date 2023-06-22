@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Cédric Anne, 2018
+# Michael Schieferer, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,8 +14,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-21 08:15+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
-"Last-Translator: Cédric Anne, 2018\n"
-"Language-Team: German (Germany) (https://www.transifex.com/teclib/teams/28042/de_DE/)\n"
+"Last-Translator: Michael Schieferer, 2023\n"
+"Language-Team: German (Germany) (https://app.transifex.com/teclib/teams/28042/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,35 +24,35 @@ msgstr ""
 
 #: inc/config.class.php:150 inc/config.class.php:153
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: inc/config.class.php:72
 msgid "Display"
-msgstr ""
+msgstr "Anzeige"
 
 #: inc/config.class.php:128
 msgid "Item name"
-msgstr ""
+msgstr "Name des Eintrags"
 
 #: inc/preference.class.php:59
 msgid "Launch the plugin Treeview with GLPI launching"
-msgstr ""
+msgstr "Treeview mit GLPI starten"
 
 #: inc/config.class.php:142
 msgid "Location name"
-msgstr ""
+msgstr "Ortsname"
 
 #: inc/config.class.php:148 inc/config.class.php:153
 msgid "Long name"
-msgstr ""
+msgstr "Langer Name"
 
 #: inc/config.class.php:77
 msgid "New window"
-msgstr ""
+msgstr "Neues Fenster"
 
 #: inc/config.class.php:92
 msgid "Nodes can be highlighted"
-msgstr ""
+msgstr "Knoten können hervorgehoben werden"
 
 #: inc/config.class.php:118
 msgid "Only one node within a parent"
@@ -59,37 +60,37 @@ msgstr "Es kann nur ein einziger Knoten innerhalb"
 
 #: inc/config.class.php:146 inc/config.class.php:150
 msgid "Short name"
-msgstr ""
+msgstr "Kurzer Name"
 
 #: inc/config.class.php:83
 msgid "Should folders be links"
-msgstr ""
+msgstr "Ordner als Links anzeigen"
 
 #: inc/config.class.php:74
 msgid "Target for all the nodes"
-msgstr ""
+msgstr "Ziel aller Knoten"
 
 #: inc/config.class.php:79
 msgid "The central console"
-msgstr ""
+msgstr "Zentrale Konsole"
 
 #: inc/config.class.php:108
 msgid "Tree is drawn with icons"
-msgstr ""
+msgstr "Baum mit Icons"
 
 #: inc/config.class.php:100
 msgid "Tree is drawn with lines"
-msgstr ""
+msgstr "Baum mit Linien"
 
 #: inc/profile.class.php:138 inc/preference.class.php:43
 #: inc/preference.class.php:116 inc/config.class.php:61
 #: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
 msgid "Tree view"
-msgstr ""
+msgstr "Treeview"
 
 #: inc/profile.class.php:107
 msgid "Use the tree"
-msgstr ""
+msgstr "Baum nutzen"
 
 #: inc/preference.class.php:70
 msgid ""

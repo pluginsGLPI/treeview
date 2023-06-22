@@ -1,14 +1,14 @@
 # English translations for PACKAGE package.
-# Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2022.
+# Automatically generated, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 08:15+0000\n"
-"PO-Revision-Date: 2022-04-21 08:15+0000\n"
+"POT-Creation-Date: 2023-06-22 06:06+0000\n"
+"PO-Revision-Date: 2023-06-22 06:06+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -78,7 +78,7 @@ msgid "Tree is drawn with lines"
 msgstr "Tree is drawn with lines"
 
 #: inc/profile.class.php:138 inc/preference.class.php:43
-#: inc/preference.class.php:116 inc/config.class.php:61
+#: inc/preference.class.php:120 inc/config.class.php:61
 #: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
 msgid "Tree view"
 msgstr "Tree view"
