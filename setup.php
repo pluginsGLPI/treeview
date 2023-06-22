@@ -28,7 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-define('PLUGIN_TREEVIEW_VERSION', '1.10.0');
+define('PLUGIN_TREEVIEW_VERSION', '1.10.1');
 
 // Minimal GLPI version, inclusive
 define('PLUGIN_TREEVIEW_MIN_GLPI', '10.0.0');
