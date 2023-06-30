@@ -357,8 +357,7 @@ class PluginTreeviewConfig  extends CommonDBTM {
                'WHERE' => [
                   'level' => $n,
                   'locations_id' => $nodes[$n-1],
-                   getEntitiesRestrictCriteria('glpi_locations', '', '', true)
-               ],
+               ] + getEntitiesRestrictCriteria('glpi_locations', '', '', true),
                'ORDER' => ['completename ASC']
             ]);
 
