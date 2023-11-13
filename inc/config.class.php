@@ -167,6 +167,8 @@ class PluginTreeviewConfig extends CommonDBTM
             </script>';
 
         Html::closeForm();
+
+        return true;
     }
 
    /**
@@ -218,6 +220,7 @@ class PluginTreeviewConfig extends CommonDBTM
    **/
     public function seeTreeview()
     {
+        /** @var array $CFG_GLPI */
         global $CFG_GLPI;
 
         echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
@@ -256,8 +259,6 @@ class PluginTreeviewConfig extends CommonDBTM
    **/
     public function hideTreeview()
     {
-        global $CFG_GLPI;
-
         echo "<script type='text/javascript'>";
          echo "if (top != self)";
          echo "top.location = self.location;";
@@ -270,8 +271,6 @@ class PluginTreeviewConfig extends CommonDBTM
    **/
     public function buildTreeview()
     {
-        global $CFG_GLPI;
-
         $treeview_url = Plugin::getWebDir('treeview');
 
        //necessary files needed for the tree to work.
@@ -291,7 +290,8 @@ class PluginTreeviewConfig extends CommonDBTM
    **/
     public function getNodesFromDb()
     {
-        global $DB,$CFG_GLPI;
+        /** @var DBmysql $DB */
+        global $DB;
 
        // The tree object
         echo "var d = new dTree('d');\n";
@@ -532,7 +532,7 @@ class PluginTreeviewConfig extends CommonDBTM
     */
     public static function loginPageToTop()
     {
-        echo HTML::scriptBlock("
+        echo Html::scriptBlock("
       $(document).ready(
          public function() {
             if (top != self)

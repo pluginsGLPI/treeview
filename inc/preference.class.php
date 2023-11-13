@@ -79,6 +79,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
     public function checkIfPreferenceExists($users_id)
     {
+        /** @var DBmysql $DB */
         global $DB;
 
         $result = $DB->request([
@@ -105,6 +106,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
     public function checkPreferenceValue($users_id)
     {
+        /** @var DBmysql $DB */
         global $DB;
 
         $result = $DB->request([

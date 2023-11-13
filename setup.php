@@ -40,6 +40,10 @@ define('PLUGIN_TREEVIEW_MAX_GLPI', '10.0.99');
  **/
 function plugin_init_treeview()
 {
+    /**
+     * @var array $PLUGIN_HOOKS
+     * @var array $CFG_GLPI
+     */
     global $PLUGIN_HOOKS, $CFG_GLPI;
 
     $PLUGIN_HOOKS['csrf_compliant']['treeview'] = true;

@@ -30,6 +30,7 @@
 
 function plugin_treeview_install()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     $default_charset = DBConnection::getDefaultCharset();
@@ -124,6 +125,7 @@ function plugin_treeview_install()
 
 function plugin_treeview_upgrade10to11()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     $default_charset = DBConnection::getDefaultCharset();
@@ -146,6 +148,7 @@ function plugin_treeview_upgrade10to11()
 
 function plugin_treeview_upgrade11to12()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     if ($DB->tableExists("glpi_plugin_treeview_profiles")) {
@@ -165,6 +168,7 @@ function plugin_treeview_upgrade11to12()
 
 function plugin_treeview_upgrade12to13()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
@@ -232,6 +236,7 @@ function plugin_treeview_upgrade12to13()
 
 function plugin_treeview_upgrade13to14()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     if ($DB->tableExists("glpi_plugin_treeview_displayprefs")) {
@@ -243,6 +248,7 @@ function plugin_treeview_upgrade13to14()
 
 function plugin_treeview_uninstall()
 {
+    /** @var DBmysql $DB */
     global $DB;
 
     $tables =  ["glpi_plugin_treeview_display",

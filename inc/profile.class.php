@@ -133,6 +133,8 @@ class PluginTreeviewProfile extends CommonDBTM
         }
         echo "</table>";
         Html::closeForm();
+
+        return true;
     }
 
 
