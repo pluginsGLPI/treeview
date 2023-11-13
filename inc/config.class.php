@@ -37,7 +37,7 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewConfig extends CommonDBTM
 {
-    static $types = [
+    public static $types = [
         'Computer',
         'Monitor',
         'NetworkEquipment',
@@ -65,7 +65,7 @@ class PluginTreeviewConfig extends CommonDBTM
    /**
     * Configuration form
    **/
-    function showForm($id, $options = [])
+    public function showForm($id, $options = [])
     {
 
         $this->getFromDB($id);
@@ -175,7 +175,7 @@ class PluginTreeviewConfig extends CommonDBTM
     *
     * @param $type string class name
    **/
-    static function registerType($type)
+    public static function registerType($type)
     {
         if (!in_array($type, self::$types)) {
             self::$types[] = $type;
@@ -189,7 +189,7 @@ class PluginTreeviewConfig extends CommonDBTM
     *
     * @return array of types
    **/
-    static function getTypes($all = false)
+    public static function getTypes($all = false)
     {
 
         if ($all) {
@@ -216,7 +216,7 @@ class PluginTreeviewConfig extends CommonDBTM
    /**
     * The function to see the treeview
    **/
-    function seeTreeview()
+    public function seeTreeview()
     {
         global $CFG_GLPI;
 
@@ -254,7 +254,7 @@ class PluginTreeviewConfig extends CommonDBTM
    /**
     * The function to hide the treeview
    **/
-    function hideTreeview()
+    public function hideTreeview()
     {
         global $CFG_GLPI;
 
@@ -268,7 +268,7 @@ class PluginTreeviewConfig extends CommonDBTM
    /**
     * The main function, build the javascript code of the treeview
    **/
-    function buildTreeview()
+    public function buildTreeview()
     {
         global $CFG_GLPI;
 
@@ -289,7 +289,7 @@ class PluginTreeviewConfig extends CommonDBTM
    /**
     * Requests the nodes from the GLPI database
    **/
-    function getNodesFromDb()
+    public function getNodesFromDb()
     {
         global $DB,$CFG_GLPI;
 
@@ -534,7 +534,7 @@ class PluginTreeviewConfig extends CommonDBTM
     {
         echo HTML::scriptBlock("
       $(document).ready(
-         function() {
+         public function() {
             if (top != self)
                top.location = self.location;
          });

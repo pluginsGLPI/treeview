@@ -34,7 +34,7 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginTreeviewProfile extends CommonDBTM
 {
-    static function createFirstAccess($ID)
+    public static function createFirstAccess($ID)
     {
 
         $firstProf = new self();
@@ -51,7 +51,7 @@ class PluginTreeviewProfile extends CommonDBTM
     }
 
 
-    function createAccess($profile)
+    public function createAccess($profile)
     {
 
         return $this->add(['id'   => $profile->getField('id'),
@@ -60,7 +60,7 @@ class PluginTreeviewProfile extends CommonDBTM
     }
 
 
-    static function changeProfile()
+    public static function changeProfile()
     {
 
         $prof = new self();
@@ -84,7 +84,7 @@ class PluginTreeviewProfile extends CommonDBTM
    /**
     * profiles modification
    **/
-    function showForm($id, $options = [])
+    public function showForm($id, $options = [])
     {
 
         $target = $this->getFormURL();
@@ -136,7 +136,7 @@ class PluginTreeviewProfile extends CommonDBTM
     }
 
 
-    static function cleanProfiles(Profile $prof)
+    public static function cleanProfiles(Profile $prof)
     {
 
         $plugprof = new self();
@@ -144,7 +144,7 @@ class PluginTreeviewProfile extends CommonDBTM
     }
 
 
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
         if ($item->getType() == 'Profile') {
@@ -154,7 +154,7 @@ class PluginTreeviewProfile extends CommonDBTM
     }
 
 
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
         if ($item->getType() == 'Profile') {

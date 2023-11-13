@@ -38,7 +38,7 @@ if (!defined('GLPI_ROOT')) {
 **/
 class PluginTreeviewPreference extends CommonDBTM
 {
-    static function getMenuContent()
+    public static function getMenuContent()
     {
         $menu          = [];
         $menu['title'] = __('Tree view', 'treeview');
@@ -47,7 +47,7 @@ class PluginTreeviewPreference extends CommonDBTM
         return $menu;
     }
 
-    function showFormUserPreference($target, $id)
+    public function showFormUserPreference($target, $id)
     {
 
         $data = plugin_version_treeview();
@@ -77,7 +77,7 @@ class PluginTreeviewPreference extends CommonDBTM
     }
 
 
-    function checkIfPreferenceExists($users_id)
+    public function checkIfPreferenceExists($users_id)
     {
         global $DB;
 
@@ -93,7 +93,7 @@ class PluginTreeviewPreference extends CommonDBTM
     }
 
 
-    function addDefaultPreference($users_id)
+    public function addDefaultPreference($users_id)
     {
 
         $input["users_id"]     = $users_id;
@@ -103,7 +103,7 @@ class PluginTreeviewPreference extends CommonDBTM
     }
 
 
-    function checkPreferenceValue($users_id)
+    public function checkPreferenceValue($users_id)
     {
         global $DB;
 
@@ -119,7 +119,7 @@ class PluginTreeviewPreference extends CommonDBTM
     }
 
 
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
         if ($item->getType() == 'Preference') {
@@ -129,7 +129,7 @@ class PluginTreeviewPreference extends CommonDBTM
     }
 
 
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
 
         if ($item->getType() == 'Preference') {
