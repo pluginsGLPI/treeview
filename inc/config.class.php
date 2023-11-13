@@ -371,6 +371,7 @@ class PluginTreeviewConfig extends CommonDBTM
                 ]);
 
                 foreach ($it as $r) {
+                    $l_name = '';
                      // Location's name schema
                     if ($locationName == 0) {
                         $l_name = $r['name'];
@@ -418,6 +419,7 @@ class PluginTreeviewConfig extends CommonDBTM
                             }
 
                             $result_1 = $DB->request($criteria);
+                            $pid = 0;
                             if (count($result_1)) {
                                 $pid = $tv_id;
                                 $field_num = 3;
@@ -456,6 +458,7 @@ class PluginTreeviewConfig extends CommonDBTM
                             }
 
                             foreach ($result_1 as $r_1) {
+                                $i_name = '';
                                // Item's name schema
                                 if ($itemName == 0 || $type == 'Software') {
                                     $i_name = $r_1['name'];
