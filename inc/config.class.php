@@ -54,7 +54,7 @@ class PluginTreeviewConfig extends CommonDBTM
     /**
     * Display name of itemtype
     *
-    * @return value name of this itemtype
+    * @return string
     **/
     public static function getTypeName($nb = 0)
     {
