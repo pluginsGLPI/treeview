@@ -28,13 +28,13 @@
  * -------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 Session::checkRight("profile", UPDATE);
 
 $prof = new PluginTreeviewProfile();
 
 if (isset($_POST['update_user_profile'])) {
-   $prof->update($_POST);
-   Html::back();
+    $prof->update($_POST);
+    Html::back();
 }

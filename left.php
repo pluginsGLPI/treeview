@@ -28,7 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-include ('../../inc/includes.php');
+include('../../inc/includes.php');
 
 Session::checkLoginUser();
 
@@ -39,14 +39,14 @@ Html::includeHeader("TreeView");
 echo "<body style='overflow:auto; overflow:initial;'>";
 // Title bar
 echo '<div id=explorer_bar>';
-echo '<div id=explorer_title>'.sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
+echo '<div id=explorer_title>' . sprintf(__('%1$s - %2$s'), "GLPI", __('Tree view', 'treeview'));
 echo '</div>';
 echo "<div id=explorer_close>";
 echo "<img border=0 src='pics/close.png' name='explorer_close'
        onclick='parent.location.href = parent.right.location.href;'></div>";
 echo "</div>";
 
-echo "<form method='get' name='get_level' action='" .$_SERVER["PHP_SELF"]. "'>";
+echo "<form method='get' name='get_level' action='" . $_SERVER["PHP_SELF"] . "'>";
 // The IDs (primary key) of the requested nodes are stored in this field
 echo "<input type='hidden' name='nodes' value=''>";
 // Which item type should be opened?
