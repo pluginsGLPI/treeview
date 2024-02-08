@@ -3,7 +3,7 @@
    <name>Tree View</name>
    <key>treeview</key>
    <state>stable</state>
-   <logo>https://github.com/pluginsGLPI/treeview/blob/master/treeview.png?raw=true</logo>
+   <logo>https://github.com/pluginsGLPI/treeview/blob/main/treeview.png?raw=true</logo>
    <description>
       <short>
          <fr><![CDATA[Vue en arborescence. Ce plugin vous permet de voir votre parc GLPI sous forme d’arborescence.]]></fr>
@@ -126,7 +126,7 @@
          </en>
    </tags>
       <screenshots>
-      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/treeview/master/screenshots/screenshot.png</screenshot>
-      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/treeview/master/treeview.gif</screenshot>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/treeview/main/screenshots/screenshot.png</screenshot>
+      <screenshot>https://raw.githubusercontent.com/pluginsGLPI/treeview/main/treeview.gif</screenshot>
    </screenshots>
 </root>
