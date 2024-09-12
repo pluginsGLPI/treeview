@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 08:15+0000\n"
+"POT-Creation-Date: 2024-09-12 13:03+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: Michael Schieferer, 2023\n"
 "Language-Team: German (Germany) (https://app.transifex.com/teclib/teams/28042/de_DE/)\n"
@@ -34,7 +34,7 @@ msgstr "Anzeige"
 msgid "Item name"
 msgstr "Name des Eintrags"
 
-#: inc/preference.class.php:59
+#: inc/preference.class.php:61
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "Treeview mit GLPI starten"
 
@@ -82,17 +82,17 @@ msgstr "Baum mit Icons"
 msgid "Tree is drawn with lines"
 msgstr "Baum mit Linien"
 
-#: inc/profile.class.php:138 inc/preference.class.php:43
-#: inc/preference.class.php:116 inc/config.class.php:61
-#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+#: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
+#: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
+#: inc/profile.class.php:142 setup.php:125
 msgid "Tree view"
 msgstr "Treeview"
 
-#: inc/profile.class.php:107
+#: inc/profile.class.php:108
 msgid "Use the tree"
 msgstr "Baum nutzen"
 
-#: inc/preference.class.php:70
+#: inc/preference.class.php:72
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 08:15+0000\n"
+"POT-Creation-Date: 2024-09-12 13:03+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: INOUE Daisuke, 2023\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/teclib/teams/28042/ja_JP/)\n"
@@ -33,7 +33,7 @@ msgstr "表示"
 msgid "Item name"
 msgstr "アイテム名"
 
-#: inc/preference.class.php:59
+#: inc/preference.class.php:61
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "GLPI 起動時にツリー表示 プラグインを起動する。"
 
@@ -81,17 +81,17 @@ msgstr "ツリーをアイコンで描画"
 msgid "Tree is drawn with lines"
 msgstr "ツリーを線で描画"
 
-#: inc/profile.class.php:138 inc/preference.class.php:43
-#: inc/preference.class.php:116 inc/config.class.php:61
-#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+#: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
+#: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
+#: inc/profile.class.php:142 setup.php:125
 msgid "Tree view"
 msgstr "ツリー表示"
 
-#: inc/profile.class.php:107
+#: inc/profile.class.php:108
 msgid "Use the tree"
 msgstr "ツリーを使う"
 
-#: inc/preference.class.php:70
+#: inc/preference.class.php:72
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"

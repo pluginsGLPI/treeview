@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rui Melo <viper5000pt@gmail.com>, 2019
+# feonsu <feonsu@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,92 +13,92 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-12 13:03+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
-"Last-Translator: Rui Melo <viper5000pt@gmail.com>, 2019\n"
-"Language-Team: Portuguese (Portugal) (https://app.transifex.com/teclib/teams/28042/pt_PT/)\n"
+"Last-Translator: feonsu <feonsu@gmail.com>, 2023\n"
+"Language-Team: Slovak (Slovakia) (https://app.transifex.com/teclib/teams/28042/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_PT\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: inc/config.class.php:150 inc/config.class.php:153
 msgid "Comment"
-msgstr "Comentário"
+msgstr "Komentár"
 
 #: inc/config.class.php:72
 msgid "Display"
-msgstr "Mostrar"
+msgstr "Zobraziť"
 
 #: inc/config.class.php:128
 msgid "Item name"
-msgstr "Nome do item"
+msgstr "Názov položky"
 
 #: inc/preference.class.php:61
 msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "Activar o Treeview com no arranque do GLPI"
+msgstr "Spustiť plugin Treeview pri štarte GLPI"
 
 #: inc/config.class.php:142
 msgid "Location name"
-msgstr "Nome do local"
+msgstr "Názov umiestnenia"
 
 #: inc/config.class.php:148 inc/config.class.php:153
 msgid "Long name"
-msgstr "Nome completo"
+msgstr "Dlhý názov"
 
 #: inc/config.class.php:77
 msgid "New window"
-msgstr "Nova janela"
+msgstr "Nové okno"
 
 #: inc/config.class.php:92
 msgid "Nodes can be highlighted"
-msgstr "Nós podemos ser destacados"
+msgstr "Zvýrazniť uzly"
 
 #: inc/config.class.php:118
 msgid "Only one node within a parent"
-msgstr "Apenas um nó dentro de um pai"
+msgstr "Súčasne rozbaliť iba jeden uzol"
 
 #: inc/config.class.php:146 inc/config.class.php:150
 msgid "Short name"
-msgstr "Nome abreviado"
+msgstr "Krátky názov"
 
 #: inc/config.class.php:83
 msgid "Should folders be links"
-msgstr "As pastas devem ser ligações"
+msgstr "Adresáre ako odkazy"
 
 #: inc/config.class.php:74
 msgid "Target for all the nodes"
-msgstr "Alvo para todos nós"
+msgstr "Cieľ pre všetky uzly"
 
 #: inc/config.class.php:79
 msgid "The central console"
-msgstr "Consola central"
+msgstr "Centrálna konzola"
 
 #: inc/config.class.php:108
 msgid "Tree is drawn with icons"
-msgstr "A árvore é desenhada com ícones"
+msgstr "Kresliť strom s ikonami"
 
 #: inc/config.class.php:100
 msgid "Tree is drawn with lines"
-msgstr "A árvore é desenhada com linhas"
+msgstr "Kresliť strom s čiarami"
 
 #: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
 #: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
 #: inc/profile.class.php:142 setup.php:125
 msgid "Tree view"
-msgstr "Vista em árvore"
+msgstr "Stromové zobrazenie"
 
 #: inc/profile.class.php:108
 msgid "Use the tree"
-msgstr "Utilizar a árvore"
+msgstr "Stromové zobrazenie"
 
 #: inc/preference.class.php:72
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
 msgstr ""
-"Aviso: Se houver mais de um plugin que seja carregado na inicialização, "
-"então apenas o primeiro será usado"
+"Upozornenie: Pokiaľ je pri štarte načítaný viac ako jeden plugin, tak sa "
+"použije iba prvý"
 
 #: inc/config.class.php:119
 msgid "can be expanded at the same time."
-msgstr "pode ser expandido ao mesmo tempo."
+msgstr "v rámci rodiča."
