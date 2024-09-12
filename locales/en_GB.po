@@ -1,14 +1,14 @@
 # English translations for PACKAGE package.
-# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2023.
+# Automatically generated, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-22 06:06+0000\n"
-"PO-Revision-Date: 2023-06-22 06:06+0000\n"
+"POT-Creation-Date: 2024-09-12 13:03+0000\n"
+"PO-Revision-Date: 2024-09-12 13:03+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -29,7 +29,7 @@ msgstr "Display"
 msgid "Item name"
 msgstr "Item name"
 
-#: inc/preference.class.php:59
+#: inc/preference.class.php:61
 msgid "Launch the plugin Treeview with GLPI launching"
 msgstr "Launch the plugin Treeview with GLPI launching"
 
@@ -77,17 +77,17 @@ msgstr "Tree is drawn with icons"
 msgid "Tree is drawn with lines"
 msgstr "Tree is drawn with lines"
 
-#: inc/profile.class.php:138 inc/preference.class.php:43
-#: inc/preference.class.php:120 inc/config.class.php:61
-#: inc/config.class.php:220 inc/config.class.php:290 setup.php:116 left.php:42
+#: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
+#: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
+#: inc/profile.class.php:142 setup.php:125
 msgid "Tree view"
 msgstr "Tree view"
 
-#: inc/profile.class.php:107
+#: inc/profile.class.php:108
 msgid "Use the tree"
 msgstr "Use the tree"
 
-#: inc/preference.class.php:70
+#: inc/preference.class.php:72
 msgid ""
 "Warning: If there are more than one plugin which be loaded at startup, then "
 "only the first will be used"
