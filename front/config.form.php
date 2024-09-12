@@ -32,16 +32,16 @@ include('../../../inc/includes.php');
 
 
 $config = new PluginTreeviewConfig();
-if (isset($_POST["update"])) {
+if (isset($_POST['update'])) {
     $config->update($_POST);
     Html::back();
 } else {
-    if (Plugin::isPluginActive("treeview")) {
-        Html::header(PluginTreeviewConfig::getTypeName(), $_SERVER['PHP_SELF'], "config", "plugin");
+    if (Plugin::isPluginActive('treeview')) {
+        Html::header(PluginTreeviewConfig::getTypeName(), $_SERVER['PHP_SELF'], 'config', 'plugin');
         $config->showForm(1);
     } else {
-        Html::header(__('Setup'), $_SERVER['PHP_SELF'], "config", "plugin");
-       // Get the configuration from the database and show it
+        Html::header(__('Setup'), $_SERVER['PHP_SELF'], 'config', 'plugin');
+        // Get the configuration from the database and show it
         echo " <script type='text/javascript'>
          if (top != self)
          top.location = self.location;

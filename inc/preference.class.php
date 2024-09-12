@@ -44,24 +44,24 @@ class PluginTreeviewPreference extends CommonDBTM
         $menu['title'] = __('Tree view', 'treeview');
         $menu['page']  = '/' . Plugin::getWebDir('treeview', false) . '/index.php';
         $menu['icon']  = 'fas fa-sitemap';
+
         return $menu;
     }
 
     public function showFormUserPreference($target, $id)
     {
-
         $data = plugin_version_treeview();
         $this->getFromDB($id);
         echo "<form action='" . $target . "' method='post'>";
         echo "<table class='tab_cadre_fixe' cellpadding='5'>";
         echo "<tr><th colspan='2'>" . sprintf(__('%1$s - %2$s'), $data['name'], $data['version']);
-        echo "</th></tr>";
+        echo '</th></tr>';
 
         echo "<tr class='tab_bg_1 center'>";
-        echo "<td>" . __('Launch the plugin Treeview with GLPI launching', 'treeview') . "</td>";
-        echo "<td>";
-        Dropdown::showYesNo("show_on_load", $this->fields["show_on_load"]);
-        echo "</td></tr>";
+        echo '<td>' . __('Launch the plugin Treeview with GLPI launching', 'treeview') . '</td>';
+        echo '<td>';
+        Dropdown::showYesNo('show_on_load', $this->fields['show_on_load']);
+        echo '</td></tr>';
 
         echo "<tr class='tab_bg_1 center'><td colspan='2'>";
         echo "<input type='submit' name='plugin_treeview_user_preferences_save' value='" .
@@ -70,12 +70,11 @@ class PluginTreeviewPreference extends CommonDBTM
 
         echo "<tr class='tab_bg_1 center'>";
         echo "<td colspan='2'>" . __('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used', 'treeview');
-        echo "</td></tr>";
+        echo '</td></tr>';
 
-        echo "</table>";
+        echo '</table>';
         Html::closeForm();
     }
-
 
     public function checkIfPreferenceExists($users_id)
     {
@@ -85,24 +84,22 @@ class PluginTreeviewPreference extends CommonDBTM
         $result = $DB->request([
             'SELECT' => ['id'],
             'FROM'   => 'glpi_plugin_treeview_preferences',
-            'WHERE'  => ['users_id' => $users_id]
+            'WHERE'  => ['users_id' => $users_id],
         ]);
         if (count($result) > 0) {
             return $result->current()['id'];
         }
+
         return 0;
     }
 
-
     public function addDefaultPreference($users_id)
     {
-
-        $input["users_id"]     = $users_id;
-        $input["show_on_load"] = 0;
+        $input['users_id']     = $users_id;
+        $input['show_on_load'] = 0;
 
         return $this->add($input);
     }
-
 
     public function checkPreferenceValue($users_id)
     {
@@ -112,36 +109,35 @@ class PluginTreeviewPreference extends CommonDBTM
         $result = $DB->request([
             'SELECT' => ['show_on_load'],
             'FROM'   => 'glpi_plugin_treeview_preferences',
-            'WHERE'  => ['users_id' => $users_id]
+            'WHERE'  => ['users_id' => $users_id],
         ]);
         if (count($result) > 0) {
             return $result->current()['show_on_load'];
         }
+
         return 0;
     }
 
-
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-
         if ($item->getType() == 'Preference') {
             return __('Tree view', 'treeview');
         }
+
         return '';
     }
 
-
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-
         if ($item->getType() == 'Preference') {
-            $pref = new self();
+            $pref    = new self();
             $pref_ID = $pref->checkIfPreferenceExists(Session::getLoginUserID());
             if (!$pref_ID) {
                 $pref_ID = $pref->addDefaultPreference(Session::getLoginUserID());
             }
             $pref->showFormUserPreference($pref->getFormURL(), $pref_ID);
         }
+
         return true;
     }
 }

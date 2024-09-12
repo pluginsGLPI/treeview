@@ -36,67 +36,60 @@ class PluginTreeviewProfile extends CommonDBTM
 {
     public static function createFirstAccess($ID)
     {
-
         $firstProf = new self();
         if (!$firstProf->GetfromDB($ID)) {
             $profile = new Profile();
             $profile->getFromDB($ID);
-            $name = addslashes($profile->fields["name"]);
+            $name = addslashes($profile->fields['name']);
 
-            $firstProf->add(['id'        => $ID,
-                'name'      => $name,
-                'treeview'  => 'r'
+            $firstProf->add(['id' => $ID,
+                'name'            => $name,
+                'treeview'        => 'r',
             ]);
         }
     }
 
-
     public function createAccess($profile)
     {
-
-        return $this->add(['id'   => $profile->getField('id'),
-            'name' => addslashes($profile->getField('name'))
+        return $this->add(['id' => $profile->getField('id'),
+            'name'              => addslashes($profile->getField('name')),
         ]);
     }
 
-
     public static function changeProfile()
     {
-
         $prof = new self();
         if ($prof->getFromDB($_SESSION['glpiactiveprofile']['id'])) {
-            $_SESSION["glpi_plugin_treeview_profile"] = $prof->fields;
+            $_SESSION['glpi_plugin_treeview_profile'] = $prof->fields;
         } else {
-            unset($_SESSION["glpi_plugin_treeview_profile"]);
+            unset($_SESSION['glpi_plugin_treeview_profile']);
         }
 
-       //require 'preference.class.php';
-        $Pref = new PluginTreeviewPreference();
+        //require 'preference.class.php';
+        $Pref       = new PluginTreeviewPreference();
         $pref_value = $Pref->checkPreferenceValue(Session::getLoginUserID());
         if ($pref_value == 1) {
-            $_SESSION["glpi_plugin_treeview_preference"] = 1;
+            $_SESSION['glpi_plugin_treeview_preference'] = 1;
         } else {
-            unset($_SESSION["glpi_plugin_treeview_preference"]);
+            unset($_SESSION['glpi_plugin_treeview_preference']);
         }
     }
 
-
-   /**
-    * profiles modification
-   **/
+    /**
+     * profiles modification
+    **/
     public function showForm($id, $options = [])
     {
-
         $target = $this->getFormURL();
         if (isset($options['target'])) {
             $target = $options['target'];
         }
 
-        if (!Session::haveRight("profile", READ)) {
+        if (!Session::haveRight('profile', READ)) {
             return false;
         }
-        $canedit = Session::haveRight("profile", UPDATE);
-        $prof = new Profile();
+        $canedit = Session::haveRight('profile', UPDATE);
+        $prof    = new Profile();
         if ($id) {
             $this->getFromDB($id);
             $prof->getFromDB($id);
@@ -107,21 +100,21 @@ class PluginTreeviewProfile extends CommonDBTM
         echo "<tr><th colspan='2' class='center b'>" . sprintf(
             __('%1$s %2$s'),
             __('Rights management'),
-            $this->fields["name"]
+            $this->fields['name'],
         );
-        echo "</th></tr>";
+        echo '</th></tr>';
 
         echo "<tr class='tab_bg_2'>";
-        echo "<td>" . __('Use the tree', 'treeview') . "</td><td>";
+        echo '<td>' . __('Use the tree', 'treeview') . '</td><td>';
         Profile::dropdownRight(
-            "treeview",
-            ['value'   => $this->fields["treeview"],
+            'treeview',
+            ['value'      => $this->fields['treeview'],
                 'nonone'  => 0,
                 'noread'  => 0,
-                'nowrite' => 1
-            ]
+                'nowrite' => 1,
+            ],
         );
-        echo "</td></tr>";
+        echo '</td></tr>';
 
         if ($canedit) {
             echo "<tr class='tab_bg_1'>";
@@ -129,44 +122,40 @@ class PluginTreeviewProfile extends CommonDBTM
             echo "<input type='hidden' name='id' value=$id>";
             echo "<input type='submit' name='update_user_profile' value='" . _sx('button', 'Update') . "'
                 class='submit'>";
-            echo "</td></tr>";
+            echo '</td></tr>';
         }
-        echo "</table>";
+        echo '</table>';
         Html::closeForm();
 
         return true;
     }
 
-
     public static function cleanProfiles(Profile $prof)
     {
-
         $plugprof = new self();
-        $plugprof->delete(['id' => $prof->getField("id")]);
+        $plugprof->delete(['id' => $prof->getField('id')]);
     }
-
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-
         if ($item->getType() == 'Profile') {
             return __('Tree view', 'treeview');
         }
+
         return '';
     }
 
-
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-
         if ($item instanceof Profile) {
             $prof = new self();
-            $ID = $item->getField('id');
+            $ID   = $item->getField('id');
             if (!$prof->GetfromDB($ID)) {
                 $prof->createAccess($item);
             }
             $prof->showForm($ID);
         }
+
         return true;
     }
 }
