@@ -52,23 +52,23 @@ function plugin_init_treeview()
 
     Plugin::registerClass('PluginTreeviewProfile', ['addtabon' => ['Profile']]);
 
-    $PLUGIN_HOOKS['change_profile']['treeview'] = ['PluginTreeviewProfile','changeprofile'];
+    $PLUGIN_HOOKS['change_profile']['treeview'] = ['PluginTreeviewProfile', 'changeprofile'];
 
     if (
-        isset($_SESSION["glpi_plugin_treeview_profile"])
-        && $_SESSION["glpi_plugin_treeview_profile"]["treeview"]
+        isset($_SESSION['glpi_plugin_treeview_profile'])
+        && $_SESSION['glpi_plugin_treeview_profile']['treeview']
     ) {
         $PLUGIN_HOOKS['menu_toadd']['treeview']['tools'] = 'PluginTreeviewPreference';
 
         $PLUGIN_HOOKS['pre_item_purge']['treeview'] = [
-            'Profile' => ['PluginTreeviewProfile', 'cleanProfiles']
+            'Profile' => ['PluginTreeviewProfile', 'cleanProfiles'],
         ];
 
         $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
 
         if (
-            isset($_SESSION["glpi_plugin_treeview_loaded"])
-            && $_SESSION["glpi_plugin_treeview_loaded"] == 1
+            isset($_SESSION['glpi_plugin_treeview_loaded'])
+            && $_SESSION['glpi_plugin_treeview_loaded'] == 1
             && class_exists('PluginTreeviewConfig')
         ) {
             foreach (PluginTreeviewConfig::getTypes() as $type) {
@@ -79,38 +79,38 @@ function plugin_init_treeview()
         }
 
         if (
-            $_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"] . "/front/central.php"
-            && (!isset($_SESSION["glpi_plugin_treeview_loaded"])
-              || $_SESSION["glpi_plugin_treeview_loaded"] == 0)
-            && isset($_SESSION["glpi_plugin_treeview_preference"])
-            && $_SESSION["glpi_plugin_treeview_preference"] == 1
+            $_SERVER['PHP_SELF'] == $CFG_GLPI['root_doc'] . '/front/central.php'
+            && (!isset($_SESSION['glpi_plugin_treeview_loaded'])
+              || $_SESSION['glpi_plugin_treeview_loaded'] == 0)
+            && isset($_SESSION['glpi_plugin_treeview_preference'])
+            && $_SESSION['glpi_plugin_treeview_preference'] == 1
         ) {
-            Html::redirect(Plugin::getWebDir('treeview') . "/index.php");
+            Html::redirect(Plugin::getWebDir('treeview') . '/index.php');
         }
 
         if (
-            $_SERVER['PHP_SELF'] == $CFG_GLPI["root_doc"] . "/front/logout.php"
-            && (isset($_SESSION["glpi_plugin_treeview_loaded"])
-            && $_SESSION["glpi_plugin_treeview_loaded"] == 1
+            $_SERVER['PHP_SELF'] == $CFG_GLPI['root_doc'] . '/front/logout.php'
+            && (isset($_SESSION['glpi_plugin_treeview_loaded'])
+            && $_SESSION['glpi_plugin_treeview_loaded'] == 1
             && class_exists('PluginTreeviewConfig'))
         ) {
             $config = new PluginTreeviewConfig();
             $config->hideTreeview();
         }
-       // Add specific files to add to the header : javascript or css
-        $PLUGIN_HOOKS['add_css']['treeview'] = "css/treeview.css";
+        // Add specific files to add to the header : javascript or css
+        $PLUGIN_HOOKS['add_css']['treeview'] = 'css/treeview.css';
     }
 
-   // Config page
-    if (Session::haveRight("config", UPDATE) || Session::haveRight("profile", UPDATE)) {
+    // Config page
+    if (Session::haveRight('config', UPDATE) || Session::haveRight('profile', UPDATE)) {
         $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
     }
 
-    $currentPage =  explode("/", $_SERVER['PHP_SELF']);
-    if (array_pop($currentPage) == "index.php") {
+    $currentPage = explode('/', $_SERVER['PHP_SELF']);
+    if (array_pop($currentPage) == 'index.php') {
         $PLUGIN_HOOKS['display_login']['treeview'] = [
-            "PluginTreeviewConfig",
-            "loginPageToTop"
+            'PluginTreeviewConfig',
+            'loginPageToTop',
         ];
     }
 }
@@ -121,7 +121,6 @@ function plugin_init_treeview()
 **/
 function plugin_version_treeview()
 {
-
     return [
         'name'         => __('Tree view', 'treeview'),
         'version'      => PLUGIN_TREEVIEW_VERSION,
@@ -132,8 +131,8 @@ function plugin_version_treeview()
             'glpi' => [
                 'min' => PLUGIN_TREEVIEW_MIN_GLPI,
                 'max' => PLUGIN_TREEVIEW_MAX_GLPI,
-            ]
-        ]
+            ],
+        ],
 
     ];
 }
