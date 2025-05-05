@@ -30,6 +30,8 @@
 
 include('../../../inc/includes.php');
 
+Session::checkLoginUser();
+
 $pref = new PluginTreeviewPreference();
 
 //Save user preferences
