@@ -30,7 +30,7 @@
 
 include('../../../inc/includes.php');
 
-Session::checkLoginUser();
+Session::checkRight('treeview', UPDATE);
 
 $config = new PluginTreeviewConfig();
 if (isset($_POST['update'])) {
