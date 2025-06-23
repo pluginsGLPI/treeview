@@ -1,6 +1,4 @@
-<?php
-
-/**
+/*!
  * -------------------------------------------------------------------------
  * TreeView plugin for GLPI
  * -------------------------------------------------------------------------
@@ -28,34 +26,30 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../inc/includes.php');
+body {
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+#explorer_bar {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color:#2f3f64;
+	color: white;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+#explorer_title {
+	font-family: var(--tblr-body-font-family);
+	font-size: var(--tblr-body-font-size);
+	font-weight: var(--tblr-body-font-weight);
+	line-height: var(--tblr-body-line-height);
+	text-align: var(--tblr-body-text-align);
+	-webkit-text-size-adjust: 100%;
+	float:left;
+}
 
-Session::checkLoginUser();
-
-$treeview_url = Plugin::getWebDir('treeview');
-
-Html::includeHeader('TreeView');
-
-echo "<body style='overflow:auto; overflow:initial;'>";
-// Title bar
-echo '<div id=explorer_bar>';
-echo '<div id=explorer_title>' . sprintf(__('%1$s - %2$s'), 'GLPI', __('Tree view', 'treeview'));
-echo '</div>';
-echo '<div id=explorer_close>';
-echo "<img border=0 src='pics/close.png' name='explorer_close'
-       onclick='parent.location.href = parent.right.location.href;'></div>";
-echo '</div>';
-
-echo "<form method='get' name='get_level' action='" . $_SERVER['PHP_SELF'] . "'>";
-// The IDs (primary key) of the requested nodes are stored in this field
-echo "<input type='hidden' name='nodes' value=''>";
-// Which item type should be opened?
-echo "<input type='hidden' name='openedType' value=''>";
-echo '</form>';
-
-// Print the tree
-$config = new PluginTreeviewConfig();
-$config->buildTreeview();
-
-echo '</body>';
-echo '</html>';
+#explorer_close span {
+	cursor: pointer;
+	color: var(--glpi-mainmenu-fg)
+}

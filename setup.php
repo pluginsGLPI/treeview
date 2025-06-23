@@ -28,16 +28,12 @@
  * -------------------------------------------------------------------------
  */
 
-define('PLUGIN_TREEVIEW_VERSION', '1.10.2');
+use Glpi\Plugin\Hooks;
 
-// Minimal GLPI version, inclusive
-define('PLUGIN_TREEVIEW_MIN_GLPI', '10.0.0');
-// Maximum GLPI version, exclusive
-define('PLUGIN_TREEVIEW_MAX_GLPI', '10.0.99');
+define('PLUGIN_TREEVIEW_VERSION', '1.20.0');
+define('PLUGIN_TREEVIEW_MIN_GLPI', '11.0.0');
+define('PLUGIN_TREEVIEW_MAX_GLPI', '11.0.99');
 
-/**
- * Init the hooks of the plugins -Needed
- **/
 function plugin_init_treeview()
 {
     /**
@@ -48,33 +44,33 @@ function plugin_init_treeview()
 
     $PLUGIN_HOOKS['csrf_compliant']['treeview'] = true;
 
-    Plugin::registerClass('PluginTreeviewPreference', ['addtabon' => ['Preference']]);
+    Plugin::registerClass(PluginTreeviewPreference::class, ['addtabon' => [Preference::class]]);
+    Plugin::registerClass(PluginTreeviewProfile::class, ['addtabon' => [Profile::class]]);
+    Plugin::registerClass(PluginTreeviewConfig::class, ['addtabon' => [Config::class]]);
 
-    Plugin::registerClass('PluginTreeviewProfile', ['addtabon' => ['Profile']]);
-
-    $PLUGIN_HOOKS['change_profile']['treeview'] = ['PluginTreeviewProfile', 'changeprofile'];
+    $PLUGIN_HOOKS[Hooks::CHANGE_PROFILE]['treeview'] = [PluginTreeviewProfile::class, 'changeprofile'];
 
     if (
         isset($_SESSION['glpi_plugin_treeview_profile'])
         && $_SESSION['glpi_plugin_treeview_profile']['treeview']
     ) {
-        $PLUGIN_HOOKS['menu_toadd']['treeview']['tools'] = 'PluginTreeviewPreference';
+        $PLUGIN_HOOKS[Hooks::MENU_TOADD]['treeview']['tools'] = PluginTreeviewPreference::class;
 
-        $PLUGIN_HOOKS['pre_item_purge']['treeview'] = [
-            'Profile' => ['PluginTreeviewProfile', 'cleanProfiles'],
+        $PLUGIN_HOOKS[Hooks::PRE_ITEM_PURGE]['treeview'] = [
+            'Profile' => [PluginTreeviewProfile::class, 'cleanProfiles'],
         ];
 
-        $PLUGIN_HOOKS['change_entity']['treeview'] = 'plugin_change_entity_Treeview';
+        $PLUGIN_HOOKS[Hooks::CHANGE_ENTITY]['treeview'] = 'plugin_change_entity_Treeview';
 
         if (
             isset($_SESSION['glpi_plugin_treeview_loaded'])
             && $_SESSION['glpi_plugin_treeview_loaded'] == 1
-            && class_exists('PluginTreeviewConfig')
+            && class_exists(PluginTreeviewConfig::class)
         ) {
             foreach (PluginTreeviewConfig::getTypes() as $type) {
-                $PLUGIN_HOOKS['item_update']['treeview'][$type]  = 'plugin_item_update_treeview';
-                $PLUGIN_HOOKS['item_delete']['treeview'][$type]  = 'plugin_treeview_reload';
-                $PLUGIN_HOOKS['item_restore']['treeview'][$type] = 'plugin_treeview_reload';
+                $PLUGIN_HOOKS[Hooks::ITEM_UPDATE]['treeview'][$type]  = 'plugin_item_update_treeview';
+                $PLUGIN_HOOKS[Hooks::ITEM_DELETE]['treeview'][$type]  = 'plugin_treeview_reload';
+                $PLUGIN_HOOKS[Hooks::ITEM_RESTORE]['treeview'][$type] = 'plugin_treeview_reload';
             }
         }
 
@@ -85,34 +81,44 @@ function plugin_init_treeview()
             && isset($_SESSION['glpi_plugin_treeview_preference'])
             && $_SESSION['glpi_plugin_treeview_preference'] == 1
         ) {
-            Html::redirect(Plugin::getWebDir('treeview') . '/index.php');
+            Html::redirect($CFG_GLPI['root_doc'] . '/plugins/treeview/public/index.php');
         }
 
         if (
             $_SERVER['PHP_SELF'] == $CFG_GLPI['root_doc'] . '/front/logout.php'
             && (isset($_SESSION['glpi_plugin_treeview_loaded'])
             && $_SESSION['glpi_plugin_treeview_loaded'] == 1
-            && class_exists('PluginTreeviewConfig'))
+            && class_exists(PluginTreeviewConfig::class))
         ) {
             $config = new PluginTreeviewConfig();
             $config->hideTreeview();
         }
         // Add specific files to add to the header : javascript or css
-        $PLUGIN_HOOKS['add_css']['treeview'] = 'css/treeview.css';
+        $PLUGIN_HOOKS[Hooks::ADD_CSS]['treeview'] = 'css/treeview.css';
     }
 
     // Config page
-    if (Session::haveRight('config', UPDATE) || Session::haveRight('profile', UPDATE)) {
-        $PLUGIN_HOOKS['config_page']['treeview'] = 'front/config.form.php';
+    if (Session::haveRight('config', UPDATE)) {
+        $PLUGIN_HOOKS[Hooks::CONFIG_PAGE]['treeview'] = '../../front/config.form.php?forcetab=PluginTreeviewConfig$1';
     }
 
     $currentPage = explode('/', $_SERVER['PHP_SELF']);
     if (array_pop($currentPage) == 'index.php') {
-        $PLUGIN_HOOKS['display_login']['treeview'] = [
+        $PLUGIN_HOOKS[Hooks::DISPLAY_LOGIN]['treeview'] = [
             'PluginTreeviewConfig',
             'loginPageToTop',
         ];
     }
+}
+
+function plugin_treeview_check_prerequisites()
+{
+    if (!is_readable(__DIR__ . '/vendor/autoload.php') || !is_file(__DIR__ . '/vendor/autoload.php')) {
+        echo "Run composer install --no-dev in the plugin directory<br>";
+        return false;
+    }
+
+    return true;
 }
 
 
