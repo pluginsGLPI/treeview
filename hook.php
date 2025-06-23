@@ -81,9 +81,9 @@ function plugin_treeview_install()
                   PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
 
-        $DB->insertOrDie('glpi_plugin_treeview_configs', [
+        $DB->insert('glpi_plugin_treeview_configs', [
             'id'             => 1,
             'target'         => 'right',
             'folderLinks'    => 1,
@@ -103,7 +103,7 @@ function plugin_treeview_install()
                   KEY `name` (`name`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
 
         $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_treeview_preferences` (
                   `id` int {$default_key_sign} NOT NULL auto_increment,
@@ -112,7 +112,7 @@ function plugin_treeview_install()
                   PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 
     // No autoload when plugin is not activated
@@ -142,7 +142,7 @@ function plugin_treeview_upgrade10to11()
                   PRIMARY KEY (`ID`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 }
 
@@ -162,7 +162,7 @@ function plugin_treeview_upgrade11to12()
             $query .= ' DROP `is_default`';
         }
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 }
 
@@ -175,7 +175,7 @@ function plugin_treeview_upgrade12to13()
     $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
 
     if ($DB->tableExists('glpi_plugin_treeview_display')) {
-        $DB->query('RENAME TABLE `glpi_plugin_treeview_display` to `glpi_plugin_treeview_displayprefs`');
+        $DB->doQuery('RENAME TABLE `glpi_plugin_treeview_display` to `glpi_plugin_treeview_displayprefs`');
 
         $query = 'ALTER TABLE `glpi_plugin_treeview_displayprefs` ';
 
@@ -204,7 +204,7 @@ function plugin_treeview_upgrade12to13()
             $query .= " CHANGE `locationName` `locationName` int NOT NULL default '0'";
         }
 
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 
     if ($DB->tableExists('glpi_plugin_treeview_profiles')) {
@@ -213,11 +213,11 @@ function plugin_treeview_upgrade12to13()
         if ($DB->fieldExists('glpi_plugin_treeview_profiles', 'ID')) {
             $query .= " CHANGE `ID` `id` int {$default_key_sign} NOT NULL auto_increment";
         }
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 
     if ($DB->tableExists('glpi_plugin_treeview_preference')) {
-        $DB->query('RENAME TABLE `glpi_plugin_treeview_preference` to `glpi_plugin_treeview_preferences`');
+        $DB->doQuery('RENAME TABLE `glpi_plugin_treeview_preference` to `glpi_plugin_treeview_preferences`');
 
         $query = 'ALTER TABLE `glpi_plugin_treeview_preferences` ';
 
@@ -230,7 +230,7 @@ function plugin_treeview_upgrade12to13()
         if ($DB->fieldExists('glpi_plugin_treeview_preferences', 'show')) {
             $query .= " CHANGE `show` `show_on_load` int NOT NULL default '0'";
         }
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 }
 
@@ -242,7 +242,7 @@ function plugin_treeview_upgrade13to14()
 
     if ($DB->tableExists('glpi_plugin_treeview_displayprefs')) {
         $query = 'RENAME TABLE `glpi_plugin_treeview_displayprefs` to `glpi_plugin_treeview_configs`';
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 }
 
@@ -262,7 +262,7 @@ function plugin_treeview_uninstall()
 
     foreach ($tables as $table) {
         $query = "DROP TABLE IF EXISTS `$table`;";
-        $DB->query($query) or die($DB->error());
+        $DB->doQuery($query) or die($DB->error());
     }
 
     unset($_SESSION['glpimenu']['plugins']['content']['plugintreeviewpreference']);

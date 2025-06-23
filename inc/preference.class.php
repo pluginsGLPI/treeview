@@ -28,6 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
+use Glpi\Application\View\TemplateRenderer;
+
 if (!defined('GLPI_ROOT')) {
     die("Sorry. You can't access directly to this file");
 }
@@ -40,40 +42,32 @@ class PluginTreeviewPreference extends CommonDBTM
 {
     public static function getMenuContent()
     {
+        /**
+         * @var array $CFG_GLPI
+         */
+        global $CFG_GLPI;
+
         $menu          = [];
         $menu['title'] = __('Tree view', 'treeview');
-        $menu['page']  = '/' . Plugin::getWebDir('treeview', false) . '/index.php';
-        $menu['icon']  = 'fas fa-sitemap';
+        $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/public/index.php';
+        $menu['icon']  = 'ti ti-sitemap';
 
         return $menu;
     }
 
     public function showFormUserPreference($target, $id)
     {
-        $data = plugin_version_treeview();
         $this->getFromDB($id);
-        echo "<form action='" . $target . "' method='post'>";
-        echo "<table class='tab_cadre_fixe' cellpadding='5'>";
-        echo "<tr><th colspan='2'>" . sprintf(__('%1$s - %2$s'), $data['name'], $data['version']);
-        echo '</th></tr>';
+        TemplateRenderer::getInstance()->display(
+            '@treeview/preference.html.twig',
+            [
+                'target'        => $target,
+                'show_on_load'  => $this->fields['show_on_load'],
+                'pref_id'       => $id,
+            ],
+        );
 
-        echo "<tr class='tab_bg_1 center'>";
-        echo '<td>' . __('Launch the plugin Treeview with GLPI launching', 'treeview') . '</td>';
-        echo '<td>';
-        Dropdown::showYesNo('show_on_load', $this->fields['show_on_load']);
-        echo '</td></tr>';
-
-        echo "<tr class='tab_bg_1 center'><td colspan='2'>";
-        echo "<input type='submit' name='plugin_treeview_user_preferences_save' value='" .
-             _sx('button', 'Post') . "' class='submit'>";
-        echo "<input type='hidden' name='id' value='$id'></td></tr>";
-
-        echo "<tr class='tab_bg_1 center'>";
-        echo "<td colspan='2'>" . __('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used', 'treeview');
-        echo '</td></tr>';
-
-        echo '</table>';
-        Html::closeForm();
+        return true;
     }
 
     public function checkIfPreferenceExists($users_id)
@@ -121,7 +115,7 @@ class PluginTreeviewPreference extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if ($item->getType() == 'Preference') {
-            return __('Tree view', 'treeview');
+            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::getType(), PluginTreeviewConfig::getIcon());
         }
 
         return '';
