@@ -28,18 +28,44 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+include('../../inc/includes.php');
 
 Session::checkLoginUser();
 
-if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
-    Html::header('TITRE', $_SERVER['PHP_SELF'], 'plugins', 'pluginexampleexample', '');
-} else {
-    Html::helpHeader('TITRE', $_SERVER['PHP_SELF']);
-}
+/**
+ * @var array $CFG_GLPI
+ */
+global $CFG_GLPI;
 
-//checkTypeRight('PluginExampleExample',"r");
+Html::includeHeader('TreeView');
 
-Search::show('PluginExampleExample');
+echo "<body style='overflow:auto; overflow:initial;'>";
+// Title bar
+echo '<div id="explorer_bar" class="d-flex justify-content-between align-items-center  border-bottom">';
+echo '<div id=explorer_title>';
+echo '<i class="ti ti-sitemap me-2"></i>';
+echo '<span class="menu-label">' . __('Tree view', 'treeview') . '</span>';
+echo '</div>';
+echo '<div id=explorer_close>';
 
-Html::footer();
+echo "<span role='button' name='explorer_close' class='btn btn-sm btn-ghost-secondary me-1 pe-2' onclick='parent.location.href = parent.right.location.href;''>";
+echo "<i class='ti ti-square-rounded-x'></i>";
+echo "</span>";
+echo '</div>';
+
+echo '</div>';
+
+
+echo "<form method='get' name='get_level' action='" . $CFG_GLPI['root_doc'] . '/plugins/treeview/left.php' . "'>";
+// The IDs (primary key) of the requested nodes are stored in this field
+echo "<input type='hidden' name='nodes' value=''>";
+// Which item type should be opened?
+echo "<input type='hidden' name='openedType' value=''>";
+echo '</form>';
+
+// Print the tree
+$config = new PluginTreeviewConfig();
+$config->buildTreeview();
+
+echo '</body>';
+echo '</html>';
