@@ -81,7 +81,7 @@ function plugin_treeview_install()
                   PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->doQuery($query) or die($DB->error());
+        $DB->doQuery($query);
 
         $DB->insert('glpi_plugin_treeview_configs', [
             'id'             => 1,
