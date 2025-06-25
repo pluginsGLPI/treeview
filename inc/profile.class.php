@@ -28,9 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+use Glpi\Application\View\TemplateRenderer;
 
 class PluginTreeviewProfile extends CommonDBTM
 {
@@ -40,7 +38,7 @@ class PluginTreeviewProfile extends CommonDBTM
         if (!$firstProf->GetfromDB($ID)) {
             $profile = new Profile();
             $profile->getFromDB($ID);
-            $name = addslashes($profile->fields['name']);
+            $name = $profile->fields['name'];
 
             $firstProf->add(['id' => $ID,
                 'name'            => $name,
@@ -52,7 +50,7 @@ class PluginTreeviewProfile extends CommonDBTM
     public function createAccess($profile)
     {
         return $this->add(['id' => $profile->getField('id'),
-            'name'              => addslashes($profile->getField('name')),
+            'name'              => $profile->getField('name'),
         ]);
     }
 
@@ -80,52 +78,22 @@ class PluginTreeviewProfile extends CommonDBTM
     **/
     public function showForm($id, $options = [])
     {
-        $target = $this->getFormURL();
-        if (isset($options['target'])) {
-            $target = $options['target'];
-        }
-
         if (!Session::haveRight('profile', READ)) {
             return false;
         }
-        $canedit = Session::haveRight('profile', UPDATE);
-        $prof    = new Profile();
+
         if ($id) {
             $this->getFromDB($id);
-            $prof->getFromDB($id);
         }
 
-        echo "<form action='" . $target . "' method='post'>";
-        echo "<table class='tab_cadre_fixe'>";
-        echo "<tr><th colspan='2' class='center b'>" . sprintf(
-            __('%1$s %2$s'),
-            __('Rights management'),
-            $this->fields['name'],
-        );
-        echo '</th></tr>';
-
-        echo "<tr class='tab_bg_2'>";
-        echo '<td>' . __('Use the tree', 'treeview') . '</td><td>';
-        Profile::dropdownRight(
-            'treeview',
-            ['value'      => $this->fields['treeview'],
-                'nonone'  => 0,
-                'noread'  => 0,
-                'nowrite' => 1,
+        TemplateRenderer::getInstance()->display(
+            '@treeview/profile.html.twig',
+            [
+                'target'                => $this->getFormURL(),
+                'current_right'         => $this->fields['treeview'],
+                'treeview_profile_id'   => $this->fields['id'],
             ],
         );
-        echo '</td></tr>';
-
-        if ($canedit) {
-            echo "<tr class='tab_bg_1'>";
-            echo "<td class='center' colspan='2'>";
-            echo "<input type='hidden' name='id' value=$id>";
-            echo "<input type='submit' name='update_user_profile' value='" . _sx('button', 'Update') . "'
-                class='submit'>";
-            echo '</td></tr>';
-        }
-        echo '</table>';
-        Html::closeForm();
 
         return true;
     }
@@ -139,7 +107,7 @@ class PluginTreeviewProfile extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if ($item->getType() == 'Profile') {
-            return __('Tree view', 'treeview');
+            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::getType(), PluginTreeviewConfig::getIcon());
         }
 
         return '';

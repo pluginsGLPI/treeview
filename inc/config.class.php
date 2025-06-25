@@ -28,9 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+use Glpi\Application\View\TemplateRenderer;
 
 /**
  * Contains the display configuration of the treeview
@@ -61,110 +59,41 @@ class PluginTreeviewConfig extends CommonDBTM
         return __('Tree view', 'treeview');
     }
 
+
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    {
+        switch ($item->getType()) {
+            case "Config":
+                return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
+        }
+        return '';
+    }
+
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    {
+        $config = new self();
+        switch ($item->getType()) {
+            case "Config":
+                $config->showConfigForm();
+        }
+
+        return true;
+    }
+
     /**
      * Configuration form
     **/
-    public function showForm($id, $options = [])
+    public function showConfigForm()
     {
-        $this->getFromDB($id);
-        echo "<form method='post' action='./config.form.php' method='post'>";
-        echo "<table class='tab_cadre_fixe' cellpadding='5'>";
-        echo "<tr><th colspan='2'>" . __('Display', 'treeview') . '</th></tr>';
+        $this->getFromDB(1);
 
-        echo "<tr class='tab_bg_1'><td>" . __('Target for all the nodes', 'treeview') . '</td>';
-        echo "<td><select name='target'>";
-        echo "<option value='_blank' " . (($this->fields['target'] == '_blank') ? ' selected ' : '') . '>' .
-             __('New window', 'treeview') . '</option>';
-        echo "<option value='right' " . (($this->fields['target'] == 'right') ? ' selected ' : '') . '>' .
-             __('The central console', 'treeview') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'>";
-        echo '<td>' . __('Should folders be links', 'treeview') . '</td>';
-        echo "<td><select name='folderLinks'>";
-        echo "<option value='0' " . (($this->fields['folderLinks'] == 0) ? ' selected ' : '') . '>' .
-             __('No') . '</option>';
-        echo "<option value='1' " . (($this->fields['folderLinks'] == 1) ? ' selected ' : '') . '>' .
-             __('Yes') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'>";
-        echo '<td>' . __('Nodes can be highlighted', 'treeview') . '</td>';
-        echo "<td><select name='useSelection'>";
-        echo "<option value='1' " . (($this->fields['useSelection'] == 1) ? ' selected ' : '') . '>' .
-             __('Yes') . '</option>';
-        echo "<option value='0' " . (($this->fields['useSelection'] == 0) ? ' selected ' : '') . '>' .
-             __('No') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'><td>" . __('Tree is drawn with lines', 'treeview') . '</td>';
-        echo "<td><select name='useLines'>";
-        echo "<option value='1' " . (($this->fields['useLines'] == 1) ? ' selected ' : '') . '>' .
-             __('Yes') . '</option>';
-        echo "<option value='0' " . (($this->fields['useLines'] == 0) ? ' selected ' : '') . '>' .
-             __('No') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'><td>" . __('Tree is drawn with icons', 'treeview') . '</td>';
-        echo '<td>';
-        echo "<select name='useIcons'>";
-        echo "<option value='1' " . (($this->fields['useIcons'] == 1) ? ' selected ' : '') . '>' .
-             __('Yes') . '</option>';
-        echo "<option value='0' " . (($this->fields['useIcons'] == 0) ? ' selected ' : '') . '>' .
-             __('No') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'>";
-        echo '<td>' . __('Only one node within a parent', 'treeview') . '<br>' .
-                 __('can be expanded at the same time.', 'treeview');
-        echo '<td>';
-        echo "<select name='closeSameLevel'>";
-        echo "<option value='1' " . (($this->fields['closeSameLevel'] == 1) ? ' selected ' : '') . '>' .
-             __('Yes') . '</option>';
-        echo "<option value='0' " . (($this->fields['closeSameLevel'] == 0) ? ' selected ' : '') . '>' .
-             __('No') . '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'><td>" . __('Item name', 'treeview') . '</td>';
-        echo "<td><select name='itemName'>";
-        echo "<option value='0' " . (($this->fields['itemName'] == '0') ? ' selected ' : '') . '>' .
-             __('Name') . '</option>';
-        echo "<option value='1' " . (($this->fields['itemName'] == '1') ? ' selected ' : '') . '>' .
-             __('Inventory number') . '</option>';
-        echo "<option value='2' " . (($this->fields['itemName'] == '2') ? ' selected ' : '') . '>';
-        printf(__('%1$s / %2$s'), __('Name'), __('Inventory number'));
-        echo '</option>';
-        echo "<option value='3' " . (($this->fields['itemName'] == '3') ? ' selected ' : '') . '>';
-        printf(__('%1$s / %2$s'), __('Inventory number'), __('Name'));
-        echo '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_1'><td>" . __('Location name', 'treeview') . '</td>';
-        echo '<td>';
-        echo "<select name='locationName'>";
-        echo "<option value='0' " . (($this->fields['locationName'] == '0') ? ' selected ' : '') . '>' .
-             __('Short name', 'treeview') . '</option>';
-        echo "<option value='1' " . (($this->fields['locationName'] == '1') ? ' selected ' : '') . '>' .
-             __('Long name', 'treeview') . '</option>';
-        echo "<option value='2' " . (($this->fields['locationName'] == '2') ? ' selected ' : '') . '>';
-        printf(__('%1$s / %2$s'), __('Short name', 'treeview'), __('Comment', 'treeview'));
-        echo '</option>';
-        echo "<option value='3' " . (($this->fields['locationName'] == '3') ? ' selected ' : '') . '>';
-        printf(__('%1$s / %2$s'), __('Long name', 'treeview'), __('Comment', 'treeview'));
-        echo '</option>';
-        echo '</select></td></tr>';
-
-        echo "<tr class='tab_bg_2'><td colspan='2' class='center'>";
-        echo "<input type='hidden' name='id' value='1'>";
-        echo "<input type='submit' name='update' value='" . _sx('button', 'Post') . "' class='submit'>";
-        echo '</td></tr>';
-        echo '</table>';
-
-        echo '<script type="text/javascript">
-              $(\'select\').select2();
-            </script>';
-
-        Html::closeForm();
+        TemplateRenderer::getInstance()->display(
+            '@treeview/config.html.twig',
+            [
+                'action'            => Toolbox::getItemTypeFormURL(__CLASS__),
+                'current_config'    => $this->fields,
+            ],
+        );
 
         return true;
     }
@@ -199,7 +128,7 @@ class PluginTreeviewConfig extends CommonDBTM
         $types = self::$types;
 
         foreach ($types as $key => $type) {
-            if (!class_exists($type)) {
+            if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
                 continue;
             }
 
@@ -231,7 +160,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo "<meta http-equiv='Pragma' content='no-cache'>\n";
         echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
         echo "<link rel='shortcut icon' type='images/x-icon' href='" .
-             $CFG_GLPI['root_doc'] . "/pics/favicon.ico' >\n";
+             $CFG_GLPI['root_doc'] . "/public/pics/favicon.ico' >\n";
 
         // Must be always the top window
         echo '<script type="text/javascript">';
@@ -239,7 +168,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo 'top.location = self.location;';
         echo '</script></head>';
         echo "<frameset cols='250,*'>";
-        echo "<frame src='" . Plugin::getWebDir('treeview') . "/left.php' name='left' scrolling='yes'>";
+        echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/public/left.php' name='left' scrolling='yes'>";
         echo "<frame src='" . $CFG_GLPI['root_doc'] . "/front/central.php' name='right'>";
         echo '<noframes>';
         echo '<body>';
@@ -266,11 +195,16 @@ class PluginTreeviewConfig extends CommonDBTM
     **/
     public function buildTreeview()
     {
-        $treeview_url = Plugin::getWebDir('treeview');
+        /**
+         * @var array $CFG_GLPI
+         */
+        global $CFG_GLPI;
+
+        $treeview_url = $CFG_GLPI['root_doc'] . "/plugins/treeview";
 
         //necessary files needed for the tree to work.
-        echo "<link rel='stylesheet' type='text/css' href='$treeview_url/css/dtree.css' type='text/css'>";
-        echo "<script type='text/javascript' src='$treeview_url/lib/dtree/dtree.js'></script>";
+        echo "<link rel='stylesheet' type='text/css' href='$treeview_url/public/css/dtree.css' type='text/css'>";
+        echo "<script type='text/javascript' src='$treeview_url/public/lib/dtree/dtree.js'></script>";
 
         echo "<div class='dtree'>";
         echo "<script type='text/javascript'>";
@@ -289,9 +223,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // The tree object
         echo "var d = new dTree('d');\n";
-        echo "d.add(0,-1,'" . __('Tree view', 'treeview') . "');";
-
-        $config = new PluginTreeviewConfig();
+        echo "d.add(0,-1,'" . __('Assets', 'assets') . "');";
 
         // Request the display settings from the database and store them in the global object $config
         $this->getFromDB(1);
@@ -318,8 +250,8 @@ class PluginTreeviewConfig extends CommonDBTM
         // Get the lowest level of the tree nodes and the highest primary key
         $it = $DB->request([
             'SELECT' => [
-                new QueryExpression('MAX(' . $DB::quoteName('id') . ') AS ' . $DB::quoteName('max_id')),
-                new QueryExpression('MAX(' . $DB::quoteName('level') . ') AS ' . $DB::quoteName('max_level')),
+                new \Glpi\DBAL\QueryExpression('MAX(' . $DB::quoteName('id') . ') AS ' . $DB::quoteName('max_id')),
+                new \Glpi\DBAL\QueryExpression('MAX(' . $DB::quoteName('level') . ') AS ' . $DB::quoteName('max_level')),
             ],
             'FROM'  => 'glpi_locations',
             'WHERE' => getEntitiesRestrictCriteria('glpi_locations', '', '', true),
@@ -390,6 +322,11 @@ class PluginTreeviewConfig extends CommonDBTM
                         $dontLoad = 'true';
                         // Then add aloso its items
                         foreach (self::$types as $type) {
+
+                            if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
+                                continue;
+                            }
+
                             $item      = new $type();
                             $itemtable = getTableForItemType($type);
 
@@ -535,5 +472,11 @@ class PluginTreeviewConfig extends CommonDBTM
                top.location = self.location;
          });
       ');
+    }
+
+    public static function getIcon()
+    {
+        // Generic icon that is not visible, but still takes up space to allow proper alignment in lists
+        return "ti ti-sitemap";
     }
 }

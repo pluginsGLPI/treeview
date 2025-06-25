@@ -1,0 +1,116 @@
+{#
+ # -------------------------------------------------------------------------
+ # TreeView plugin for GLPI
+ # -------------------------------------------------------------------------
+ #
+ # LICENSE
+ #
+ # This file is part of TreeView.
+ #
+ # TreeView is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ #
+ # TreeView is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with TreeView. If not, see <http://www.gnu.org/licenses/>.
+ # -------------------------------------------------------------------------
+ # @copyright Copyright (C) 2007-2023 by Teclib'.
+ # @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+ # @link      https://github.com/pluginsGLPI/treeview
+ # -------------------------------------------------------------------------
+ #}
+
+{% import "components/form/fields_macros.html.twig" as fields %}
+
+<div class="hr-text">
+    <i class="fa-2x ti ti-sitemap"></i>
+    <span>{{ __("Treeview - Configuration", 'treeview') }}</span>
+</div>
+
+<form name='form' action='{{ action }}' method='post' class='left'>
+    <input type="hidden" name="id" value="1">
+    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+
+    {{ fields.dropdownArrayField(
+        'target',
+        current_config['target'],
+        {
+            '_blank': __('New window', 'treeview'),
+            'right': __('The central console', 'treeview')
+        },
+        __('Target for all the nodes', 'treeview')
+    ) }}
+
+    {{ fields.checkboxField(
+        'folderLinks',
+        current_config['folderLinks'],
+        __('Should folders be links', 'treeview')
+    ) }}
+
+    {{ fields.checkboxField(
+        'useSelection',
+        current_config['useSelection'],
+        __('Nodes can be highlighted', 'treeview')
+    ) }}
+
+    {{ fields.checkboxField(
+        'useLines',
+        current_config['useLines'],
+        __('Tree is drawn with lines', 'treeview')
+    ) }}
+
+    {{ fields.checkboxField(
+        'useIcons',
+        current_config['useIcons'],
+        __('Tree is drawn with icons', 'treeview')
+    ) }}
+
+    {{ fields.checkboxField(
+        'closeSameLevel',
+        current_config['closeSameLevel'],
+        __('Only one node within a parent', 'treeview') ~ ' ' ~ __('can be expanded at the same time.', 'treeview')
+    ) }}
+
+    {{ fields.dropdownArrayField(
+        'itemName',
+        current_config['itemName'],
+        {
+            '0': __('Name'),
+            '1': __('Inventory number'),
+            '2': __('%1$s / %2$s', {'%1$s': __('Name'), '%2$s': __('Inventory number')}),
+            '3': __('%1$s / %2$s', {'%1$s': __('Inventory number'), '%2$s': __('Name')})
+        },
+        __('Item name', 'treeview')
+    ) }}
+
+    {{ fields.dropdownArrayField(
+        'locationName',
+        current_config['locationName'],
+        {
+            '0': __('Short name', 'treeview'),
+            '1': __('Long name', 'treeview'),
+            '2': __('%1$s / %2$s', {'%1$s': __('Short name', 'treeview'), '%2$s': __('Comment', 'treeview')}),
+            '3': __('%1$s / %2$s', {'%1$s': __('Long name', 'treeview'), '%2$s': __('Comment', 'treeview')})
+        },
+        __('Location name', 'treeview')
+    ) }}
+
+    <div class="hr"></div>
+
+    <div class="hstack gap-1">
+        <div class="pe-5 ms-auto">
+            <button class="btn btn-primary" type="submit" name="update" value="1">
+                <i class="ti ti-device-floppy"></i>
+                <span>{{ _x('button', 'Save') }}</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+
