@@ -30,7 +30,7 @@
 
 use Glpi\Plugin\Hooks;
 
-define('PLUGIN_TREEVIEW_VERSION', '1.20.0-beta1');
+define('PLUGIN_TREEVIEW_VERSION', '1.20.0-beta2');
 define('PLUGIN_TREEVIEW_MIN_GLPI', '11.0.0');
 define('PLUGIN_TREEVIEW_MAX_GLPI', '11.0.99');
 
