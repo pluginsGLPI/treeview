@@ -28,7 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../inc/includes.php');
+include('../../../inc/includes.php');
 
 Plugin::load('treeview', true);
 
