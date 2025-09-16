@@ -1,4 +1,6 @@
-/*!
+<?php
+
+/**
  * -------------------------------------------------------------------------
  * TreeView plugin for GLPI
  * -------------------------------------------------------------------------
@@ -26,32 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
-body {
-	margin-top:0px;
-	margin-left:0px;
-	margin-right:0px;
-}
-#explorer_bar {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	background-color:#2f3f64;
-	color: white;
-	padding: 10px;
-	margin-bottom: 15px;
-}
-#explorer_title {
-	font-family: var(--tblr-body-font-family);
-	font-size: var(--tblr-body-font-size);
-	font-weight: var(--tblr-body-font-weight);
-	line-height: var(--tblr-body-line-height);
-	text-align: var(--tblr-body-text-align);
-	-webkit-text-size-adjust: 100%;
-	float:left;
-}
-#explorer_close {
-	padding: 3px;
-	text-align:right;
-}
-#explorer_close img {
-	cursor: pointer;
-}
+Plugin::load('treeview', true);
+
+$_SESSION['glpi_plugin_treeview_loaded'] = 1;
+$config                                  = new PluginTreeviewConfig();
+$config->seeTreeview();
