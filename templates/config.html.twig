@@ -30,7 +30,7 @@
 
 <div class="hr-text">
     <i class="fa-2x ti ti-sitemap"></i>
-    <span>{{ __("Treeview - Configuration", 'treeview') }}</span>
+    <span>{{ __s('Treeview - Configuration', 'treeview') }}</span>
 </div>
 
 <form name='form' action='{{ action }}' method='post' class='left'>
@@ -41,64 +41,64 @@
         'target',
         current_config['target'],
         {
-            '_blank': __('New window', 'treeview'),
-            'right': __('The central console', 'treeview')
+            '_blank': __s('New window', 'treeview'),
+            'right': __s('The central console', 'treeview')
         },
-        __('Target for all the nodes', 'treeview')
+        __s('Target for all the nodes', 'treeview')
     ) }}
 
     {{ fields.checkboxField(
         'folderLinks',
         current_config['folderLinks'],
-        __('Should folders be links', 'treeview')
+        __s('Should folders be links', 'treeview')
     ) }}
 
     {{ fields.checkboxField(
         'useSelection',
         current_config['useSelection'],
-        __('Nodes can be highlighted', 'treeview')
+        __s('Nodes can be highlighted', 'treeview')
     ) }}
 
     {{ fields.checkboxField(
         'useLines',
         current_config['useLines'],
-        __('Tree is drawn with lines', 'treeview')
+        __s('Tree is drawn with lines', 'treeview')
     ) }}
 
     {{ fields.checkboxField(
         'useIcons',
         current_config['useIcons'],
-        __('Tree is drawn with icons', 'treeview')
+        __s('Tree is drawn with icons', 'treeview')
     ) }}
 
     {{ fields.checkboxField(
         'closeSameLevel',
         current_config['closeSameLevel'],
-        __('Only one node within a parent', 'treeview') ~ ' ' ~ __('can be expanded at the same time.', 'treeview')
+        __s('Only one node within a parent', 'treeview') ~ ' ' ~ __s('can be expanded at the same time.', 'treeview')
     ) }}
 
     {{ fields.dropdownArrayField(
         'itemName',
         current_config['itemName'],
         {
-            '0': __('Name'),
-            '1': __('Inventory number'),
-            '2': __('%1$s / %2$s', {'%1$s': __('Name'), '%2$s': __('Inventory number')}),
-            '3': __('%1$s / %2$s', {'%1$s': __('Inventory number'), '%2$s': __('Name')})
+            '0': __s('Name'),
+            '1': __s('Inventory number'),
+            '2': __s('%1$s / %2$s', {'%1$s': __s('Name'), '%2$s': __s('Inventory number')}),
+            '3': __s('%1$s / %2$s', {'%1$s': __s('Inventory number'), '%2$s': __s('Name')})
         },
-        __('Item name', 'treeview')
+        __s('Item name', 'treeview')
     ) }}
 
     {{ fields.dropdownArrayField(
         'locationName',
         current_config['locationName'],
         {
-            '0': __('Short name', 'treeview'),
-            '1': __('Long name', 'treeview'),
-            '2': __('%1$s / %2$s', {'%1$s': __('Short name', 'treeview'), '%2$s': __('Comment', 'treeview')}),
-            '3': __('%1$s / %2$s', {'%1$s': __('Long name', 'treeview'), '%2$s': __('Comment', 'treeview')})
+            '0': __s('Short name', 'treeview'),
+            '1': __s('Long name', 'treeview'),
+            '2': __s('%1$s / %2$s', {'%1$s': __s('Short name', 'treeview'), '%2$s': __s('Comment', 'treeview')}),
+            '3': __s('%1$s / %2$s', {'%1$s': __s('Long name', 'treeview'), '%2$s': __s('Comment', 'treeview')})
         },
-        __('Location name', 'treeview')
+        __s('Location name', 'treeview')
     ) }}
 
     <div class="hr"></div>
@@ -107,10 +107,8 @@
         <div class="pe-5 ms-auto">
             <button class="btn btn-primary" type="submit" name="update" value="1">
                 <i class="ti ti-device-floppy"></i>
-                <span>{{ _x('button', 'Save') }}</span>
+                <span>{{ _sx('button', 'Save') }}</span>
             </button>
         </div>
     </div>
 </form>
-
-
