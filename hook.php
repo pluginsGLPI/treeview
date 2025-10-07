@@ -116,7 +116,7 @@ function plugin_treeview_install()
     }
 
     // No autoload when plugin is not activated
-    require 'inc/profile.class.php';
+    require __DIR__ . '/inc/profile.class.php';
 
     PluginTreeviewProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
 

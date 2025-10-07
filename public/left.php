@@ -42,7 +42,7 @@ echo "<body style='overflow:auto; overflow:initial;'>";
 echo '<div id="explorer_bar" class="d-flex justify-content-between align-items-center  border-bottom">';
 echo '<div id=explorer_title>';
 echo '<i class="ti ti-sitemap me-2"></i>';
-echo '<span class="menu-label">' . __('Tree view', 'treeview') . '</span>';
+echo '<span class="menu-label">' . __s('Tree view', 'treeview') . '</span>';
 echo '</div>';
 echo '<div id=explorer_close>';
 

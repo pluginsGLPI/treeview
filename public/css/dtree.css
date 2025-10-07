@@ -27,37 +27,44 @@
  */
 
 .dtree {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	color: #666;
-	white-space: nowrap;
-	padding-left:3px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #666;
+    white-space: nowrap;
+    padding-left:3px;
 }
+
 .dtree img {
-	border: 0px;
-	vertical-align: middle;
+    border: 0;
+    vertical-align: middle;
 }
+
 .dtree a {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	font-weight:normal;
-	color: #333;
-	text-decoration: none;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight:normal;
+    color: #333;
+    text-decoration: none;
 }
+
 .dtree a.node, .dtree a.nodeSel {
-	white-space: nowrap;
-	padding: 1px 2px 1px 2px;
+    white-space: nowrap;
+    padding: 1px 2px;
 }
+
 .dtree a.node:hover, .dtree a.nodeSel:hover {
-	color: #333;
-	text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
+
 .dtree a.nodeSel {
-	background-color: #c0d2ec;
+    background-color: #c0d2ec;
 }
+
 .dtree .clip {
-	overflow: hidden;
+    overflow: hidden;
 }
+
 .dtree input {
-	border: none;
+    border: none;
 }

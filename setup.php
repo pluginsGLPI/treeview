@@ -30,6 +30,8 @@
 
 use Glpi\Plugin\Hooks;
 
+use function Safe\define;
+
 define('PLUGIN_TREEVIEW_VERSION', '1.20.0');
 define('PLUGIN_TREEVIEW_MIN_GLPI', '11.0.0');
 define('PLUGIN_TREEVIEW_MAX_GLPI', '11.0.99');
@@ -128,7 +130,7 @@ function plugin_treeview_check_prerequisites()
 function plugin_version_treeview()
 {
     return [
-        'name'         => __('Tree view', 'treeview'),
+        'name'         => __s('Tree view', 'treeview'),
         'version'      => PLUGIN_TREEVIEW_VERSION,
         'license'      => 'GPLv2+',
         'author'       => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',

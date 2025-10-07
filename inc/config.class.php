@@ -27,8 +27,8 @@
  * @link      https://github.com/pluginsGLPI/treeview
  * -------------------------------------------------------------------------
  */
-
 use Glpi\Application\View\TemplateRenderer;
+use Glpi\DBAL\QueryExpression;
 
 /**
  * Contains the display configuration of the treeview
@@ -56,7 +56,7 @@ class PluginTreeviewConfig extends CommonDBTM
     **/
     public static function getTypeName($nb = 0)
     {
-        return __('Tree view', 'treeview');
+        return __s('Tree view', 'treeview');
     }
 
 
@@ -90,7 +90,7 @@ class PluginTreeviewConfig extends CommonDBTM
         TemplateRenderer::getInstance()->display(
             '@treeview/config.html.twig',
             [
-                'action'            => Toolbox::getItemTypeFormURL(__CLASS__),
+                'action'            => Toolbox::getItemTypeFormURL(self::class),
                 'current_config'    => $this->fields,
             ],
         );
@@ -151,7 +151,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Frameset//EN'
              'http://www.w3.org/TR/html4/frameset.dtd'>";
-        echo "\n<html><head><title>" . sprintf(__('%1$s - %2$s'), 'GLPI', __('Tree view', 'treeview'));
+        echo "\n<html><head><title>" . sprintf(__s('%1$s - %2$s'), 'GLPI', __s('Tree view', 'treeview'));
         echo '</title>';
         echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>";
 
@@ -223,7 +223,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // The tree object
         echo "var d = new dTree('d');\n";
-        echo "d.add(0,-1,'" . __('Assets', 'assets') . "');";
+        echo "d.add(0,-1,'" . __s('Assets', 'assets') . "');";
 
         // Request the display settings from the database and store them in the global object $config
         $this->getFromDB(1);
@@ -250,8 +250,8 @@ class PluginTreeviewConfig extends CommonDBTM
         // Get the lowest level of the tree nodes and the highest primary key
         $it = $DB->request([
             'SELECT' => [
-                new \Glpi\DBAL\QueryExpression('MAX(' . $DB::quoteName('id') . ') AS ' . $DB::quoteName('max_id')),
-                new \Glpi\DBAL\QueryExpression('MAX(' . $DB::quoteName('level') . ') AS ' . $DB::quoteName('max_level')),
+                new QueryExpression('MAX(' . $DB::quoteName('id') . ') AS ' . $DB::quoteName('max_id')),
+                new QueryExpression('MAX(' . $DB::quoteName('level') . ') AS ' . $DB::quoteName('max_level')),
             ],
             'FROM'  => 'glpi_locations',
             'WHERE' => getEntitiesRestrictCriteria('glpi_locations', '', '', true),
@@ -272,11 +272,7 @@ class PluginTreeviewConfig extends CommonDBTM
         }
 
         // If an item group is requested, then save its type to use it later in the openTo function
-        if (isset($_GET['openedType']) && $_GET['openedType'] != '') {
-            $openedType = $_GET['openedType'];
-        } else {
-            $openedType = -1;
-        }
+        $openedType = isset($_GET['openedType']) && $_GET['openedType'] != '' ? $_GET['openedType'] : -1;
 
         // Characters which need to be removed from JS output.
         $trans = ['"' => '`',
@@ -351,7 +347,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
                             $result_1 = $DB->request($criteria);
                             $pid      = 0;
-                            if (count($result_1)) {
+                            if (count($result_1) > 0) {
                                 $pid       = $tv_id;
                                 $field_num = 3;
 
@@ -394,11 +390,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 if ($itemName == 0 || $type == 'Software') {
                                     $i_name = $r_1['name'];
                                 } elseif ($itemName == 1) {
-                                    if (isset($r_1['otherserial']) && !empty($r_1['otherserial'])) {
-                                        $i_name = $r_1['otherserial'];
-                                    } else {
-                                        $i_name = $r_1['name'];
-                                    }
+                                    $i_name = isset($r_1['otherserial']) && !empty($r_1['otherserial']) ? $r_1['otherserial'] : $r_1['name'];
                                 } elseif ($itemName == 2) {
                                     $i_name = $r_1['name'] != '' ? $r_1['name'] : '';
                                     if (isset($r_1['otherserial']) && !empty($r_1['otherserial'])) {
@@ -454,7 +446,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // Open the tree to the desired node
         if ($openedType != -1) {
-            echo 'd.openTo(' . $openedType . ");\n";
+            echo 'd.openTo(' . htmlspecialchars($openedType) . ");\n";
         } else {
             echo 'd.openTo(' . $nodes[count($nodes) - 1] . ");\n";
         }
