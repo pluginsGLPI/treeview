@@ -44,7 +44,7 @@ class PluginTreeviewPreference extends CommonDBTM
         global $CFG_GLPI;
 
         $menu          = [];
-        $menu['title'] = __('Tree view', 'treeview');
+        $menu['title'] = __s('Tree view', 'treeview');
         $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/public/index.php';
         $menu['icon']  = 'ti ti-sitemap';
 

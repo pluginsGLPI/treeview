@@ -34,18 +34,16 @@ $config = new PluginTreeviewConfig();
 if (isset($_POST['update'])) {
     $config->update($_POST);
     Html::back();
+} elseif (Plugin::isPluginActive('treeview')) {
+    Html::header(PluginTreeviewConfig::getTypeName(), $_SERVER['PHP_SELF'], 'config', 'plugin');
+    $config->showForm(1);
 } else {
-    if (Plugin::isPluginActive('treeview')) {
-        Html::header(PluginTreeviewConfig::getTypeName(), $_SERVER['PHP_SELF'], 'config', 'plugin');
-        $config->showForm(1);
-    } else {
-        Html::header(__('Setup'), $_SERVER['PHP_SELF'], 'config', 'plugin');
-        // close frame if open
-        echo " <script type='text/javascript'>
+    Html::header(__s('Setup'), $_SERVER['PHP_SELF'], 'config', 'plugin');
+    // close frame if open
+    echo " <script type='text/javascript'>
          if (top != self)
          top.location = self.location;
          </script>";
-    }
 }
 
 Html::footer();
