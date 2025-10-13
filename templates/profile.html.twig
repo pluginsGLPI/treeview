@@ -30,7 +30,7 @@
 
 <div class="hr-text">
     <i class="fa-2x ti ti-sitemap"></i>
-    <span>{{ __s('Treeview - Configuration', 'treeview') }}</span>
+    <span>{{ __('Treeview - Configuration', 'treeview') }}</span>
 </div>
 
 <form action="{{ target }}" method="post">
@@ -40,7 +40,7 @@
     {{ fields.checkboxField(
         'treeview',
         current_right,
-        __s('Can use the treeview', 'treeview')
+        __('Can use the treeview', 'treeview')
     ) }}
 
     <div class="hr"></div>

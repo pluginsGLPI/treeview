@@ -30,7 +30,7 @@
 
 <div class="hr-text">
     <i class="fa-2x ti ti-sitemap"></i>
-    <span>{{ __s('Treeview - Configuration', 'treeview') }}</span>
+    <span>{{ __('Treeview - Configuration', 'treeview') }}</span>
 </div>
 
 <form action="{{ target }}" method="post">
@@ -40,7 +40,7 @@
     {{ fields.checkboxField(
         'show_on_load',
         show_on_load,
-        __s('Launch Treeview at GLPI startup', 'treeview')
+        __('Launch Treeview at GLPI startup', 'treeview')
     ) }}
 
     <div class="hr"></div>
