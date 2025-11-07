@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 08:41+0200\n"
+"POT-Creation-Date: 2025-11-07 01:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,82 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: inc/config.class.php:59 inc/config.class.php:154 inc/preference.class.php:47
-#: public/left.php:45 setup.php:131
+#: templates/profile.html.twig templates/preference.html.twig
+#: templates/config.html.twig
+msgid "Treeview - Configuration"
+msgstr ""
+
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr ""
+
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "New window"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "The central console"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Target for all the nodes"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Should folders be links"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Nodes can be highlighted"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Tree is drawn with lines"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Tree is drawn with icons"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Only one node within a parent"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "can be expanded at the same time."
+msgstr ""
+
+#: templates/config.html.twig
+#, php-format
+msgid "%1$s / %2$s"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Item name"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Short name"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Long name"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Comment"
+msgstr ""
+
+#: templates/config.html.twig
+msgid "Location name"
+msgstr ""
+
+#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
+#: inc/config.class.php:154 public/left.php:45
 msgid "Tree view"
 msgstr ""
 

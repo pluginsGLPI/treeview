@@ -7,18 +7,92 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 08:41+0200\n"
-"PO-Revision-Date: 2025-09-17 08:41+0200\n"
+"POT-Creation-Date: 2025-11-07 01:00+0000\n"
+"PO-Revision-Date: 2025-11-07 01:00+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/config.class.php:59 inc/config.class.php:154 inc/preference.class.php:47
-#: public/left.php:45 setup.php:131
+#: templates/profile.html.twig templates/preference.html.twig
+#: templates/config.html.twig
+msgid "Treeview - Configuration"
+msgstr "Treeview - Configuration"
+
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "Can use the treeview"
+
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr "Launch Treeview at GLPI startup"
+
+#: templates/config.html.twig
+msgid "New window"
+msgstr "New window"
+
+#: templates/config.html.twig
+msgid "The central console"
+msgstr "The central console"
+
+#: templates/config.html.twig
+msgid "Target for all the nodes"
+msgstr "Target for all the nodes"
+
+#: templates/config.html.twig
+msgid "Should folders be links"
+msgstr "Should folders be links"
+
+#: templates/config.html.twig
+msgid "Nodes can be highlighted"
+msgstr "Nodes can be highlighted"
+
+#: templates/config.html.twig
+msgid "Tree is drawn with lines"
+msgstr "Tree is drawn with lines"
+
+#: templates/config.html.twig
+msgid "Tree is drawn with icons"
+msgstr "Tree is drawn with icons"
+
+#: templates/config.html.twig
+msgid "Only one node within a parent"
+msgstr "Only one node within a parent"
+
+#: templates/config.html.twig
+msgid "can be expanded at the same time."
+msgstr "can be expanded at the same time."
+
+#: templates/config.html.twig
+#, php-format
+msgid "%1$s / %2$s"
+msgstr "%1$s / %2$s"
+
+#: templates/config.html.twig
+msgid "Item name"
+msgstr "Item name"
+
+#: templates/config.html.twig
+msgid "Short name"
+msgstr "Short name"
+
+#: templates/config.html.twig
+msgid "Long name"
+msgstr "Long name"
+
+#: templates/config.html.twig
+msgid "Comment"
+msgstr "Comment"
+
+#: templates/config.html.twig
+msgid "Location name"
+msgstr "Location name"
+
+#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
+#: inc/config.class.php:154 public/left.php:45
 msgid "Tree view"
 msgstr "Tree view"
 
