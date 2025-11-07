@@ -5,15 +5,16 @@
 # 
 # Translators:
 # 李赋 <fu792659@163.com>, 2019
+# DWXXX, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-12 13:03+0000\n"
+"POT-Creation-Date: 2025-11-07 01:00+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
-"Last-Translator: 李赋 <fu792659@163.com>, 2019\n"
+"Last-Translator: DWXXX, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,82 +22,85 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: inc/config.class.php:150 inc/config.class.php:153
-msgid "Comment"
-msgstr "注释"
+#: templates/profile.html.twig templates/preference.html.twig
+#: templates/config.html.twig
+msgid "Treeview - Configuration"
+msgstr "Treeview - 配置"
 
-#: inc/config.class.php:72
-msgid "Display"
-msgstr "显示"
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "可以使用treeview"
 
-#: inc/config.class.php:128
-msgid "Item name"
-msgstr "项目名称"
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr "GLP启动时启用Treeview。"
 
-#: inc/preference.class.php:61
-msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "使用GLPI启动插件Treeview"
-
-#: inc/config.class.php:142
-msgid "Location name"
-msgstr "地点名称"
-
-#: inc/config.class.php:148 inc/config.class.php:153
-msgid "Long name"
-msgstr "全称"
-
-#: inc/config.class.php:77
+#: templates/config.html.twig
 msgid "New window"
 msgstr "新窗口"
 
-#: inc/config.class.php:92
-msgid "Nodes can be highlighted"
-msgstr "节点可以突出显示"
-
-#: inc/config.class.php:118
-msgid "Only one node within a parent"
-msgstr "父级中只有一个节点"
-
-#: inc/config.class.php:146 inc/config.class.php:150
-msgid "Short name"
-msgstr "简称"
-
-#: inc/config.class.php:83
-msgid "Should folders be links"
-msgstr ""
-
-#: inc/config.class.php:74
-msgid "Target for all the nodes"
-msgstr "针对所有节点的目标"
-
-#: inc/config.class.php:79
+#: templates/config.html.twig
 msgid "The central console"
 msgstr "中央控制台"
 
-#: inc/config.class.php:108
-msgid "Tree is drawn with icons"
-msgstr "树用图标绘制"
+#: templates/config.html.twig
+msgid "Target for all the nodes"
+msgstr "所有节点的目标"
 
-#: inc/config.class.php:100
+#: templates/config.html.twig
+msgid "Should folders be links"
+msgstr "文件夹是否为链接"
+
+#: templates/config.html.twig
+msgid "Nodes can be highlighted"
+msgstr "可以被高亮的节点"
+
+#: templates/config.html.twig
 msgid "Tree is drawn with lines"
-msgstr "树用线条绘制"
+msgstr "已绘制线的树"
 
-#: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
-#: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
-#: inc/profile.class.php:142 setup.php:125
+#: templates/config.html.twig
+msgid "Tree is drawn with icons"
+msgstr "已绘制图标的树"
+
+#: templates/config.html.twig
+msgid "Only one node within a parent"
+msgstr "只有一个节点在父节点"
+
+#: templates/config.html.twig
+msgid "can be expanded at the same time."
+msgstr "可以同时被展开"
+
+#: templates/config.html.twig
+#, php-format
+msgid "%1$s / %2$s"
+msgstr "%1$s / %2$s"
+
+#: templates/config.html.twig
+msgid "Item name"
+msgstr "品名"
+
+#: templates/config.html.twig
+msgid "Short name"
+msgstr "简称"
+
+#: templates/config.html.twig
+msgid "Long name"
+msgstr "全称"
+
+#: templates/config.html.twig
+msgid "Comment"
+msgstr "注释"
+
+#: templates/config.html.twig
+msgid "Location name"
+msgstr "地点名称"
+
+#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
+#: inc/config.class.php:154 public/left.php:45
 msgid "Tree view"
 msgstr "树型视图"
 
-#: inc/profile.class.php:108
-msgid "Use the tree"
-msgstr "使用树"
-
-#: inc/preference.class.php:72
-msgid ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
-msgstr "警告：如果启动时加载了多个插件，则只使用第一个插件"
-
-#: inc/config.class.php:119
-msgid "can be expanded at the same time."
-msgstr "可以同时扩展。"
+#: inc/config.class.php:226
+msgid "Assets"
+msgstr "资产"
