@@ -2,100 +2,104 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Edwin Elias Alvarez <elias986@yahoo.com>, 2026
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-29 01:15+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-08-24 14:49+0000\n"
+"Last-Translator: Edwin Elias Alvarez <elias986@yahoo.com>, 2026\n"
+"Language-Team: Spanish (Mexico) (https://app.transifex.com/teclib/teams/28042/es_MX/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_MX\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: templates/profile.html.twig templates/preference.html.twig
 #: templates/config.html.twig
 msgid "Treeview - Configuration"
-msgstr ""
+msgstr "Configuración - Treeview"
 
 #: templates/profile.html.twig
 msgid "Can use the treeview"
-msgstr ""
+msgstr "Puede utilizar la vista de árbol"
 
 #: templates/preference.html.twig
 msgid "Launch Treeview at GLPI startup"
-msgstr ""
+msgstr "Lanzar el complemnto Treeview con GLPI"
 
 #: templates/config.html.twig
 msgid "New window"
-msgstr ""
+msgstr "Nueva ventana"
 
 #: templates/config.html.twig
 msgid "The central console"
-msgstr ""
+msgstr "La consola central"
 
 #: templates/config.html.twig
 msgid "Target for all the nodes"
-msgstr ""
+msgstr "Destino para todos los nodos"
 
 #: templates/config.html.twig
 msgid "Should folders be links"
-msgstr ""
+msgstr "Las carpetas deben ser enlaces"
 
 #: templates/config.html.twig
 msgid "Nodes can be highlighted"
-msgstr ""
+msgstr "Los nodos pueden resaltarse"
 
 #: templates/config.html.twig
 msgid "Tree is drawn with lines"
-msgstr ""
+msgstr "El árbol se dibuja con líneas"
 
 #: templates/config.html.twig
 msgid "Tree is drawn with icons"
-msgstr ""
+msgstr "El árbol se dibuja con iconos"
 
 #: templates/config.html.twig
 msgid "Only one node within a parent"
-msgstr ""
+msgstr "Sólo un nodo dentro de un padre"
 
 #: templates/config.html.twig
 msgid "can be expanded at the same time."
-msgstr ""
+msgstr "pueden ampliarse al mismo tiempo."
 
 #: templates/config.html.twig
 #, php-format
 msgid "%1$s / %2$s"
-msgstr ""
+msgstr "%1$s / %2$s"
 
 #: templates/config.html.twig
 msgid "Item name"
-msgstr ""
+msgstr "Nombre del artículo"
 
 #: templates/config.html.twig
 msgid "Short name"
-msgstr ""
+msgstr "Nombre corto"
 
 #: templates/config.html.twig
 msgid "Long name"
-msgstr ""
+msgstr "Nombre largo"
 
 #: templates/config.html.twig
 msgid "Comment"
-msgstr ""
+msgstr "Comentario"
 
 #: templates/config.html.twig
 msgid "Location name"
-msgstr ""
+msgstr "Nombre de la ubicación"
 
 #: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
 #: inc/config.class.php:154 public/left.php:45
 msgid "Tree view"
-msgstr ""
+msgstr "Vista del árbol"
 
 #: inc/config.class.php:226
 msgid "Assets"
-msgstr ""
+msgstr "Activos"
