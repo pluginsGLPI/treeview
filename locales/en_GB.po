@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 01:15+0000\n"
-"PO-Revision-Date: 2026-01-29 01:15+0000\n"
+"POT-Creation-Date: 2026-05-15 02:24+0000\n"
+"PO-Revision-Date: 2026-05-15 02:24+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,14 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/profile.html.twig templates/preference.html.twig
-#: templates/config.html.twig
+#: templates/preference.html.twig templates/config.html.twig
+#: templates/profile.html.twig
 msgid "Treeview - Configuration"
 msgstr "Treeview - Configuration"
-
-#: templates/profile.html.twig
-msgid "Can use the treeview"
-msgstr "Can use the treeview"
 
 #: templates/preference.html.twig
 msgid "Launch Treeview at GLPI startup"
@@ -91,8 +87,12 @@ msgstr "Comment"
 msgid "Location name"
 msgstr "Location name"
 
-#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
-#: inc/config.class.php:154 public/left.php:45
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "Can use the treeview"
+
+#: public/left.php:45 setup.php:133 inc/config.class.php:59
+#: inc/config.class.php:154 inc/preference.class.php:47
 msgid "Tree view"
 msgstr "Tree view"
 

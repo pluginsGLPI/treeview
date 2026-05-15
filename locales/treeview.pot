@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 01:15+0000\n"
+"POT-Creation-Date: 2026-05-15 02:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/profile.html.twig templates/preference.html.twig
-#: templates/config.html.twig
-msgid "Treeview - Configuration"
-msgstr ""
-
+#: templates/preference.html.twig templates/config.html.twig
 #: templates/profile.html.twig
-msgid "Can use the treeview"
+msgid "Treeview - Configuration"
 msgstr ""
 
 #: templates/preference.html.twig
@@ -91,8 +87,12 @@ msgstr ""
 msgid "Location name"
 msgstr ""
 
-#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
-#: inc/config.class.php:154 public/left.php:45
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr ""
+
+#: public/left.php:45 setup.php:133 inc/config.class.php:59
+#: inc/config.class.php:154 inc/preference.class.php:47
 msgid "Tree view"
 msgstr ""
 
