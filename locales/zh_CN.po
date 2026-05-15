@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 01:09+0000\n"
+"POT-Creation-Date: 2026-05-15 02:24+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: DWXXX, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/teclib/teams/28042/zh_CN/)\n"
@@ -22,14 +22,10 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: templates/profile.html.twig templates/preference.html.twig
-#: templates/config.html.twig
+#: templates/preference.html.twig templates/config.html.twig
+#: templates/profile.html.twig
 msgid "Treeview - Configuration"
 msgstr "Treeview - 配置"
-
-#: templates/profile.html.twig
-msgid "Can use the treeview"
-msgstr "可以使用treeview"
 
 #: templates/preference.html.twig
 msgid "Launch Treeview at GLPI startup"
@@ -96,8 +92,12 @@ msgstr "注释"
 msgid "Location name"
 msgstr "地点名称"
 
-#: setup.php:133 inc/preference.class.php:47 inc/config.class.php:59
-#: inc/config.class.php:154 public/left.php:45
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "可以使用treeview"
+
+#: public/left.php:45 setup.php:133 inc/config.class.php:59
+#: inc/config.class.php:154 inc/preference.class.php:47
 msgid "Tree view"
 msgstr "树型视图"
 
