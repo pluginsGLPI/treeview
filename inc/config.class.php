@@ -29,7 +29,9 @@
  */
 use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
+
 use function Safe\json_encode;
+
 /**
  * Contains the display configuration of the treeview
 **/
