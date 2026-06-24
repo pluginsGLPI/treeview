@@ -29,7 +29,7 @@
  */
 use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
-
+use function Safe\json_encode;
 /**
  * Contains the display configuration of the treeview
 **/
@@ -313,8 +313,8 @@ class PluginTreeviewConfig extends CommonDBTM
 
                     // Is this location requested by the user to be opened
                     if (in_array($r['id'], $nodes)) {
-                        echo 'd.add(' . $r['id'] . ', ' . $r['locations_id'] . ', "' . strtr($l_name, $trans) .
-                                "\", true, -1,'');\n";
+                        echo 'd.add(' . $r['id'] . ', ' . $r['locations_id'] . ', ' . json_encode(htmlspecialchars($l_name, ENT_QUOTES, 'UTF-8')) .
+                                ", true, -1,'');\n";
                         $dontLoad = 'true';
                         // Then add aloso its items
                         foreach (self::$types as $type) {
@@ -374,8 +374,8 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $opt = Plugin::doHookFunction('treeview_search_url_parent_node', $params);
 
                                 // Add items parent node
-                                echo "d.add($tv_id," . $r['id'] . ',"' . strtr($item::getTypeName(2), $trans) .
-                                "\", $dontLoad, '" . $type . "', '" . $opt['searchurl'] . "', '', '', '" .
+                                echo "d.add($tv_id," . $r['id'] . ',' . json_encode(htmlspecialchars($item::getTypeName(2), ENT_QUOTES, 'UTF-8')) .
+                                ", $dontLoad, '" . $type . "', '" . $opt['searchurl'] . "', '', '', '" .
                                 $type::getIcon() . "', '" . $type::getIcon() . "');\n";
 
                                 if ($openedType == $type && $nodes[count($nodes) - 1] == $tv_id) {
@@ -427,15 +427,15 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $opt = Plugin::doHookFunction('treeview_params', $params);
 
                                 // Add the item
-                                echo 'd.add(' . $tv_id++ . ", $pid, \"" . $opt['name'] . "\", true, -1, '" .
+                                echo 'd.add(' . $tv_id++ . ", $pid, " . json_encode(htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8')) . ", true, -1, '" .
                                   $opt['url'] . "', '', '', '" . $opt['pic'] . "','" . $opt['pic'] . "');\n";
                             }
                         }
 
                         // Add only the location without its items
                     } else {
-                        echo 'd.add(' . $r['id'] . ',' . $r['locations_id'] . ',"' . strtr($l_name, $trans) .
-                        "\", false, -1,'', '', '', '', '', false, true);\n";
+                        echo 'd.add(' . $r['id'] . ',' . $r['locations_id'] . ',' . json_encode(htmlspecialchars($l_name, ENT_QUOTES, 'UTF-8')) .
+                        ", false, -1,'', '', '', '', '', false, true);\n";
                     }
                 }
             }

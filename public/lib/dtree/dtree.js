@@ -152,6 +152,11 @@ function dTree(objName) {
 dTree.prototype.add = function(id, pid, name, dontLoad, type, url, title, target, icon, iconOpen, open, _hc) {
 
 	//this.aNodes[this.aNodes.length] = new Node(id, pid, name, url, title, target, icon, iconOpen, open, _hc);
+
+	if (typeof name === 'string') {
+		try { name = JSON.parse(name); } catch(e) {}
+	}
+
 	this.aNodes[this.aNodes.length] = new Node(id, pid, name, dontLoad, type, url, title, target, icon, iconOpen, open, _hc);
 	
 	// The parameter _hc means that this node has children
