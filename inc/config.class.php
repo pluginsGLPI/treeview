@@ -64,19 +64,18 @@ class PluginTreeviewConfig extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        switch ($item->getType()) {
-            case "Config":
-                return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
+        if ($item->getType() === "Config") {
+            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
         }
+
         return '';
     }
 
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
         $config = new self();
-        switch ($item->getType()) {
-            case "Config":
-                $config->showConfigForm();
+        if ($item->getType() === "Config") {
+            $config->showConfigForm();
         }
 
         return true;
@@ -205,8 +204,8 @@ class PluginTreeviewConfig extends CommonDBTM
         $treeview_url = $CFG_GLPI['root_doc'] . "/plugins/treeview";
 
         //necessary files needed for the tree to work.
-        echo "<link rel='stylesheet' type='text/css' href='$treeview_url/public/css/dtree.css' type='text/css'>";
-        echo "<script type='text/javascript' src='$treeview_url/public/lib/dtree/dtree.js'></script>";
+        echo sprintf("<link rel='stylesheet' type='text/css' href='%s/public/css/dtree.css' type='text/css'>", $treeview_url);
+        echo sprintf("<script type='text/javascript' src='%s/public/lib/dtree/dtree.js'></script>", $treeview_url);
 
         echo "<div class='dtree'>";
         echo "<script type='text/javascript'>";
@@ -261,7 +260,8 @@ class PluginTreeviewConfig extends CommonDBTM
         $result = $it->current();
 
         $max_level = $result['max_level'];
-        $tv_id     = $max_id = $result['max_id'];
+        $tv_id = $result['max_id'];
+        $max_id = $result['max_id'];
         $tv_id++;
 
         // Is this the first time we load the page?
@@ -315,7 +315,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
                     // Is this location requested by the user to be opened
                     if (in_array($r['id'], $nodes)) {
-                        echo 'd.add(' . $r['id'] . ', ' . $r['locations_id'] . ', ' . json_encode(htmlspecialchars($l_name, ENT_QUOTES, 'UTF-8')) .
+                        echo 'd.add(' . $r['id'] . ', ' . $r['locations_id'] . ', ' . json_encode(htmlspecialchars((string) $l_name, ENT_QUOTES, 'UTF-8')) .
                                 ", true, -1,'');\n";
                         $dontLoad = 'true';
                         // Then add aloso its items
@@ -333,12 +333,13 @@ class PluginTreeviewConfig extends CommonDBTM
                                 'WHERE' => [
                                     'locations_id' => $r['id'],
                                 ],
-                                'ORDER' => ["$itemtable.name"],
+                                'ORDER' => [$itemtable . '.name'],
                             ];
 
                             if ($item->maybeTemplate()) {
                                 $criteria['WHERE']['is_template'] = 0;
                             }
+
                             if ($item->maybeDeleted()) {
                                 $criteria['WHERE']['is_deleted'] = 0;
                             }
@@ -362,9 +363,10 @@ class PluginTreeviewConfig extends CommonDBTM
                                 foreach ($result_location as $row) {
                                     $name_location = $row['completename'];
                                 }
+
                                 $value    = $r['id'];
                                 $token    = Session::getNewCSRFToken();
-                                $getParam = "?is_deleted=0&criteria[0][field]=$field_num&criteria[0][searchtype]=equals&criteria[0][value]=$value&search=Rechercher&start=0&_glpi_csrf_token=$token";
+                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0&_glpi_csrf_token=%s', $field_num, $value, $token);
 
                                 $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
 
@@ -376,13 +378,14 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $opt = Plugin::doHookFunction('treeview_search_url_parent_node', $params);
 
                                 // Add items parent node
-                                echo "d.add($tv_id," . $r['id'] . ',' . json_encode(htmlspecialchars($item::getTypeName(2), ENT_QUOTES, 'UTF-8')) .
-                                ", $dontLoad, '" . $type . "', '" . $opt['searchurl'] . "', '', '', '" .
+                                echo sprintf('d.add(%s,', $tv_id) . $r['id'] . ',' . json_encode(htmlspecialchars($item::getTypeName(2), ENT_QUOTES, 'UTF-8')) .
+                                sprintf(", %s, '", $dontLoad) . $type . "', '" . $opt['searchurl'] . "', '', '', '" .
                                 $type::getIcon() . "', '" . $type::getIcon() . "');\n";
 
                                 if ($openedType == $type && $nodes[count($nodes) - 1] == $tv_id) {
                                     $openedType = $tv_id;
                                 }
+
                                 $tv_id++;
                             }
 
@@ -429,14 +432,14 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $opt = Plugin::doHookFunction('treeview_params', $params);
 
                                 // Add the item
-                                echo 'd.add(' . $tv_id++ . ", $pid, " . json_encode(htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8')) . ", true, -1, '" .
+                                echo 'd.add(' . $tv_id++ . sprintf(', %s, ', $pid) . json_encode(htmlspecialchars($opt['name'], ENT_QUOTES, 'UTF-8')) . ", true, -1, '" .
                                   $opt['url'] . "', '', '', '" . $opt['pic'] . "','" . $opt['pic'] . "');\n";
                             }
                         }
 
                         // Add only the location without its items
                     } else {
-                        echo 'd.add(' . $r['id'] . ',' . $r['locations_id'] . ',' . json_encode(htmlspecialchars($l_name, ENT_QUOTES, 'UTF-8')) .
+                        echo 'd.add(' . $r['id'] . ',' . $r['locations_id'] . ',' . json_encode(htmlspecialchars((string) $l_name, ENT_QUOTES, 'UTF-8')) .
                         ", false, -1,'', '', '', '', '', false, true);\n";
                     }
                 }
@@ -448,7 +451,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // Open the tree to the desired node
         if ($openedType != -1) {
-            echo 'd.openTo(' . htmlspecialchars($openedType) . ");\n";
+            echo 'd.openTo(' . htmlspecialchars((string) $openedType) . ");\n";
         } else {
             echo 'd.openTo(' . $nodes[count($nodes) - 1] . ");\n";
         }
