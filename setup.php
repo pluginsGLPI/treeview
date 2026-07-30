@@ -50,7 +50,7 @@ function plugin_init_treeview()
     Plugin::registerClass(PluginTreeviewProfile::class, ['addtabon' => [Profile::class]]);
     Plugin::registerClass(PluginTreeviewConfig::class, ['addtabon' => [Config::class]]);
 
-    $PLUGIN_HOOKS[Hooks::CHANGE_PROFILE]['treeview'] = [PluginTreeviewProfile::class, 'changeprofile'];
+    $PLUGIN_HOOKS[Hooks::CHANGE_PROFILE]['treeview'] = PluginTreeviewProfile::changeprofile(...);
 
     if (
         isset($_SESSION['glpi_plugin_treeview_profile'])
@@ -59,7 +59,7 @@ function plugin_init_treeview()
         $PLUGIN_HOOKS[Hooks::MENU_TOADD]['treeview']['tools'] = PluginTreeviewPreference::class;
 
         $PLUGIN_HOOKS[Hooks::PRE_ITEM_PURGE]['treeview'] = [
-            'Profile' => [PluginTreeviewProfile::class, 'cleanProfiles'],
+            'Profile' => PluginTreeviewProfile::cleanProfiles(...),
         ];
 
         $PLUGIN_HOOKS[Hooks::CHANGE_ENTITY]['treeview'] = 'plugin_change_entity_Treeview';
@@ -95,6 +95,7 @@ function plugin_init_treeview()
             $config = new PluginTreeviewConfig();
             $config->hideTreeview();
         }
+
         // Add specific files to add to the header : javascript or css
         $PLUGIN_HOOKS[Hooks::ADD_CSS]['treeview'] = 'css/treeview.css';
     }
@@ -105,7 +106,7 @@ function plugin_init_treeview()
     }
 
     $currentPage = explode('/', $_SERVER['PHP_SELF']);
-    if (array_pop($currentPage) == 'index.php') {
+    if (array_pop($currentPage) === 'index.php') {
         $PLUGIN_HOOKS[Hooks::DISPLAY_LOGIN]['treeview'] = [
             'PluginTreeviewConfig',
             'loginPageToTop',

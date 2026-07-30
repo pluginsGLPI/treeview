@@ -125,6 +125,7 @@ class PluginTreeviewPreference extends CommonDBTM
             if (!$pref_ID) {
                 $pref_ID = $pref->addDefaultPreference(Session::getLoginUserID());
             }
+
             $pref->showFormUserPreference($pref->getFormURL(), $pref_ID);
         }
 

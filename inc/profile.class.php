@@ -121,6 +121,7 @@ class PluginTreeviewProfile extends CommonDBTM
             if (!$prof->GetfromDB($ID)) {
                 $prof->createAccess($item);
             }
+
             $prof->showForm($ID);
         }
 
