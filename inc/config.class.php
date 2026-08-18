@@ -365,8 +365,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 }
 
                                 $value    = $r['id'];
-                                $token    = Session::getNewCSRFToken();
-                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0&_glpi_csrf_token=%s', $field_num, $value, $token);
+                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0', $field_num, $value);
 
                                 $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
 
