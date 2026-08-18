@@ -33,8 +33,8 @@ use Glpi\Plugin\Hooks;
 use function Safe\define;
 
 define('PLUGIN_TREEVIEW_VERSION', '1.20.2');
-define('PLUGIN_TREEVIEW_MIN_GLPI', '11.0.0');
-define('PLUGIN_TREEVIEW_MAX_GLPI', '11.0.99');
+define('PLUGIN_TREEVIEW_MIN_GLPI', '12.0.0');
+define('PLUGIN_TREEVIEW_MAX_GLPI', '12.0.99');
 
 function plugin_init_treeview()
 {
