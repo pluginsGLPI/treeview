@@ -35,7 +35,6 @@
 
 <form action="{{ target }}" method="post">
     <input type="hidden" name="id" value="{{ treeview_profile_id }}">
-    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
 
     {{ fields.checkboxField(
         'treeview',
