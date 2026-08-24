@@ -28,14 +28,9 @@
  * -------------------------------------------------------------------------
  */
 
-use Glpi\Exception\Http\AccessDeniedHttpException;
+require __DIR__ . '/../../../tests/bootstrap.php';
+require_once __DIR__ . '/TreeviewTestCase.php';
 
-Plugin::load('treeview', true);
-
-if (empty($_SESSION['glpi_plugin_treeview_profile']['treeview'])) {
-    throw new AccessDeniedHttpException();
+if (!Plugin::isPluginActive('treeview')) {
+    throw new RuntimeException('Plugin treeview is not active in the test database');
 }
-
-$_SESSION['glpi_plugin_treeview_loaded'] = 1;
-$config                                  = new PluginTreeviewConfig();
-$config->seeTreeview();
