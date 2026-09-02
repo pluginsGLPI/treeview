@@ -28,7 +28,11 @@
  * -------------------------------------------------------------------------
  */
 
-Session::checkLoginUser();
+use Glpi\Exception\Http\AccessDeniedHttpException;
+
+if (empty($_SESSION['glpi_plugin_treeview_profile']['treeview'])) {
+    throw new AccessDeniedHttpException();
+}
 
 /**
  * @var array $CFG_GLPI

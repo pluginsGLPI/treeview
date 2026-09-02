@@ -239,7 +239,7 @@ class PluginTreeviewConfig extends CommonDBTM
         $closeSameLevel = $this->fields['closeSameLevel'];
 
         // Load the settings in JavaSript so that dTree script can apply them
-        echo "d.config.target         = '" . $target . "';\n";
+        echo "d.config.target         = " . json_encode($target) . ";\n";
         echo 'd.config.folderLinks    = ' . $folderLinks . ";\n";
         echo 'd.config.useSelection   = ' . $useSelection . ";\n";
         echo 'd.config.useLines       = ' . $useLines . ";\n";
@@ -267,7 +267,7 @@ class PluginTreeviewConfig extends CommonDBTM
         // Is this the first time we load the page?
         if (isset($_GET['nodes']) && $_GET['nodes'] != '') {
             // If no then get all the nodes requested by the client
-            $nodes = array_reverse(explode('.', $_GET['nodes']));
+            $nodes = array_map(intval(...), array_reverse(explode('.', $_GET['nodes'])));
         } else {
             // If yes then get only the root node
             $nodes[0] = 0;
@@ -319,7 +319,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 ", true, -1,'');\n";
                         $dontLoad = 'true';
                         // Then add aloso its items
-                        foreach (self::$types as $type) {
+                        foreach (self::getTypes() as $type) {
 
                             if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
                                 continue;
@@ -344,7 +344,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $criteria['WHERE']['is_deleted'] = 0;
                             }
 
-                            if ($this->isEntityAssign()) {
+                            if ($item->isEntityAssign()) {
                                 $criteria['WHERE']['entities_id'] = $_SESSION['glpiactive_entity'];
                             }
 
@@ -451,9 +451,9 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // Open the tree to the desired node
         if ($openedType != -1) {
-            echo 'd.openTo(' . htmlspecialchars((string) $openedType) . ");\n";
+            echo 'd.openTo(' . (int) $openedType . ");\n";
         } else {
-            echo 'd.openTo(' . $nodes[count($nodes) - 1] . ");\n";
+            echo 'd.openTo(' . (int) $nodes[count($nodes) - 1] . ");\n";
         }
     }
 
