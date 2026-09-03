@@ -28,38 +28,31 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../inc/includes.php');
+global $CFG_GLPI, $PLUGIN_HOOKS;
 
-Session::checkLoginUser();
+define('GLPI_ROOT', __DIR__ . '/../../../');
+define('GLPI_LOG_DIR', __DIR__ . '/files/_logs');
 
-if (empty($_SESSION['glpi_plugin_treeview_profile']['treeview'])) {
-    Html::displayRightError();
+define('TU_USER', 'glpi');
+define('TU_PASS', 'glpi');
+define('GLPI_LOG_LVL', 'DEBUG');
+
+require GLPI_ROOT . '/inc/includes.php';
+include_once GLPI_ROOT . '/phpunit/GLPITestCase.php';
+include_once GLPI_ROOT . '/phpunit/DbTestCase.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../setup.php';
+
+if (!Plugin::isPluginActive("treeview")) {
+    throw new RuntimeException("Plugin treeview is not active in the test database");
 }
 
-$treeview_url = Plugin::getWebDir('treeview');
+if (!file_exists(GLPI_LOG_DIR . '/php-errors.log')) {
+    file_put_contents(GLPI_LOG_DIR . '/php-errors.log', '');
+}
 
-Html::includeHeader('TreeView');
+if (!file_exists(GLPI_LOG_DIR . '/sql-errors.log')) {
+    file_put_contents(GLPI_LOG_DIR . '/sql-errors.log', '');
+}
 
-echo "<body style='overflow:auto; overflow:initial;'>";
-// Title bar
-echo '<div id=explorer_bar>';
-echo '<div id=explorer_title>' . sprintf(__('%1$s - %2$s'), 'GLPI', __('Tree view', 'treeview'));
-echo '</div>';
-echo '<div id=explorer_close>';
-echo "<img border=0 src='pics/close.png' name='explorer_close'
-       onclick='parent.location.href = parent.right.location.href;'></div>";
-echo '</div>';
-
-echo "<form method='get' name='get_level' action='" . $_SERVER['PHP_SELF'] . "'>";
-// The IDs (primary key) of the requested nodes are stored in this field
-echo "<input type='hidden' name='nodes' value=''>";
-// Which item type should be opened?
-echo "<input type='hidden' name='openedType' value=''>";
-echo '</form>';
-
-// Print the tree
-$config = new PluginTreeviewConfig();
-$config->buildTreeview();
-
-echo '</body>';
-echo '</html>';
+plugin_init_treeview();

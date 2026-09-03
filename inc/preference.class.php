@@ -65,8 +65,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
         echo "<tr class='tab_bg_1 center'><td colspan='2'>";
         echo "<input type='submit' name='plugin_treeview_user_preferences_save' value='" .
-             _sx('button', 'Post') . "' class='submit'>";
-        echo "<input type='hidden' name='id' value='$id'></td></tr>";
+             _sx('button', 'Post') . "' class='submit'></td></tr>";
 
         echo "<tr class='tab_bg_1 center'>";
         echo "<td colspan='2'>" . __('Warning: If there are more than one plugin which be loaded at startup, then only the first will be used', 'treeview');
