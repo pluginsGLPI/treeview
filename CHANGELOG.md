@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Enforce item rights and sanitize inputs in tree loading
+- Enforce item / pref rights and sanitize inputs in tree loading
+
 
 ## [1.20.2] - 2026-06-24
 

@@ -28,6 +28,8 @@
  * -------------------------------------------------------------------------
  */
 
+Session::checkLoginUser();
+
 $pref = new PluginTreeviewPreference();
 
 //Save user preferences
