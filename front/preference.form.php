@@ -36,6 +36,14 @@ $pref = new PluginTreeviewPreference();
 
 //Save user preferences
 if (isset($_POST['plugin_treeview_user_preferences_save'])) {
-    $pref->update($_POST);
+    if (!($own_id = $pref->checkIfPreferenceExists(Session::getLoginUserID()))) {
+        $own_id = $pref->addDefaultPreference(Session::getLoginUserID());
+        if (!$own_id) {
+            Session::addMessageAfterRedirect(__s('Unable to save preferences', 'treeview'), false, ERROR);
+            Html::back();
+        }
+    }
+
+    $pref->update(['id' => $own_id, 'show_on_load' => (int) ($_POST['show_on_load'] ?? 0)]);
     Html::back();
 }

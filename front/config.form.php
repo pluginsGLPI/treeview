@@ -30,10 +30,25 @@
 
 include('../../../inc/includes.php');
 
-Session::checkRight('treeview', UPDATE);
+Session::checkRight(PluginTreeviewConfig::$rightname, UPDATE);
 
 $config = new PluginTreeviewConfig();
 if (isset($_POST['update'])) {
+    if (isset($_POST['target']) && !in_array($_POST['target'], ['_blank', 'right'], true)) {
+        Session::addMessageAfterRedirect(
+            sprintf(__s('Invalid target value (%s) ignored', 'treeview'), htmlspecialchars((string) $_POST['target'], ENT_QUOTES, 'UTF-8')),
+            false,
+            ERROR,
+        );
+        unset($_POST['target']);
+    }
+
+    foreach (['folderLinks', 'useSelection', 'useLines', 'useIcons', 'closeSameLevel', 'itemName', 'locationName'] as $field) {
+        if (isset($_POST[$field])) {
+            $_POST[$field] = (int) $_POST[$field];
+        }
+    }
+
     $config->update($_POST);
     Html::back();
 } else {

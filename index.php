@@ -30,6 +30,12 @@
 
 include('../../inc/includes.php');
 
+Session::checkLoginUser();
+
+if (empty($_SESSION['glpi_plugin_treeview_profile']['treeview'])) {
+    Html::displayRightError();
+}
+
 Plugin::load('treeview', true);
 
 $_SESSION['glpi_plugin_treeview_loaded'] = 1;
