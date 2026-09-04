@@ -5,12 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.20.3] - 2026-09-04
 
 ### Fixed
 
 - Enforce item / pref rights and sanitize inputs in tree loading
-
 
 ## [1.20.2] - 2026-06-24
 
