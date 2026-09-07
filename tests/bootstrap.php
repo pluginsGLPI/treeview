@@ -34,3 +34,7 @@ require_once __DIR__ . '/TreeviewTestCase.php';
 if (!Plugin::isPluginActive('treeview')) {
     throw new RuntimeException('Plugin treeview is not active in the test database');
 }
+
+// Install / uninstall routines are only autoloaded by GLPI during plugin
+// (un)installation; load them explicitly so tests can exercise them.
+require_once dirname(__DIR__) . '/hook.php';
