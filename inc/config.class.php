@@ -64,8 +64,8 @@ class PluginTreeviewConfig extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if ($item->getType() === "Config") {
-            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
+        if ($item::class === "Config") {
+            return self::createTabEntry(self::getTypeName(), 0, $item::class, self::getIcon());
         }
 
         return '';
@@ -74,7 +74,7 @@ class PluginTreeviewConfig extends CommonDBTM
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
         $config = new self();
-        if ($item->getType() === "Config") {
+        if ($item::class === "Config") {
             $config->showConfigForm();
         }
 

@@ -78,7 +78,7 @@ class PluginTreeviewProfile extends CommonDBTM
     **/
     public function showForm($id, $options = [])
     {
-        if (!Session::haveRight('profile', READ)) {
+        if (!Session::haveRight(Profile::$rightname, READ)) {
             return false;
         }
 
@@ -106,8 +106,8 @@ class PluginTreeviewProfile extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if ($item->getType() == 'Profile') {
-            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::getType(), PluginTreeviewConfig::getIcon());
+        if ($item::class == 'Profile') {
+            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::class, PluginTreeviewConfig::getIcon());
         }
 
         return '';
