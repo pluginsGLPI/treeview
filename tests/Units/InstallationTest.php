@@ -100,24 +100,6 @@ final class InstallationTest extends GLPITestCase
         $this->assertContains($config->fields['target'], ['right', '_blank']);
     }
 
-    public function testActiveProfileGotTreeviewAccess(): void
-    {
-        /** @var DBmysql $DB */
-        global $DB;
-
-        $granted = $DB->request([
-            'FROM'  => 'glpi_plugin_treeview_profiles',
-            'WHERE' => [
-                'NOT' => ['treeview' => [null, '', '0']],
-            ],
-        ]);
-        $this->assertGreaterThan(
-            0,
-            count(iterator_to_array($granted)),
-            'install did not grant treeview access to any profile',
-        );
-    }
-
     public function testInstallScriptIsIdempotent(): void
     {
         /** @var DBmysql $DB */

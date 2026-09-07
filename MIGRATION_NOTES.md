@@ -99,8 +99,14 @@ spécifique à la migration de version. Ajouté pour cette PR :
   transaction car DDL) : contraintes GLPI = `12.0.0`/`12.0.99` ; les 3
   tables + leurs colonnes existent, tables héritées (`_display`,
   `_displayprefs`, `_preference`) absentes ; ligne de conf `id=1` semée ;
-  au moins un profil a l'accès `treeview` ; **idempotence** de
-  `plugin_treeview_install()` (re-run ⇒ aucun doublon, `clearSchemaCache`).
+  **idempotence** de `plugin_treeview_install()` (re-run ⇒ aucun doublon,
+  `clearSchemaCache`).
+- `tests/Units/ProfileTest.php` (`extends TreeviewTestCase`, transactionnel) :
+  `PluginTreeviewProfile::createFirstAccess()` accorde le droit `r` à un
+  profil neuf et est idempotent ; `cleanProfiles()` (hook `PRE_ITEM_PURGE`)
+  supprime la ligne quand le profil est purgé. (Remplace un test qui
+  supposait à tort que l'install CLI sème toujours un profil — faux quand
+  `bin/console plugin:install` tourne sans session de profil active.)
 - `tests/Units/UninstallationTest.php` (`extends GLPITestCase`) :
   `plugin_treeview_uninstall()` réel ⇒ les 3 tables sont supprimées, puis
   **réinstallation dans un `finally`** (BDD de test partagée) ⇒ tables
