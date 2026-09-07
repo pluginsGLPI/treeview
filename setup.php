@@ -32,7 +32,7 @@ use Glpi\Plugin\Hooks;
 
 use function Safe\define;
 
-define('PLUGIN_TREEVIEW_VERSION', '1.20.3');
+define('PLUGIN_TREEVIEW_VERSION', '1.21.0');
 define('PLUGIN_TREEVIEW_MIN_GLPI', '12.0.0');
 define('PLUGIN_TREEVIEW_MAX_GLPI', '12.0.99');
 
@@ -101,7 +101,7 @@ function plugin_init_treeview()
     }
 
     // Config page
-    if (Session::haveRight('config', UPDATE)) {
+    if (Session::haveRight(Config::$rightname, UPDATE)) {
         $PLUGIN_HOOKS[Hooks::CONFIG_PAGE]['treeview'] = '../../front/config.form.php?forcetab=PluginTreeviewConfig$1';
     }
 
