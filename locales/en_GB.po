@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 02:24+0000\n"
-"PO-Revision-Date: 2026-05-15 02:24+0000\n"
+"POT-Creation-Date: 2026-09-11 02:11+0000\n"
+"PO-Revision-Date: 2026-09-11 02:11+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,14 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/preference.html.twig templates/config.html.twig
+#: templates/config.html.twig templates/preference.html.twig
 #: templates/profile.html.twig
 msgid "Treeview - Configuration"
 msgstr "Treeview - Configuration"
-
-#: templates/preference.html.twig
-msgid "Launch Treeview at GLPI startup"
-msgstr "Launch Treeview at GLPI startup"
 
 #: templates/config.html.twig
 msgid "New window"
@@ -87,15 +83,28 @@ msgstr "Comment"
 msgid "Location name"
 msgstr "Location name"
 
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr "Launch Treeview at GLPI startup"
+
 #: templates/profile.html.twig
 msgid "Can use the treeview"
 msgstr "Can use the treeview"
 
-#: public/left.php:45 setup.php:133 inc/config.class.php:59
-#: inc/config.class.php:154 inc/preference.class.php:47
+#: setup.php:134 inc/preference.class.php:47 inc/config.class.php:61
+#: inc/config.class.php:155 public/left.php:49
 msgid "Tree view"
 msgstr "Tree view"
 
-#: inc/config.class.php:226
+#: front/config.form.php:37
+#, php-format
+msgid "Invalid target value (%s) ignored"
+msgstr "Invalid target value (%s) ignored"
+
+#: front/preference.form.php:40
+msgid "Unable to save preferences"
+msgstr "Unable to save preferences"
+
+#: inc/config.class.php:227
 msgid "Assets"
 msgstr "Assets"
