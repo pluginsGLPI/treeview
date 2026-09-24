@@ -83,7 +83,7 @@ function plugin_init_treeview()
             && isset($_SESSION['glpi_plugin_treeview_preference'])
             && $_SESSION['glpi_plugin_treeview_preference'] == 1
         ) {
-            Html::redirect($CFG_GLPI['root_doc'] . '/plugins/treeview/public/index.php');
+            Html::redirect($CFG_GLPI['root_doc'] . '/plugins/treeview/index.php');
         }
 
         if (

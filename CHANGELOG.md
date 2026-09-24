@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Enforce item / pref rights and sanitize inputs in tree loading
+- Remove deprecated `/public` prefix from generated plugin URLs
 
 ## [1.20.2] - 2026-06-24
 

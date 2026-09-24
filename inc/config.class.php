@@ -161,7 +161,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo "<meta http-equiv='Pragma' content='no-cache'>\n";
         echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
         echo "<link rel='shortcut icon' type='images/x-icon' href='" .
-             $CFG_GLPI['root_doc'] . "/public/pics/favicon.ico' >\n";
+             $CFG_GLPI['root_doc'] . "/pics/favicon.ico' >\n";
 
         // Must be always the top window
         echo '<script type="text/javascript">';
@@ -169,7 +169,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo 'top.location = self.location;';
         echo '</script></head>';
         echo "<frameset cols='250,*'>";
-        echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/public/left.php' name='left' scrolling='yes'>";
+        echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/left.php' name='left' scrolling='yes'>";
         echo "<frame src='" . $CFG_GLPI['root_doc'] . "/front/central.php' name='right'>";
         echo '<noframes>';
         echo '<body>';
@@ -204,8 +204,8 @@ class PluginTreeviewConfig extends CommonDBTM
         $treeview_url = $CFG_GLPI['root_doc'] . "/plugins/treeview";
 
         //necessary files needed for the tree to work.
-        echo sprintf("<link rel='stylesheet' type='text/css' href='%s/public/css/dtree.css' type='text/css'>", $treeview_url);
-        echo sprintf("<script type='text/javascript' src='%s/public/lib/dtree/dtree.js'></script>", $treeview_url);
+        echo sprintf("<link rel='stylesheet' type='text/css' href='%s/css/dtree.css' type='text/css'>", $treeview_url);
+        echo sprintf("<script type='text/javascript' src='%s/lib/dtree/dtree.js'></script>", $treeview_url);
 
         echo "<div class='dtree'>";
         echo "<script type='text/javascript'>";

@@ -45,7 +45,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
         $menu          = [];
         $menu['title'] = __s('Tree view', 'treeview');
-        $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/public/index.php';
+        $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/index.php';
         $menu['icon']  = 'ti ti-sitemap';
 
         return $menu;
