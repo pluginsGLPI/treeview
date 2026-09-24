@@ -28,7 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-Session::checkRight('config', UPDATE);
+Session::checkRight(Config::$rightname, UPDATE);
 
 $config = new PluginTreeviewConfig();
 if (isset($_POST['update'])) {
