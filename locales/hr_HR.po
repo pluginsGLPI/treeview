@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-07 02:01+0000\n"
+"POT-Creation-Date: 2026-09-23 02:33+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>, 2026\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/teclib/teams/28042/hr_HR/)\n"
@@ -21,10 +21,18 @@ msgstr ""
 "Language: hr_HR\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: templates/config.html.twig templates/preference.html.twig
-#: templates/profile.html.twig
+#: templates/preference.html.twig templates/profile.html.twig
+#: templates/config.html.twig
 msgid "Treeview - Configuration"
 msgstr "Stablasti prikaz – konfiguracija"
+
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr "Pokreni stablasti prikaz pri pokretanju GLPI-a"
+
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "Može koristiti stablasti prikaz"
 
 #: templates/config.html.twig
 msgid "New window"
@@ -87,19 +95,6 @@ msgstr "Komentar"
 msgid "Location name"
 msgstr "Ime lokacije"
 
-#: templates/preference.html.twig
-msgid "Launch Treeview at GLPI startup"
-msgstr "Pokreni stablasti prikaz pri pokretanju GLPI-a"
-
-#: templates/profile.html.twig
-msgid "Can use the treeview"
-msgstr "Može koristiti stablasti prikaz"
-
-#: setup.php:134 inc/preference.class.php:47 inc/config.class.php:61
-#: inc/config.class.php:155 public/left.php:49
-msgid "Tree view"
-msgstr "Stablasti prikaz"
-
 #: front/config.form.php:37
 #, php-format
 msgid "Invalid target value (%s) ignored"
@@ -108,6 +103,11 @@ msgstr ""
 #: front/preference.form.php:40
 msgid "Unable to save preferences"
 msgstr ""
+
+#: inc/preference.class.php:47 inc/config.class.php:61
+#: inc/config.class.php:155 public/left.php:49 setup.php:134
+msgid "Tree view"
+msgstr "Stablasti prikaz"
 
 #: inc/config.class.php:227
 msgid "Assets"

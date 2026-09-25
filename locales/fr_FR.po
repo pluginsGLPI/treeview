@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Cédric Anne, 2018
+# EpicIT33, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-12 13:03+0000\n"
+"POT-Creation-Date: 2026-09-25 02:38+0000\n"
 "PO-Revision-Date: 2018-08-24 14:49+0000\n"
-"Last-Translator: Cédric Anne, 2018\n"
+"Last-Translator: EpicIT33, 2026\n"
 "Language-Team: French (France) (https://app.transifex.com/teclib/teams/28042/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,84 +22,94 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: inc/config.class.php:150 inc/config.class.php:153
-msgid "Comment"
-msgstr "Commentaires"
+#: templates/preference.html.twig templates/profile.html.twig
+#: templates/config.html.twig
+msgid "Treeview - Configuration"
+msgstr "Treeview - Configuration"
 
-#: inc/config.class.php:72
-msgid "Display"
-msgstr "Affichage"
+#: templates/preference.html.twig
+msgid "Launch Treeview at GLPI startup"
+msgstr "Lancer Treeview au démarrage de GLPI"
 
-#: inc/config.class.php:128
-msgid "Item name"
-msgstr "Affichage du matériel"
+#: templates/profile.html.twig
+msgid "Can use the treeview"
+msgstr "Permet d'utiliser l'arborescence"
 
-#: inc/preference.class.php:61
-msgid "Launch the plugin Treeview with GLPI launching"
-msgstr "Lancer le plugin Arborescence au démarrage de GLPI"
-
-#: inc/config.class.php:142
-msgid "Location name"
-msgstr "Affichage du lieu"
-
-#: inc/config.class.php:148 inc/config.class.php:153
-msgid "Long name"
-msgstr "Nom complet"
-
-#: inc/config.class.php:77
+#: templates/config.html.twig
 msgid "New window"
-msgstr "Dans une nouvelle fenêtre"
+msgstr "Nouvelle fenêtre"
 
-#: inc/config.class.php:92
-msgid "Nodes can be highlighted"
-msgstr "Les noeuds peuvent être en surbrillance"
+#: templates/config.html.twig
+msgid "The central console"
+msgstr "La console centrale"
 
-#: inc/config.class.php:118
-msgid "Only one node within a parent"
-msgstr "Seulement un noeud avec un parent"
-
-#: inc/config.class.php:146 inc/config.class.php:150
-msgid "Short name"
-msgstr "Nom court"
-
-#: inc/config.class.php:83
-msgid "Should folders be links"
-msgstr "Utiliser les répertoires des lieux sous forme de liens"
-
-#: inc/config.class.php:74
+#: templates/config.html.twig
 msgid "Target for all the nodes"
 msgstr "Ouverture des liens"
 
-#: inc/config.class.php:79
-msgid "The central console"
-msgstr "Dans la console centrale"
+#: templates/config.html.twig
+msgid "Should folders be links"
+msgstr "Utiliser les répertoires des lieux sous forme de liens"
 
-#: inc/config.class.php:108
-msgid "Tree is drawn with icons"
-msgstr "L'arborescence est dessinée avec des icônes"
+#: templates/config.html.twig
+msgid "Nodes can be highlighted"
+msgstr "Les noeuds peuvent être en surbrillance"
 
-#: inc/config.class.php:100
+#: templates/config.html.twig
 msgid "Tree is drawn with lines"
-msgstr "L'arborescence est dessinée avec des lignes"
+msgstr "L'arborescence est représentée à l'aide de lignes"
 
-#: left.php:42 inc/preference.class.php:44 inc/preference.class.php:124
-#: inc/config.class.php:61 inc/config.class.php:225 inc/config.class.php:292
-#: inc/profile.class.php:142 setup.php:125
+#: templates/config.html.twig
+msgid "Tree is drawn with icons"
+msgstr "L'arborescence est représentée à l'aide d'icônes"
+
+#: templates/config.html.twig
+msgid "Only one node within a parent"
+msgstr "Seulement un noeud avec un parent"
+
+#: templates/config.html.twig
+msgid "can be expanded at the same time."
+msgstr "peut être affiché en même temps"
+
+#: templates/config.html.twig
+#, php-format
+msgid "%1$s / %2$s"
+msgstr "%1$s / %2$s"
+
+#: templates/config.html.twig
+msgid "Item name"
+msgstr "Affichage du matériel"
+
+#: templates/config.html.twig
+msgid "Short name"
+msgstr "Nom court"
+
+#: templates/config.html.twig
+msgid "Long name"
+msgstr "Nom complet"
+
+#: templates/config.html.twig
+msgid "Comment"
+msgstr "Commentaire"
+
+#: templates/config.html.twig
+msgid "Location name"
+msgstr "Nom du lieu"
+
+#: front/config.form.php:37
+#, php-format
+msgid "Invalid target value (%s) ignored"
+msgstr "Valeur cible non valide (%s) ignorée"
+
+#: front/preference.form.php:40
+msgid "Unable to save preferences"
+msgstr "Impossible d'enregistrer les préférences"
+
+#: inc/preference.class.php:47 inc/config.class.php:61
+#: inc/config.class.php:155 public/left.php:49 setup.php:134
 msgid "Tree view"
 msgstr "Arborescence"
 
-#: inc/profile.class.php:108
-msgid "Use the tree"
-msgstr "Utiliser l'arborescence"
-
-#: inc/preference.class.php:72
-msgid ""
-"Warning: If there are more than one plugin which be loaded at startup, then "
-"only the first will be used"
-msgstr ""
-"Attention : si plusieurs plugins sont lancés au démarrage, seul le premier "
-"sera actif"
-
-#: inc/config.class.php:119
-msgid "can be expanded at the same time."
-msgstr "peut être affiché en même temps"
+#: inc/config.class.php:227
+msgid "Assets"
+msgstr "Matériels"
