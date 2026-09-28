@@ -64,8 +64,8 @@ class PluginTreeviewConfig extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if ($item->getType() === "Config") {
-            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
+        if ($item::class === "Config") {
+            return self::createTabEntry(self::getTypeName(), 0, $item::class, self::getIcon());
         }
 
         return '';
@@ -74,7 +74,7 @@ class PluginTreeviewConfig extends CommonDBTM
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
         $config = new self();
-        if ($item->getType() === "Config") {
+        if ($item::class === "Config") {
             $config->showConfigForm();
         }
 
@@ -365,8 +365,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 }
 
                                 $value    = $r['id'];
-                                $token    = Session::getNewCSRFToken();
-                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0&_glpi_csrf_token=%s', $field_num, $value, $token);
+                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0', $field_num, $value);
 
                                 $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
 
