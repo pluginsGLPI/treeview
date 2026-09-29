@@ -435,7 +435,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                     $url = Toolbox::getItemTypeFormURL($type) . '?id=' . $r_1['id'];
                                 }
                                 
-                                $pic  = 'ti ti-chevrons-right
+                                $pic  = 'ti ti-chevrons-right';
                                 $name = strtr($i_name, $trans);
                                 $opt  = ['url' => $url,
                                     'pic'      => $pic,
