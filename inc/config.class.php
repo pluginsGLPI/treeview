@@ -54,10 +54,10 @@ class PluginTreeviewConfig extends CommonDBTM
     ];
 
     /**
-    * Display name of itemtype
-    *
-    * @return string
-    **/
+     * Display name of itemtype
+     *
+     * @return string
+     **/
     public static function getTypeName($nb = 0)
     {
         return __s('Tree view', 'treeview');
@@ -429,12 +429,8 @@ class PluginTreeviewConfig extends CommonDBTM
                                     }
                                 }
 
-                                if (is_a($type, Asset::class, true)) {
-                                    $url = $type::getFormURL() . '&id=' . $r_1['id'];
-                                } else {
-                                    $url = Toolbox::getItemTypeFormURL($type) . '?id=' . $r_1['id'];
-                                }
-                                
+                                $url = $type::getFormURLWithID($r_1['id']);
+
                                 $pic  = 'ti ti-chevrons-right';
                                 $name = strtr($i_name, $trans);
                                 $opt  = ['url' => $url,
