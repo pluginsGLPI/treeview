@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Display GLPI 11 Custom Assets in the location tree
+
 ### Fixed
 
 - Prevent custom assets from other asset definitions from appearing in the same location
