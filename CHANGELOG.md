@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Prevent custom assets from other asset definitions from appearing in the same location
+
 ## [1.20.3] - 2026-09-04
 
 ### Fixed
