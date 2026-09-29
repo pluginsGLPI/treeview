@@ -135,7 +135,11 @@ final class ConfigTest extends TreeviewTestCase
         $definition_b = $this->initAssetDefinition(
             'treeview_b_' . $this->getUniqueString()
         );
-
+        
+        $profile_id = Session::getProfileID();
+        $definition_a->setProfileRights($profile_id, READ);
+        $definition_b->setProfileRights($profile_id, READ);
+        
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
