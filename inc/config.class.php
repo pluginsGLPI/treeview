@@ -28,6 +28,8 @@
  * -------------------------------------------------------------------------
  */
 use Glpi\Application\View\TemplateRenderer;
+use Glpi\Asset\Asset;
+use Glpi\Asset\AssetDefinitionManager;
 use Glpi\DBAL\QueryExpression;
 
 use function Safe\json_encode;
@@ -128,10 +130,10 @@ class PluginTreeviewConfig extends CommonDBTM
         // Only allowed types
         $types = self::$types;
 
-        if (class_exists(\Glpi\Asset\AssetDefinitionManager::class)) {
+        if (class_exists(AssetDefinitionManager::class)) {
             $types = array_merge(
                 $types,
-                \Glpi\Asset\AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
+                AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
             );
         }
 
@@ -343,7 +345,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 'ORDER' => [$itemtable . '.name'],
                             ];
 
-                            if (is_a($type, \Glpi\Asset\Asset::class, true)) {
+                            if (is_a($type, Asset::class, true)) {
                                 $criteria['WHERE']['assets_assetdefinitions_id'] = $type::getDefinition()->fields['id'];
                             }
 
@@ -379,7 +381,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $token    = Session::getNewCSRFToken();
                                 $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0&_glpi_csrf_token=%s', $field_num, $value, $token);
 
-                                $searchUrl = is_a($type, \Glpi\Asset\Asset::class, true)
+                                $searchUrl = is_a($type, Asset::class, true)
                                     ? $type::getSearchURL() . '&' . ltrim($getParam, '?')
                                     : Toolbox::getItemTypeSearchURL($type) . $getParam;
 
@@ -427,12 +429,13 @@ class PluginTreeviewConfig extends CommonDBTM
                                     }
                                 }
 
-                                if (is_a($type, \Glpi\Asset\Asset::class, true)) {
+                                if (is_a($type, Asset::class, true)) {
                                     $url = $type::getFormURL() . '&id=' . $r_1['id'];
                                 } else {
                                     $url = Toolbox::getItemTypeFormURL($type) . '?id=' . $r_1['id'];
                                 }
-                                $pic  = 'ti ti-chevrons-right';
+                                
+                                $pic  = 'ti ti-chevrons-right
                                 $name = strtr($i_name, $trans);
                                 $opt  = ['url' => $url,
                                     'pic'      => $pic,
