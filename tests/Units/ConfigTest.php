@@ -9,14 +9,14 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software; you can redistribute it and/or modify
+ * TreeView is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -98,7 +98,12 @@ final class ConfigTest extends TreeviewTestCase
         ]);
 
         // remove all rights to view computers
-        $this->removeRightFromProfile('Super-Admin', Computer::$rightname, READ + READ_ASSIGNED + READ_OWNED);
+        $this->removeRightFromProfile(
+            'Super-Admin',
+            Computer::$rightname,
+            READ + READ_ASSIGNED + READ_OWNED
+        );
+
         try {
             $this->login('glpi');
             $this->setEntity($entity_id, false);
@@ -106,7 +111,53 @@ final class ConfigTest extends TreeviewTestCase
 
             $this->assertStringNotContainsString($computer->fields['name'], $output);
         } finally {
-            $this->addRightToProfile('Super-Admin', Computer::$rightname, READ + READ_ASSIGNED + READ_OWNED);
+            $this->addRightToProfile(
+                'Super-Admin',
+                Computer::$rightname,
+                READ + READ_ASSIGNED + READ_OWNED
+            );
         }
+    }
+
+    public function testGetNodesFromDbDoesNotMixAssetDefinitions(): void
+    {
+        $this->login();
+        $entity_id = $this->getTestRootEntity(true);
+
+        $location = $this->createItem(Location::class, [
+            'name'        => 'treeview_asset_loc_' . $this->getUniqueString(),
+            'entities_id' => $entity_id,
+        ]);
+
+        $definition_a = $this->initAssetDefinition(
+            'treeview_a_' . $this->getUniqueString()
+        );
+        $definition_b = $this->initAssetDefinition(
+            'treeview_b_' . $this->getUniqueString()
+        );
+
+        $asset_a = $this->createItem($definition_a->getAssetClassName(), [
+            'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
+            'entities_id'  => $entity_id,
+            'locations_id' => $location->getID(),
+        ]);
+        $asset_b = $this->createItem($definition_b->getAssetClassName(), [
+            'name'         => 'treeview_asset_b_' . $this->getUniqueString(),
+            'entities_id'  => $entity_id,
+            'locations_id' => $location->getID(),
+        ]);
+
+        $this->setEntity($entity_id, false);
+
+        $output = $this->getTreeOutput($location->getID());
+
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_a->fields['name'])
+        );
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_b->fields['name'])
+        );
     }
 }
