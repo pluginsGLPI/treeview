@@ -136,7 +136,7 @@ final class ConfigTest extends TreeviewTestCase
             'treeview_b_' . $this->getUniqueString()
         );
         
-        $profile_id = Session::getProfileID();
+        $profile_id = Session::getCurrentProfile()->getID();
         $definition_a->setProfileRights($profile_id, READ);
         $definition_b->setProfileRights($profile_id, READ);
         
