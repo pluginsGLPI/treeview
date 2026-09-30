@@ -139,6 +139,30 @@ final class ConfigTest extends TreeviewTestCase
         $profile_id = Session::getCurrentProfile()->getID();
         $definition_a->setProfileRights($profile_id, READ);
         $definition_b->setProfileRights($profile_id, READ);
+
+        $this->assertTrue(
+            $definition_a->getAssetClassName()::canView(),
+            'AssetDefinition A should be visible'
+        );
+        
+        $this->assertTrue(
+            $definition_b->getAssetClassName()::canView(),
+            'AssetDefinition B should be visible'
+        );
+        
+        $types = PluginTreeviewConfig::getTypes();
+        
+        $this->assertContains(
+            $definition_a->getAssetClassName(),
+            $types,
+            'AssetDefinition A should be available in TreeView types'
+        );
+        
+        $this->assertContains(
+            $definition_b->getAssetClassName(),
+            $types,
+            'AssetDefinition B should be available in TreeView types'
+        );
         
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
