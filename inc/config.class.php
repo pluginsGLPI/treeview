@@ -9,9 +9,9 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software; you can redistribute it and/or modify
+ * TreeView is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -27,6 +27,7 @@
  * @link      https://github.com/pluginsGLPI/treeview
  * -------------------------------------------------------------------------
  */
+
 use Glpi\Application\View\TemplateRenderer;
 use Glpi\Asset\Asset;
 use Glpi\Asset\AssetDefinitionManager;
@@ -36,7 +37,7 @@ use function Safe\json_encode;
 
 /**
  * Contains the display configuration of the treeview
-**/
+ **/
 class PluginTreeviewConfig extends CommonDBTM
 {
     public static $types = [
@@ -127,26 +128,27 @@ class PluginTreeviewConfig extends CommonDBTM
             return self::$types;
         }
 
-    // Only allowed types
-    $types = self::$types;
-    
-    $types = array_merge(
-        $types,
-        AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
-    );
-    
-    foreach ($types as $key => $type) {
-        if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
-            continue;
-        }
-    
-        $item = new $type();
-        if (!$item->canView()) {
-            unset($types[$key]);
-        }
-    }
+        // Only allowed types
+        $types = self::$types;
 
-return $types;
+        $types = array_merge(
+            $types,
+            AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
+        );
+
+        foreach ($types as $key => $type) {
+            if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
+                continue;
+            }
+
+            $item = new $type();
+            if (!$item->canView()) {
+                unset($types[$key]);
+            }
+        }
+
+        return $types;
+    }
 
     /**
      * The function to see the treeview
