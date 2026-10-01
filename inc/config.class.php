@@ -127,29 +127,26 @@ class PluginTreeviewConfig extends CommonDBTM
             return self::$types;
         }
 
-        // Only allowed types
-        $types = self::$types;
-
-        if (class_exists(AssetDefinitionManager::class)) {
-            $types = array_merge(
-                $types,
-                AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
-            );
+    // Only allowed types
+    $types = self::$types;
+    
+    $types = array_merge(
+        $types,
+        AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
+    );
+    
+    foreach ($types as $key => $type) {
+        if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
+            continue;
         }
-
-        foreach ($types as $key => $type) {
-            if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
-                continue;
-            }
-
-            $item = new $type();
-            if (!$item->canView()) {
-                unset($types[$key]);
-            }
+    
+        $item = new $type();
+        if (!$item->canView()) {
+            unset($types[$key]);
         }
-
-        return $types;
     }
+
+return $types;
 
     /**
      * The function to see the treeview
