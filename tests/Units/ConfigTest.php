@@ -11,7 +11,7 @@
  *
  * TreeView is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -35,7 +35,6 @@ use Entity;
 use Glpi\Asset\AssetDefinitionManager;
 use GlpiPlugin\Treeview\Tests\TreeviewTestCase;
 use Location;
-use Session;
 
 final class ConfigTest extends TreeviewTestCase
 {
@@ -98,7 +97,7 @@ final class ConfigTest extends TreeviewTestCase
             'locations_id' => $location->getID(),
         ]);
 
-        // remove all rights to view computers
+        // Remove all rights to view computers.
         $this->removeRightFromProfile(
             'Super-Admin',
             Computer::$rightname,
@@ -137,10 +136,6 @@ final class ConfigTest extends TreeviewTestCase
             'treeview_b_' . $this->getUniqueString()
         );
 
-        $profile_id = Session::getCurrentProfile()->getID();
-        $definition_a->setProfileRights($profile_id, READ);
-        $definition_b->setProfileRights($profile_id, READ);
-
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
@@ -152,16 +147,20 @@ final class ConfigTest extends TreeviewTestCase
             'locations_id' => $location->getID(),
         ]);
 
-        // The definition manager caches definitions during the GLPI test
-        // bootstrap. Refresh it after creating the test definitions so that
-        // TreeView sees both custom asset classes.
-        AssetDefinitionManager::getInstance()->clearDefinitionsCache();
-        AssetDefinitionManager::getInstance()->bootDefinitions();
+        // Refresh the definition manager so that the newly created
+        // definitions are available to TreeView.
+        $manager = AssetDefinitionManager::getInstance();
+        $manager->clearDefinitionsCache();
+        $manager->bootDefinitions();
 
         $this->setEntity($entity_id, false);
 
         $output = $this->getTreeOutput($location->getID());
 
+        // Both assets share the same database table. Each asset must only
+        // appear in the tree group corresponding to its own definition.
+        // Without the assets_assetdefinitions_id filter, each asset would
+        // appear twice.
         $this->assertSame(
             1,
             substr_count($output, $asset_a->fields['name'])
