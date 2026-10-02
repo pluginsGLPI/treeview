@@ -144,9 +144,8 @@ final class ConfigTest extends TreeviewTestCase
         $manager->clearDefinitionsCache();
         $manager->bootDefinitions();
 
-        // Reload the session so the rights of the custom asset definitions
-        // are available to canView().
         $this->login('glpi');
+        $this->setEntity($entity_id, false);
 
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
@@ -159,17 +158,40 @@ final class ConfigTest extends TreeviewTestCase
             'locations_id' => $location->getID(),
         ]);
 
-        $this->setEntity($entity_id, false);
+        $original_types = PluginTreeviewConfig::$types;
 
-        $output = $this->getTreeOutput($location->getID());
+        try {
+            PluginTreeviewConfig::$types = [
+                $definition_a->getAssetClassName(),
+            ];
 
-        $this->assertSame(
-            1,
-            substr_count($output, $asset_a->fields['name'])
-        );
-        $this->assertSame(
-            1,
-            substr_count($output, $asset_b->fields['name'])
-        );
+            $output_a = $this->getTreeOutput($location->getID());
+
+            $this->assertStringContainsString(
+                $asset_a->fields['name'],
+                $output_a
+            );
+            $this->assertStringNotContainsString(
+                $asset_b->fields['name'],
+                $output_a
+            );
+
+            PluginTreeviewConfig::$types = [
+                $definition_b->getAssetClassName(),
+            ];
+
+            $output_b = $this->getTreeOutput($location->getID());
+
+            $this->assertStringContainsString(
+                $asset_b->fields['name'],
+                $output_b
+            );
+            $this->assertStringNotContainsString(
+                $asset_a->fields['name'],
+                $output_b
+            );
+        } finally {
+            PluginTreeviewConfig::$types = $original_types;
+        }
     }
 }
