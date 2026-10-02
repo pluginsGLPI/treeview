@@ -33,7 +33,6 @@ use Entity;
 use Glpi\Asset\AssetDefinitionManager;
 use GlpiPlugin\Treeview\Tests\TreeviewTestCase;
 use Location;
-use Session;
 
 final class ConfigTest extends TreeviewTestCase
 {
@@ -135,16 +134,6 @@ final class ConfigTest extends TreeviewTestCase
             'treeview_b_' . $this->getUniqueString()
         );
 
-        $profile_id = Session::getCurrentProfile()->getID();
-        $definition_a->setProfileRights($profile_id, READ);
-        $definition_b->setProfileRights($profile_id, READ);
-
-        $manager = AssetDefinitionManager::getInstance();
-        $manager->clearDefinitionsCache();
-        $manager->bootDefinitions();
-
-        Session::changeProfile($profile_id);
-
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
@@ -155,6 +144,10 @@ final class ConfigTest extends TreeviewTestCase
             'entities_id'  => $entity_id,
             'locations_id' => $location->getID(),
         ]);
+
+        $manager = AssetDefinitionManager::getInstance();
+        $manager->clearDefinitionsCache();
+        $manager->bootDefinitions();
 
         $this->setEntity($entity_id, false);
 
