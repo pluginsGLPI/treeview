@@ -8,9 +8,9 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software; you can redistribute it and/or modify
+ * TreeView is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -41,12 +41,14 @@ final class ConfigTest extends TreeviewTestCase
     public function testGetNodesFromDbOnlyShowsActiveEntityData(): void
     {
         $this->login();
+
         $root_id = $this->getTestRootEntity(true);
 
         $entity_a = $this->createItem(Entity::class, [
             'name'        => 'treeview_entity_a_' . $this->getUniqueString(),
             'entities_id' => $root_id,
         ]);
+
         $entity_b = $this->createItem(Entity::class, [
             'name'        => 'treeview_entity_b_' . $this->getUniqueString(),
             'entities_id' => $root_id,
@@ -56,6 +58,7 @@ final class ConfigTest extends TreeviewTestCase
             'name'        => 'treeview_loc_a_' . $this->getUniqueString(),
             'entities_id' => $entity_a->getID(),
         ]);
+
         $location_b = $this->createItem(Location::class, [
             'name'        => 'treeview_loc_b_' . $this->getUniqueString(),
             'entities_id' => $entity_b->getID(),
@@ -66,6 +69,7 @@ final class ConfigTest extends TreeviewTestCase
             'entities_id'  => $entity_a->getID(),
             'locations_id' => $location_a->getID(),
         ]);
+
         $computer_b = $this->createItem(Computer::class, [
             'name'         => 'treeview_computer_b_' . $this->getUniqueString(),
             'entities_id'  => $entity_b->getID(),
@@ -85,12 +89,14 @@ final class ConfigTest extends TreeviewTestCase
     public function testGetNodesFromDbHidesItemtypeWithoutViewRight(): void
     {
         $this->login();
+
         $entity_id = $this->getTestRootEntity(true);
 
         $location = $this->createItem(Location::class, [
             'name'        => 'treeview_loc_' . $this->getUniqueString(),
             'entities_id' => $entity_id,
         ]);
+
         $computer = $this->createItem(Computer::class, [
             'name'         => 'treeview_computer_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
@@ -107,9 +113,13 @@ final class ConfigTest extends TreeviewTestCase
         try {
             $this->login('glpi');
             $this->setEntity($entity_id, false);
+
             $output = $this->getTreeOutput($location->getID());
 
-            $this->assertStringNotContainsString($computer->fields['name'], $output);
+            $this->assertStringNotContainsString(
+                $computer->fields['name'],
+                $output
+            );
         } finally {
             $this->addRightToProfile(
                 'Super-Admin',
@@ -121,7 +131,8 @@ final class ConfigTest extends TreeviewTestCase
 
     public function testGetNodesFromDbDoesNotMixAssetDefinitions(): void
     {
-        $this->login();
+        $this->login('glpi');
+
         $entity_id = $this->getTestRootEntity(true);
 
         $location = $this->createItem(Location::class, [
@@ -132,11 +143,13 @@ final class ConfigTest extends TreeviewTestCase
         $definition_a = $this->initAssetDefinition(
             'treeview_a_' . $this->getUniqueString()
         );
+
         $definition_b = $this->initAssetDefinition(
             'treeview_b_' . $this->getUniqueString()
         );
 
         $profile_id = Session::getCurrentProfile()->getID();
+
         $definition_a->setProfileRights($profile_id, READ);
         $definition_b->setProfileRights($profile_id, READ);
 
@@ -144,54 +157,30 @@ final class ConfigTest extends TreeviewTestCase
         $manager->clearDefinitionsCache();
         $manager->bootDefinitions();
 
-        $this->login('glpi');
-        $this->setEntity($entity_id, false);
-
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
             'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
             'locations_id' => $location->getID(),
         ]);
+
         $asset_b = $this->createItem($definition_b->getAssetClassName(), [
             'name'         => 'treeview_asset_b_' . $this->getUniqueString(),
             'entities_id'  => $entity_id,
             'locations_id' => $location->getID(),
         ]);
 
-        $original_types = PluginTreeviewConfig::$types;
+        $this->setEntity($entity_id, false);
 
-        try {
-            PluginTreeviewConfig::$types = [
-                $definition_a->getAssetClassName(),
-            ];
+        $output = $this->getTreeOutput($location->getID());
 
-            $output_a = $this->getTreeOutput($location->getID());
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_a->fields['name'])
+        );
 
-            $this->assertStringContainsString(
-                $asset_a->fields['name'],
-                $output_a
-            );
-            $this->assertStringNotContainsString(
-                $asset_b->fields['name'],
-                $output_a
-            );
-
-            PluginTreeviewConfig::$types = [
-                $definition_b->getAssetClassName(),
-            ];
-
-            $output_b = $this->getTreeOutput($location->getID());
-
-            $this->assertStringContainsString(
-                $asset_b->fields['name'],
-                $output_b
-            );
-            $this->assertStringNotContainsString(
-                $asset_a->fields['name'],
-                $output_b
-            );
-        } finally {
-            PluginTreeviewConfig::$types = $original_types;
-        }
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_b->fields['name'])
+        );
     }
 }
