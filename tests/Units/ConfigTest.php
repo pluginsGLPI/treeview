@@ -9,9 +9,9 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software; you can redistribute it and/or modify
+ * TreeView is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -32,9 +32,9 @@ namespace GlpiPlugin\Treeview\Tests\Units;
 
 use Computer;
 use Entity;
+use Glpi\Asset\AssetDefinitionManager;
 use GlpiPlugin\Treeview\Tests\TreeviewTestCase;
 use Location;
-use Session;
 
 final class ConfigTest extends TreeviewTestCase
 {
@@ -97,8 +97,13 @@ final class ConfigTest extends TreeviewTestCase
             'locations_id' => $location->getID(),
         ]);
 
-        // remove all rights to view computers
-        $this->removeRightFromProfile('Super-Admin', Computer::$rightname, READ + READ_ASSIGNED + READ_OWNED);
+        // Remove all rights to view computers.
+        $this->removeRightFromProfile(
+            'Super-Admin',
+            Computer::$rightname,
+            READ + READ_ASSIGNED + READ_OWNED
+        );
+
         try {
             $this->login('glpi');
             $this->setEntity($entity_id, false);
@@ -106,7 +111,63 @@ final class ConfigTest extends TreeviewTestCase
 
             $this->assertStringNotContainsString($computer->fields['name'], $output);
         } finally {
-            $this->addRightToProfile('Super-Admin', Computer::$rightname, READ + READ_ASSIGNED + READ_OWNED);
+            $this->addRightToProfile(
+                'Super-Admin',
+                Computer::$rightname,
+                READ + READ_ASSIGNED + READ_OWNED
+            );
         }
+    }
+
+    public function testGetNodesFromDbDoesNotMixAssetDefinitions(): void
+    {
+        $this->login();
+        $entity_id = $this->getTestRootEntity(true);
+
+        $location = $this->createItem(Location::class, [
+            'name'        => 'treeview_asset_loc_' . $this->getUniqueString(),
+            'entities_id' => $entity_id,
+        ]);
+
+        $definition_a = $this->initAssetDefinition(
+            'treeview_a_' . $this->getUniqueString()
+        );
+        $definition_b = $this->initAssetDefinition(
+            'treeview_b_' . $this->getUniqueString()
+        );
+
+        $asset_a = $this->createItem($definition_a->getAssetClassName(), [
+            'name'         => 'treeview_asset_a_' . $this->getUniqueString(),
+            'entities_id'  => $entity_id,
+            'locations_id' => $location->getID(),
+        ]);
+        $asset_b = $this->createItem($definition_b->getAssetClassName(), [
+            'name'         => 'treeview_asset_b_' . $this->getUniqueString(),
+            'entities_id'  => $entity_id,
+            'locations_id' => $location->getID(),
+        ]);
+
+        // Refresh the definition manager so that the newly created
+        // definitions are available to TreeView.
+        $manager = AssetDefinitionManager::getInstance();
+        $manager->clearDefinitionsCache();
+        $manager->bootDefinitions();
+
+        $this->setEntity($entity_id, false);
+
+        $output = $this->getTreeOutput($location->getID());
+
+        // Both assets share the same database table. Each asset must only
+        // appear in the tree group corresponding to its own definition.
+        // Without the assets_assetdefinitions_id filter, each asset would
+        // appear twice.
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_a->fields['name'])
+        );
+        $this->assertSame(
+            1,
+            substr_count($output, $asset_b->fields['name'])
+        );
     }
 }
