@@ -138,6 +138,11 @@ final class ConfigTest extends TreeviewTestCase
         $profile_id = Session::getCurrentProfile()->getID();
         $definition_a->setProfileRights($profile_id, READ);
         $definition_b->setProfileRights($profile_id, READ);
+
+        $manager = AssetDefinitionManager::getInstance();
+        $manager->clearDefinitionsCache();
+        $manager->bootDefinitions();
+
         Session::changeProfile($profile_id);
 
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
@@ -150,10 +155,6 @@ final class ConfigTest extends TreeviewTestCase
             'entities_id'  => $entity_id,
             'locations_id' => $location->getID(),
         ]);
-
-        $manager = AssetDefinitionManager::getInstance();
-        $manager->clearDefinitionsCache();
-        $manager->bootDefinitions();
 
         $this->setEntity($entity_id, false);
 
