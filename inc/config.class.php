@@ -345,7 +345,7 @@ class PluginTreeviewConfig extends CommonDBTM
                             }
 
                             if ($item->isEntityAssign()) {
-                                $criteria['WHERE']['entities_id'] = $_SESSION['glpiactive_entity'];
+                                $criteria['WHERE'] += getEntitiesRestrictCriteria($itemtable, '', '', $item->maybeRecursive());
                             }
 
                             $result_1 = $DB->request($criteria);
