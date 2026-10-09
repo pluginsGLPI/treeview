@@ -9,9 +9,9 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software: you can redistribute it and/or modify
+ * TreeView is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -133,7 +133,7 @@ class PluginTreeviewConfig extends CommonDBTM
 
         $types = array_merge(
             $types,
-            AssetDefinitionManager::getInstance()->getCustomObjectClassNames()
+            AssetDefinitionManager::getInstance()->getCustomObjectClassNames(),
         );
 
         foreach ($types as $key => $type) {
