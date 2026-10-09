@@ -9,9 +9,9 @@
  *
  * This file is part of TreeView.
  *
- * TreeView is free software: you can redistribute it and/or modify
+ * TreeView is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
  * TreeView is distributed in the hope that it will be useful,
@@ -35,6 +35,8 @@ use Entity;
 use Glpi\Asset\AssetDefinitionManager;
 use GlpiPlugin\Treeview\Tests\TreeviewTestCase;
 use Location;
+use PluginTreeviewConfig;
+use Session;
 
 final class ConfigTest extends TreeviewTestCase
 {
@@ -101,7 +103,7 @@ final class ConfigTest extends TreeviewTestCase
         $this->removeRightFromProfile(
             'Super-Admin',
             Computer::$rightname,
-            READ + READ_ASSIGNED + READ_OWNED
+            READ + READ_ASSIGNED + READ_OWNED,
         );
 
         try {
@@ -114,7 +116,7 @@ final class ConfigTest extends TreeviewTestCase
             $this->addRightToProfile(
                 'Super-Admin',
                 Computer::$rightname,
-                READ + READ_ASSIGNED + READ_OWNED
+                READ + READ_ASSIGNED + READ_OWNED,
             );
         }
     }
@@ -123,6 +125,7 @@ final class ConfigTest extends TreeviewTestCase
     {
         $this->login();
         $entity_id = $this->getTestRootEntity(true);
+        $profile_id = $_SESSION['glpiactiveprofile']['id'];
 
         $location = $this->createItem(Location::class, [
             'name'        => 'treeview_asset_loc_' . $this->getUniqueString(),
@@ -130,10 +133,12 @@ final class ConfigTest extends TreeviewTestCase
         ]);
 
         $definition_a = $this->initAssetDefinition(
-            'treeview_a_' . $this->getUniqueString()
+            'treeview_a_' . $this->getUniqueString(),
+            profiles: [$profile_id => READ],
         );
         $definition_b = $this->initAssetDefinition(
-            'treeview_b_' . $this->getUniqueString()
+            'treeview_b_' . $this->getUniqueString(),
+            profiles: [$profile_id => READ],
         );
 
         $asset_a = $this->createItem($definition_a->getAssetClassName(), [
@@ -153,7 +158,15 @@ final class ConfigTest extends TreeviewTestCase
         $manager->clearDefinitionsCache();
         $manager->bootDefinitions();
 
+        // Definition creation stores rights in the database. Reload the
+        // current profile so that canView() sees these new rights in session.
+        Session::changeProfile($profile_id);
         $this->setEntity($entity_id, false);
+
+        $this->assertTrue($asset_a::canView());
+        $this->assertTrue($asset_b::canView());
+        $this->assertContains($definition_a->getAssetClassName(), PluginTreeviewConfig::getTypes());
+        $this->assertContains($definition_b->getAssetClassName(), PluginTreeviewConfig::getTypes());
 
         $output = $this->getTreeOutput($location->getID());
 
@@ -163,11 +176,11 @@ final class ConfigTest extends TreeviewTestCase
         // appear twice.
         $this->assertSame(
             1,
-            substr_count($output, $asset_a->fields['name'])
+            substr_count($output, $asset_a->fields['name']),
         );
         $this->assertSame(
             1,
-            substr_count($output, $asset_b->fields['name'])
+            substr_count($output, $asset_b->fields['name']),
         );
     }
 }
