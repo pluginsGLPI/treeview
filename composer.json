@@ -2,12 +2,10 @@
     "require": {
         "php": ">=8.2"
     },
-    "require-dev": {
-        "glpi-project/tools": "^0.8.3"
-    },
     "config": {
         "autoloader-suffix": "PluginTreeview",
         "optimize-autoloader": true,
+        "autoloader-suffix": "PluginTreeview",
         "platform": {
             "php": "8.2.99"
         },

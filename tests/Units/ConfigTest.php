@@ -84,6 +84,41 @@ final class ConfigTest extends TreeviewTestCase
         $this->assertStringNotContainsString($location_b->fields['name'], $output);
     }
 
+    public function testGetNodesFromDbShowsChildEntitiesDataWhenRecursive(): void
+    {
+        $this->login();
+        $root_id = $this->getTestRootEntity(true);
+
+        $child = $this->createItem(Entity::class, [
+            'name'        => 'treeview_child_' . $this->getUniqueString(),
+            'entities_id' => $root_id,
+        ]);
+
+        $location = $this->createItem(Location::class, [
+            'name'         => 'treeview_loc_' . $this->getUniqueString(),
+            'entities_id'  => $root_id,
+            'is_recursive' => 1,
+        ]);
+
+        $computer_root = $this->createItem(Computer::class, [
+            'name'         => 'treeview_computer_root_' . $this->getUniqueString(),
+            'entities_id'  => $root_id,
+            'locations_id' => $location->getID(),
+        ]);
+        $computer_child = $this->createItem(Computer::class, [
+            'name'         => 'treeview_computer_child_' . $this->getUniqueString(),
+            'entities_id'  => $child->getID(),
+            'locations_id' => $location->getID(),
+        ]);
+
+        $this->setEntity($root_id, true);
+
+        $output = $this->getTreeOutput($location->getID());
+
+        $this->assertStringContainsString($computer_root->fields['name'], $output);
+        $this->assertStringContainsString($computer_child->fields['name'], $output);
+    }
+
     public function testGetNodesFromDbHidesItemtypeWithoutViewRight(): void
     {
         $this->login();

@@ -45,7 +45,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
         $menu          = [];
         $menu['title'] = __s('Tree view', 'treeview');
-        $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/public/index.php';
+        $menu['page']  = '/' . $CFG_GLPI['root_doc'] . 'plugins/treeview/index.php';
         $menu['icon']  = 'ti ti-sitemap';
 
         return $menu;
@@ -110,8 +110,8 @@ class PluginTreeviewPreference extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if ($item->getType() == 'Preference') {
-            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::getType(), PluginTreeviewConfig::getIcon());
+        if ($item::class == 'Preference') {
+            return self::createTabEntry(PluginTreeviewConfig::getTypeName(), 0, $item::class, PluginTreeviewConfig::getIcon());
         }
 
         return '';
@@ -119,7 +119,7 @@ class PluginTreeviewPreference extends CommonDBTM
 
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        if ($item->getType() == 'Preference') {
+        if ($item::class == 'Preference') {
             $pref    = new self();
             $pref_ID = $pref->checkIfPreferenceExists(Session::getLoginUserID());
             if (!$pref_ID) {

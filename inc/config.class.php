@@ -67,8 +67,8 @@ class PluginTreeviewConfig extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if ($item->getType() === "Config") {
-            return self::createTabEntry(self::getTypeName(), 0, $item::getType(), self::getIcon());
+        if ($item::class === "Config") {
+            return self::createTabEntry(self::getTypeName(), 0, $item::class, self::getIcon());
         }
 
         return '';
@@ -77,7 +77,7 @@ class PluginTreeviewConfig extends CommonDBTM
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
         $config = new self();
-        if ($item->getType() === "Config") {
+        if ($item::class === "Config") {
             $config->showConfigForm();
         }
 
@@ -169,7 +169,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo "<meta http-equiv='Pragma' content='no-cache'>\n";
         echo "<meta http-equiv='Cache-Control' content='no-cache'>\n";
         echo "<link rel='shortcut icon' type='images/x-icon' href='" .
-             $CFG_GLPI['root_doc'] . "/public/pics/favicon.ico' >\n";
+             $CFG_GLPI['root_doc'] . "/pics/favicon.ico' >\n";
 
         // Must be always the top window
         echo '<script type="text/javascript">';
@@ -177,7 +177,7 @@ class PluginTreeviewConfig extends CommonDBTM
         echo 'top.location = self.location;';
         echo '</script></head>';
         echo "<frameset cols='250,*'>";
-        echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/public/left.php' name='left' scrolling='yes'>";
+        echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/left.php' name='left' scrolling='yes'>";
         echo "<frame src='" . $CFG_GLPI['root_doc'] . "/front/central.php' name='right'>";
         echo '<noframes>';
         echo '<body>';
@@ -212,8 +212,8 @@ class PluginTreeviewConfig extends CommonDBTM
         $treeview_url = $CFG_GLPI['root_doc'] . "/plugins/treeview";
 
         //necessary files needed for the tree to work.
-        echo sprintf("<link rel='stylesheet' type='text/css' href='%s/public/css/dtree.css' type='text/css'>", $treeview_url);
-        echo sprintf("<script type='text/javascript' src='%s/public/lib/dtree/dtree.js'></script>", $treeview_url);
+        echo sprintf("<link rel='stylesheet' type='text/css' href='%s/css/dtree.css' type='text/css'>", $treeview_url);
+        echo sprintf("<script type='text/javascript' src='%s/lib/dtree/dtree.js'></script>", $treeview_url);
 
         echo "<div class='dtree'>";
         echo "<script type='text/javascript'>";
@@ -357,7 +357,7 @@ class PluginTreeviewConfig extends CommonDBTM
                             }
 
                             if ($item->isEntityAssign()) {
-                                $criteria['WHERE']['entities_id'] = $_SESSION['glpiactive_entity'];
+                                $criteria['WHERE'] += getEntitiesRestrictCriteria($itemtable, '', '', $item->maybeRecursive());
                             }
 
                             $result_1 = $DB->request($criteria);
@@ -377,8 +377,7 @@ class PluginTreeviewConfig extends CommonDBTM
                                 }
 
                                 $value    = $r['id'];
-                                $token    = Session::getNewCSRFToken();
-                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0&_glpi_csrf_token=%s', $field_num, $value, $token);
+                                $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0', $field_num, $value);
 
                                 $searchUrl = is_a($type, Asset::class, true)
                                     ? $type::getSearchURL() . '&' . ltrim($getParam, '?')

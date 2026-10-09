@@ -15,11 +15,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Prevent custom assets from other asset definitions from appearing in the same location
 
+## [1.21.0] - 2026-09-07
+
+### Added
+
+- GLPI 12 compatibility
+
+### Fixed
+
+- Show child entities items in tree when recursive mode is enabled
+- CI: fix Psalm cache directory, drop the stray `glpi-project/tools` composer dependency, declare a unique composer autoloader suffix
+
 ## [1.20.3] - 2026-09-04
 
 ### Fixed
 
 - Enforce item / pref rights and sanitize inputs in tree loading
+- Remove deprecated `/public` prefix from generated plugin URLs
 
 ## [1.20.2] - 2026-06-24
 
