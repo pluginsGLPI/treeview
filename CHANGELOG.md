@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Prevent custom assets from other asset definitions from appearing in the same location
+- Add Transifex translations link to README
 
 ## [1.21.0] - 2026-09-07
 
