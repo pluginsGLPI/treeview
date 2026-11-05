@@ -3,6 +3,7 @@
         "php": ">=8.2"
     },
     "config": {
+        "autoloader-suffix": "PluginTreeview",
         "optimize-autoloader": true,
         "autoloader-suffix": "PluginTreeview",
         "platform": {
