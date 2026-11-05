@@ -32,7 +32,7 @@ use Glpi\Plugin\Hooks;
 
 use function Safe\define;
 
-define('PLUGIN_TREEVIEW_VERSION', '1.21.0');
+define('PLUGIN_TREEVIEW_VERSION', '1.21.1');
 define('PLUGIN_TREEVIEW_MIN_GLPI', '12.0.0');
 define('PLUGIN_TREEVIEW_MAX_GLPI', '12.0.99');
 
