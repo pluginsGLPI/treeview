@@ -5,11 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.20.4] - 2026-11-05
 
 ### Fixed
 
 - Show child entities items in tree when recursive mode is enabled
+- Remove deprecated `/public` prefix from generated plugin URLs
 - CI: fix Psalm cache directory, drop the stray `glpi-project/tools` composer dependency, declare a unique composer autoloader suffix
 
 ## [1.20.3] - 2026-09-04
@@ -17,7 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Enforce item / pref rights and sanitize inputs in tree loading
-- Remove deprecated `/public` prefix from generated plugin URLs
 
 ## [1.20.2] - 2026-06-24
 
