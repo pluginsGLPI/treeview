@@ -5,11 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.21.1] - 2026-11-05
 
 ### Added
 
 - Add Transifex translations link to README
+
+### Fixed
+
+- Show child entities items in tree when recursive mode is enabled
 
 ## [1.21.0] - 2026-09-07
 
@@ -19,7 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Show child entities items in tree when recursive mode is enabled
 - CI: fix Psalm cache directory, drop the stray `glpi-project/tools` composer dependency, declare a unique composer autoloader suffix
 
 ## [1.20.3] - 2026-09-04
