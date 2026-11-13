@@ -109,11 +109,17 @@ function plugin_treeview_install()
                   `id` int {$default_key_sign} NOT NULL auto_increment,
                   `users_id` int {$default_key_sign} NOT NULL default '0' COMMENT 'RELATION to glpi_users (id)',
                   `show_on_load` int NOT NULL default '0',
-                  PRIMARY KEY (`id`)
+                  PRIMARY KEY (`id`),
+                  KEY `users_id` (`users_id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
         $DB->doQuery($query);
     }
+
+    // Preferences are looked up by user on each profile change
+    $migration = new Migration(PLUGIN_TREEVIEW_VERSION);
+    $migration->addKey('glpi_plugin_treeview_preferences', 'users_id');
+    $migration->executeMigration();
 
     // No autoload when plugin is not activated
     require_once __DIR__ . '/inc/profile.class.php';
