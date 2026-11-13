@@ -42,6 +42,12 @@ global $CFG_GLPI;
 Html::includeHeader('TreeView');
 
 echo "<body style='overflow:auto; overflow:initial;'>";
+// Only this page needs the explorer bar styles, they are not loaded on the other GLPI pages
+echo sprintf(
+    "<link rel='stylesheet' type='text/css' href='%s/plugins/treeview/css/treeview.css?v=%s'>",
+    $CFG_GLPI['root_doc'],
+    PLUGIN_TREEVIEW_VERSION,
+);
 // Title bar
 echo '<div id="explorer_bar" class="d-flex justify-content-between align-items-center  border-bottom">';
 echo '<div id=explorer_title>';
