@@ -50,9 +50,10 @@ echo '<span class="menu-label">' . __s('Tree view', 'treeview') . '</span>';
 echo '</div>';
 echo '<div id=explorer_close>';
 
-echo "<span role='button' name='explorer_close' class='btn btn-sm btn-ghost-secondary me-1 pe-2' onclick='parent.location.href = parent.right.location.href;''>";
+echo "<span role='button' id='explorer_close_button' name='explorer_close' class='btn btn-sm btn-ghost-secondary me-1 pe-2'>";
 echo "<i class='ti ti-square-rounded-x'></i>";
 echo "</span>";
+echo Html::scriptBlock('document.getElementById("explorer_close_button").addEventListener("click", () => { parent.location.href = parent.right.location.href; });');
 echo '</div>';
 
 echo '</div>';
