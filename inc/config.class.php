@@ -329,15 +329,20 @@ class PluginTreeviewConfig extends CommonDBTM
                             $itemtable = getTableForItemType($type);
 
                             $criteria = [
-                                'FROM'  => $itemtable,
-                                'WHERE' => [
+                                'SELECT' => [$itemtable . '.id', $itemtable . '.name'],
+                                'FROM'   => $itemtable,
+                                'WHERE'  => [
                                     'locations_id' => $r['id'],
                                 ],
-                                'ORDER' => [$itemtable . '.name'],
+                                'ORDER'  => [$itemtable . '.name'],
                             ];
 
                             if ($item->maybeTemplate()) {
                                 $criteria['WHERE']['is_template'] = 0;
+                            }
+
+                            if ($item->isField('otherserial')) {
+                                $criteria['SELECT'][] = $itemtable . '.otherserial';
                             }
 
                             if ($item->maybeDeleted()) {
@@ -353,16 +358,6 @@ class PluginTreeviewConfig extends CommonDBTM
                             if (count($result_1) > 0) {
                                 $pid       = $tv_id;
                                 $field_num = 3;
-
-                                $result_location = $DB->request([
-                                    'SELECT' => ['completename'],
-                                    'FROM'   => 'glpi_locations',
-                                    'WHERE'  => ['id' => $r['id']],
-                                ]);
-
-                                foreach ($result_location as $row) {
-                                    $name_location = $row['completename'];
-                                }
 
                                 $value    = $r['id'];
                                 $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0', $field_num, $value);
