@@ -5,18 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Performance: remove an unused query, read only the displayed columns, load `treeview.css` on the tree frame only, add an index on the preferences `users_id` column
+
 ## [1.21.1] - 2026-11-05
 
 ### Added
 
 - Add Transifex translations link to README
-- Make the plugin compatible with the Content Security Policy
-
-### Fixed
-
-- Performance: remove an unused query and a CSRF token per tree group, read only the displayed columns, load `treeview.css` on the tree frame only, add an index on the preferences `users_id` column
-
-## [1.20.4] - 2026-11-05
 
 ### Fixed
 
