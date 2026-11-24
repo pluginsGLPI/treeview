@@ -69,7 +69,7 @@ function plugin_init_treeview()
             && $_SESSION['glpi_plugin_treeview_loaded'] == 1
             && class_exists(PluginTreeviewConfig::class)
         ) {
-            foreach (PluginTreeviewConfig::getTypes() as $type) {
+            foreach (PluginTreeviewConfig::getTypes(true) as $type) {
                 $PLUGIN_HOOKS[Hooks::ITEM_UPDATE]['treeview'][$type]  = 'plugin_item_update_treeview';
                 $PLUGIN_HOOKS[Hooks::ITEM_DELETE]['treeview'][$type]  = 'plugin_treeview_reload';
                 $PLUGIN_HOOKS[Hooks::ITEM_RESTORE]['treeview'][$type] = 'plugin_treeview_reload';
@@ -95,9 +95,6 @@ function plugin_init_treeview()
             $config = new PluginTreeviewConfig();
             $config->hideTreeview();
         }
-
-        // Add specific files to add to the header : javascript or css
-        $PLUGIN_HOOKS[Hooks::ADD_CSS]['treeview'] = 'css/treeview.css';
     }
 
     // Config page
