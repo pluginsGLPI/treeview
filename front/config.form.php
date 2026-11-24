@@ -55,10 +55,7 @@ if (isset($_POST['update'])) {
 } else {
     Html::header(__s('Setup'), $_SERVER['PHP_SELF'], 'config', 'plugin');
     // close frame if open
-    echo " <script type='text/javascript'>
-         if (top != self)
-         top.location = self.location;
-         </script>";
+    echo Html::scriptBlock('if (top != self) top.location = self.location;');
 }
 
 Html::footer();
