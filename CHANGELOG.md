@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Make the plugin compatible with the Content Security Policy
+
 ### Fixed
 
 - Performance: remove an unused query, read only the displayed columns, load `treeview.css` on the tree frame only, add an index on the preferences `users_id` column

@@ -31,6 +31,8 @@ use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
 
 use function Safe\json_encode;
+use function Safe\ob_get_clean;
+use function Safe\ob_start;
 
 /**
  * Contains the display configuration of the treeview
@@ -164,10 +166,8 @@ class PluginTreeviewConfig extends CommonDBTM
              $CFG_GLPI['root_doc'] . "/pics/favicon.ico' >\n";
 
         // Must be always the top window
-        echo '<script type="text/javascript">';
-        echo 'if (top != self)';
-        echo 'top.location = self.location;';
-        echo '</script></head>';
+        echo Html::scriptBlock('if (top != self) top.location = self.location;');
+        echo '</head>';
         echo "<frameset cols='250,*'>";
         echo "<frame src='" . $CFG_GLPI['root_doc'] . "/plugins/treeview/left.php' name='left' scrolling='yes'>";
         echo "<frame src='" . $CFG_GLPI['root_doc'] . "/front/central.php' name='right'>";
@@ -185,10 +185,7 @@ class PluginTreeviewConfig extends CommonDBTM
     **/
     public function hideTreeview()
     {
-        echo "<script type='text/javascript'>";
-        echo 'if (top != self)';
-        echo 'top.location = self.location;';
-        echo '</script>';
+        echo Html::scriptBlock('if (top != self) top.location = self.location;');
     }
 
     /**
@@ -205,13 +202,57 @@ class PluginTreeviewConfig extends CommonDBTM
 
         //necessary files needed for the tree to work.
         echo sprintf("<link rel='stylesheet' type='text/css' href='%s/css/dtree.css' type='text/css'>", $treeview_url);
-        echo sprintf("<script type='text/javascript' src='%s/lib/dtree/dtree.js'></script>", $treeview_url);
+        echo Html::script('/plugins/treeview/lib/dtree/dtree.js');
 
         echo "<div class='dtree'>";
-        echo "<script type='text/javascript'>";
+        ob_start();
         $this->getNodesFromDb();
-        echo '</script>';
+        echo Html::scriptBlock(ob_get_clean());
         echo '</div>';
+
+        // dTree renders its links with inline handlers, rebind them once the tree is in the DOM
+        echo Html::scriptBlock(<<<'JS'
+            (function () {
+                var pattern = /^\s*javascript:\s*(\w+)\.([os])\((\d+)\);?\s*$/;
+                var takeCall = function (link, attribute) {
+                    var match = (link.getAttribute(attribute) || '').match(pattern);
+                    if (match !== null) {
+                        link.removeAttribute(attribute);
+                    }
+                    return match;
+                };
+                var tree = document.querySelector('.dtree');
+                if (tree === null) {
+                    return;
+                }
+                tree.querySelectorAll('a').forEach(function (link) {
+                    var select = takeCall(link, 'onclick');
+                    var toggle = takeCall(link, 'href');
+                    if (toggle !== null) {
+                        link.setAttribute('href', '#');
+                    }
+                    link.addEventListener('click', function (event) {
+                        if (toggle !== null) {
+                            event.preventDefault();
+                            window[toggle[1]][toggle[2]](Number(toggle[3]));
+                        }
+                        if (select !== null) {
+                            window[select[1]][select[2]](Number(select[3]));
+                        }
+                    });
+                    if (link.hasAttribute('onmouseover')) {
+                        link.removeAttribute('onmouseover');
+                        link.removeAttribute('onmouseout');
+                        link.addEventListener('mouseover', function () {
+                            window.status = link.textContent;
+                        });
+                        link.addEventListener('mouseout', function () {
+                            window.status = '';
+                        });
+                    }
+                });
+            })();
+            JS);
     }
 
     /**

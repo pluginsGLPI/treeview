@@ -291,7 +291,7 @@ function plugin_treeview_uninstall()
 function plugin_item_update_treeview($item)
 {
     if (in_array('locations_id', $item->updates)) {
-        echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+        echo Html::scriptBlock('parent.left.location.reload(true);');
     }
 }
 
@@ -301,7 +301,7 @@ function plugin_item_update_treeview($item)
  */
 function plugin_treeview_reload($item)
 {
-    echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+    echo Html::scriptBlock('parent.left.location.reload(true);');
 }
 
 
@@ -312,6 +312,6 @@ function plugin_change_entity_Treeview()
         && (isset($_SESSION['glpi_plugin_treeview_loaded'])
         && $_SESSION['glpi_plugin_treeview_loaded'] == 1)
     ) {
-        echo "<script type='text/javascript'>parent.left.location.reload(true);</script>";
+        echo Html::scriptBlock('parent.left.location.reload(true);');
     }
 }

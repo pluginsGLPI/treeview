@@ -133,6 +133,7 @@ function plugin_version_treeview()
         'license'      => 'GPLv2+',
         'author'       => 'AL-Rubeiy Hussein, Xavier Caillaud, Nelly Mahu-Lasson',
         'homepage'     => 'https://forge.indepnet.net/projects/treeview',
+        'csp_compliant' => true,
         'requirements' => [
             'glpi' => [
                 'min' => PLUGIN_TREEVIEW_MIN_GLPI,
