@@ -27,7 +27,10 @@
  * @link      https://github.com/pluginsGLPI/treeview
  * -------------------------------------------------------------------------
  */
+
 use Glpi\Application\View\TemplateRenderer;
+use Glpi\Asset\Asset;
+use Glpi\Asset\AssetDefinitionManager;
 use Glpi\DBAL\QueryExpression;
 
 use function Safe\json_encode;
@@ -36,7 +39,7 @@ use function Safe\ob_start;
 
 /**
  * Contains the display configuration of the treeview
-**/
+ **/
 class PluginTreeviewConfig extends CommonDBTM
 {
     public static $types = [
@@ -54,10 +57,10 @@ class PluginTreeviewConfig extends CommonDBTM
     ];
 
     /**
-    * Display name of itemtype
-    *
-    * @return string
-    **/
+     * Display name of itemtype
+     *
+     * @return string
+     **/
     public static function getTypeName($nb = 0)
     {
         return __s('Tree view', 'treeview');
@@ -129,6 +132,11 @@ class PluginTreeviewConfig extends CommonDBTM
 
         // Only allowed types
         $types = self::$types;
+
+        $types = array_merge(
+            $types,
+            AssetDefinitionManager::getInstance()->getCustomObjectClassNames(),
+        );
 
         foreach ($types as $key => $type) {
             if (!class_exists($type) || !is_a($type, CommonDBTM::class, true)) {
@@ -378,6 +386,10 @@ class PluginTreeviewConfig extends CommonDBTM
                                 'ORDER'  => [$itemtable . '.name'],
                             ];
 
+                            if (is_a($type, Asset::class, true)) {
+                                $criteria['WHERE']['assets_assetdefinitions_id'] = $type::getDefinition()->fields['id'];
+                            }
+
                             if ($item->maybeTemplate()) {
                                 $criteria['WHERE']['is_template'] = 0;
                             }
@@ -403,7 +415,9 @@ class PluginTreeviewConfig extends CommonDBTM
                                 $value    = $r['id'];
                                 $getParam = sprintf('?is_deleted=0&criteria[0][field]=%d&criteria[0][searchtype]=equals&criteria[0][value]=%s&search=Rechercher&start=0', $field_num, $value);
 
-                                $searchUrl = Toolbox::getItemTypeSearchURL($type) . $getParam;
+                                $searchUrl = is_a($type, Asset::class, true)
+                                    ? $type::getSearchURL() . '&' . ltrim($getParam, '?')
+                                    : Toolbox::getItemTypeSearchURL($type) . $getParam;
 
                                 $params = ['itemtype' => $type,
                                     'locations_id'    => $value,
@@ -449,7 +463,8 @@ class PluginTreeviewConfig extends CommonDBTM
                                     }
                                 }
 
-                                $url  = Toolbox::getItemTypeFormURL($type) . '?id=' . $r_1['id'];
+                                $url = $type::getFormURLWithID($r_1['id']);
+
                                 $pic  = 'ti ti-chevrons-right';
                                 $name = strtr($i_name, $trans);
                                 $opt  = ['url' => $url,
